@@ -1,0 +1,17 @@
+/Users/ericgo/Documents/16summer/HO/Temp/bin/Debug/UnityEngine.dll
+/Users/ericgo/Documents/16summer/HO/Temp/bin/Debug/UnityEditor.dll
+/Users/ericgo/Documents/16summer/HO/Temp/bin/Debug/UnityEngine.UI.dll
+/Users/ericgo/Documents/16summer/HO/Temp/bin/Debug/UnityEngine.Networking.dll
+/Users/ericgo/Documents/16summer/HO/Temp/bin/Debug/Mono.Cecil.dll
+/Users/ericgo/Documents/16summer/HO/Temp/bin/Debug/Unity.SerializationLogic.dll
+/Users/ericgo/Documents/16summer/HO/Temp/bin/Debug/Unity.DataContract.dll
+/Users/ericgo/Documents/16summer/HO/Temp/bin/Debug/ICSharpCode.NRefactory.dll
+/Users/ericgo/Documents/16summer/HO/Temp/bin/Debug/Unity.UNetWeaver.dll
+/Users/ericgo/Documents/16summer/HO/Temp/bin/Debug/Unity.UNetWeaver.dll.mdb
+/Users/ericgo/Documents/16summer/HO/Temp/bin/Debug/Unity.CecilTools.dll
+/Users/ericgo/Documents/16summer/HO/Temp/bin/Debug/Mono.Cecil.Pdb.dll
+/Users/ericgo/Documents/16summer/HO/Temp/bin/Debug/Mono.Cecil.Mdb.dll
+/Users/ericgo/Documents/16summer/HO/Temp/bin/Debug/Assembly-CSharp.dll.mdb
+/Users/ericgo/Documents/16summer/HO/Temp/bin/Debug/Assembly-CSharp.dll
+/Users/ericgo/Documents/16summer/HO/obj/Debug/Assembly-CSharp.dll
+/Users/ericgo/Documents/16summer/HO/obj/Debug/Assembly-CSharp.dll.mdb
