@@ -12,21 +12,102 @@ public class Node : MonoBehaviour {
 		return num;
 	}
 
+	private static int size2lastNode;
+
+	//create two globle number to pass two nodes number to gameContrll.cs
+	public static int passNode1;
+	public static int passNode2;
+
 	void OnMouseDown(){
 		//Debug.Log (num);
-		int temp;
+		//int temp;
 		Queue<int> t = gameControll.twoNode;
 		int size = t.Count;
-		if (size < 2) {
-			gameControll.twoNode.Enqueue (num);
-			Debug.Log ("this is the node" + num);
+		if (size == 0) {
+			if (num != 1 && (gameControll.redTruck|| gameControll.blueTruck || gameControll.greenTruck)) {
+				Debug.Log ("Please click depot firstly to start!");
+			} else if(num == 1 && !(gameControll.redTruck|| gameControll.blueTruck || gameControll.greenTruck)) {
+				Debug.Log("please select a truck!");
+			} else if((gameControll.redTruck|| gameControll.blueTruck || gameControll.greenTruck) && num==1){
+				gameControll.twoNode.Enqueue (num);
+				Debug.Log ("let's start!");
+			}
+		} else if (size ==1) {
+			int firstOfSize1=t.Peek ();
+			if (gameControll.validPath (firstOfSize1, num)) {
+				gameControll.twoNode.Enqueue (num);
+				Debug.Log ("this is the node" + num);
+				size2lastNode = num;
+				//Debug.Log (size2lastNode);
+
+				//here get the capacity of the path
+				passNode1 = firstOfSize1;
+				passNode2 = num;
+
+				GameObject findInactive = gameControll.myGameObject;
+				findInactive.SetActive(true);
+
+//				modifyCap (inputControl.capVal, firstOfSize1, num);
+//				Debug.Log("you collect "+ inputControl.capVal
+//					+" the capacity of this path "+firstOfSize1+ num+" remains: " +  gameControll.capArray[firstOfSize1,num]);
+			} else {
+				Debug.Log ("this node is not connected with the node " + firstOfSize1 + " please select a valid one! "); 
+			}
 		} else if (size == 2) {
-			temp = gameControll.twoNode.Dequeue ();
-			Debug.Log ("remove" + temp);
-			int firstNode = gameControll.twoNode.Peek ();
-			gameControll.twoNode.Enqueue (num);
-			Debug.Log ("this is the second node"+num);
-			gameControll.validPath (firstNode, num);
+			//temp = gameControll.twoNode.Dequeue ();
+			//Debug.Log ("remove" + temp);
+			//Debug.Log(size2lastNode);
+
+			if (gameControll.validPath (size2lastNode, num)) {
+				gameControll.twoNode.Dequeue ();
+				//Debug.Log ("remove " + temp);
+				gameControll.twoNode.Enqueue (num);
+				passNode1 = size2lastNode;
+				passNode2 = num;
+//				GameObject inputTab=GameObject.Find("InputTab");
+//				inputTab.SetActive (true);
+				GameObject findInactive = gameControll.myGameObject;
+				findInactive.SetActive(true);
+
+//				modifyCap (inputControl.capVal, size2lastNode, num);
+//				Debug.Log ("you collect "+ inputControl.capVal
+//					+" the capacity of this path "+size2lastNode+ num+" remains: " +  gameControll.capArray[size2lastNode,num]);
+				size2lastNode = num;
+				//Debug.Log (size2lastNode);
+				Debug.Log(gameControll.myGameObject.activeSelf);
+				//here I need to add a few lines to process the depot
+				if (num == 1 ) {
+					if (gameControll.blueTruck) {
+						gameControll.blueTruck = false;
+					}
+					if (gameControll.redTruck) {
+						gameControll.redTruck = false;
+					}
+					if (gameControll.greenTruck) {
+						gameControll.greenTruck = false;
+					}
+					Debug.Log (" You have finish a cycle, please start another one!");
+
+					//reset most of the things to the beginning here
+					gameControll.twoNode.Clear ();
+					GameObject.Find ("GameController").GetComponent<gameControll> ().resetCursor ();
+					GameObject.Find ("GameController").GetComponent<gameControll> ().resetDepot ();
+				}
+			} else {
+				Debug.Log ("this node is not connected with the node " + size2lastNode + " please select a valid one! ");
+			}
+			//gameControll.twoNode.Enqueue (num);
+			//Debug.Log ("this is the second node"+num);
+			//gameControll.validPath (firstNode, num);
+			//if(gameControll.validPath (firstNode, num) && num==1)
+
 		}
+	}
+
+	//function to modify capacity of truck and path;
+	public static void modifyCap(int num,int node1,int node2){
+		gameControll.carCap -= num;
+		gameControll.capArray [node1, node2] -= num;
+		gameControll.capArray [node2, node1] -= num;
 	}
 }

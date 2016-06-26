@@ -3,5 +3,10 @@ using System.Collections;
 
 public class Graph :MonoBehaviour {
 	public int capacity;
+	//private int time;
 	public int[] node = new int[2];
+
+	void Awake(){
+		//time = 2 * capacity;
+	}
 }

@@ -49,10 +49,12 @@
      <Compile Include="Assets\Scripts\Node.cs" />
      <Compile Include="Assets\Scripts\depot.cs" />
      <Compile Include="Assets\Scripts\gameControll.cs" />
+     <Compile Include="Assets\Scripts\inputControl.cs" />
      <Compile Include="Assets\Scripts\redTruck.cs" />
      <Compile Include="Assets\Scripts\test\DragTruck.cs" />
      <Compile Include="Assets\Scripts\test\DragTruck1.cs" />
      <Compile Include="Assets\Scripts\test\clickMove.cs" />
+     <Compile Include="Assets\Scripts\truck.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
