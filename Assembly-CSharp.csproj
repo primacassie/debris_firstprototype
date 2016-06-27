@@ -50,7 +50,6 @@
      <Compile Include="Assets\Scripts\depot.cs" />
      <Compile Include="Assets\Scripts\gameControll.cs" />
      <Compile Include="Assets\Scripts\inputControl.cs" />
-     <Compile Include="Assets\Scripts\redTruck.cs" />
      <Compile Include="Assets\Scripts\test\DragTruck.cs" />
      <Compile Include="Assets\Scripts\test\DragTruck1.cs" />
      <Compile Include="Assets\Scripts\test\clickMove.cs" />
