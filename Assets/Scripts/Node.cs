@@ -76,23 +76,6 @@ public class Node : MonoBehaviour {
 				//Debug.Log (size2lastNode);
 				Debug.Log(gameControll.myGameObject.activeSelf);
 				//here I need to add a few lines to process the depot
-				if (num == 1 ) {
-					if (gameControll.blueTruck) {
-						gameControll.blueTruck = false;
-					}
-					if (gameControll.redTruck) {
-						gameControll.redTruck = false;
-					}
-					if (gameControll.greenTruck) {
-						gameControll.greenTruck = false;
-					}
-					Debug.Log (" You have finish a cycle, please start another one!");
-
-					//reset most of the things to the beginning here
-					gameControll.twoNode.Clear ();
-					GameObject.Find ("GameController").GetComponent<gameControll> ().resetCursor ();
-					GameObject.Find ("GameController").GetComponent<gameControll> ().resetDepot ();
-				}
 			} else {
 				Debug.Log ("this node is not connected with the node " + size2lastNode + " please select a valid one! ");
 			}
