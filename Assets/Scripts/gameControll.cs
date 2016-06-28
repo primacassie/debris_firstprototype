@@ -13,12 +13,27 @@ public class gameControll : MonoBehaviour {
 	[HideInInspector] public static bool blueTruck;
 	[HideInInspector] public static bool greenTruck;
 
+	//store how many truck have been here
+	public static int redTruckNum;
+	public static int blueTruckNum;
+	public static int greenTruckNum;
+
 	//cursor texture
 	public Texture2D cursorTextureR;
 	public Texture2D cursorTextureG;
 	public Texture2D cursorTextureB;
 	[HideInInspector]public CursorMode cursorMode = CursorMode.Auto;
 	[HideInInspector]public Vector2 hotSpot = Vector2.zero;
+
+	//total debris of each kind of color
+	[HideInInspector]public static int redDebrisTotal;
+	[HideInInspector]public static int blueDebrisTotal;
+	[HideInInspector]public static int greenDebrisTotal;
+
+	//total time of each kind of color
+	[HideInInspector]public static float redTimeTotal;
+	[HideInInspector]public static float blueTimeTotal;
+	[HideInInspector]public static float greenTimeTotal;
 
 
 	public Image depot;
@@ -29,6 +44,9 @@ public class gameControll : MonoBehaviour {
 
 	//create an array to store the capacity of each path
 	public static int[,] capArray = new int[6,6];
+
+	//create an array of time
+	public static readonly float[,] timeArray=new float[6,6]; 
 
 	//an interger store car capacity
 	public static int carCap=100;
@@ -51,33 +69,39 @@ public class gameControll : MonoBehaviour {
 
 	//change cursor and depot color
 	public void changeRed(){
-		Cursor.SetCursor(cursorTextureR, hotSpot, cursorMode);
-		depot.sprite = Resources.Load<Sprite> ("Image/truck_R256") as Sprite;
-		redTruck = true;
-		blueTruck = false;
-		greenTruck = false;
-		RedTruck aRedTruck = new RedTruck ();
-		carCap = aRedTruck.capacity;
+		if (!(redTruck || blueTruck || greenTruck)) {
+			Cursor.SetCursor(cursorTextureR, hotSpot, cursorMode);
+			depot.sprite = Resources.Load<Sprite> ("Image/truck_R256") as Sprite;
+			redTruck = true;
+			RedTruck aRedTruck = new RedTruck ();
+			carCap = aRedTruck.capacity;
+			GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(redTruckNum);
+			redTruckNum++;
+		}
 	}
 
 	public void changeBlue(){
-		Cursor.SetCursor(cursorTextureB, hotSpot, cursorMode);
-		depot.sprite = Resources.Load<Sprite> ("Image/truck_B256") as Sprite;
-		blueTruck = true;
-		redTruck = false;
-		greenTruck = false;
-		BlueTruck aBlueTruck = new BlueTruck ();
-		carCap = aBlueTruck.capacity;
+		if (!(redTruck || blueTruck || greenTruck)) {
+			Cursor.SetCursor(cursorTextureB, hotSpot, cursorMode);
+			depot.sprite = Resources.Load<Sprite> ("Image/truck_B256") as Sprite;
+			blueTruck = true;
+			BlueTruck aBlueTruck = new BlueTruck ();
+			carCap = aBlueTruck.capacity;
+			GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(blueTruckNum);
+			blueTruckNum++;
+		}
 	}
 
 	public void changeGreen(){
-		Cursor.SetCursor(cursorTextureG, hotSpot, cursorMode);
-		depot.sprite = Resources.Load<Sprite> ("Image/truck_G256") as Sprite;
-		greenTruck = true;
-		blueTruck = false;
-		redTruck = false;
-		GreenTruck aGreenTruck = new GreenTruck ();
-		carCap = aGreenTruck.capacity;
+		if (!(redTruck || blueTruck || greenTruck)) {
+			Cursor.SetCursor(cursorTextureG, hotSpot, cursorMode);
+			depot.sprite = Resources.Load<Sprite> ("Image/truck_G256") as Sprite;
+			greenTruck = true;
+			GreenTruck aGreenTruck = new GreenTruck ();
+			carCap = aGreenTruck.capacity;
+			GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(greenTruckNum);
+			greenTruckNum++;
+		}
 	}
 
 	public void resetCursor(){
@@ -190,7 +214,11 @@ public class gameControll : MonoBehaviour {
 			int cap = go.GetComponent<Graph> ().capacity;
 			capArray [arr1, arr2] = cap;
 			capArray [arr2, arr1] = cap;
+			float time = go.GetComponent<Graph> ().time;
+			timeArray [arr1, arr2] = time;
+			timeArray [arr2, arr1] = time;
 		}
 	}
+		
 		
 }

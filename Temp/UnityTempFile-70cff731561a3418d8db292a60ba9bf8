@@ -82,6 +82,7 @@
 'Assets/Scripts/depot.cs'
 'Assets/Scripts/gameControll.cs'
 'Assets/Scripts/inputControl.cs'
+'Assets/Scripts/panelController.cs'
 'Assets/Scripts/test/DragTruck.cs'
 'Assets/Scripts/test/DragTruck1.cs'
 'Assets/Scripts/test/clickMove.cs'

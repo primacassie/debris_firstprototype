@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Graph :MonoBehaviour {
 	public int capacity;
-	//private int time;
+	public float time;
 	public int[] node = new int[2];
 
 	void Awake(){

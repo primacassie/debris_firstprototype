@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class Node : MonoBehaviour {
 	public int num;
@@ -74,7 +75,6 @@ public class Node : MonoBehaviour {
 //					+" the capacity of this path "+size2lastNode+ num+" remains: " +  gameControll.capArray[size2lastNode,num]);
 				size2lastNode = num;
 				//Debug.Log (size2lastNode);
-				Debug.Log(gameControll.myGameObject.activeSelf);
 				//here I need to add a few lines to process the depot
 			} else {
 				Debug.Log ("this node is not connected with the node " + size2lastNode + " please select a valid one! ");
@@ -92,5 +92,31 @@ public class Node : MonoBehaviour {
 		gameControll.carCap -= num;
 		gameControll.capArray [node1, node2] -= num;
 		gameControll.capArray [node2, node1] -= num;
+		if (gameControll.redTruck) {
+			gameControll.redDebrisTotal += num;
+			gameControll.redTimeTotal += gameControll.timeArray [node1, node2];
+			string findName = "redTruckText" + (gameControll.redTruckNum-1).ToString();
+			GameObject.Find (findName).GetComponent<Text> ().text = gameControll.carCap.ToString ();
+			panelController.redText.text = gameControll.redDebrisTotal.ToString ();
+			panelController.redTime.text = gameControll.redTimeTotal.ToString ();
+		}
+
+		if (gameControll.blueTruck) {
+			gameControll.blueDebrisTotal += num;
+			gameControll.blueTimeTotal += gameControll.timeArray [node1, node2];
+			string findName = "blueTruckText" + (gameControll.blueTruckNum-1).ToString ();
+			GameObject.Find (findName).GetComponent<Text> ().text = gameControll.carCap.ToString ();
+			panelController.blueText.text = gameControll.blueDebrisTotal.ToString ();
+			panelController.blueTime.text = gameControll.blueTimeTotal.ToString ();
+		}
+
+		if (gameControll.greenTruck) {
+			gameControll.greenDebrisTotal += num;
+			gameControll.greenTimeTotal += gameControll.timeArray [node1, node2];
+			string findName = "greenTruckText" + (gameControll.greenTruckNum-1).ToString ();
+			GameObject.Find (findName).GetComponent<Text> ().text = gameControll.carCap.ToString ();
+			panelController.greenText.text = gameControll.greenDebrisTotal.ToString ();
+			panelController.greenTime.text = gameControll.greenTimeTotal.ToString ();
+		}
 	}
 }

@@ -20,6 +20,7 @@ public class inputControl : MonoBehaviour {
 			if(valCorrect){
 				input.text = "";
 				Node.modifyCap (capVal, Node.passNode1, Node.passNode2);
+				Debug.Log("the car capacity now is " + gameControll.carCap);
 				Debug.Log("you collect "+ capVal +" the capacity of this path "+Node.passNode1
 					+ Node.passNode2+" remains: " +  gameControll.capArray[Node.passNode1,Node.passNode2]);
 				//if the node is the depot then reset it.
@@ -34,6 +35,9 @@ public class inputControl : MonoBehaviour {
 						gameControll.greenTruck = false;
 					}
 					Debug.Log (" You have finish a cycle, please start another one!");
+
+					//add truck scripts here
+				//	GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(0);
 
 					//reset most of the things to the beginning here
 					gameControll.twoNode.Clear ();
