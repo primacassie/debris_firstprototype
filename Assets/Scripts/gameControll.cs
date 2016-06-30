@@ -54,6 +54,8 @@ public class gameControll : MonoBehaviour {
 	public static int carCap=100;
 	public static GameObject myGameObject;
 
+	//public static StreamWriter output = new StreamWriter(@"/Users/ericgo/Desktop/HOOutput.txt");
+
 	void Awake(){
 		GameObject inputTab=GameObject.Find("InputTab");
 		myGameObject = inputTab;
@@ -76,6 +78,7 @@ public class gameControll : MonoBehaviour {
 			Cursor.SetCursor(cursorTextureR, hotSpot, cursorMode);
 			//depot.sprite = Resources.Load<Sprite> ("Image/cursorR") as Sprite;
 			redTruck = true;
+			saveToFile ("Choose the red truck.");
 			RedTruck aRedTruck = new RedTruck ();
 			carCap = aRedTruck.capacity;
 			GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(redTruckNum);
@@ -88,6 +91,7 @@ public class gameControll : MonoBehaviour {
 			Cursor.SetCursor(cursorTextureB, hotSpot, cursorMode);
 			//depot.sprite = Resources.Load<Sprite> ("Image/cursorB") as Sprite;
 			blueTruck = true;
+			saveToFile ("Choose the blue truck.");
 			BlueTruck aBlueTruck = new BlueTruck ();
 			carCap = aBlueTruck.capacity;
 			GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(blueTruckNum);
@@ -100,6 +104,7 @@ public class gameControll : MonoBehaviour {
 			Cursor.SetCursor(cursorTextureG, hotSpot, cursorMode);
 			//depot.sprite = Resources.Load<Sprite> ("Image/cursorG") as Sprite;
 			greenTruck = true;
+			saveToFile ("Choose the green truck.");
 			GreenTruck aGreenTruck = new GreenTruck ();
 			carCap = aGreenTruck.capacity;
 			GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(greenTruckNum);
@@ -148,6 +153,8 @@ public class gameControll : MonoBehaviour {
 			GameObject.Find ("ModalControl").GetComponent<testWindow> ().takeAction ("please re-enter a number because you don't have such debris!");
 		}else{
 			inputControl.valCorrect=true;
+			string toSave = "Collect " + cap + " units of debris.";
+			gameControll.saveToFile (toSave);
 		}
 	}
 
@@ -220,9 +227,13 @@ public class gameControll : MonoBehaviour {
 	}
 
 	public static void saveToFile(string save){
-		StreamWriter output = new StreamWriter(@"/Users/ericgo/Desktop/HOOutput.txt");
-		output.WriteLine (save);
-		output.Close ();
+		using (StreamWriter writeText = File.AppendText ("/Users/ericgo/Desktop/HOOutput.txt")) {
+			writeText.WriteLine (save);
+			writeText.Close ();
+		}
+//		output.WriteLine ();
+//		output.WriteLine (save);
+//		output.Close ();
 	}
 		
 		

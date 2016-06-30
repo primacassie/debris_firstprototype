@@ -48,8 +48,11 @@ public class Node : MonoBehaviour {
 			} else if((gameControll.redTruck|| gameControll.blueTruck || gameControll.greenTruck) && num==1){
 				gameControll.twoNode.Enqueue (num);
 				Debug.Log ("let's start!");
-				//displayManager = DisplayManager.Instance ();
-				//displayManager.DisplayMessage ("Start!");
+				gameControll.saveToFile ("start from depot!");
+
+				//try to make a fade text here
+				displayManager = DisplayManager.Instance ();
+				displayManager.DisplayMessage ("Start!!!");
 			}
 		} else if (size ==1) {
 			int firstOfSize1=t.Peek ();
@@ -57,6 +60,8 @@ public class Node : MonoBehaviour {
 				gameControll.twoNode.Enqueue (num);
 				Debug.Log ("this is the node" + num);
 				size2lastNode = num;
+				string processtoSave = "connect depot to node " + num.ToString ();
+				gameControll.saveToFile (processtoSave);
 				//Debug.Log (size2lastNode);
 
 				//here get the capacity of the path
@@ -70,7 +75,9 @@ public class Node : MonoBehaviour {
 //				Debug.Log("you collect "+ inputControl.capVal
 //					+" the capacity of this path "+firstOfSize1+ num+" remains: " +  gameControll.capArray[firstOfSize1,num]);
 			} else {
-				Debug.Log ("this node is not connected with the node " + firstOfSize1 + " please select a valid one! "); 
+				string toSave = "this node is not connected with the node " + firstOfSize1 + " please select a valid one! ";
+				Debug.Log (toSave); 
+				GameObject.Find ("ModalControl").GetComponent<testWindow> ().takeAction (toSave);
 			}
 		} else if (size == 2) {
 			//temp = gameControll.twoNode.Dequeue ();
@@ -85,6 +92,8 @@ public class Node : MonoBehaviour {
 				passNode2 = num;
 //				GameObject inputTab=GameObject.Find("InputTab");
 //				inputTab.SetActive (true);
+				string toSave="connect node " + passNode1 + " and node " + passNode2;
+				gameControll.saveToFile (toSave);
 				GameObject findInactive = gameControll.myGameObject;
 				findInactive.SetActive(true);
 
@@ -95,7 +104,9 @@ public class Node : MonoBehaviour {
 				//Debug.Log (size2lastNode);
 				//here I need to add a few lines to process the depot
 			} else {
-				Debug.Log ("this node is not connected with the node " + size2lastNode + " please select a valid one! ");
+				string toSave = "this node is not connected with the node " + size2lastNode + " please select a valid one! ";
+				Debug.Log (toSave);
+				GameObject.Find ("ModalControl").GetComponent<testWindow> ().takeAction (toSave);
 			}
 			//gameControll.twoNode.Enqueue (num);
 			//Debug.Log ("this is the second node"+num);
@@ -110,7 +121,7 @@ public class Node : MonoBehaviour {
 		gameControll.carCap -= num;
 		gameControll.capArray [node1, node2] -= num;
 		gameControll.capArray [node2, node1] -= num;
-
+		//string toSave = " collect " + num + " units of debris.";
 		//modify the text in path of the UI
 		foreach (GameObject obj in capPath) {
 			int num1 = obj.GetComponent<pathCap> ().node [0];
