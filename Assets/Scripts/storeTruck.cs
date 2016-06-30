@@ -38,8 +38,9 @@ public class storeTruck : MonoBehaviour {
 			addGOtext.GetComponent<RectTransform> ().sizeDelta = new Vector2 (60f, 40f);
 			Text addText = addGOtext.AddComponent<Text> ();
 			addText.GetComponent<Text> ().text = gameControll.carCap.ToString();
-			addText.GetComponent<Text> ().fontSize = 35;
+			addText.GetComponent<Text> ().fontSize = 30;
 			addText.GetComponent<Text> ().font = Resources.GetBuiltinResource (typeof(Font), "Arial.ttf") as Font;
+			addText.GetComponent<Text> ().alignment = TextAnchor.MiddleCenter;
 			addText.GetComponent<Text> ().color = new Color (1, 0, 0, 1);
 			addText.GetComponent<Text> ().fontStyle = FontStyle.Bold;
 		}
@@ -60,8 +61,9 @@ public class storeTruck : MonoBehaviour {
 			addGOtext.GetComponent<RectTransform> ().sizeDelta = new Vector2 (60f, 40f);
 			Text addText = addGOtext.AddComponent<Text> ();
 			addText.GetComponent<Text> ().text = gameControll.carCap.ToString();
-			addText.GetComponent<Text> ().fontSize = 35;
+			addText.GetComponent<Text> ().fontSize = 30;
 			addText.GetComponent<Text> ().font = Resources.GetBuiltinResource (typeof(Font), "Arial.ttf") as Font;
+			addText.GetComponent<Text> ().alignment = TextAnchor.MiddleCenter;
 			addText.GetComponent<Text> ().color = new Color (0, 0, 1, 1);
 			addText.GetComponent<Text> ().fontStyle = FontStyle.Bold;
 		}
@@ -82,8 +84,9 @@ public class storeTruck : MonoBehaviour {
 			addGOtext.GetComponent<RectTransform> ().sizeDelta = new Vector2 (60f, 40f);
 			Text addText = addGOtext.AddComponent<Text> ();
 			addText.GetComponent<Text> ().text = gameControll.carCap.ToString();
-			addText.GetComponent<Text> ().fontSize = 35;
+			addText.GetComponent<Text> ().fontSize = 30;
 			addText.GetComponent<Text> ().font = Resources.GetBuiltinResource (typeof(Font), "Arial.ttf") as Font;
+			addText.GetComponent<Text> ().alignment = TextAnchor.MiddleCenter;
 			addText.GetComponent<Text> ().color = new Color (0, 1, 0, 1);
 			addText.GetComponent<Text> ().fontStyle = FontStyle.Bold;
 		}
