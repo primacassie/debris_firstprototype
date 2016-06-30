@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.IO;
 
 public class gameControll : MonoBehaviour {
 
@@ -22,6 +23,7 @@ public class gameControll : MonoBehaviour {
 	public Texture2D cursorTextureR;
 	public Texture2D cursorTextureG;
 	public Texture2D cursorTextureB;
+	public Texture2D cursorTextureO;
 	[HideInInspector]public CursorMode cursorMode = CursorMode.Auto;
 	[HideInInspector]public Vector2 hotSpot = Vector2.zero;
 
@@ -56,6 +58,7 @@ public class gameControll : MonoBehaviour {
 		GameObject inputTab=GameObject.Find("InputTab");
 		myGameObject = inputTab;
 		inputTab.SetActive (false);
+		Cursor.SetCursor(cursorTextureO, hotSpot, cursorMode);
 	}
 
 	void Start () {
@@ -71,7 +74,7 @@ public class gameControll : MonoBehaviour {
 	public void changeRed(){
 		if (!(redTruck || blueTruck || greenTruck)) {
 			Cursor.SetCursor(cursorTextureR, hotSpot, cursorMode);
-			depot.sprite = Resources.Load<Sprite> ("Image/truck_R256") as Sprite;
+			//depot.sprite = Resources.Load<Sprite> ("Image/cursorR") as Sprite;
 			redTruck = true;
 			RedTruck aRedTruck = new RedTruck ();
 			carCap = aRedTruck.capacity;
@@ -83,7 +86,7 @@ public class gameControll : MonoBehaviour {
 	public void changeBlue(){
 		if (!(redTruck || blueTruck || greenTruck)) {
 			Cursor.SetCursor(cursorTextureB, hotSpot, cursorMode);
-			depot.sprite = Resources.Load<Sprite> ("Image/truck_B256") as Sprite;
+			//depot.sprite = Resources.Load<Sprite> ("Image/cursorB") as Sprite;
 			blueTruck = true;
 			BlueTruck aBlueTruck = new BlueTruck ();
 			carCap = aBlueTruck.capacity;
@@ -95,7 +98,7 @@ public class gameControll : MonoBehaviour {
 	public void changeGreen(){
 		if (!(redTruck || blueTruck || greenTruck)) {
 			Cursor.SetCursor(cursorTextureG, hotSpot, cursorMode);
-			depot.sprite = Resources.Load<Sprite> ("Image/truck_G256") as Sprite;
+			//depot.sprite = Resources.Load<Sprite> ("Image/cursorG") as Sprite;
 			greenTruck = true;
 			GreenTruck aGreenTruck = new GreenTruck ();
 			carCap = aGreenTruck.capacity;
@@ -105,7 +108,7 @@ public class gameControll : MonoBehaviour {
 	}
 
 	public void resetCursor(){
-		Cursor.SetCursor(null, Vector2.zero, cursorMode);
+		Cursor.SetCursor(cursorTextureO, Vector2.zero, cursorMode);
 	}
 
 	public void resetDepot(){
@@ -126,27 +129,23 @@ public class gameControll : MonoBehaviour {
 			return false;
 		} else if (!(greenTruck || blueTruck || redTruck)) {
 			Debug.Log ("please select a truck!");
+			GameObject.Find ("ModalControl").GetComponent<testWindow> ().takeAction ("Please select a truck!");
 			return false;
 		}
 		return false;
-//		foreach (int[] ar in pathStore) {
-//			//Debug.Log ("ar1 == " + ar [0] + " ar2== " + ar [1]);
-//			if ((num1 == ar [0] && num2 == ar [1]) || (num1 == ar [1] && num2 == ar [0])) {
-//				//Debug.Log ("true");
-//				return true;
-//			}
-//		}
-//		//Debug.Log ("false");
-//		return false;
 	}
 		
 	public static void inputIsRight(int cap){
 		if (cap < 0) {
 			Debug.Log ("you can't assign a negative value to the car!");
+			GameObject.Find ("ModalControl").GetComponent<testWindow> ().takeAction ("you can't assign a negative value to the car!");
 		}else if (carCap - cap < 0) {
 			Debug.Log ("please re-enter a number because your car is overweightted");
+			GameObject.Find ("ModalControl").GetComponent<testWindow> ().takeAction ("please re-enter a number because your car is overweightted");
 		}else if(capArray[Node.passNode1,Node.passNode2]-cap<0){
 			Debug.Log("please re-enter a number because you don't have such debris!");
+			//add a pop up dialog here
+			GameObject.Find ("ModalControl").GetComponent<testWindow> ().takeAction ("please re-enter a number because you don't have such debris!");
 		}else{
 			inputControl.valCorrect=true;
 		}
@@ -173,7 +172,7 @@ public class gameControll : MonoBehaviour {
 		panelText.fontSize = 40;
 		panelText.color = new Color (1, 1, 1);
 		panelText.alignment = TextAnchor.MiddleCenter;
-		panelText.font = Resources.GetBuiltinResource (typeof(Font), "Arial.ttf") as Font;
+		panelText.font = Resources.Load<Font>("Font/AGENCYR") as Font;
 		textBox.GetComponent<RectTransform> ().sizeDelta = new Vector2 (480f, 200f);  //set size by sizeDelta
 		textBox.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (0f, 100f);  //set position by anchoredPosition
 
@@ -218,6 +217,12 @@ public class gameControll : MonoBehaviour {
 			timeArray [arr1, arr2] = time;
 			timeArray [arr2, arr1] = time;
 		}
+	}
+
+	public static void saveToFile(string save){
+		StreamWriter output = new StreamWriter(@"/Users/ericgo/Desktop/HOOutput.txt");
+		output.WriteLine (save);
+		output.Close ();
 	}
 		
 		

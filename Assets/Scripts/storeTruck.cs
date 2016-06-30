@@ -27,6 +27,7 @@ public class storeTruck : MonoBehaviour {
 			addGO.name = goName;
 			string goText = "redTruckText" + num.ToString ();
 			addGOtext.name = goText;
+			addGOtext.tag = "truckText";
 			addGO.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (-wid/2+45, -hei/2+30+50*num);
 			addGO.GetComponent<RectTransform> ().sizeDelta = new Vector2 (60f, 40f);
 			Image addIm = addGO.AddComponent<Image> ();
@@ -48,6 +49,7 @@ public class storeTruck : MonoBehaviour {
 			addGO.name = goName;
 			string goText = "blueTruckText" + num.ToString ();
 			addGOtext.name = goText;
+			addGOtext.tag = "truckText";
 			addGO.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (-wid/2+45+90, -hei/2+30+50*num);
 			addGO.GetComponent<RectTransform> ().sizeDelta = new Vector2 (60f, 40f);
 			Image addIm = addGO.AddComponent<Image> ();
@@ -68,6 +70,7 @@ public class storeTruck : MonoBehaviour {
 			string goName = "greenTruckImage" + num.ToString ();
 			addGO.name = goName;
 			string goText = "greenTruckText" + num.ToString ();
+			addGOtext.tag = "truckText";
 			addGOtext.name = goText;
 			addGO.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (-wid/2+45+180, -hei/2+30+50*num);
 			addGO.GetComponent<RectTransform> ().sizeDelta = new Vector2 (60f, 40f);

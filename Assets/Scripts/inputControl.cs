@@ -34,7 +34,10 @@ public class inputControl : MonoBehaviour {
 					if (gameControll.greenTruck) {
 						gameControll.greenTruck = false;
 					}
+					Destroy(GameObject.FindGameObjectWithTag("truckText"));
 					Debug.Log (" You have finish a cycle, please start another one!");
+					gameControll.saveToFile("a cycle is finished.");
+					GameObject.Find ("ModalControl").GetComponent<testWindow> ().takeAction("You have finish a cycle!");
 
 					//add truck scripts here
 				//	GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(0);
@@ -49,7 +52,35 @@ public class inputControl : MonoBehaviour {
 			}
 		}catch(FormatException){
 			Debug.Log ("please input a number!");
+			GameObject.Find ("ModalControl").GetComponent<testWindow> ().takeAction ("Please input a number!");
 		}
 		//still might need function to catch exception such like out of capacity
+	}
+
+	//control the submit button
+	public void submit(){
+		int node1 = 0;
+		int node2 = 0;
+		int cap = 0;
+		int[,] arr = gameControll.capArray;
+		int sum = 0;
+		for (int i = 0; i < arr.GetLength (0); i++) {
+			for (int j = 0; j < arr.GetLength (1); j++) {
+				sum += arr [i, j];
+				if (arr [i, j] != 0) {
+					node1 = i;
+					node2 = j;
+					cap = arr [i, j];
+				}
+			}
+		}
+		if (sum == 0) {
+			Debug.Log ("congratulations! you finish this game!");
+			GameObject.Find ("ModalControl").GetComponent<testWindow> ().takeAction ("Congratulations! You finish this round!");
+		} else {
+			string temp = "there are still " + cap + " debris in the path " + node1 + node2 + ", please clean it!";
+			Debug.Log ("there are still " + cap + " debris in the path " + node1 + node2 + ", please clean it!");
+			GameObject.Find ("ModalControl").GetComponent<testWindow> ().takeAction (temp);
+		}
 	}
 }

@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class Node : MonoBehaviour {
 	public int num;
+
+	private DisplayManager displayManager;
+
 	public Node(int n){
 		this.num = n;
 	}
@@ -19,6 +22,17 @@ public class Node : MonoBehaviour {
 	public static int passNode1;
 	public static int passNode2;
 
+	//this array store the gameobject represent the capacity of each path.
+	private static GameObject[] capPath;
+
+
+	void Awake(){
+		capPath = GameObject.FindGameObjectsWithTag ("cap");
+		foreach (GameObject obj in capPath) {
+			//obj.GetComponent<Text> ().text = "50";
+			obj.GetComponentInChildren<Text> ().text = "50";
+		}
+	}
 	void OnMouseDown(){
 		//Debug.Log (num);
 		//int temp;
@@ -27,11 +41,15 @@ public class Node : MonoBehaviour {
 		if (size == 0) {
 			if (num != 1 && (gameControll.redTruck|| gameControll.blueTruck || gameControll.greenTruck)) {
 				Debug.Log ("Please click depot firstly to start!");
+				GameObject.Find ("ModalControl").GetComponent<testWindow> ().takeAction ("Please select depot as the start!");
 			} else if(num == 1 && !(gameControll.redTruck|| gameControll.blueTruck || gameControll.greenTruck)) {
 				Debug.Log("please select a truck!");
+				GameObject.Find ("ModalControl").GetComponent<testWindow> ().takeAction ("Please select a truck!");
 			} else if((gameControll.redTruck|| gameControll.blueTruck || gameControll.greenTruck) && num==1){
 				gameControll.twoNode.Enqueue (num);
 				Debug.Log ("let's start!");
+				//displayManager = DisplayManager.Instance ();
+				//displayManager.DisplayMessage ("Start!");
 			}
 		} else if (size ==1) {
 			int firstOfSize1=t.Peek ();
@@ -92,6 +110,17 @@ public class Node : MonoBehaviour {
 		gameControll.carCap -= num;
 		gameControll.capArray [node1, node2] -= num;
 		gameControll.capArray [node2, node1] -= num;
+
+		//modify the text in path of the UI
+		foreach (GameObject obj in capPath) {
+			int num1 = obj.GetComponent<pathCap> ().node [0];
+			int num2 = obj.GetComponent<pathCap> ().node [1];
+			if ((num1 == node1 && num2 == node2) || (num1 == node2 && num2 == node1)) {
+				obj.GetComponentInChildren<Text> ().text = gameControll.capArray [node1, node2].ToString ();
+				break;
+			}
+		}
+
 		if (gameControll.redTruck) {
 			gameControll.redDebrisTotal += num;
 			gameControll.redTimeTotal += gameControll.timeArray [node1, node2];

@@ -31,4 +31,5 @@ public class panelController : MonoBehaviour {
 		blueTime.text = i.ToString();
 		greenTime.text = i.ToString();
 	}
+		
 }
