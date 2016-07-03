@@ -27,12 +27,18 @@ public class inputControl : MonoBehaviour {
 				if (Node.passNode2 == 1 ) {
 					if (gameControll.blueTruck) {
 						gameControll.blueTruck = false;
+						gameControll.blueProfitOnce=0;
+						gameControll.blueTimeOnce=0;
 					}
 					if (gameControll.redTruck) {
 						gameControll.redTruck = false;
+						gameControll.redProfitOnce=0;
+						gameControll.redTimeOnce=0;
 					}
 					if (gameControll.greenTruck) {
 						gameControll.greenTruck = false;
+						gameControll.greenTimeOnce=0;
+						gameControll.greenProfitOnce=0;
 					}
 					Destroy(GameObject.FindGameObjectWithTag("truckText"));
 					Debug.Log (" You have finish a cycle, please start another one!");
@@ -46,6 +52,14 @@ public class inputControl : MonoBehaviour {
 					gameControll.twoNode.Clear ();
 					GameObject.Find ("GameController").GetComponent<gameControll> ().resetCursor ();
 					GameObject.Find ("GameController").GetComponent<gameControll> ().resetDepot ();
+					int i=0;
+					panelController.blueTextOnce.text=i.ToString();
+					panelController.redTextOnce.text=i.ToString();
+					panelController.greenTextOnce.text=i.ToString();
+					panelController.blueTimeOnce.text=i.ToString();
+					panelController.redTimeOnce.text=i.ToString();
+					panelController.greenTimeOnce.text=i.ToString();
+
 				}
 
 				GameObject.Find("InputTab").SetActive(false);

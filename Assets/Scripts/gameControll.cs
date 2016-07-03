@@ -28,14 +28,23 @@ public class gameControll : MonoBehaviour {
 	[HideInInspector]public Vector2 hotSpot = Vector2.zero;
 
 	//total debris of each kind of color
-	[HideInInspector]public static int redDebrisTotal;
-	[HideInInspector]public static int blueDebrisTotal;
-	[HideInInspector]public static int greenDebrisTotal;
+	[HideInInspector]public static float redProfitTotal;
+	[HideInInspector]public static float blueProfitTotal;
+	[HideInInspector]public static float greenProfitTotal;
 
 	//total time of each kind of color
 	[HideInInspector]public static float redTimeTotal;
 	[HideInInspector]public static float blueTimeTotal;
 	[HideInInspector]public static float greenTimeTotal;
+
+	[HideInInspector]public static float redProfitOnce;
+	[HideInInspector]public static float blueProfitOnce;
+	[HideInInspector]public static float greenProfitOnce;
+
+	[HideInInspector]public static float redTimeOnce;
+	[HideInInspector]public static float blueTimeOnce;
+	[HideInInspector]public static float greenTimeOnce;
+
 
 
 	public Image depot;

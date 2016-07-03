@@ -133,30 +133,44 @@ public class Node : MonoBehaviour {
 		}
 
 		if (gameControll.redTruck) {
-			gameControll.redDebrisTotal += num;
-			gameControll.redTimeTotal += gameControll.timeArray [node1, node2];
+			gameControll.redProfitTotal += num * 10 - gameControll.timeArray [node1, node2] / 2 * 7;
+			gameControll.redProfitOnce += num * 10 - gameControll.timeArray [node1, node2] / 2 * 7;
+			gameControll.redTimeTotal += gameControll.timeArray [node1, node2]+num*10;
+			gameControll.redTimeOnce += gameControll.timeArray [node1, node2] + num * 10;
 			string findName = "redTruckText" + (gameControll.redTruckNum-1).ToString();
 			GameObject.Find (findName).GetComponent<Text> ().text = gameControll.carCap.ToString ();
-			panelController.redText.text = gameControll.redDebrisTotal.ToString ();
+			//Debug.Log (gameControll.redDebrisTotal);
+			//Debug.Log (panelController.redText);
+			panelController.redText.text = gameControll.redProfitTotal.ToString ();
 			panelController.redTime.text = gameControll.redTimeTotal.ToString ();
+			panelController.redTextOnce.text = gameControll.redProfitOnce.ToString ();
+			panelController.redTimeOnce.text = gameControll.redTimeOnce.ToString ();
 		}
 
 		if (gameControll.blueTruck) {
-			gameControll.blueDebrisTotal += num;
-			gameControll.blueTimeTotal += gameControll.timeArray [node1, node2];
+			gameControll.blueProfitTotal += num * 10 - gameControll.timeArray [node1, node2] / 2 * 7;
+			gameControll.blueProfitOnce += num * 10 - gameControll.timeArray [node1, node2] / 2 * 7;
+			gameControll.blueTimeTotal += gameControll.timeArray [node1, node2]+num*10;
+			gameControll.blueTimeOnce += gameControll.timeArray [node1, node2] + num * 10;
 			string findName = "blueTruckText" + (gameControll.blueTruckNum-1).ToString ();
 			GameObject.Find (findName).GetComponent<Text> ().text = gameControll.carCap.ToString ();
-			panelController.blueText.text = gameControll.blueDebrisTotal.ToString ();
+			panelController.blueText.text = gameControll.blueProfitTotal.ToString ();
 			panelController.blueTime.text = gameControll.blueTimeTotal.ToString ();
+			panelController.blueTextOnce.text = gameControll.blueProfitOnce.ToString ();
+			panelController.blueTimeOnce.text = gameControll.blueTimeOnce.ToString ();
 		}
 
 		if (gameControll.greenTruck) {
-			gameControll.greenDebrisTotal += num;
-			gameControll.greenTimeTotal += gameControll.timeArray [node1, node2];
+			gameControll.greenProfitTotal += num * 10 - gameControll.timeArray [node1, node2] / 2 * 7;
+			gameControll.greenProfitOnce += num * 10 - gameControll.timeArray [node1, node2] / 2 * 7;
+			gameControll.greenTimeTotal += gameControll.timeArray [node1, node2]+num*10;
+			gameControll.greenTimeOnce += gameControll.timeArray [node1, node2] + num * 10;
 			string findName = "greenTruckText" + (gameControll.greenTruckNum-1).ToString ();
 			GameObject.Find (findName).GetComponent<Text> ().text = gameControll.carCap.ToString ();
-			panelController.greenText.text = gameControll.greenDebrisTotal.ToString ();
+			panelController.greenText.text = gameControll.greenProfitTotal.ToString ();
 			panelController.greenTime.text = gameControll.greenTimeTotal.ToString ();
+			panelController.greenTextOnce.text = gameControll.greenProfitOnce.ToString ();
+			panelController.greenTimeOnce.text = gameControll.greenTimeOnce.ToString ();
 		}
 	}
 }
