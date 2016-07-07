@@ -36,7 +36,7 @@ public class panelController : MonoBehaviour {
 		redTimeOnce = redTruckTimeOnce.GetComponent<Text> ();
 		blueTextOnce = blueTruckProfitOnce.GetComponent<Text> ();
 		blueTimeOnce = blueTruckTimeOnce.GetComponent<Text> ();
-		greenTextOnce = greenTruckTimeOnce.GetComponent<Text> ();
+		greenTextOnce = greenTruckProfitOnce.GetComponent<Text> ();
 		greenTimeOnce = greenTruckTimeOnce.GetComponent<Text> ();
 		redText.text = i.ToString();
 		blueText.text = i.ToString();
@@ -51,5 +51,4 @@ public class panelController : MonoBehaviour {
 		redTextOnce.text = i.ToString ();
 		redTimeOnce.text = i.ToString ();
 	}
-		
 }

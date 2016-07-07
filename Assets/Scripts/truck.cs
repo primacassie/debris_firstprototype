@@ -6,7 +6,6 @@ public class truck  {
 
 	public truck(){
 		this.capacity = 100;
-		Debug.Log ("this is a car with 100 cap");
 	}
 }
 

@@ -24,6 +24,9 @@ public class gameControll : MonoBehaviour {
 	public Texture2D cursorTextureG;
 	public Texture2D cursorTextureB;
 	public Texture2D cursorTextureO;
+	public Texture2D cursorTextureScrollerR;
+	public Texture2D cursorTextureScrollerG;
+	public Texture2D cursorTextureScrollerB;
 	[HideInInspector]public CursorMode cursorMode = CursorMode.Auto;
 	[HideInInspector]public Vector2 hotSpot = Vector2.zero;
 
@@ -61,15 +64,21 @@ public class gameControll : MonoBehaviour {
 
 	//an interger store car capacity
 	public static int carCap=100;
-	public static GameObject myGameObject;
+
+	//my gameobject here refer to the input tab
+//	public static GameObject myGameObject;
 
 	//public static StreamWriter output = new StreamWriter(@"/Users/ericgo/Desktop/HOOutput.txt");
 
 	void Awake(){
-		GameObject inputTab=GameObject.Find("InputTab");
-		myGameObject = inputTab;
-		inputTab.SetActive (false);
+//		GameObject inputTab=GameObject.Find("InputTab");
+//		myGameObject = inputTab;
+//		inputTab.SetActive (false);
 		Cursor.SetCursor(cursorTextureO, hotSpot, cursorMode);
+		foreach (GameObject obj in GameObject.FindGameObjectsWithTag("cap")) {
+			obj.GetComponentInChildren<Slider> ().enabled = false;
+			obj.GetComponentInChildren<Slider> ().GetComponent<RectTransform> ().localScale = new Vector2 (0, 0);
+		}
 	}
 
 	void Start () {
@@ -125,6 +134,18 @@ public class gameControll : MonoBehaviour {
 		Cursor.SetCursor(cursorTextureO, Vector2.zero, cursorMode);
 	}
 
+	public void changeScrollerR(){
+		Cursor.SetCursor(cursorTextureScrollerR, hotSpot, cursorMode);
+	}
+
+	public void changeScrollerG(){
+		Cursor.SetCursor(cursorTextureScrollerG, hotSpot, cursorMode);
+	}
+
+	public void changeScrollerB(){
+		Cursor.SetCursor(cursorTextureScrollerB, hotSpot, cursorMode);
+	}
+
 	public void resetDepot(){
 		depot.sprite = Resources.Load<Sprite> ("Image/depot") as Sprite;
 	}
@@ -161,7 +182,7 @@ public class gameControll : MonoBehaviour {
 			//add a pop up dialog here
 			GameObject.Find ("ModalControl").GetComponent<testWindow> ().takeAction ("please re-enter a number because you don't have such debris!");
 		}else{
-			inputControl.valCorrect=true;
+//			inputControl.valCorrect=true;
 			string toSave = "Collect " + cap + " units of debris.";
 			gameControll.saveToFile (toSave);
 		}
@@ -193,21 +214,21 @@ public class gameControll : MonoBehaviour {
 		textBox.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (0f, 100f);  //set position by anchoredPosition
 
 		//add input field here
-		GameObject inputF = new GameObject ();
-		inputF.transform.SetParent (GameObject.Find ("InputPanel").transform, false);
-		inputF.transform.position.Set (0f, 0f, 0f);
-		inputF.name = "inputTab";
-		inputF.AddComponent<RectTransform> ();
-		Image inputImage=inputF.AddComponent<Image> ();
-		InputField inp=inputF.AddComponent<InputField> ();
-		//inputF.GetComponent<Transform> ().localScale = new Vector2 (200f, 200f);
-		inputF.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (-160f, -120f);
-		inputF.GetComponent<RectTransform> ().sizeDelta = new Vector2 (320f, 120f);
-		inp.text = "Please input the capacity here";
-		inputImage.color = Color.green;
-		inputF.GetComponent<InputField>().colors=ColorBlock.defaultColorBlock;
-		//inputF.GetComponent<InputField>().image= Resources.Load<Image> ("Image/White_Rect") as Image;
-		inputF.GetComponent<InputField>().targetGraphic=Resources.Load<Image> ("Image/White_Rect") as Image;
+//		GameObject inputF = new GameObject ();
+//		inputF.transform.SetParent (GameObject.Find ("InputPanel").transform, false);
+//		inputF.transform.position.Set (0f, 0f, 0f);
+//		inputF.name = "inputTab";
+//		inputF.AddComponent<RectTransform> ();
+//		Image inputImage=inputF.AddComponent<Image> ();
+//		InputField inp=inputF.AddComponent<InputField> ();
+//		//inputF.GetComponent<Transform> ().localScale = new Vector2 (200f, 200f);
+//		inputF.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (-160f, -120f);
+//		inputF.GetComponent<RectTransform> ().sizeDelta = new Vector2 (320f, 120f);
+//		inp.text = "Please input the capacity here";
+//		inputImage.color = Color.green;
+//		inputF.GetComponent<InputField>().colors=ColorBlock.defaultColorBlock;
+//		//inputF.GetComponent<InputField>().image= Resources.Load<Image> ("Image/White_Rect") as Image;
+//		inputF.GetComponent<InputField>().targetGraphic=Resources.Load<Image> ("Image/White_Rect") as Image;
 
 		//InputField inputTab = GameObject.Find ("Canvas").GetComponent<InputField> ();
 

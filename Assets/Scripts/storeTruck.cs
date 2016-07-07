@@ -31,18 +31,27 @@ public class storeTruck : MonoBehaviour {
 			addGO.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (-wid/2+45, -hei/2+30+50*num);
 			addGO.GetComponent<RectTransform> ().sizeDelta = new Vector2 (60f, 40f);
 			Image addIm = addGO.AddComponent<Image> ();
-			addIm.GetComponent<Image> ().color = new Color (1, 0, 0);
+			//addIm.GetComponent<Image> ().color = new Color (1, 0, 0);
 			//addIm.GetComponent<Image>().sprite=Resources.Load<Sprite> ("Image/truckIcon") as Sprite;
 
-			addGOtext.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (-wid / 2 + 45, -hei / 2 + 70 + 50 * num);
+			addGOtext.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (-wid / 2 + 45, -hei / 2 + 62 + 50 * num);
 			addGOtext.GetComponent<RectTransform> ().sizeDelta = new Vector2 (60f, 40f);
 			Text addText = addGOtext.AddComponent<Text> ();
-			addText.GetComponent<Text> ().text = gameControll.carCap.ToString();
-			addText.GetComponent<Text> ().fontSize = 30;
-			addText.GetComponent<Text> ().font = Resources.GetBuiltinResource (typeof(Font), "Arial.ttf") as Font;
+			string truckText = "0/100";
+			addText.GetComponent<Text> ().text = truckText;
+			addText.GetComponent<Text> ().fontSize = 22;
+			//addText.GetComponent<Text> ().font = Resources.GetBuiltinResource (typeof(Font), "Arial.ttf") as Font;
+			addText.GetComponent<Text> ().font =Resources.Load<Font>("Font/AGENCYR") as Font;
+			addText.GetComponent<Text> ().fontStyle = FontStyle.Normal;
 			addText.GetComponent<Text> ().alignment = TextAnchor.MiddleCenter;
-			addText.GetComponent<Text> ().color = new Color (1, 0, 0, 1);
+			//addText.GetComponent<Text> ().color = new Color (1, 0, 0, 1);
 			addText.GetComponent<Text> ().fontStyle = FontStyle.Bold;
+			string htmlValue = "#db4f69";
+			Color newCol;
+			if (ColorUtility.TryParseHtmlString (htmlValue, out newCol)) {
+				addIm.GetComponent<Image> ().color = newCol;
+				addText.GetComponent<Text> ().color = newCol;
+			}
 		}
 
 		if (gameControll.blueTruck) {
@@ -54,18 +63,27 @@ public class storeTruck : MonoBehaviour {
 			addGO.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (-wid/2+45+90, -hei/2+30+50*num);
 			addGO.GetComponent<RectTransform> ().sizeDelta = new Vector2 (60f, 40f);
 			Image addIm = addGO.AddComponent<Image> ();
-			addIm.GetComponent<Image> ().color = new Color (0, 0, 1);
+			string htmlValue = "#3b73e1";
+			Color newCol;
+//			addIm.GetComponent<Image> ().color = new Color (0, 0, 1);
 			//addIm.GetComponent<Image>().sprite=Resources.Load<Sprite> ("Image/truckIcon") as Sprite;
-
-			addGOtext.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (-wid / 2 + 45+90, -hei / 2 + 70 + 50 * num);
+	
+			addGOtext.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (-wid / 2 + 45+90, -hei / 2 + 62 + 50 * num);
 			addGOtext.GetComponent<RectTransform> ().sizeDelta = new Vector2 (60f, 40f);
 			Text addText = addGOtext.AddComponent<Text> ();
-			addText.GetComponent<Text> ().text = gameControll.carCap.ToString();
-			addText.GetComponent<Text> ().fontSize = 30;
-			addText.GetComponent<Text> ().font = Resources.GetBuiltinResource (typeof(Font), "Arial.ttf") as Font;
+			string truckText = "0/100";
+			addText.GetComponent<Text> ().text = truckText;
+			addText.GetComponent<Text> ().fontSize = 22;
+			//addText.GetComponent<Text> ().font = Resources.GetBuiltinResource (typeof(Font), "Arial.ttf") as Font;
+			addText.GetComponent<Text> ().font =Resources.Load<Font>("Font/AGENCYR") as Font;
+			addText.GetComponent<Text> ().fontStyle = FontStyle.Normal;
+			//addText.GetComponent<Text> ().font = Resources.GetBuiltinResource (typeof(Font), "Arial.ttf") as Font;
 			addText.GetComponent<Text> ().alignment = TextAnchor.MiddleCenter;
-			addText.GetComponent<Text> ().color = new Color (0, 0, 1, 1);
 			addText.GetComponent<Text> ().fontStyle = FontStyle.Bold;
+			if (ColorUtility.TryParseHtmlString (htmlValue, out newCol)) {
+				addIm.GetComponent<Image> ().color = newCol;
+				addText.GetComponent<Text> ().color = newCol;
+			}
 		}
 
 		if (gameControll.greenTruck) {
@@ -77,18 +95,28 @@ public class storeTruck : MonoBehaviour {
 			addGO.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (-wid/2+45+180, -hei/2+30+50*num);
 			addGO.GetComponent<RectTransform> ().sizeDelta = new Vector2 (60f, 40f);
 			Image addIm = addGO.AddComponent<Image> ();
-			addIm.GetComponent<Image> ().color = new Color (0, 1, 0);
+			//addIm.GetComponent<Image> ().color = new Color (0, 1, 0);
 			//addIm.GetComponent<Image>().sprite=Resources.Load<Sprite> ("Image/truckIcon") as Sprite;
 
-			addGOtext.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (-wid / 2 + 45+180, -hei / 2 + 70 + 50 * num);
+			addGOtext.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (-wid / 2 + 45+180, -hei / 2 + 62 + 50 * num);
 			addGOtext.GetComponent<RectTransform> ().sizeDelta = new Vector2 (60f, 40f);
 			Text addText = addGOtext.AddComponent<Text> ();
-			addText.GetComponent<Text> ().text = gameControll.carCap.ToString();
-			addText.GetComponent<Text> ().fontSize = 30;
-			addText.GetComponent<Text> ().font = Resources.GetBuiltinResource (typeof(Font), "Arial.ttf") as Font;
+			string truckText = "0/100";
+			addText.GetComponent<Text> ().text = truckText;
+			addText.GetComponent<Text> ().fontSize = 22;
+			//addText.GetComponent<Text> ().font = Resources.GetBuiltinResource (typeof(Font), "Arial.ttf") as Font;
+			addText.GetComponent<Text> ().font =Resources.Load<Font>("Font/AGENCYR") as Font;
+			addText.GetComponent<Text> ().fontStyle = FontStyle.Normal;
+			//addText.GetComponent<Text> ().font = Resources.GetBuiltinResource (typeof(Font), "Arial.ttf") as Font;
 			addText.GetComponent<Text> ().alignment = TextAnchor.MiddleCenter;
-			addText.GetComponent<Text> ().color = new Color (0, 1, 0, 1);
+			//addText.GetComponent<Text> ().color = new Color (0, 1, 0, 1);
 			addText.GetComponent<Text> ().fontStyle = FontStyle.Bold;
+			string htmlValue = "#33e786";
+			Color newCol;
+			if (ColorUtility.TryParseHtmlString (htmlValue, out newCol)) {
+				addIm.GetComponent<Image> ().color = newCol;
+				addText.GetComponent<Text> ().color = newCol;
+			}
 		}
 	}
 }

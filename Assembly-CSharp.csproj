@@ -52,6 +52,7 @@
      <Compile Include="Assets\Scripts\inputControl.cs" />
      <Compile Include="Assets\Scripts\panelController.cs" />
      <Compile Include="Assets\Scripts\pathCap.cs" />
+     <Compile Include="Assets\Scripts\slider.cs" />
      <Compile Include="Assets\Scripts\storeTruck.cs" />
      <Compile Include="Assets\Scripts\test\DisplayManager.cs" />
      <Compile Include="Assets\Scripts\test\DragTruck.cs" />

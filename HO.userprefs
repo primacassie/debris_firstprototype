@@ -1,13 +1,13 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Node.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/gameControll.cs">
     <Files>
-      <File FileName="Assets/Scripts/gameControll.cs" Line="132" Column="76" />
-      <File FileName="Assets/Scripts/inputControl.cs" Line="82" Column="83" />
-      <File FileName="Assets/Scripts/panelController.cs" Line="26" Column="52" />
-      <File FileName="Assets/Scripts/storeTruck.cs" Line="64" Column="4" />
-      <File FileName="Assets/Scripts/test/testWindow.cs" Line="14" Column="5" />
-      <File FileName="Assets/Scripts/Node.cs" Line="39" Column="5" />
+      <File FileName="Assets/Scripts/gameControll.cs" Line="81" Column="4" />
+      <File FileName="Assets/Scripts/inputControl.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/panelController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/pathCap.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Node.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/slider.cs" Line="13" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

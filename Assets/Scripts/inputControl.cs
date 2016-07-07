@@ -61,8 +61,8 @@ public class inputControl : MonoBehaviour {
 					panelController.greenTimeOnce.text=i.ToString();
 
 				}
-
-				GameObject.Find("InputTab").SetActive(false);
+				//set input tab inactive
+				//GameObject.Find("InputTab").SetActive(false);
 			}
 		}catch(FormatException){
 			Debug.Log ("please input a number!");
@@ -70,6 +70,10 @@ public class inputControl : MonoBehaviour {
 		}
 		//still might need function to catch exception such like out of capacity
 	}
+
+//	public void modifyCap(){
+//		
+//	}
 
 	//control the submit button
 	public void submit(){
