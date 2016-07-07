@@ -77,8 +77,9 @@ public class pathCap : MonoBehaviour {
 			Vector2 mouse =Input.mousePosition;
 			yPos = (int) mouse.y;
 			changeCap = this.gameObject.GetComponentInChildren<Text> ();
-			wholeCap = int.Parse (changeCap.text);
-			lastTemp = wholeCap;
+			//wholeCap = int.Parse (changeCap.text);
+			wholeCap=slider.capOrigin;
+			lastTemp = int.Parse (changeCap.text);
 			//Debug.Log ("wholeCap is "+wholeCap);
 			onlyFirst = true;
 		}
@@ -172,7 +173,13 @@ public class pathCap : MonoBehaviour {
 		sl.enabled = true;
 		sl.GetComponent<RectTransform> ().localScale = new Vector2 (1, 1);
 		sl.maxValue = int.Parse (rightObj.GetComponentInChildren<Text> ().text);
-		sl.value = int.Parse (rightObj.GetComponentInChildren<Text> ().text);
+		if (sl.maxValue - gameControll.carCap > 0) {
+			sl.minValue = sl.maxValue - gameControll.carCap;
+		} else {
+			sl.minValue = 0;	
+		}
+		//sl.value = int.Parse (rightObj.GetComponentInChildren<Text> ().text);
+		sl.value=sl.maxValue;
 		//Debug.Log (gameControll.carCap + "in the slider car cap");
 	}
 

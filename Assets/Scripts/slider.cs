@@ -14,4 +14,13 @@ public class slider : MonoBehaviour {
 		pathCap.rightObj.GetComponentInChildren<Text>().text=gameControll.capArray [Node.passNode1, Node.passNode2].ToString();
 		Node.modifyBySlider (capOrigin, gameControll.capArray [Node.passNode1, Node.passNode2],carOrigin);
 	}
+
+//	void Update(){
+//		if (gameControll.carCap == 0) {
+//			if (capOrigin < gameControll.capArray [Node.passNode1, Node.passNode2])
+//				pathCap.sl.enabled = true;
+//			if (capOrigin > gameControll.capArray [Node.passNode1, Node.passNode2])
+//				pathCap.sl.enabled = false;
+//		}
+//	}
 }
