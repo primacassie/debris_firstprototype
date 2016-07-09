@@ -31,6 +31,15 @@ public class Node : MonoBehaviour {
 	private static float scrollBasicTime;
 	private static float scrollBasicTimeOnce;
 
+	//decide which kind of node should use
+	private bool redN;
+	private bool blueN;
+	private bool greenN;
+	private bool rbN;
+	private bool rgN;
+	private bool gbN;
+	private bool rgbN;
+
 
 	void Awake(){
 		capPath = GameObject.FindGameObjectsWithTag ("cap");
@@ -76,6 +85,74 @@ public class Node : MonoBehaviour {
 				gameControll.saveToFile (processtoSave);
 				//Debug.Log (size2lastNode);
 
+				//change the image of node here
+				if (!(redN || greenN || blueN || rgN || rbN || gbN || rgbN)) {
+					if (gameControll.redTruck) {
+						changeNodeColor ("R");
+						redN = true;
+					} else if (gameControll.blueTruck) {
+						changeNodeColor ("B");
+						blueN = true;
+					} else if (gameControll.greenTruck) {
+						changeNodeColor ("G");
+						greenN = true;
+					}
+				} else if (redN && !(greenN || blueN || rgN || rbN || gbN || rgbN)) {
+					if (gameControll.blueTruck) {
+						changeNodeColor ("RB");
+						blueN = true;
+						rbN = true;
+					} else if (gameControll.greenTruck) {
+						changeNodeColor ("RG");
+						greenN = true;
+						rgN = true;
+					}
+				} else if (blueN && !(greenN || redN || rgN || rbN || gbN || rgbN)) {
+					if (gameControll.redTruck) {
+						changeNodeColor ("RB");
+						redN = true;
+						rbN = true;
+					} else if (gameControll.greenTruck) {
+						changeNodeColor ("GB");
+						greenN = true;
+						gbN = true;
+					}
+				} else if (greenN && !(blueN || redN || rgN || rbN || gbN || rgbN)) {
+					if (gameControll.redTruck) {
+						changeNodeColor ("RG");
+						redN = true;
+						rgN = true;
+					} else if (gameControll.blueTruck) {
+						changeNodeColor ("GB");
+						blueN = true;
+						gbN = true;
+					} 
+				} else if (rbN && !(greenN || rgN || gbN || rgbN)) {
+					if (gameControll.greenTruck) {
+						changeNodeColor ("RGB");
+						greenN = true;
+						rgN = true;
+						gbN = true;
+						rgbN = true;
+					}
+				} else if (rgN && !(blueN || rbN || gbN || rgbN)) {
+					if (gameControll.blueTruck) {
+						changeNodeColor ("RGB");
+						blueN = true;
+						rbN = true;
+						gbN = true;
+						rgbN = true;
+					}
+				} else if (gbN && !(redN || rbN || rgN || rgbN)) {
+					if (gameControll.redTruck) {
+						changeNodeColor ("RGB");
+						redN = true;
+						rbN = true;
+						rgN = true;
+						rgbN = true;
+					}
+				}
+
 				//here get the capacity of the path
 				passNode1 = firstOfSize1;
 				passNode2 = num;
@@ -116,12 +193,83 @@ public class Node : MonoBehaviour {
 //				GameObject inputTab=GameObject.Find("InputTab");
 //				inputTab.SetActive (true);
 
+				//change node color here
+				if (!(redN || greenN || blueN || rgN || rbN || gbN || rgbN)) {
+					if (gameControll.redTruck) {
+						changeNodeColor ("R");
+						redN = true;
+					} else if (gameControll.blueTruck) {
+						changeNodeColor ("B");
+						blueN = true;
+					} else if (gameControll.greenTruck) {
+						changeNodeColor ("G");
+						greenN = true;
+					}
+				} else if (redN && !(greenN || blueN || rgN || rbN || gbN || rgbN)) {
+					if (gameControll.blueTruck) {
+						changeNodeColor ("RB");
+						blueN = true;
+						rbN = true;
+					} else if (gameControll.greenTruck) {
+						changeNodeColor ("RG");
+						greenN = true;
+						rgN = true;
+					}
+				} else if (blueN && !(greenN || redN || rgN || rbN || gbN || rgbN)) {
+					if (gameControll.redTruck) {
+						changeNodeColor ("RB");
+						redN = true;
+						rbN = true;
+					} else if (gameControll.greenTruck) {
+						changeNodeColor ("GB");
+						greenN = true;
+						gbN = true;
+					}
+				} else if (greenN && !(blueN || redN || rgN || rbN || gbN || rgbN)) {
+					if (gameControll.redTruck) {
+						changeNodeColor ("RG");
+						redN = true;
+						rgN = true;
+					} else if (gameControll.blueTruck) {
+						changeNodeColor ("GB");
+						blueN = true;
+						gbN = true;
+					} 
+				} else if (rbN && !(greenN || rgN || gbN || rgbN)) {
+					if (gameControll.greenTruck) {
+						changeNodeColor ("RGB");
+						greenN = true;
+						rgN = true;
+						gbN = true;
+						rgbN = true;
+					}
+				} else if (rgN && !(blueN || rbN || gbN || rgbN)) {
+					if (gameControll.blueTruck) {
+						changeNodeColor ("RGB");
+						blueN = true;
+						rbN = true;
+						gbN = true;
+						rgbN = true;
+					}
+				} else if (gbN && !(redN || rbN || rgN || rgbN)) {
+					if (gameControll.redTruck) {
+						changeNodeColor ("RGB");
+						redN = true;
+						rbN = true;
+						rgN = true;
+						rgbN = true;
+					}
+				}
+
 				//second ui update here
 				setInitialValue (passNode1, passNode2);
 				//pathCap.initializeSlider ();
 				//pathCap.
 				string toSave="connect node " + passNode1 + " and node " + passNode2;
 				gameControll.saveToFile (toSave);
+
+				//modify node back to depot here
+//				nodeBackToDepot ();
 
 //				GameObject findInactive = gameControll.myGameObject;
 //				findInactive.SetActive(true);
@@ -423,5 +571,11 @@ public class Node : MonoBehaviour {
 			panelController.greenTextOnce.text = gameControll.greenProfitOnce.ToString ();
 			panelController.greenTimeOnce.text = gameControll.greenTimeOnce.ToString ();
 		}
+	}
+
+	//the funtion is used to change node color.
+	private void changeNodeColor(string toWhich){
+		string pathToNode = "Node/" + toWhich;
+		this.gameObject.GetComponent<Image> ().sprite = Resources.Load<Sprite> (pathToNode) as Sprite;
 	}
 }

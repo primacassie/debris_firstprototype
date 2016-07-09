@@ -64,6 +64,7 @@ public class gameControll : MonoBehaviour {
 
 	//an interger store car capacity
 	public static int carCap=100;
+	//Animator anim;
 
 	//my gameobject here refer to the input tab
 //	public static GameObject myGameObject;
@@ -79,11 +80,17 @@ public class gameControll : MonoBehaviour {
 			obj.GetComponentInChildren<Slider> ().enabled = false;
 			obj.GetComponentInChildren<Slider> ().GetComponent<RectTransform> ().localScale = new Vector2 (0, 0);
 		}
+		
+		//Change Foreground to the layer you want it to display on 
+		//You could prob. make a public variable for this
+		//particleSystem.renderer.sortingLayerName = "Foreground";
+
 	}
 
 	void Start () {
 		initializeCapArray ();  //the method is to initalize both capacity arrays one is boolean and the other is int array.
 		//loadInputField();  //load input field when a path is clicked.
+		//anim=GetComponent<Animator>();
 	}
 		
 	// Update is called once per frame
@@ -96,6 +103,7 @@ public class gameControll : MonoBehaviour {
 			Cursor.SetCursor(cursorTextureR, hotSpot, cursorMode);
 			//depot.sprite = Resources.Load<Sprite> ("Image/cursorR") as Sprite;
 			redTruck = true;
+			GameObject.Find ("depot").GetComponent<depotAnimation> ().redAnimation ();
 			saveToFile ("Choose the red truck.");
 			RedTruck aRedTruck = new RedTruck ();
 			carCap = aRedTruck.capacity;
@@ -109,6 +117,7 @@ public class gameControll : MonoBehaviour {
 			Cursor.SetCursor(cursorTextureB, hotSpot, cursorMode);
 			//depot.sprite = Resources.Load<Sprite> ("Image/cursorB") as Sprite;
 			blueTruck = true;
+			GameObject.Find ("depot").GetComponent<depotAnimation> ().blueAnimation();
 			saveToFile ("Choose the blue truck.");
 			BlueTruck aBlueTruck = new BlueTruck ();
 			carCap = aBlueTruck.capacity;
@@ -122,6 +131,7 @@ public class gameControll : MonoBehaviour {
 			Cursor.SetCursor(cursorTextureG, hotSpot, cursorMode);
 			//depot.sprite = Resources.Load<Sprite> ("Image/cursorG") as Sprite;
 			greenTruck = true;
+			GameObject.Find ("depot").GetComponent<depotAnimation> ().greenAnimation ();
 			saveToFile ("Choose the green truck.");
 			GreenTruck aGreenTruck = new GreenTruck ();
 			carCap = aGreenTruck.capacity;
