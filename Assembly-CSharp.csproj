@@ -47,6 +47,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Graph.cs" />
      <Compile Include="Assets\Scripts\Node.cs" />
+     <Compile Include="Assets\Scripts\cameraMovement.cs" />
      <Compile Include="Assets\Scripts\depot.cs" />
      <Compile Include="Assets\Scripts\depotAnimation.cs" />
      <Compile Include="Assets\Scripts\gameControll.cs" />
@@ -62,6 +63,7 @@
      <Compile Include="Assets\Scripts\test\modalPanel.cs" />
      <Compile Include="Assets\Scripts\test\testWindow.cs" />
      <Compile Include="Assets\Scripts\truck.cs" />
+     <Compile Include="Assets\dragCamera.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

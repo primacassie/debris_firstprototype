@@ -6,7 +6,11 @@ using UnityEngine.UI;
 public class Node : MonoBehaviour {
 	public int num;
 
-	private DisplayManager displayManager;
+	//static int variable control intersection;
+	public static int intersection;
+	private Text sIntersection;
+
+	//private DisplayManager displayManager;
 
 	public Node(int n){
 		this.num = n;
@@ -47,7 +51,9 @@ public class Node : MonoBehaviour {
 			//obj.GetComponent<Text> ().text = "50";
 			obj.GetComponentInChildren<Text> ().text = "50";
 		}
+		sIntersection = GameObject.Find ("intersection").GetComponent<Text> ();
 	}
+
 	void OnMouseDown(){
 		//Debug.Log (num);
 		//int temp;
@@ -72,8 +78,8 @@ public class Node : MonoBehaviour {
 				gameControll.saveToFile ("start from depot!");
 
 				//try to make a fade text here
-				displayManager = DisplayManager.Instance ();
-				displayManager.DisplayMessage ("Start!!!");
+				//displayManager = DisplayManager.Instance ();
+				//displayManager.DisplayMessage ("Start!!!");
 			}
 		} else if (size ==1) {
 			int firstOfSize1=t.Peek ();
@@ -102,30 +108,42 @@ public class Node : MonoBehaviour {
 						changeNodeColor ("RB");
 						blueN = true;
 						rbN = true;
+						intersection++;
+						sIntersection.text = intersection.ToString ();
 					} else if (gameControll.greenTruck) {
 						changeNodeColor ("RG");
 						greenN = true;
 						rgN = true;
+						intersection++;
+						sIntersection.text = intersection.ToString ();
 					}
 				} else if (blueN && !(greenN || redN || rgN || rbN || gbN || rgbN)) {
 					if (gameControll.redTruck) {
 						changeNodeColor ("RB");
 						redN = true;
 						rbN = true;
+						intersection++;
+						sIntersection.text = intersection.ToString ();
 					} else if (gameControll.greenTruck) {
 						changeNodeColor ("GB");
 						greenN = true;
 						gbN = true;
+						intersection++;
+						sIntersection.text = intersection.ToString ();
 					}
 				} else if (greenN && !(blueN || redN || rgN || rbN || gbN || rgbN)) {
 					if (gameControll.redTruck) {
 						changeNodeColor ("RG");
 						redN = true;
 						rgN = true;
+						intersection++;
+						sIntersection.text = intersection.ToString ();
 					} else if (gameControll.blueTruck) {
 						changeNodeColor ("GB");
 						blueN = true;
 						gbN = true;
+						intersection++;
+						sIntersection.text = intersection.ToString ();
 					} 
 				} else if (rbN && !(greenN || rgN || gbN || rgbN)) {
 					if (gameControll.greenTruck) {
@@ -269,7 +287,7 @@ public class Node : MonoBehaviour {
 				gameControll.saveToFile (toSave);
 
 				//modify node back to depot here
-//				nodeBackToDepot ();
+  				nodeBackToDepot ();
 
 //				GameObject findInactive = gameControll.myGameObject;
 //				findInactive.SetActive(true);

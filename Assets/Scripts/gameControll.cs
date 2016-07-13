@@ -95,6 +95,21 @@ public class gameControll : MonoBehaviour {
 		
 	// Update is called once per frame
 	void Update () {
+		if (Input.GetAxis ("Mouse ScrollWheel") < 0) {
+			if (Camera.main.orthographicSize < 5) {
+				Camera.main.orthographicSize++;
+			}
+		} else if (Input.GetAxis ("Mouse ScrollWheel") > 0) {
+			if (Camera.main.orthographicSize > 1) {
+				Camera.main.orthographicSize--;
+			}
+		}
+		if (Camera.main.orthographicSize == 5) {
+			Camera.main.transform.position = new Vector3 (0, 0, 40);
+		}
+//		if(Input.GetMouseButtonDown(0){
+//			Camera.main.rect.x=
+//		}
 	}
 
 	//change cursor and depot color
