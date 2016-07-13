@@ -50,11 +50,13 @@
      <Compile Include="Assets\Scripts\cameraMovement.cs" />
      <Compile Include="Assets\Scripts\depot.cs" />
      <Compile Include="Assets\Scripts\depotAnimation.cs" />
+     <Compile Include="Assets\Scripts\dragCamera.cs" />
      <Compile Include="Assets\Scripts\gameControll.cs" />
      <Compile Include="Assets\Scripts\inputControl.cs" />
      <Compile Include="Assets\Scripts\panelController.cs" />
      <Compile Include="Assets\Scripts\pathCap.cs" />
      <Compile Include="Assets\Scripts\slider.cs" />
+     <Compile Include="Assets\Scripts\stickMap.cs" />
      <Compile Include="Assets\Scripts\storeTruck.cs" />
      <Compile Include="Assets\Scripts\test\DisplayManager.cs" />
      <Compile Include="Assets\Scripts\test\DragTruck.cs" />
@@ -63,7 +65,6 @@
      <Compile Include="Assets\Scripts\test\modalPanel.cs" />
      <Compile Include="Assets\Scripts\test\testWindow.cs" />
      <Compile Include="Assets\Scripts\truck.cs" />
-     <Compile Include="Assets\dragCamera.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

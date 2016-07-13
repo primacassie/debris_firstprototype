@@ -86,7 +86,7 @@ public class gameControll : MonoBehaviour {
 		//particleSystem.renderer.sortingLayerName = "Foreground";
 
 	}
-
+		
 	void Start () {
 		initializeCapArray ();  //the method is to initalize both capacity arrays one is boolean and the other is int array.
 		//loadInputField();  //load input field when a path is clicked.
