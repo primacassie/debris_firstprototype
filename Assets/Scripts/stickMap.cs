@@ -14,15 +14,19 @@ public class stickMap : MonoBehaviour {
 	}
 
 	void Update(){
+		//try to fix the right map bugs if we change the size of screen during the game, but in fact we won't do it;
+//		if (Screen.width == 1155) {
+//			screenPos=cam.WorldToScreenPoint(rm.transform.position);
+//		}
+//		if (Screen.width == 480) {
+//			screenPos=cam.WorldToScreenPoint(rm.transform.position);
+//		}
 		stick ();
 	}
 
 	private void stick(){
 		int camSize = (int) cam.orthographicSize;
 		rm.transform.position = cam.ScreenToWorldPoint (screenPos);
-//		if (camSize != 5) {
-//			rm.transform.position = cam.ScreenToWorldPoint (screenPos);
-//		}
 		switch (camSize) {
 		case 4:
 			rm.transform.localScale = new Vector2 (0.8f, 0.8f);

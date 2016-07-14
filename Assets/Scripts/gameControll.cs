@@ -286,10 +286,5 @@ public class gameControll : MonoBehaviour {
 			writeText.WriteLine (save);
 			writeText.Close ();
 		}
-//		output.WriteLine ();
-//		output.WriteLine (save);
-//		output.Close ();
-	}
-		
-		
+	}		
 }

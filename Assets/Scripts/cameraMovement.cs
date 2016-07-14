@@ -22,6 +22,5 @@ public class cameraMovement : MonoBehaviour {
 			Camera.main.orthographicSize++;
 		}
 	}
-
-
+		
 }

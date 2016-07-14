@@ -8,7 +8,7 @@ public class Node : MonoBehaviour {
 
 	//static int variable control intersection;
 	public static int intersection;
-	private Text sIntersection;
+	//private Text sIntersection;
 
 	//private DisplayManager displayManager;
 
@@ -51,7 +51,7 @@ public class Node : MonoBehaviour {
 			//obj.GetComponent<Text> ().text = "50";
 			obj.GetComponentInChildren<Text> ().text = "50";
 		}
-		sIntersection = GameObject.Find ("intersection").GetComponent<Text> ();
+		//sIntersection = GameObject.Find ("intersection").GetComponent<Text> ();
 	}
 
 	void OnMouseDown(){
@@ -92,88 +92,13 @@ public class Node : MonoBehaviour {
 				//Debug.Log (size2lastNode);
 
 				//change the image of node here
-				if (!(redN || greenN || blueN || rgN || rbN || gbN || rgbN)) {
-					if (gameControll.redTruck) {
-						changeNodeColor ("R");
-						redN = true;
-					} else if (gameControll.blueTruck) {
-						changeNodeColor ("B");
-						blueN = true;
-					} else if (gameControll.greenTruck) {
-						changeNodeColor ("G");
-						greenN = true;
-					}
-				} else if (redN && !(greenN || blueN || rgN || rbN || gbN || rgbN)) {
-					if (gameControll.blueTruck) {
-						changeNodeColor ("RB");
-						blueN = true;
-						rbN = true;
-						intersection++;
-						sIntersection.text = intersection.ToString ();
-					} else if (gameControll.greenTruck) {
-						changeNodeColor ("RG");
-						greenN = true;
-						rgN = true;
-						intersection++;
-						sIntersection.text = intersection.ToString ();
-					}
-				} else if (blueN && !(greenN || redN || rgN || rbN || gbN || rgbN)) {
-					if (gameControll.redTruck) {
-						changeNodeColor ("RB");
-						redN = true;
-						rbN = true;
-						intersection++;
-						sIntersection.text = intersection.ToString ();
-					} else if (gameControll.greenTruck) {
-						changeNodeColor ("GB");
-						greenN = true;
-						gbN = true;
-						intersection++;
-						sIntersection.text = intersection.ToString ();
-					}
-				} else if (greenN && !(blueN || redN || rgN || rbN || gbN || rgbN)) {
-					if (gameControll.redTruck) {
-						changeNodeColor ("RG");
-						redN = true;
-						rgN = true;
-						intersection++;
-						sIntersection.text = intersection.ToString ();
-					} else if (gameControll.blueTruck) {
-						changeNodeColor ("GB");
-						blueN = true;
-						gbN = true;
-						intersection++;
-						sIntersection.text = intersection.ToString ();
-					} 
-				} else if (rbN && !(greenN || rgN || gbN || rgbN)) {
-					if (gameControll.greenTruck) {
-						changeNodeColor ("RGB");
-						greenN = true;
-						rgN = true;
-						gbN = true;
-						rgbN = true;
-					}
-				} else if (rgN && !(blueN || rbN || gbN || rgbN)) {
-					if (gameControll.blueTruck) {
-						changeNodeColor ("RGB");
-						blueN = true;
-						rbN = true;
-						gbN = true;
-						rgbN = true;
-					}
-				} else if (gbN && !(redN || rbN || rgN || rgbN)) {
-					if (gameControll.redTruck) {
-						changeNodeColor ("RGB");
-						redN = true;
-						rbN = true;
-						rgN = true;
-						rgbN = true;
-					}
-				}
+				clickChangeColor();
 
 				//here get the capacity of the path
 				passNode1 = firstOfSize1;
 				passNode2 = num;
+
+				pathCap.rectAnimation ();
 
 				//here is the second version of UI design
 				setInitialValue (passNode1, passNode2);
@@ -194,7 +119,7 @@ public class Node : MonoBehaviour {
 				string toSave = "this node is not connected with the node " + firstOfSize1 + " please select a valid one! ";
 				Debug.Log (toSave); 
 
-				GameObject.Find ("ModalControl").GetComponent<testWindow> ().takeAction (toSave);
+				//GameObject.Find ("ModalControl").GetComponent<testWindow> ().takeAction (toSave);
 			}
 		} else if (size == 2) {
 			//temp = gameControll.twoNode.Dequeue ();
@@ -212,72 +137,8 @@ public class Node : MonoBehaviour {
 //				inputTab.SetActive (true);
 
 				//change node color here
-				if (!(redN || greenN || blueN || rgN || rbN || gbN || rgbN)) {
-					if (gameControll.redTruck) {
-						changeNodeColor ("R");
-						redN = true;
-					} else if (gameControll.blueTruck) {
-						changeNodeColor ("B");
-						blueN = true;
-					} else if (gameControll.greenTruck) {
-						changeNodeColor ("G");
-						greenN = true;
-					}
-				} else if (redN && !(greenN || blueN || rgN || rbN || gbN || rgbN)) {
-					if (gameControll.blueTruck) {
-						changeNodeColor ("RB");
-						blueN = true;
-						rbN = true;
-					} else if (gameControll.greenTruck) {
-						changeNodeColor ("RG");
-						greenN = true;
-						rgN = true;
-					}
-				} else if (blueN && !(greenN || redN || rgN || rbN || gbN || rgbN)) {
-					if (gameControll.redTruck) {
-						changeNodeColor ("RB");
-						redN = true;
-						rbN = true;
-					} else if (gameControll.greenTruck) {
-						changeNodeColor ("GB");
-						greenN = true;
-						gbN = true;
-					}
-				} else if (greenN && !(blueN || redN || rgN || rbN || gbN || rgbN)) {
-					if (gameControll.redTruck) {
-						changeNodeColor ("RG");
-						redN = true;
-						rgN = true;
-					} else if (gameControll.blueTruck) {
-						changeNodeColor ("GB");
-						blueN = true;
-						gbN = true;
-					} 
-				} else if (rbN && !(greenN || rgN || gbN || rgbN)) {
-					if (gameControll.greenTruck) {
-						changeNodeColor ("RGB");
-						greenN = true;
-						rgN = true;
-						gbN = true;
-						rgbN = true;
-					}
-				} else if (rgN && !(blueN || rbN || gbN || rgbN)) {
-					if (gameControll.blueTruck) {
-						changeNodeColor ("RGB");
-						blueN = true;
-						rbN = true;
-						gbN = true;
-						rgbN = true;
-					}
-				} else if (gbN && !(redN || rbN || rgN || rgbN)) {
-					if (gameControll.redTruck) {
-						changeNodeColor ("RGB");
-						redN = true;
-						rbN = true;
-						rgN = true;
-						rgbN = true;
-					}
-				}
+				clickChangeColor();
+				pathCap.rectAnimation ();
 
 				//second ui update here
 				setInitialValue (passNode1, passNode2);
@@ -302,13 +163,8 @@ public class Node : MonoBehaviour {
 			} else {
 				string toSave= "this node is not connected with the node " + size2lastNode + " please select a valid one! ";
 				Debug.Log (toSave);
-				GameObject.Find ("ModalControl").GetComponent<testWindow> ().takeAction (toSave);
+				//GameObject.Find ("ModalControl").GetComponent<testWindow> ().takeAction (toSave);
 			}
-			//gameControll.twoNode.Enqueue (num);
-			//Debug.Log ("this is the second node"+num);
-			//gameControll.validPath (firstNode, num);
-			//if(gameControll.validPath (firstNode, num) && num==1)
-
 		}
 	}
 
@@ -595,5 +451,74 @@ public class Node : MonoBehaviour {
 	private void changeNodeColor(string toWhich){
 		string pathToNode = "Node/" + toWhich;
 		this.gameObject.GetComponent<Image> ().sprite = Resources.Load<Sprite> (pathToNode) as Sprite;
+	}
+
+	private void clickChangeColor(){
+		if (!(redN || greenN || blueN || rgN || rbN || gbN || rgbN)) {
+			if (gameControll.redTruck) {
+				changeNodeColor ("R");
+				redN = true;
+			} else if (gameControll.blueTruck) {
+				changeNodeColor ("B");
+				blueN = true;
+			} else if (gameControll.greenTruck) {
+				changeNodeColor ("G");
+				greenN = true;
+			}
+		} else if (redN && !(greenN || blueN || rgN || rbN || gbN || rgbN)) {
+			if (gameControll.blueTruck) {
+				changeNodeColor ("RB");
+				blueN = true;
+				rbN = true;
+			} else if (gameControll.greenTruck) {
+				changeNodeColor ("RG");
+				greenN = true;
+				rgN = true;
+			}
+		} else if (blueN && !(greenN || redN || rgN || rbN || gbN || rgbN)) {
+			if (gameControll.redTruck) {
+				changeNodeColor ("RB");
+				redN = true;
+				rbN = true;
+			} else if (gameControll.greenTruck) {
+				changeNodeColor ("GB");
+				greenN = true;
+				gbN = true;
+			}
+		} else if (greenN && !(blueN || redN || rgN || rbN || gbN || rgbN)) {
+			if (gameControll.redTruck) {
+				changeNodeColor ("RG");
+				redN = true;
+				rgN = true;
+			} else if (gameControll.blueTruck) {
+				changeNodeColor ("GB");
+				blueN = true;
+				gbN = true;
+			} 
+		} else if (rbN && !(greenN || rgN || gbN || rgbN)) {
+			if (gameControll.greenTruck) {
+				changeNodeColor ("RGB");
+				greenN = true;
+				rgN = true;
+				gbN = true;
+				rgbN = true;
+			}
+		} else if (rgN && !(blueN || rbN || gbN || rgbN)) {
+			if (gameControll.blueTruck) {
+				changeNodeColor ("RGB");
+				blueN = true;
+				rbN = true;
+				gbN = true;
+				rgbN = true;
+			}
+		} else if (gbN && !(redN || rbN || rgN || rgbN)) {
+			if (gameControll.redTruck) {
+				changeNodeColor ("RGB");
+				redN = true;
+				rbN = true;
+				rgN = true;
+				rgbN = true;
+			}
+		}
 	}
 }

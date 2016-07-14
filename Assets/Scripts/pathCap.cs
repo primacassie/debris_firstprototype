@@ -47,6 +47,8 @@ public class pathCap : MonoBehaviour {
 
 	void Start(){
 		caps=GameObject.FindGameObjectsWithTag("cap");
+
+		//try to create path animation here
 	}
 
 	void FixedUpdate(){
@@ -152,6 +154,7 @@ public class pathCap : MonoBehaviour {
 		}
 	}
 
+	//return the path.
 	public static GameObject findObject(){
 		foreach (GameObject obj in caps) {
 			if ((obj.gameObject.GetComponent<pathCap> ().node [0] == Node.passNode1 && obj.gameObject.GetComponent<pathCap> ().node [1] == Node.passNode2)
@@ -187,4 +190,45 @@ public class pathCap : MonoBehaviour {
 		sl.enabled = false;
 		sl.GetComponent<RectTransform> ().localScale = new Vector2 (0, 0);
 	}
+
+	//find path of two node
+//	public static GameObject[] findNodes(int num1,int num2){
+//		GameObject[] nodes = GameObject.FindGameObjectsWithTag ("Node");
+//		GameObject[] returnNode = new GameObject[2];
+//		foreach (GameObject obj in nodes) {
+//			if(obj.GetComponent<Node>().num==num1){
+//				returnNode [0] = obj;
+//			}
+//			if(obj.GetComponent<Node>().num==num2){
+//				returnNode [1] = obj;
+//			}
+//		}
+//		return returnNode;
+//	}
+
+	public static void rectAnimation(){
+		GameObject pathAnimation = new GameObject ();
+		pathAnimation.AddComponent<RectTransform> ();
+		int numNode1 = Node.passNode1;
+		string strNode1 = "node" + numNode1;
+		if (numNode1 == 1) {
+			strNode1 = "depot";
+		}
+		GameObject node1=GameObject.Find (strNode1);
+		int numNode2 = Node.passNode2;
+		string strNode2 = "node" + numNode2;
+		GameObject node2=GameObject.Find (strNode2);
+		//GameObject[] rightNode = findNodes (numNode1, numNode2);
+		Vector2 origin=node1.transform.position;
+		Vector2 destination = node2.transform.position;
+		LineRenderer lr = pathAnimation.AddComponent<LineRenderer> ();
+		pathAnimation.name = strNode1 + strNode2;
+		lr.SetPosition (0, origin);
+		lr.SetWidth (0.45f, 0.45f);
+		lr.material = Resources.Load<Material> ("Material/redAnim") as Material;
+
+		//pathAnimation.GetComponent<RectTransform> ().anchoredPosition = rightPath.GetComponent<RectTransform> ().anchoredPosition;
+		//set anchor postion for this path by node
+	}
+		
 }

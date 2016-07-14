@@ -14,7 +14,7 @@ public class dragCamera : MonoBehaviour {
 		if (Mathf.Abs (nowPos.x - startPos.x) > 1f || Mathf.Abs (nowPos.y - startPos.y) > 1f)
 			return true;
 		else
-			return true;
+			return false;
 //			return false;
 	}
 		

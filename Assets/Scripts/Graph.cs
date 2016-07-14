@@ -6,7 +6,4 @@ public class Graph :MonoBehaviour {
 	public float time;
 	public int[] node = new int[2];
 
-	void Awake(){
-		//time = 2 * capacity;
-	}
 }
