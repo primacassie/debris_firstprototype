@@ -2,3 +2,5 @@
 an unfinished version : https://github.com/Spadille/HumanOptimizationProject .
 
   Professor Casper and I disscussed to move it from javascript to unity is due to the reason that functionalities are growing out of control during the development of the our project. 
+
+  this version, I make the animation by render material in lines.

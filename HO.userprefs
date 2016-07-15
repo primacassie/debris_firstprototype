@@ -1,11 +1,11 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/pathCap.cs">
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="Assets/Scripts/gameControll.cs" Line="289" Column="3" />
-      <File FileName="Assets/Scripts/Node.cs" Line="141" Column="30" />
-      <File FileName="Assets/Scripts/pathCap.cs" Line="221" Column="3" />
-      <File FileName="Assets/Scripts/storeTruck.cs" Line="37" Column="5" />
+      <File FileName="Assets/Scripts/gameControll.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Node.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/pathCap.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/storeTruck.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

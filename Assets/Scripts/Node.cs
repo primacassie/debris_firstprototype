@@ -44,6 +44,13 @@ public class Node : MonoBehaviour {
 	private bool gbN;
 	private bool rgbN;
 
+	//create lists of array to assign road information
+	private static List<List<int>> redAl;
+	private static List<List<int>> blueAl;
+	private static List<List<int>> greenAl;
+
+	private static List<int> storePath;
+
 
 	void Awake(){
 		capPath = GameObject.FindGameObjectsWithTag ("cap");
@@ -73,6 +80,8 @@ public class Node : MonoBehaviour {
 				//GameObject.Find ("ModalControl").GetComponent<testWindow> ().takeAction ("Please select a truck!");
 
 			} else if((gameControll.redTruck|| gameControll.blueTruck || gameControll.greenTruck) && num==1){
+				storePath = new List<int> ();
+				storePath.Add (1);
 				gameControll.twoNode.Enqueue (num);
 				Debug.Log ("let's start!");
 				gameControll.saveToFile ("start from depot!");
@@ -98,7 +107,11 @@ public class Node : MonoBehaviour {
 				passNode1 = firstOfSize1;
 				passNode2 = num;
 
-				pathCap.rectAnimation ();
+				//add node number to store the path
+				storePath.Add(passNode2);
+
+				//this function used to create new game object to realize the line render.
+				createObjectForLineRender ();
 
 				//here is the second version of UI design
 				setInitialValue (passNode1, passNode2);
@@ -136,10 +149,17 @@ public class Node : MonoBehaviour {
 //				GameObject inputTab=GameObject.Find("InputTab");
 //				inputTab.SetActive (true);
 
+				storePath.Add (passNode2);
+
 				//change node color here
 				clickChangeColor();
-				pathCap.rectAnimation ();
 
+				//this function used to create new game object to realize the line render.
+				if(!pathAlreadyExist(storePath,passNode1,passNode2)){
+					createObjectForLineRender ();
+				}
+
+				//GameObject.Find ("GameController").GetComponent<LineAnimation> ().rectAnimation (passNode1,passNode2);
 				//second ui update here
 				setInitialValue (passNode1, passNode2);
 				//pathCap.initializeSlider ();
@@ -172,16 +192,19 @@ public class Node : MonoBehaviour {
 	public static void nodeBackToDepot(){
 		if (Node.passNode2 == 1) {
 			if (gameControll.blueTruck) {
+				blueAl.Add (storePath);
 				gameControll.blueTruck = false;
 				gameControll.blueProfitOnce = 0;
 				gameControll.blueTimeOnce = 0;
 			}
 			if (gameControll.redTruck) {
+				redAl.Add (storePath);
 				gameControll.redTruck = false;
 				gameControll.redProfitOnce = 0;
 				gameControll.redTimeOnce = 0;
 			}
 			if (gameControll.greenTruck) {
+				greenAl.Add (storePath);
 				gameControll.greenTruck = false;
 				gameControll.greenTimeOnce = 0;
 				gameControll.greenProfitOnce = 0;
@@ -521,4 +544,27 @@ public class Node : MonoBehaviour {
 			}
 		}
 	}
+
+	private void createObjectForLineRender(){
+		GameObject  pathAnimation= new GameObject ();
+		pathAnimation.AddComponent<RectTransform> ();
+		pathAnimation.name = "pathAnimation" + passNode1.ToString () + passNode2.ToString ();
+		pathAnimation.AddComponent<LineRenderer> ();
+		pathAnimation.AddComponent<LineAnimation> ();
+		pathAnimation.GetComponent<LineAnimation> ().rectAnimation (passNode1, passNode2);
+	}
+
+	private bool pathAlreadyExist(List<int> al,int num1,int num2){
+		for (int i = 0; i < al.Count-1; i++) {
+			if( (al[i]==num1 && al[i+1]==num2) || (al[i]==num2 && al[i+1]==num1)){
+				return true;
+			}
+		}
+		return false;
+	}
+
+
+	private void setConfirmPathButton(List<int> al){
+	}
+		
 }
