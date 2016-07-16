@@ -47,6 +47,9 @@ public class Node : MonoBehaviour
     private bool gbN;
     private bool rgbN;
 
+	//judge if the backtodepot function is running
+	private static bool backToDepot;
+
     //create lists of array to assign road information
     private static List<List<int>> redAl;
     private static List<List<int>> blueAl;
@@ -63,8 +66,57 @@ public class Node : MonoBehaviour
             //obj.GetComponent<Text> ().text = "50";
             obj.GetComponentInChildren<Text>().text = "50";
         }
+		redAl   = new List<List<int>> ();
+		blueAl  = new List<List<int>> ();
+		greenAl = new List<List<int>> ();
         //sIntersection = GameObject.Find ("intersection").GetComponent<Text> ();
     }
+
+	void Update(){
+		if (CheckMark.nextStep == true) {
+			backToDepot = false;
+			if (gameControll.blueTruck) {
+				blueAl.Add (storePath);
+				gameControll.blueTruck = false;
+				gameControll.blueProfitOnce = 0;
+				gameControll.blueTimeOnce = 0;
+			}
+			if (gameControll.redTruck) {
+				redAl.Add (storePath);
+				gameControll.redTruck = false;
+				gameControll.redProfitOnce = 0;
+				gameControll.redTimeOnce = 0;
+			}
+			if (gameControll.greenTruck) {
+				greenAl.Add (storePath);
+				gameControll.greenTruck = false;
+				gameControll.greenTimeOnce = 0;
+				gameControll.greenProfitOnce = 0;
+			}
+			Destroy (GameObject.FindGameObjectWithTag ("truckText"));
+			Debug.Log (" You have finish a cycle, please start another one!");
+
+			//gameControll.saveToFile ("a cycle is finished.");
+
+			//GameObject.Find ("ModalControl").GetComponent<testWindow> ().takeAction("You have finish a cycle!");
+
+			//add truck scripts here
+			//	GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(0);
+
+			//reset most of the things to the beginning here
+			gameControll.twoNode.Clear ();
+			GameObject.Find ("GameController").GetComponent<gameControll> ().resetCursor ();
+			GameObject.Find ("GameController").GetComponent<gameControll> ().resetDepot ();
+			int i = 0;
+			panelController.blueTextOnce.text = i.ToString ();
+			panelController.redTextOnce.text = i.ToString ();
+			panelController.greenTextOnce.text = i.ToString ();
+			panelController.blueTimeOnce.text = i.ToString ();
+			panelController.redTimeOnce.text = i.ToString ();
+			panelController.greenTimeOnce.text = i.ToString ();
+			CheckMark.nextStep = false;
+		}
+	}
 
     void OnMouseDown()
     {
@@ -159,7 +211,7 @@ public class Node : MonoBehaviour
             //Debug.Log ("remove" + temp);
             //Debug.Log(size2lastNode);
 
-            if (gameControll.validPath(size2lastNode, num))
+			if (gameControll.validPath(size2lastNode, num) && !backToDepot)
             {
                 gameControll.twoNode.Dequeue();
                 //Debug.Log ("remove " + temp);
@@ -192,7 +244,7 @@ public class Node : MonoBehaviour
                 //gameControll.saveToFile (toSave);
 
                 //modify node back to depot here
-                //nodeBackToDepot ();
+                nodeBackToDepot ();
 
                 //				GameObject findInactive = gameControll.myGameObject;
                 //				findInactive.SetActive(true);
@@ -216,53 +268,12 @@ public class Node : MonoBehaviour
 
     //here is the function that called when node back to depot
     public static void nodeBackToDepot()
-    {
-        if (Node.passNode2 == 1)
-        {
-            if (gameControll.blueTruck)
-            {
-                blueAl.Add(storePath);
-                gameControll.blueTruck = false;
-                gameControll.blueProfitOnce = 0;
-                gameControll.blueTimeOnce = 0;
-            }
-            if (gameControll.redTruck)
-            {
-                redAl.Add(storePath);
-                gameControll.redTruck = false;
-                gameControll.redProfitOnce = 0;
-                gameControll.redTimeOnce = 0;
-            }
-            if (gameControll.greenTruck)
-            {
-                greenAl.Add(storePath);
-                gameControll.greenTruck = false;
-                gameControll.greenTimeOnce = 0;
-                gameControll.greenProfitOnce = 0;
-            }
-            Destroy(GameObject.FindGameObjectWithTag("truckText"));
-            Debug.Log(" You have finish a cycle, please start another one!");
-
-            //gameControll.saveToFile ("a cycle is finished.");
-
-            //GameObject.Find ("ModalControl").GetComponent<testWindow> ().takeAction("You have finish a cycle!");
-
-            //add truck scripts here
-            //	GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(0);
-
-            //reset most of the things to the beginning here
-            gameControll.twoNode.Clear();
-            GameObject.Find("GameController").GetComponent<gameControll>().resetCursor();
-            GameObject.Find("GameController").GetComponent<gameControll>().resetDepot();
-            int i = 0;
-            panelController.blueTextOnce.text = i.ToString();
-            panelController.redTextOnce.text = i.ToString();
-            panelController.greenTextOnce.text = i.ToString();
-            panelController.blueTimeOnce.text = i.ToString();
-            panelController.redTimeOnce.text = i.ToString();
-            panelController.greenTimeOnce.text = i.ToString();
-        }
-    }
+	{
+		if (Node.passNode2 == 1) {
+			backToDepot = true;
+			setConfirmPathButton (storePath);
+		}
+	}
 
     //function to modify capacity of truck and path;
     //this can be the function with the first version
@@ -647,10 +658,41 @@ public class Node : MonoBehaviour
         return false;
     }
 
+	private bool otherColorInthePath(){
+		
+	}
 
-    private void setConfirmPathButton(List<int> al)
+
+    private static void setConfirmPathButton(List<int> al)
     {
-
+		float x = 0.0f;
+		float y = 0.0f;
+		HashSet<int> set = new HashSet <int> ();
+		foreach (int num in al) {
+			if (set.Add (num)) {
+				string numStr = "node" + num.ToString ();
+				if (num == 1) {
+					numStr = "depot";
+				}
+				x += GameObject.Find (numStr).transform.position.x;
+				y += GameObject.Find (numStr).transform.position.y;
+			}
+		}
+		int count=set.Count;
+		x = x / count;
+		y = y / count;
+		float z = 100f;
+		GameObject checkMark = new GameObject ();
+		Transform parentTransform = GameObject.Find ("gamePanel").GetComponent<Transform> ();
+		checkMark.transform.SetParent (parentTransform);
+		checkMark.transform.position = new Vector3 (x, y, z);
+		checkMark.transform.localScale = new Vector3 (0.5f, 0.5f, 1f);
+		BoxCollider2D collider = checkMark.AddComponent<BoxCollider2D> ();
+		collider.enabled = true;
+		collider.size = new Vector2 (100, 100);
+		Image cm = checkMark.AddComponent<Image> ();
+		cm.sprite = Resources.Load<Sprite> ("Image/checkmark") as Sprite;
+		//cm.color = new Color (1, 0, 0);
+		checkMark.AddComponent<CheckMark> ();
     }
-
 }
