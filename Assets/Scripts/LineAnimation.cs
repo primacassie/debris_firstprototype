@@ -40,7 +40,17 @@ public class LineAnimation : MonoBehaviour
         lr = GetComponent<LineRenderer>();
         lr.SetPosition(0, origin);
         lr.SetWidth(.1f, .1f);
-        lr.material = Resources.Load<Material>("Materials/redAnim") as Material;
+        if (gameControll.redTruck)
+        {
+            lr.material = Resources.Load<Material>("Materials/redAnim") as Material;
+        }else if (gameControll.greenTruck)
+        {
+            lr.material = Resources.Load<Material>("Materials/greenAnim") as Material;
+        }
+        else if (gameControll.blueTruck)
+        {
+            lr.material = Resources.Load<Material>("Materials/blueAnim") as Material;
+        }
         dist = Vector3.Distance(origin, destination);
         startUpdate = true;
     }

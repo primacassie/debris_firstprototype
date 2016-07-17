@@ -57,6 +57,11 @@ public class Node : MonoBehaviour
 
     private static List<int> storePath;
 
+    //static arrays store rgb line renders
+    public static bool[,] redLineArray = new bool[6, 6];
+    public static bool[,] blueLineArray = new bool[6, 6];
+    public static bool[,] greenLineArray = new bool[6, 6];
+
 
     void Awake()
     {
@@ -70,6 +75,7 @@ public class Node : MonoBehaviour
 		blueAl  = new List<List<int>> ();
 		greenAl = new List<List<int>> ();
         //sIntersection = GameObject.Find ("intersection").GetComponent<Text> ();
+        
     }
 
 	void Update(){
@@ -179,7 +185,13 @@ public class Node : MonoBehaviour
                 storePath.Add(passNode2);
 
                 //this function used to create new game object to realize the line render.
-                createObjectForLineRender();
+                if (!pathAlreadyExist(passNode1, passNode2, gameControll.redTruck, gameControll.greenTruck, gameControll.blueTruck))
+                {
+                    createObjectForLineRender();
+                    //update the lineArray after the render animation
+                    setLineArray(passNode1, passNode2);
+                }
+
 
                 //here is the second version of UI design
                 setInitialValue(passNode1, passNode2);
@@ -227,9 +239,11 @@ public class Node : MonoBehaviour
 
 
                 //this function used to create new game object to realize the line render.
-                if (!pathAlreadyExist(storePath, passNode1, passNode2))
+                if (!pathAlreadyExist(passNode1, passNode2,gameControll.redTruck,gameControll.greenTruck,gameControll.blueTruck))
                 {
                     createObjectForLineRender();
+                    //update the lineArray after the render animation
+                    setLineArray(passNode1, passNode2);
                 }
 
                 storePath.Add(passNode2);
@@ -646,22 +660,31 @@ public class Node : MonoBehaviour
         pathAnimation.GetComponent<LineAnimation>().rectAnimation(passNode1, passNode2);
     }
 
-    private bool pathAlreadyExist(List<int> al, int num1, int num2)
+    private bool pathAlreadyExist(int num1, int num2, bool red, bool green, bool blue)
     {
-        for (int i = 0; i < al.Count - 1; i++)
+        if (red)
         {
-            if ((al[i] == num1 && al[i + 1] == num2) || (al[i] == num2 && al[i + 1] == num1))
+            if (redLineArray[num1,num2])
             {
                 return true;
             }
         }
-        return false;
+        if (blue)
+        {
+            if (blueLineArray[num1, num2])
+            {
+                return true;
+            }
+        }
+        if (green)
+        {
+            if (greenLineArray[num1, num2])
+            {
+                return true;
+            }
+        }
+        return false;    
     }
-
-	private bool otherColorInthePath(){
-		
-	}
-
 
     private static void setConfirmPathButton(List<int> al)
     {
@@ -694,5 +717,24 @@ public class Node : MonoBehaviour
 		cm.sprite = Resources.Load<Sprite> ("Image/checkmark") as Sprite;
 		//cm.color = new Color (1, 0, 0);
 		checkMark.AddComponent<CheckMark> ();
+    }
+
+    public void setLineArray(int num1,int num2)
+    {
+        if (gameControll.redTruck)
+        {
+            Node.redLineArray[num1, num2] = true;
+            Node.redLineArray[num2, num1] = true;
+        }
+        if (gameControll.blueTruck)
+        {
+            Node.blueLineArray[num1, num2] = true;
+            Node.blueLineArray[num2, num1] = true;
+        }
+        if (gameControll.greenTruck)
+        {
+            Node.greenLineArray[num2, num1] = true;
+            Node.greenLineArray[num1, num2] = true;
+        }
     }
 }
