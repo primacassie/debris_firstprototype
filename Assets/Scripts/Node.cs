@@ -62,6 +62,11 @@ public class Node : MonoBehaviour
     public static bool[,] blueLineArray = new bool[6, 6];
     public static bool[,] greenLineArray = new bool[6, 6];
 
+	//three points that the checkmark will always appear
+	private static Vector2 v1;
+	private static Vector2 v2;
+	private static Vector2 v3;
+
 
     void Awake()
     {
@@ -75,7 +80,9 @@ public class Node : MonoBehaviour
 		blueAl  = new List<List<int>> ();
 		greenAl = new List<List<int>> ();
         //sIntersection = GameObject.Find ("intersection").GetComponent<Text> ();
-        
+		v1=getVector(GameObject.Find("depot").transform.position,GameObject.Find("node2").transform.position,GameObject.Find("node3").transform.position);
+		v2=getVector(GameObject.Find("depot").transform.position,GameObject.Find("node2").transform.position,GameObject.Find("node5").transform.position);
+		v3=getVector(GameObject.Find("depot").transform.position,GameObject.Find("node3").transform.position,GameObject.Find("node4").transform.position);      
     }
 
 	void Update(){
@@ -686,6 +693,23 @@ public class Node : MonoBehaviour
         return false;    
     }
 
+	private Vector2 getVector(Vector2 v1,Vector2 v2, Vector2 v3){
+		Vector2 res = new Vector2 ((v1.x + v2.x + v3.x) / 3, (v1.y + v2.y + v3.y) / 3);
+		return res;
+	}
+
+	//this function compare the nearest position of checkmark
+	private static Vector2 getSmallest(Vector2 f1,Vector2 f2,Vector2 f3,float x, float y){
+		if (Mathf.Abs(f1.x-x)+ Mathf.Abs(f1.y-y)<= Mathf.Abs(f2.x-x)+ Mathf.Abs(f2.y-y) && Mathf.Abs(f1.x-x)+ Mathf.Abs(f1.y-y) <=Mathf.Abs(f3.x-x)+ Mathf.Abs(f3.y-y)) {
+			return f1;
+		} else if (Mathf.Abs(f2.x-x)+ Mathf.Abs(f2.y-y) <= Mathf.Abs(f3.x-x)+ Mathf.Abs(f3.y-y)) {
+			return f2;
+		} else {
+			return f3;
+		}
+	}
+		
+
     private static void setConfirmPathButton(List<int> al)
     {
 		float x = 0.0f;
@@ -705,6 +729,9 @@ public class Node : MonoBehaviour
 		x = x / count;
 		y = y / count;
 		float z = 100f;
+		Vector2 v4 = getSmallest (v1, v2, v3, x, y);
+		x = v4.x;
+		y = v4.y;
 		GameObject checkMark = new GameObject ();
 		Transform parentTransform = GameObject.Find ("gamePanel").GetComponent<Transform> ();
 		checkMark.transform.SetParent (parentTransform);

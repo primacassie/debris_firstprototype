@@ -65,6 +65,9 @@ public class LineAnimation : MonoBehaviour
             Vector3 pointAlongline = x * Vector3.Normalize(destination - origin) + origin;
             lr.SetPosition(1, pointAlongline);
         }
+		if (counter >= dist) {
+			lr.material=Resources.Load<Material>("Materials/blueAnim") as Material;
+		}
     }
 
 
