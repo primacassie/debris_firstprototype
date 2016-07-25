@@ -1,12 +1,12 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/LineAnimation.cs">
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="Assets/Scripts/gameControll.cs" Line="281" Column="54" />
-      <File FileName="Assets/Scripts/Node.cs" Line="734" Column="12" />
+      <File FileName="Assets/Scripts/gameControll.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Node.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/storeTruck.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/dragCamera.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/LineAnimation.cs" Line="69" Column="75" />
+      <File FileName="Assets/Scripts/LineAnimation.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
