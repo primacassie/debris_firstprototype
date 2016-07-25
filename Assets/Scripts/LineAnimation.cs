@@ -81,6 +81,9 @@ public class LineAnimation : MonoBehaviour
         //    //    t += Time.deltaTime / duration;
         //    //}
         //}
+		//if (counter >= dist) {
+		//	lr.material=Resources.Load<Material>("Materials/blueAnim") as Material;
+		//}
     }
 
 
