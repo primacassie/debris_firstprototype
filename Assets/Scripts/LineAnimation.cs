@@ -14,11 +14,12 @@ public class LineAnimation : MonoBehaviour
     private LineRenderer lr;
     private bool startUpdate;
 
-    //t is a time clock to control the lerp time
-    private float t = 0;
-
-    //duration is the continuing time 
-    private float duration = 5;
+    //set a set of bool value to help control the update time
+    private bool rg;
+    private bool rb;
+    private bool gb;
+    private bool rgb;
+    
 
     void Start()
     {
@@ -71,19 +72,6 @@ public class LineAnimation : MonoBehaviour
             Vector3 pointAlongline = x * Vector3.Normalize(destination - origin) + origin;
             lr.SetPosition(1, pointAlongline);
         }
-        //if(counter >= dist)
-        //{
-        //    lr.material=Resources.Load<Material>("Materials/blueAnim") as Material;
-        //    //lr.material.color = Color.Lerp(Color.red, Color.blue, t);
-        //    //if (t < 1)
-        //    //{ // while t below the end limit...
-        //    //  // increment it at the desired rate every update:
-        //    //    t += Time.deltaTime / duration;
-        //    //}
-        //}
-		//if (counter >= dist) {
-		//	lr.material=Resources.Load<Material>("Materials/blueAnim") as Material;
-		//}
     }
 
 

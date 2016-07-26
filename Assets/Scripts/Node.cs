@@ -194,9 +194,14 @@ public class Node : MonoBehaviour
                 //this function used to create new game object to realize the line render.
                 if (!pathAlreadyExist(passNode1, passNode2, gameControll.redTruck, gameControll.greenTruck, gameControll.blueTruck))
                 {
-                    createObjectForLineRender();
-                    //update the lineArray after the render animation
-                    setLineArray(passNode1, passNode2);
+                    if (redLineArray[passNode1, passNode2] || greenLineArray[passNode1, passNode2] || blueLineArray[passNode1, passNode2])
+                    {
+                        createAndDestroyObjectForLineRender();
+                    }
+                    else
+                    {
+                        createObjectForLineRender();
+                    }
                 }
 
 
@@ -248,9 +253,13 @@ public class Node : MonoBehaviour
                 //this function used to create new game object to realize the line render.
                 if (!pathAlreadyExist(passNode1, passNode2,gameControll.redTruck,gameControll.greenTruck,gameControll.blueTruck))
                 {
-                    createObjectForLineRender();
-                    //update the lineArray after the render animation
-                    setLineArray(passNode1, passNode2);
+                    if(redLineArray[passNode1,passNode2] || greenLineArray[passNode1, passNode2] || blueLineArray[passNode1, passNode2])
+                    {
+                        createAndDestroyObjectForLineRender();
+                    }else
+                    {
+                        createObjectForLineRender();
+                    }
                 }
 
                 storePath.Add(passNode2);
@@ -665,6 +674,59 @@ public class Node : MonoBehaviour
         pathAnimation.AddComponent<LineRenderer>();
         pathAnimation.AddComponent<LineAnimation>();
         pathAnimation.GetComponent<LineAnimation>().rectAnimation(passNode1, passNode2);
+        setLineArray(passNode1, passNode2);
+    }
+
+
+    private void createAndDestroyObjectForLineRender()
+    {
+        GameObject newPathAnimation = new GameObject();
+        GameObject pathAnimation = new GameObject();
+        newPathAnimation.AddComponent<RectTransform>();
+        newPathAnimation.name = "newPathAnimation" + passNode1.ToString() + passNode2.ToString();
+        newPathAnimation.AddComponent<LineRenderer>();
+        newPathAnimation.AddComponent<LineAnimation>();
+        newPathAnimation.GetComponent<LineAnimation>().rectAnimation(passNode1, passNode2);
+        string name1 = "pathAnimation" + passNode1.ToString() + passNode2.ToString();
+        string name2 = "pathAnimation" + passNode2.ToString() + passNode1.ToString();
+        if (GameObject.Find(name1) != null)
+        {
+            pathAnimation = GameObject.Find(name1);
+        }else
+        {
+            pathAnimation = GameObject.Find(name2);
+        }
+        StartCoroutine(Example(newPathAnimation,pathAnimation));
+    }
+
+    //use this function to make the function inside wait few seconds.
+    IEnumerator Example(GameObject obj1,GameObject obj2)
+    {
+        //print(Time.time);
+        yield return new WaitForSeconds(3);
+        Destroy(obj1);
+        setLineArray(passNode1, passNode2);
+        //print(Time.time);
+        LineRenderer lr = obj2.GetComponent<LineRenderer>();
+        if (blueLineArray[passNode1, passNode2] && redLineArray[passNode1, passNode2] && !greenLineArray[passNode1, passNode2])
+        {
+            lr.material = Resources.Load<Material>("Materials/GradientRB") as Material;
+        }
+
+        if (!blueLineArray[passNode1, passNode2] && redLineArray[passNode1, passNode2] && greenLineArray[passNode1, passNode2])
+        {
+            lr.material = Resources.Load<Material>("Materials/GradientRG") as Material;
+        }
+
+        if (blueLineArray[passNode1, passNode2] && !redLineArray[passNode1, passNode2] && greenLineArray[passNode1, passNode2])
+        {
+            lr.material = Resources.Load<Material>("Materials/GradientBG") as Material;
+        }
+
+        if (blueLineArray[passNode1, passNode2] && redLineArray[passNode1, passNode2] && greenLineArray[passNode1, passNode2])
+        {
+            lr.material = Resources.Load<Material>("Materials/GradientRGB") as Material;
+        }
     }
 
     private bool pathAlreadyExist(int num1, int num2, bool red, bool green, bool blue)

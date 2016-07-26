@@ -7,6 +7,7 @@ public class CheckMark : MonoBehaviour {
 
 	void OnMouseDown(){
 		nextStep = true;
+        pathCap.desableSlider();
 		Destroy (this.gameObject);
 	}
 }
