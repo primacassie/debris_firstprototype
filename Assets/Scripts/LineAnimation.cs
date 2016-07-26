@@ -14,12 +14,6 @@ public class LineAnimation : MonoBehaviour
     private LineRenderer lr;
     private bool startUpdate;
 
-    //set a set of bool value to help control the update time
-    private bool rg;
-    private bool rb;
-    private bool gb;
-    private bool rgb;
-    
 
     void Start()
     {

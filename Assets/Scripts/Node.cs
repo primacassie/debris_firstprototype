@@ -51,9 +51,9 @@ public class Node : MonoBehaviour
 	private static bool backToDepot;
 
     //create lists of array to assign road information
-    private static List<List<int>> redAl;
-    private static List<List<int>> blueAl;
-    private static List<List<int>> greenAl;
+    public static List<List<int>> redAl;
+    public static List<List<int>> blueAl;
+    public static List<List<int>> greenAl;
 
     private static List<int> storePath;
 
@@ -66,6 +66,10 @@ public class Node : MonoBehaviour
 	private static Vector2 v1;
 	private static Vector2 v2;
 	private static Vector2 v3;
+
+	//static array to make animation in the CheckMark.cs
+	public static int nodeCount;
+	public static int[] nodeArray;
 
 
     void Awake()
@@ -197,6 +201,7 @@ public class Node : MonoBehaviour
                     if (redLineArray[passNode1, passNode2] || greenLineArray[passNode1, passNode2] || blueLineArray[passNode1, passNode2])
                     {
                         createAndDestroyObjectForLineRender();
+						//createObjectForLineRender();
                     }
                     else
                     {
@@ -256,6 +261,7 @@ public class Node : MonoBehaviour
                     if(redLineArray[passNode1,passNode2] || greenLineArray[passNode1, passNode2] || blueLineArray[passNode1, passNode2])
                     {
                         createAndDestroyObjectForLineRender();
+						//createObjectForLineRender();
                     }else
                     {
                         createObjectForLineRender();
@@ -669,7 +675,7 @@ public class Node : MonoBehaviour
     private void createObjectForLineRender()
     {
         GameObject pathAnimation = new GameObject();
-        pathAnimation.AddComponent<RectTransform>();
+        //pathAnimation.AddComponent<RectTransform>();
         pathAnimation.name = "pathAnimation" + passNode1.ToString() + passNode2.ToString();
         pathAnimation.AddComponent<LineRenderer>();
         pathAnimation.AddComponent<LineAnimation>();
@@ -682,7 +688,7 @@ public class Node : MonoBehaviour
     {
         GameObject newPathAnimation = new GameObject();
         GameObject pathAnimation = new GameObject();
-        newPathAnimation.AddComponent<RectTransform>();
+        //newPathAnimation.AddComponent<RectTransform>();
         newPathAnimation.name = "newPathAnimation" + passNode1.ToString() + passNode2.ToString();
         newPathAnimation.AddComponent<LineRenderer>();
         newPathAnimation.AddComponent<LineAnimation>();
@@ -703,7 +709,7 @@ public class Node : MonoBehaviour
     IEnumerator Example(GameObject obj1,GameObject obj2)
     {
         //print(Time.time);
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         Destroy(obj1);
         setLineArray(passNode1, passNode2);
         //print(Time.time);
@@ -786,6 +792,18 @@ public class Node : MonoBehaviour
 				x += GameObject.Find (numStr).transform.position.x;
 				y += GameObject.Find (numStr).transform.position.y;
 			}
+		}
+		nodeCount = al.Count;
+		nodeArray = new int[nodeCount];
+		//IEnumerator e = al.GetEnumerator ();
+//		while (e.MoveNext ()) {
+//			nodeArray [i] = e.Current;
+//			i++;
+//		}
+		int i=0;
+		foreach(int value in al){
+			nodeArray [i] = value;
+			i++;
 		}
 		int count=set.Count;
 		x = x / count;
