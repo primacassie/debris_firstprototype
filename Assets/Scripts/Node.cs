@@ -675,7 +675,8 @@ public class Node : MonoBehaviour
     private void createObjectForLineRender()
     {
         GameObject pathAnimation = new GameObject();
-        //pathAnimation.AddComponent<RectTransform>();
+        pathAnimation.AddComponent<RectTransform>();
+		pathAnimation.GetComponent<RectTransform>().Translate(new Vector3(0,0,10f));
         pathAnimation.name = "pathAnimation" + passNode1.ToString() + passNode2.ToString();
         pathAnimation.AddComponent<LineRenderer>();
         pathAnimation.AddComponent<LineAnimation>();
@@ -688,10 +689,12 @@ public class Node : MonoBehaviour
     {
         GameObject newPathAnimation = new GameObject();
         GameObject pathAnimation = new GameObject();
-        //newPathAnimation.AddComponent<RectTransform>();
+        newPathAnimation.AddComponent<RectTransform>();
         newPathAnimation.name = "newPathAnimation" + passNode1.ToString() + passNode2.ToString();
         newPathAnimation.AddComponent<LineRenderer>();
         newPathAnimation.AddComponent<LineAnimation>();
+		//newPathAnimation.GetComponent<LineRenderer> ().useWorldSpace = false;
+		newPathAnimation.GetComponent<RectTransform>().Translate(new Vector3(0,0,-5f));
         newPathAnimation.GetComponent<LineAnimation>().rectAnimation(passNode1, passNode2);
         string name1 = "pathAnimation" + passNode1.ToString() + passNode2.ToString();
         string name2 = "pathAnimation" + passNode2.ToString() + passNode1.ToString();
@@ -702,6 +705,7 @@ public class Node : MonoBehaviour
         {
             pathAnimation = GameObject.Find(name2);
         }
+		pathAnimation.GetComponent<LineRenderer> ().enabled = false;
         StartCoroutine(waitAnim(newPathAnimation,pathAnimation));
     }
 
@@ -710,28 +714,32 @@ public class Node : MonoBehaviour
     {
         //print(Time.time);
         yield return new WaitForSeconds(2);
-        Destroy(obj1);
+        //	Destroy(obj1);
         setLineArray(passNode1, passNode2);
         //print(Time.time);
         LineRenderer lr = obj2.GetComponent<LineRenderer>();
         if (blueLineArray[passNode1, passNode2] && redLineArray[passNode1, passNode2] && !greenLineArray[passNode1, passNode2])
         {
             lr.material = Resources.Load<Material>("Materials/GradientRB") as Material;
+			lr.enabled = true;
         }
 
         if (!blueLineArray[passNode1, passNode2] && redLineArray[passNode1, passNode2] && greenLineArray[passNode1, passNode2])
         {
             lr.material = Resources.Load<Material>("Materials/GradientRG") as Material;
+			lr.enabled = true;
         }
 
         if (blueLineArray[passNode1, passNode2] && !redLineArray[passNode1, passNode2] && greenLineArray[passNode1, passNode2])
         {
             lr.material = Resources.Load<Material>("Materials/GradientBG") as Material;
+			lr.enabled = true;
         }
 
         if (blueLineArray[passNode1, passNode2] && redLineArray[passNode1, passNode2] && greenLineArray[passNode1, passNode2])
         {
             lr.material = Resources.Load<Material>("Materials/GradientRGB") as Material;
+			lr.enabled = true;
         }
     }
 
