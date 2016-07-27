@@ -702,11 +702,11 @@ public class Node : MonoBehaviour
         {
             pathAnimation = GameObject.Find(name2);
         }
-        StartCoroutine(Example(newPathAnimation,pathAnimation));
+        StartCoroutine(waitAnim(newPathAnimation,pathAnimation));
     }
 
     //use this function to make the function inside wait few seconds.
-    IEnumerator Example(GameObject obj1,GameObject obj2)
+    IEnumerator waitAnim(GameObject obj1,GameObject obj2)
     {
         //print(Time.time);
         yield return new WaitForSeconds(2);
@@ -813,6 +813,7 @@ public class Node : MonoBehaviour
 		x = v4.x;
 		y = v4.y;
 		GameObject checkMark = new GameObject ();
+        checkMark.name = "checkMark";
 		Transform parentTransform = GameObject.Find ("gamePanel").GetComponent<Transform> ();
 		checkMark.transform.SetParent (parentTransform);
 		checkMark.transform.position = new Vector3 (x, y, z);

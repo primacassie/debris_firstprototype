@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\Graph.cs" />
     <Compile Include="Assets\Scripts\LineAnimation.cs" />
     <Compile Include="Assets\Scripts\Node.cs" />
+    <Compile Include="Assets\Scripts\PathAnimation.cs" />
     <Compile Include="Assets\Scripts\cameraMovement.cs" />
     <Compile Include="Assets\Scripts\depot.cs" />
     <Compile Include="Assets\Scripts\depotAnimation.cs" />
@@ -87,7 +88,8 @@
     <Compile Include="Assets\Scripts\truck.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\SimpleUnlitGradient\Shaders\LinearGradient.shader" />
+    <None Include="Assets\UnlitGradient\Shaders\LinearGradient.shader" />
+    <None Include="Assets\UnlitGradient\Shaders\ThreeLinearGradient.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

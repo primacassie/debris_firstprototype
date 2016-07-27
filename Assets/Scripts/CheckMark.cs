@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class CheckMark : MonoBehaviour {
 
@@ -64,35 +65,34 @@ public class CheckMark : MonoBehaviour {
 		}
 		lr = GetComponent<LineRenderer>();
 		lr.SetPosition(0, origin);
-		lr.SetWidth(.1f, .1f);
+		lr.SetWidth(.12f, .12f);
 		if (gameControll.redTruck)
 		{
-			lr.material = Resources.Load<Material>("Materials/redAnim") as Material;
+			lr.material = Resources.Load<Material>("Materials/redAnimHalf") as Material;
 		}else if (gameControll.greenTruck)
 		{
-			lr.material = Resources.Load<Material>("Materials/greenAnim") as Material;
+			lr.material = Resources.Load<Material>("Materials/greenAnimHalf") as Material;
 		}
 		else if (gameControll.blueTruck)
 		{
-			lr.material = Resources.Load<Material>("Materials/blueAnim") as Material;
+			lr.material = Resources.Load<Material>("Materials/blueAnimHalf") as Material;
 		}
 		dist = Vector3.Distance(origin, destination);
 		startUpdate = true;
 	}
 
 	void OnMouseDown(){
-		nextStep = true;
 		pathCap.desableSlider();
+        this.gameObject.GetComponent<Image>().color = new Vector4(0, 0, 0, 0);
 		StartCoroutine (waitTime ());
-	}
+    }
 
 	IEnumerator waitTime()
 	{
-		for (int i=0; i < Node.nodeArray.Length; i++) {
-			//yield return new WaitForSeconds (2);
+        for (int i=0; i < Node.nodeArray.Length; i++) {
 			if (twoNode.Count == 0) {
 				twoNode.Enqueue (Node.nodeArray [i]);
-			} else if (twoNode.Count == 1) {
+			}else if (twoNode.Count == 1) {
 				twoNode.Enqueue (Node.nodeArray [i]);
 				int num1 = twoNode.Peek ();
 				int num2 = Node.nodeArray [i];
@@ -100,29 +100,35 @@ public class CheckMark : MonoBehaviour {
 				GameObject path = new GameObject ();
 				path.name = pathname;
 				path.AddComponent<LineRenderer> ();
-				path.AddComponent<CheckMark> ().rectAnimation (num1, num2);
-			} else if (twoNode.Count == 2) {
+                path.AddComponent<CheckMark>();
+                path.GetComponent<CheckMark>().rectAnimation (num1, num2);
+			}else if (twoNode.Count == 2) {
 				twoNode.Dequeue ();
 				twoNode.Enqueue (Node.nodeArray [i]);
 				int num1 = twoNode.Peek ();
 				int num2 = Node.nodeArray [i];
-				Debug.Log ("num of num1: " + num1);
-				Debug.Log ("num of num2: " + num2);
 				string pathname = pathName (num1, num2, gameControll.redTruck, gameControll.greenTruck, gameControll.blueTruck);
-				//Debug.Log (pathname+ " in second node");
 				GameObject path = new GameObject ();
 				path.name = pathname;
 				path.AddComponent<LineRenderer> ();
-				yield return new WaitForSeconds (2);
-				path.AddComponent<CheckMark> ().rectAnimation (num1, num2);
+                path.AddComponent<CheckMark>();
+                yield return new WaitForSeconds(2);
+                path.GetComponent<CheckMark>().rectAnimation(num1, num2);
 				if (num2 == 1) {
-					StartCoroutine (waitToDestroy ());
-				}
+                    StartCoroutine (waitToDestroy ());
+                    nextStep = true;
+                }
 			}
 		}
 	}
 
-	IEnumerator waitToDestroy(){
+
+        IEnumerator  wait2seconds()
+    {
+        yield return new WaitForSeconds(2);
+    }
+
+        IEnumerator waitToDestroy(){
 		yield return new WaitForSeconds (2);
 		Destroy (this.gameObject);
 	}
