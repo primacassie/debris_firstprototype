@@ -714,7 +714,7 @@ public class Node : MonoBehaviour
     {
         //print(Time.time);
         yield return new WaitForSeconds(2);
-        //	Destroy(obj1);
+        Destroy(obj1);
         setLineArray(passNode1, passNode2);
         //print(Time.time);
         LineRenderer lr = obj2.GetComponent<LineRenderer>();
