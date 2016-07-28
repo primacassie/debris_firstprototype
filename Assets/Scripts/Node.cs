@@ -63,9 +63,9 @@ public class Node : MonoBehaviour
     public static bool[,] greenLineArray = new bool[6, 6];
 
 	//three points that the checkmark will always appear
-	private static Vector2 v1;
-	private static Vector2 v2;
-	private static Vector2 v3;
+	public static Vector2 v1;
+	public static Vector2 v2;
+	public static Vector2 v3;
 
 	//static array to make animation in the CheckMark.cs
 	public static int nodeCount;

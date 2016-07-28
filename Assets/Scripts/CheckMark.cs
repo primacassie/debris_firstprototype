@@ -16,6 +16,9 @@ public class CheckMark : MonoBehaviour {
 	private LineRenderer lr;
 	private bool startUpdate;
 
+	//a stack to store all unseen indicator
+	private Stack<GameObject> indiStack=new Stack<GameObject>();
+
 	//static arrays to store rgb path cycle. The difference with above is it's not bidirection
 	private static bool[,] rgbPathArray = new bool[6, 6];
 	private static bool[,] redPathArray = new bool[6, 6];
@@ -154,6 +157,7 @@ public class CheckMark : MonoBehaviour {
 					string existObj = "pathAnim" + num1.ToString () + num2.ToString ();
 					if (GameObject.Find (existObj) != null) {
 						GameObject.Find (existObj).GetComponent<LineRenderer> ().enabled = false;
+						setIndicatorUnseen (num1, num2);
 					}
 				}
                 path.GetComponent<CheckMark>().rectAnimation (num1, num2);
@@ -173,30 +177,16 @@ public class CheckMark : MonoBehaviour {
 				string dupObj = "newPathAnim" + num1.ToString () + num2.ToString ();
 				if (pathname == dupObj) {
 					string existObj = "pathAnim" + num1.ToString () + num2.ToString ();
-					if (GameObject.Find (existObj) != null)
+					if (GameObject.Find (existObj) != null) {
 						GameObject.Find (existObj).GetComponent<LineRenderer> ().enabled = false;
+						setIndicatorUnseen (num1, num2);
+					}
 				}
                 path.GetComponent<CheckMark>().rectAnimation(num1, num2);
                 if (num2 == 1) {
-                    //if (gameControll.redTruck)
-                    //{
-                    //    redCycleCount++;
-                    //}else if(gameControll.blueTruck){
-                    //    blueCycleCount++;
-                    //}else if (gameControll.greenTruck)
-                    //{
-                    //    greenCycleCount++;
-                    //}
 
-                    //so to design a data stucture here, I can create a few arraylists or linkedlist? to track storeTruck, Path,
-                    //every time I delete one,I only move the UI by translate them, and then count the number of total of them to determine
-                    //the order of them.
                     StartCoroutine(waitToDestroy1());
-                    //for (int j = 0; j < Node.nodeArray.Length - 1; j++)
-                    //{
-                    //    addIndicator(Node.nodeArray[j], Node.nodeArray[j + 1], gameControll.redTruck, gameControll.greenTruck, gameControll.blueTruck);
-                    //}
-                    //StartCoroutine(waitToDestroy());
+
                 }
 			}
 		}
@@ -215,6 +205,7 @@ public class CheckMark : MonoBehaviour {
         {
             addIndicator(Node.nodeArray[j], Node.nodeArray[j + 1], gameControll.redTruck, gameControll.greenTruck, gameControll.blueTruck);
         }
+		setIndicatorSeen (indiStack);
         nextStep = true;
         StartCoroutine(waitToDestroy());
     }
@@ -576,6 +567,12 @@ public class CheckMark : MonoBehaviour {
             indicator.AddComponent<RectTransform>();
             indicator.transform.SetParent(GameObject.Find("gamePanel").transform, false);
             indicator.AddComponent<Image>();
+			indicator.AddComponent<BoxCollider2D> ();
+			indicator.GetComponent<BoxCollider2D> ().enabled = true;
+			indicator.GetComponent<BoxCollider2D> ().size = new Vector2 (100, 100);
+//			indicator.AddComponent<int[]> ();
+//			indicator.GetComponent<int[]> () = Node.nodeArray;
+			indicator.AddComponent<indicatorFunction> ();
             if (pn == 1)
             {
                 indicator.GetComponent<Image>().sprite = Resources.Load<Sprite>("Image/indicatorB") as Sprite;
@@ -601,4 +598,51 @@ public class CheckMark : MonoBehaviour {
         }
 
     }
+
+	private void setIndicatorUnseen(int num1,int num2){
+		string indicatorR1 = "redIndicator1" + num1.ToString () + num2.ToString ();
+		string indicatorR2 = "redIndicator2" + num1.ToString () + num2.ToString ();
+		string indicatorG1 = "greenIndicator1" + num1.ToString () + num2.ToString ();
+		string indicatorG2 = "greenIndicator2" + num1.ToString () + num2.ToString ();
+		string indicatorB1 = "blueIndicator1" + num1.ToString () + num2.ToString ();
+		string indicatorB2 = "blueIndicator2" + num1.ToString () + num2.ToString ();
+		if (GameObject.Find (indicatorR1) != null) {
+			GameObject obj = GameObject.Find (indicatorR1);
+			obj.GetComponent<Image> ().color = new Vector4 (0, 0, 0, 0);
+			indiStack.Push (obj);
+		}
+		if (GameObject.Find (indicatorR2) != null) {
+			GameObject obj = GameObject.Find (indicatorR2);
+			obj.GetComponent<Image> ().color=new Vector4 (0, 0, 0, 0);
+			indiStack.Push (obj);
+		}
+		if (GameObject.Find (indicatorG1) != null) {
+			GameObject obj = GameObject.Find (indicatorG1);
+			obj.GetComponent<Image> ().color=new Vector4 (0, 0, 0, 0);
+			indiStack.Push (obj);
+		}
+		if (GameObject.Find (indicatorG2) != null) {
+			GameObject obj = GameObject.Find (indicatorG2);
+			obj.GetComponent<Image> ().color=new Vector4 (0, 0, 0, 0);
+			indiStack.Push (obj);
+		}
+		if (GameObject.Find (indicatorB1) != null) {
+			GameObject obj = GameObject.Find (indicatorB1);
+			obj.GetComponent<Image> ().color=new Vector4 (0, 0, 0, 0);
+			indiStack.Push (obj);
+		}
+		if (GameObject.Find (indicatorB2) != null) {
+			GameObject obj = GameObject.Find (indicatorB2);
+			obj.GetComponent<Image> ().color=new Vector4 (0, 0, 0, 0);
+			indiStack.Push (obj);
+		}
+	}
+
+	private void setIndicatorSeen(Stack<GameObject> st){
+		while (st.Count != 0) {
+			Debug.Log (1111);
+			GameObject obj = st.Pop ();
+			obj.GetComponent<Image> ().color=new Vector4 (1, 1, 1, 1);
+		}
+	}
 }
