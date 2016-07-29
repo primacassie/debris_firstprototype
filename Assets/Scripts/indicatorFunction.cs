@@ -36,7 +36,7 @@ public class indicatorFunction : MonoBehaviour {
 				y += GameObject.Find (numStr).transform.position.y;
 			}
 		}
-		int i=0;
+		//int i=0;
 		int count=set.Count;
 		x = x / count;
 		y = y / count;

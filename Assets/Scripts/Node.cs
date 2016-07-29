@@ -71,6 +71,17 @@ public class Node : MonoBehaviour
 	public static int nodeCount;
 	public static int[] nodeArray;
 
+	//static arrays to store rgb path cycle. The difference with above is it's not bidirection
+	public static bool[,] rgbPathArray = new bool[6, 6];
+	public static bool[,] redPathArray = new bool[6, 6];
+	public static bool[,] greenPathArray = new bool[6, 6];
+	public static bool[,] bluePathArray = new bool[6, 6];
+
+	//create int array to store how many path in it
+	public static int[,] redPathNum = new int[6, 6];
+	public static int[,] greenPathNum = new int[6, 6];
+	public static int[,] bluePathNum = new int[6, 6];
+
 
     void Awake()
     {
@@ -196,18 +207,33 @@ public class Node : MonoBehaviour
                 storePath.Add(passNode2);
 
                 //this function used to create new game object to realize the line render.
-                if (!pathAlreadyExist(passNode1, passNode2, gameControll.redTruck, gameControll.greenTruck, gameControll.blueTruck))
-                {
-                    if (redLineArray[passNode1, passNode2] || greenLineArray[passNode1, passNode2] || blueLineArray[passNode1, passNode2])
-                    {
-                        createAndDestroyObjectForLineRender();
-						//createObjectForLineRender();
-                    }
-                    else
-                    {
-                        createObjectForLineRender();
-                    }
-                }
+//                if (!pathAlreadyExist(passNode1, passNode2, gameControll.redTruck, gameControll.greenTruck, gameControll.blueTruck))
+//                {
+//                    if (redLineArray[passNode1, passNode2] || greenLineArray[passNode1, passNode2] || blueLineArray[passNode1, passNode2])
+//                    {
+//                        createAndDestroyObjectForLineRender();
+//						//createObjectForLineRender();
+//                    }
+//                    else
+//                    {
+//                        createObjectForLineRender();
+//                    }
+//                }
+				string pathname = pathName (passNode1, passNode2, rgbPathArray);
+				setBoolArray (passNode1, passNode2, rgbPathArray);
+				GameObject path = new GameObject ();
+				path.name = pathname;
+				path.AddComponent<LineRenderer> ();
+				path.AddComponent<LineAnimation>();
+				string dupObj = "newPathAnim" + passNode1.ToString () + passNode2.ToString ();
+				if (pathname == dupObj) {
+					string existObj = "pathAnim" + passNode1.ToString () + passNode2.ToString ();
+					if (GameObject.Find (existObj) != null) {
+						GameObject.Find (existObj).GetComponent<LineRenderer> ().enabled = false;
+						//setIndicatorUnseen (num1, num2);
+					}
+				}
+				path.GetComponent<LineAnimation>().rectAnimation (passNode1, passNode2);
 
 
                 //here is the second version of UI design
@@ -256,17 +282,33 @@ public class Node : MonoBehaviour
 
 
                 //this function used to create new game object to realize the line render.
-                if (!pathAlreadyExist(passNode1, passNode2,gameControll.redTruck,gameControll.greenTruck,gameControll.blueTruck))
-                {
-                    if(redLineArray[passNode1,passNode2] || greenLineArray[passNode1, passNode2] || blueLineArray[passNode1, passNode2])
-                    {
-                        createAndDestroyObjectForLineRender();
-						//createObjectForLineRender();
-                    }else
-                    {
-                        createObjectForLineRender();
-                    }
-                }
+//                if (!pathAlreadyExist(passNode1, passNode2,gameControll.redTruck,gameControll.greenTruck,gameControll.blueTruck))
+//                {
+//                    if(redLineArray[passNode1,passNode2] || greenLineArray[passNode1, passNode2] || blueLineArray[passNode1, passNode2])
+//                    {
+//                        createAndDestroyObjectForLineRender();
+//						//createObjectForLineRender();
+//                    }else
+//                    {
+//                        createObjectForLineRender();
+//                    }
+//                }
+
+				string pathname = pathName (passNode1, passNode2, rgbPathArray);
+				setBoolArray (passNode1, passNode2, rgbPathArray);
+				GameObject path = new GameObject ();
+				path.name = pathname;
+				path.AddComponent<LineRenderer> ();
+				path.AddComponent<LineAnimation>();
+				string dupObj = "newPathAnim" + passNode1.ToString () + passNode2.ToString ();
+				if (pathname == dupObj) {
+					string existObj = "pathAnim" + passNode1.ToString () + passNode2.ToString ();
+					if (GameObject.Find (existObj) != null) {
+						GameObject.Find (existObj).GetComponent<LineRenderer> ().enabled = false;
+						//setIndicatorUnseen (num1, num2);
+					}
+				}
+				path.GetComponent<LineAnimation>().rectAnimation (passNode1, passNode2);
 
                 storePath.Add(passNode2);
 
@@ -672,42 +714,73 @@ public class Node : MonoBehaviour
         }
     }
 
-    private void createObjectForLineRender()
-    {
-        GameObject pathAnimation = new GameObject();
-        pathAnimation.AddComponent<RectTransform>();
-		pathAnimation.GetComponent<RectTransform>().Translate(new Vector3(0,0,10f));
-        pathAnimation.name = "pathAnimation" + passNode1.ToString() + passNode2.ToString();
-        pathAnimation.AddComponent<LineRenderer>();
-        pathAnimation.AddComponent<LineAnimation>();
-        pathAnimation.GetComponent<LineAnimation>().rectAnimation(passNode1, passNode2);
-        setLineArray(passNode1, passNode2);
-    }
+//    private void createObjectForLineRender()
+//    {
+//        GameObject pathAnimation = new GameObject();
+//        pathAnimation.AddComponent<RectTransform>();
+//		pathAnimation.GetComponent<RectTransform>().Translate(new Vector3(0,0,10f));
+//        pathAnimation.name = "pathAnimation" + passNode1.ToString() + passNode2.ToString();
+//        pathAnimation.AddComponent<LineRenderer>();
+//        pathAnimation.AddComponent<LineAnimation>();
+//        pathAnimation.GetComponent<LineAnimation>().rectAnimation(passNode1, passNode2);
+//        setLineArray(passNode1, passNode2);
+//    }
+//
+//
+//    private void createAndDestroyObjectForLineRender()
+//    {
+//        GameObject newPathAnimation = new GameObject();
+//        GameObject pathAnimation = new GameObject();
+//        newPathAnimation.AddComponent<RectTransform>();
+//        newPathAnimation.name = "newPathAnimation" + passNode1.ToString() + passNode2.ToString();
+//        newPathAnimation.AddComponent<LineRenderer>();
+//        newPathAnimation.AddComponent<LineAnimation>();
+//		//newPathAnimation.GetComponent<LineRenderer> ().useWorldSpace = false;
+//		newPathAnimation.GetComponent<RectTransform>().Translate(new Vector3(0,0,-5f));
+//        newPathAnimation.GetComponent<LineAnimation>().rectAnimation(passNode1, passNode2);
+//        string name1 = "pathAnimation" + passNode1.ToString() + passNode2.ToString();
+//        string name2 = "pathAnimation" + passNode2.ToString() + passNode1.ToString();
+//        if (GameObject.Find(name1) != null)
+//        {
+//            pathAnimation = GameObject.Find(name1);
+//        }else
+//        {
+//            pathAnimation = GameObject.Find(name2);
+//        }
+//		pathAnimation.GetComponent<LineRenderer> ().enabled = false;
+//        StartCoroutine(waitAnim(newPathAnimation,pathAnimation));
+//    }
 
+	private void setBoolArray(int num1,int num2,bool[,] rgb){
+		rgb [num1, num2] = true;
+		if (gameControll.redTruck)
+		{
+			redPathArray[num1, num2] = true;
+			redPathNum[num1, num2]++;
+		}
 
-    private void createAndDestroyObjectForLineRender()
-    {
-        GameObject newPathAnimation = new GameObject();
-        GameObject pathAnimation = new GameObject();
-        newPathAnimation.AddComponent<RectTransform>();
-        newPathAnimation.name = "newPathAnimation" + passNode1.ToString() + passNode2.ToString();
-        newPathAnimation.AddComponent<LineRenderer>();
-        newPathAnimation.AddComponent<LineAnimation>();
-		//newPathAnimation.GetComponent<LineRenderer> ().useWorldSpace = false;
-		newPathAnimation.GetComponent<RectTransform>().Translate(new Vector3(0,0,-5f));
-        newPathAnimation.GetComponent<LineAnimation>().rectAnimation(passNode1, passNode2);
-        string name1 = "pathAnimation" + passNode1.ToString() + passNode2.ToString();
-        string name2 = "pathAnimation" + passNode2.ToString() + passNode1.ToString();
-        if (GameObject.Find(name1) != null)
-        {
-            pathAnimation = GameObject.Find(name1);
-        }else
-        {
-            pathAnimation = GameObject.Find(name2);
-        }
-		pathAnimation.GetComponent<LineRenderer> ().enabled = false;
-        StartCoroutine(waitAnim(newPathAnimation,pathAnimation));
-    }
+		if (gameControll.greenTruck)
+		{
+			greenPathArray[num1, num2] = true;
+			greenPathNum[num1, num2]++;
+		}
+
+		if (gameControll.blueTruck)
+		{
+			bluePathArray [num1, num2] = true;
+			bluePathNum[num1, num2]++;
+		}
+	}
+
+	private string pathName(int num1,int num2,bool[,] rgb){
+		string name="";
+		if (rgb[num1, num2]) {
+			name = "newPathAnim" + num1.ToString () + num2.ToString ();
+		} else {
+			name= "pathAnim"+num1.ToString()+num2.ToString();
+		}
+		return name;
+	}
 
     //use this function to make the function inside wait few seconds.
     IEnumerator waitAnim(GameObject obj1,GameObject obj2)
@@ -839,18 +912,19 @@ public class Node : MonoBehaviour
     {
         if (gameControll.redTruck)
         {
-            Node.redLineArray[num1, num2] = true;
-            Node.redLineArray[num2, num1] = true;
+            redLineArray[num1, num2] = true;
+            redLineArray[num2, num1] = true;
         }
         if (gameControll.blueTruck)
         {
-            Node.blueLineArray[num1, num2] = true;
-            Node.blueLineArray[num2, num1] = true;
+            blueLineArray[num1, num2] = true;
+            blueLineArray[num2, num1] = true;
         }
         if (gameControll.greenTruck)
         {
-            Node.greenLineArray[num2, num1] = true;
-            Node.greenLineArray[num1, num2] = true;
+            greenLineArray[num2, num1] = true;
+            greenLineArray[num1, num2] = true;
         }
     }
+		
 }
