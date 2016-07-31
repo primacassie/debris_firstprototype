@@ -90,6 +90,9 @@ public class gameControll : MonoBehaviour
 
     //public static StreamWriter output = new StreamWriter(@"/Users/ericgo/Desktop/HOOutput.txt");
 
+	//store all possible path of node;
+	public static bool[,] nodePath;
+
     void Awake()
     {
         //		GameObject inputTab=GameObject.Find("InputTab");
@@ -155,6 +158,16 @@ public class gameControll : MonoBehaviour
             carCap = aRedTruck.capacity;
             GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(redTruckNum);
             redTruckNum++;
+			Node.storePath = new List<int>();
+			Node.storePath.Add(1);
+			twoNode.Enqueue (1);
+			foreach (int[] arr in pathStore) {
+				if (arr [0] == 1) {
+					string temp = "node" + arr [1];
+					Behaviour halo=(Behaviour)GameObject.Find (temp).GetComponent ("Halo");
+					halo.enabled = true;
+				}
+			}
         }
     }
 
@@ -171,6 +184,16 @@ public class gameControll : MonoBehaviour
             carCap = aBlueTruck.capacity;
             GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(blueTruckNum);
             blueTruckNum++;
+			Node.storePath = new List<int>();
+			Node.storePath.Add(1);
+			twoNode.Enqueue (1);
+			foreach (int[] arr in pathStore) {
+				if (arr [0] == 1) {
+					string temp = "node" + arr [1];
+					Behaviour halo=(Behaviour)GameObject.Find (temp).GetComponent ("Halo");
+					halo.enabled = true;
+				}
+			}
         }
     }
 
@@ -187,6 +210,16 @@ public class gameControll : MonoBehaviour
             carCap = aGreenTruck.capacity;
             GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(greenTruckNum);
             greenTruckNum++;
+			Node.storePath = new List<int>();
+			Node.storePath.Add(1);
+			twoNode.Enqueue (1);
+			foreach (int[] arr in pathStore) {
+				if (arr [0] == 1) {
+					string temp = "node" + arr [1];
+					Behaviour halo=(Behaviour)GameObject.Find (temp).GetComponent ("Halo");
+					halo.enabled = true;
+				}
+			}
         }
     }
 
@@ -240,6 +273,7 @@ public class gameControll : MonoBehaviour
         }
         return false;
     }
+		
 
     public static void inputIsRight(int cap)
     {
@@ -336,6 +370,7 @@ public class gameControll : MonoBehaviour
             timeArray[arr1, arr2] = time;
             timeArray[arr2, arr1] = time;
         }
+		nodePath = connArray;
     }
 
     public static void saveToFile(string save)

@@ -4,9 +4,7 @@ using System.Collections;
 public class depotAnimation : MonoBehaviour {
 
 	Animator anim;
-	private bool blueA;
-	private bool greenA;
-	private bool redA;
+
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<Animator> ();

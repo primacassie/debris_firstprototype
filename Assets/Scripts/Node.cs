@@ -55,7 +55,7 @@ public class Node : MonoBehaviour
     public static List<List<int>> blueAl;
     public static List<List<int>> greenAl;
 
-    private static List<int> storePath;
+    public static List<int> storePath;
 
     //static arrays store rgb line renders
     public static bool[,] redLineArray = new bool[6, 6];
@@ -153,38 +153,8 @@ public class Node : MonoBehaviour
         Queue<int> t = gameControll.twoNode;
         int size = t.Count;
 
-        if (size == 0)
-        {
-            if (num != 1 && (gameControll.redTruck || gameControll.blueTruck || gameControll.greenTruck))
-            {
-                Debug.Log("Please click depot firstly to start!");
-                //call modal control here
-                //GameObject.Find ("ModalControl").GetComponent<testWindow> ().takeAction ("Please select depot as the start!");
 
-            }
-            else if (num == 1 && !(gameControll.redTruck || gameControll.blueTruck || gameControll.greenTruck))
-            {
-                Debug.Log("please select a truck!");
-
-                //call modal control here
-                //GameObject.Find ("ModalControl").GetComponent<testWindow> ().takeAction ("Please select a truck!");
-
-            }
-            else if ((gameControll.redTruck || gameControll.blueTruck || gameControll.greenTruck) && num == 1)
-            {
-                storePath = new List<int>();
-                storePath.Add(1);
-                gameControll.twoNode.Enqueue(num);
-                Debug.Log("let's start!");
-
-                //gameControll.saveToFile ("start from depot!");
-
-                //try to make a fade text here
-                //displayManager = DisplayManager.Instance ();
-                //displayManager.DisplayMessage ("Start!!!");
-            }
-        }
-        else if (size == 1)
+        if (size == 1)
         {
             int firstOfSize1 = t.Peek();
             if (gameControll.validPath(firstOfSize1, num))
@@ -202,6 +172,24 @@ public class Node : MonoBehaviour
                 //here get the capacity of the path
                 passNode1 = firstOfSize1;
                 passNode2 = num;
+				foreach (int i in validPathAnimation(passNode1)) {
+					string temp = "node" + i;
+					if (i == 1) {
+						temp = "depot";
+					}
+					Behaviour halo = (Behaviour) GameObject.Find (temp).GetComponent ("Halo");
+					halo.enabled = false;
+				}
+
+				foreach (int i in validPathAnimation(passNode2)) {
+					string temp = "node" + i;
+					if (i == 1) {
+						temp = "depot";
+					}
+					Behaviour halo = (Behaviour) GameObject.Find (temp).GetComponent ("Halo");
+					halo.enabled = true;
+				}
+				clickChangeAnimation (passNode1, passNode2);
 
                 //add node number to store the path
                 storePath.Add(passNode2);
@@ -279,6 +267,7 @@ public class Node : MonoBehaviour
 
                 //change node color here
                 clickChangeColor();
+				clickChangeAnimation (passNode1, passNode2);
 
 
                 //this function used to create new game object to realize the line render.
@@ -293,6 +282,25 @@ public class Node : MonoBehaviour
 //                        createObjectForLineRender();
 //                    }
 //                }
+
+				foreach (int i in validPathAnimation(passNode1)) {
+					string temp = "node" + i;
+					if (i == 1) {
+						temp = "depot";
+					}
+					Behaviour halo = (Behaviour) GameObject.Find (temp).GetComponent ("Halo");
+					halo.enabled = false;
+				}
+				if (passNode2 != 1) {
+					foreach (int i in validPathAnimation(passNode2)) {
+						string temp = "node" + i;
+						if (i == 1) {
+							temp = "depot";
+						}
+						Behaviour halo = (Behaviour) GameObject.Find (temp).GetComponent ("Halo");
+						halo.enabled = true;
+					}
+				}
 
 				string pathname = pathName (passNode1, passNode2, rgbPathArray);
 				setBoolArray (passNode1, passNode2, rgbPathArray);
@@ -714,6 +722,26 @@ public class Node : MonoBehaviour
         }
     }
 
+	private void clickChangeAnimation(int num1,int num2){
+		string animName1 = "node" + passNode1.ToString ();
+		string animName2 = "node" + passNode2.ToString ();
+		if(passNode1==1){
+			animName1 = "depot";
+		}
+		if(passNode2==1){
+			animName2 = "depot";
+		}
+		GameObject.Find (animName1).GetComponent<Animator> ().enabled = false;
+		if (gameControll.redTruck) {
+			GameObject.Find (animName2).GetComponent<Node> ();
+		}
+		if (gameControll.greenTruck) {
+			GameObject.Find (animName2).GetComponent<Node> ();
+		}
+		if (gameControll.blueTruck) {
+			GameObject.Find (animName2).GetComponent<Node> ();
+		}
+	}
 //    private void createObjectForLineRender()
 //    {
 //        GameObject pathAnimation = new GameObject();
@@ -926,5 +954,14 @@ public class Node : MonoBehaviour
             greenLineArray[num1, num2] = true;
         }
     }
+
+
+	private IEnumerable<int> validPathAnimation(int num1){
+		for (int i = 0; i < gameControll.nodePath.GetLength (1); i++) {
+			if (gameControll.nodePath [num1, i]) {
+				yield return i;
+			}
+		}
+	}
 		
 }
