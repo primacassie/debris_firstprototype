@@ -73,11 +73,13 @@
     <Compile Include="Assets\Scripts\Graph.cs" />
     <Compile Include="Assets\Scripts\LineAnimation.cs" />
     <Compile Include="Assets\Scripts\Node.cs" />
+    <Compile Include="Assets\Scripts\NodeAnimation.cs" />
     <Compile Include="Assets\Scripts\cameraMovement.cs" />
     <Compile Include="Assets\Scripts\depot.cs" />
     <Compile Include="Assets\Scripts\depotAnimation.cs" />
     <Compile Include="Assets\Scripts\dragCamera.cs" />
     <Compile Include="Assets\Scripts\gameControll.cs" />
+    <Compile Include="Assets\Scripts\indicatorFunction.cs" />
     <Compile Include="Assets\Scripts\inputControl.cs" />
     <Compile Include="Assets\Scripts\panelController.cs" />
     <Compile Include="Assets\Scripts\pathCap.cs" />

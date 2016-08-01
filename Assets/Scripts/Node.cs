@@ -83,6 +83,9 @@ public class Node : MonoBehaviour
 	public static int[,] bluePathNum = new int[6, 6];
 
 
+    //store the color of every node
+    private static Dictionary<string, string> nodeDic = new Dictionary<string, string>();
+
     void Awake()
     {
         capPath = GameObject.FindGameObjectsWithTag("cap");
@@ -166,12 +169,12 @@ public class Node : MonoBehaviour
                 //gameControll.saveToFile (processtoSave);
                 //Debug.Log (size2lastNode);
 
-                //change the image of node here
-                clickChangeColor();
-
                 //here get the capacity of the path
                 passNode1 = firstOfSize1;
                 passNode2 = num;
+                //change the image of node here
+                clickChangeColor();
+
 				foreach (int i in validPathAnimation(passNode1)) {
 					string temp = "node" + i;
 					if (i == 1) {
@@ -189,6 +192,12 @@ public class Node : MonoBehaviour
 					Behaviour halo = (Behaviour) GameObject.Find (temp).GetComponent ("Halo");
 					halo.enabled = true;
 				}
+
+                if (passNode1 == 1)
+                {
+                    GameObject.Find("GameController").GetComponent<gameControll>().resetDepot();
+                }
+
 				clickChangeAnimation (passNode1, passNode2);
 
                 //add node number to store the path
@@ -291,6 +300,7 @@ public class Node : MonoBehaviour
 					Behaviour halo = (Behaviour) GameObject.Find (temp).GetComponent ("Halo");
 					halo.enabled = false;
 				}
+
 				if (passNode2 != 1) {
 					foreach (int i in validPathAnimation(passNode2)) {
 						string temp = "node" + i;
@@ -301,7 +311,7 @@ public class Node : MonoBehaviour
 						halo.enabled = true;
 					}
 				}
-
+           
 				string pathname = pathName (passNode1, passNode2, rgbPathArray);
 				setBoolArray (passNode1, passNode2, rgbPathArray);
 				GameObject path = new GameObject ();
@@ -356,7 +366,8 @@ public class Node : MonoBehaviour
     public static void nodeBackToDepot()
 	{
 		if (Node.passNode2 == 1) {
-			backToDepot = true;
+            GameObject.Find("GameController").GetComponent<gameControll>().resetDepot();
+            backToDepot = true;
 			setConfirmPathButton (storePath);
 		}
 	}
@@ -620,6 +631,17 @@ public class Node : MonoBehaviour
     {
         string pathToNode = "Node/" + toWhich;
         this.gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>(pathToNode) as Sprite;
+        string dicName = "node" + passNode2.ToString();
+        Debug.Log("this is dicName " + dicName);
+        if (nodeDic.ContainsKey(dicName))
+        {
+            nodeDic.Remove(dicName);
+            nodeDic.Add(dicName, pathToNode);
+        }
+        else
+        {
+            nodeDic.Add(dicName, pathToNode);
+        }
     }
 
     private void clickChangeColor()
@@ -728,18 +750,27 @@ public class Node : MonoBehaviour
 		if(passNode1==1){
 			animName1 = "depot";
 		}
-		if(passNode2==1){
-			animName2 = "depot";
-		}
-		GameObject.Find (animName1).GetComponent<Animator> ().enabled = false;
-		if (gameControll.redTruck) {
-			GameObject.Find (animName2).GetComponent<Node> ();
+        GameObject.Find(animName1).GetComponent<Animator>().enabled = false;
+        if (nodeDic.ContainsKey(animName1))
+        {
+            //Debug.Log("in contains "+animName1);
+            string toWhich = nodeDic[animName1];
+            string pathToNode = toWhich;
+            //GameObject.Find(animName1).GetComponent<Animator>().enabled = false;
+            GameObject.Find(animName1).GetComponent<Image>().sprite = Resources.Load<Sprite>(pathToNode) as Sprite;
+        }
+        if (passNode2==1){
+            GameObject.Find(animName1).GetComponent<Animator>().enabled = false;
+            return;
+        }
+        if (gameControll.redTruck) {
+            GameObject.Find(animName2).GetComponent<NodeAnimation>().redAnimation();
 		}
 		if (gameControll.greenTruck) {
-			GameObject.Find (animName2).GetComponent<Node> ();
+            GameObject.Find(animName2).GetComponent<NodeAnimation>().greenAnimation();
 		}
 		if (gameControll.blueTruck) {
-			GameObject.Find (animName2).GetComponent<Node> ();
+            GameObject.Find(animName2).GetComponent<NodeAnimation>().blueAnimation();
 		}
 	}
 //    private void createObjectForLineRender()
