@@ -104,7 +104,6 @@ public class gameControll : MonoBehaviour
             obj.GetComponentInChildren<Slider>().enabled = false;
             obj.GetComponentInChildren<Slider>().GetComponent<RectTransform>().localScale = new Vector2(0, 0);
         }
-
         //Change Foreground to the layer you want it to display on 
         //You could prob. make a public variable for this
         //particleSystem.renderer.sortingLayerName = "Foreground";
@@ -169,6 +168,33 @@ public class gameControll : MonoBehaviour
 				}
 			}
         }
+		if (greenTruck && (twoNode.Count==1) && twoNode.Peek()==1) {
+			Cursor.SetCursor(cursorTextureR, hotSpot, cursorMode);
+			greenTruckNum--;
+			string goName = "greenTruckImage" +greenTruckNum.ToString ();
+			string goText = "greenTruckText" + greenTruckNum.ToString ();
+			redTruck = true;
+			greenTruck = false;
+			Destroy (GameObject.Find (goName));
+			Destroy (GameObject.Find (goText));
+			GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(redTruckNum);
+			redTruckNum++;
+			GameObject.Find("depot").GetComponent<depotAnimation>().redAnimation();
+		}
+
+		if (blueTruck && (twoNode.Count==1) && twoNode.Peek()==1) {
+			Cursor.SetCursor(cursorTextureR, hotSpot, cursorMode);
+			blueTruckNum--;
+			string goName = "blueTruckImage" +blueTruckNum.ToString ();
+			string goText = "blueTruckText" + blueTruckNum.ToString ();
+			redTruck = true;
+			blueTruck = false;
+			Destroy (GameObject.Find (goName));
+			Destroy (GameObject.Find (goText));
+			GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(redTruckNum);
+			redTruckNum++;
+			GameObject.Find("depot").GetComponent<depotAnimation>().redAnimation();
+		}
     }
 
     public void changeBlue()
@@ -195,6 +221,34 @@ public class gameControll : MonoBehaviour
 				}
 			}
         }
+
+		if (greenTruck && (twoNode.Count==1) && twoNode.Peek()==1) {
+			Cursor.SetCursor(cursorTextureB, hotSpot, cursorMode);
+			greenTruckNum--;
+			string goName = "greenTruckImage" +greenTruckNum.ToString ();
+			string goText = "greenTruckText" + greenTruckNum.ToString ();
+			blueTruck = true;
+			greenTruck = false;
+			Destroy (GameObject.Find (goName));
+			Destroy (GameObject.Find (goText));
+			GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(blueTruckNum);
+			blueTruckNum++;
+			GameObject.Find("depot").GetComponent<depotAnimation>().blueAnimation();
+		}
+
+		if (redTruck && (twoNode.Count==1) && twoNode.Peek()==1) {
+			Cursor.SetCursor(cursorTextureB, hotSpot, cursorMode);
+			redTruckNum--;
+			string goName = "redTruckImage" +redTruckNum.ToString ();
+			string goText = "redTruckText" + redTruckNum.ToString ();
+			Destroy (GameObject.Find (goName));
+			Destroy (GameObject.Find (goText));
+			blueTruck = true;
+			redTruck = false;
+			GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(blueTruckNum);
+			blueTruckNum++;
+			GameObject.Find("depot").GetComponent<depotAnimation>().blueAnimation();
+		}
     }
 
     public void changeGreen()
@@ -221,6 +275,33 @@ public class gameControll : MonoBehaviour
 				}
 			}
         }
+
+		if (blueTruck && (twoNode.Count==1) && twoNode.Peek()==1) {
+			Cursor.SetCursor(cursorTextureG, hotSpot, cursorMode);
+			blueTruckNum--;
+			string goName = "blueTruckImage" +blueTruckNum.ToString ();
+			string goText = "blueTruckText" + blueTruckNum.ToString ();
+			Destroy (GameObject.Find (goName));
+			Destroy (GameObject.Find (goText));
+			greenTruck = true;
+			blueTruck = false;
+			GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(greenTruckNum);
+			greenTruckNum++;
+			GameObject.Find("depot").GetComponent<depotAnimation>().greenAnimation();
+		}
+		if (redTruck && (twoNode.Count==1) && twoNode.Peek()==1) {
+			Cursor.SetCursor(cursorTextureG, hotSpot, cursorMode);
+			redTruckNum--;
+			string goName = "redTruckImage" +redTruckNum.ToString ();
+			string goText = "redTruckText" + redTruckNum.ToString ();
+			Destroy (GameObject.Find (goName));
+			Destroy (GameObject.Find (goText));
+			greenTruck = true;
+			redTruck = false;
+			GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(greenTruckNum);
+			greenTruckNum++;
+			GameObject.Find("depot").GetComponent<depotAnimation>().greenAnimation();
+		}
     }
 
     public void resetCursor()

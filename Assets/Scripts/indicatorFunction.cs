@@ -4,24 +4,27 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class indicatorFunction : MonoBehaviour {
+	private int[] indictorPath;
+
+	void Start(){
+		indictorPath = Node.nodeArray;
+	}
 
 
 	void OnMouseDown(){
 		if (!gameControll.redTruck && !gameControll.greenTruck && !gameControll.blueTruck) {
-			int[] nodeArr = this.gameObject.GetComponent<int[]> ();
-			setCancelPathButton (nodeArr);
-			for (int i = 0; i < nodeArr.Length-1; i++) {
-				int num1 = nodeArr [i];
-				int num2 = nodeArr [i + 1];
+			setCancelPathButton (indictorPath);
+			for (int i = 0; i < indictorPath.Length-1; i++) {
+				int num1 = indictorPath [i];
+				int num2 = indictorPath [i + 1];
 				string name= "pathAnim"+num1.ToString()+num2.ToString();
-				GameObject obj = GameObject.Find (name);
-				obj.GetComponent<RectTransform> ().sizeDelta = new Vector2 (0.3f, 0.3f);
+//				GameObject obj = GameObject.Find (name);
+//				obj.GetComponent<RectTransform> ().sizeDelta = new Vector2 (0.3f, 0.3f);
 			}
-
 		}
 	}
 
-	private static void setCancelPathButton(int[] nodeArr)
+	public static void setCancelPathButton(int[] nodeArr)
 	{
 		float x = 0.0f;
 		float y = 0.0f;
@@ -49,7 +52,7 @@ public class indicatorFunction : MonoBehaviour {
 		Transform parentTransform = GameObject.Find ("gamePanel").GetComponent<Transform> ();
 		cancelMark.transform.SetParent (parentTransform);
 		cancelMark.transform.position = new Vector3 (x, y, z);
-		cancelMark.transform.localScale = new Vector3 (0.5f, 0.5f, 1f);
+		cancelMark.transform.localScale = new Vector3 (0.3f, 0.3f, 1f);
 		BoxCollider2D collider = cancelMark.AddComponent<BoxCollider2D> ();
 		collider.enabled = true;
 		collider.size = new Vector2 (100, 100);

@@ -120,7 +120,4 @@ public class LineAnimation : MonoBehaviour
             lr.SetPosition(1, pointAlongline);
         }
     }
-
-
-
 }

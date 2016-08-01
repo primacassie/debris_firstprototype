@@ -11,6 +11,9 @@ public class storeTruck : MonoBehaviour {
 
 	public void addTruck(int num){
 		GameObject addGO = new GameObject ();
+		addGO.AddComponent<StoreTruckClick> ();
+		addGO.AddComponent<BoxCollider2D> ();
+		addGO.GetComponent<BoxCollider2D> ().size = new Vector2 (60, 40);
 		GameObject addGOtext = new GameObject ();
 		//add transform to two objects
 		addGO.AddComponent<RectTransform> ();
