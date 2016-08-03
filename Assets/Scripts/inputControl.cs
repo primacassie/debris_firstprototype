@@ -50,7 +50,7 @@ public class inputControl : MonoBehaviour {
 
 					//reset most of the things to the beginning here
 					gameControll.twoNode.Clear ();
-					GameObject.Find ("GameController").GetComponent<gameControll> ().resetCursor ();
+//					GameObject.Find ("GameController").GetComponent<gameControll> ().resetCursor ();
 					GameObject.Find ("GameController").GetComponent<gameControll> ().resetDepot ();
 					int i=0;
 					panelController.blueTextOnce.text=i.ToString();

@@ -25,17 +25,17 @@ public class gameControll : MonoBehaviour
     public static int greenTruckNum;
 
     //cursor texture
-    public Texture2D cursorTextureR;
-    public Texture2D cursorTextureG;
-    public Texture2D cursorTextureB;
-    public Texture2D cursorTextureO;
-    public Texture2D cursorTextureScrollerR;
-    public Texture2D cursorTextureScrollerG;
-    public Texture2D cursorTextureScrollerB;
-    [HideInInspector]
-    public CursorMode cursorMode = CursorMode.Auto;
-    [HideInInspector]
-    public Vector2 hotSpot = Vector2.zero;
+//    public Texture2D cursorTextureR;
+//    public Texture2D cursorTextureG;
+//    public Texture2D cursorTextureB;
+//    public Texture2D cursorTextureO;
+//    public Texture2D cursorTextureScrollerR;
+//    public Texture2D cursorTextureScrollerG;
+//    public Texture2D cursorTextureScrollerB;
+//    [HideInInspector]
+//    public CursorMode cursorMode = CursorMode.Auto;
+//    [HideInInspector]
+//    public Vector2 hotSpot = Vector2.zero;
 
     //total debris of each kind of color
     [HideInInspector]
@@ -98,7 +98,8 @@ public class gameControll : MonoBehaviour
         //		GameObject inputTab=GameObject.Find("InputTab");
         //		myGameObject = inputTab;
         //		inputTab.SetActive (false);
-        Cursor.SetCursor(cursorTextureO, hotSpot, cursorMode);
+
+        //Cursor.SetCursor(cursorTextureO, hotSpot, cursorMode);
         foreach (GameObject obj in GameObject.FindGameObjectsWithTag("cap"))
         {
             obj.GetComponentInChildren<Slider>().enabled = false;
@@ -148,7 +149,7 @@ public class gameControll : MonoBehaviour
     {
 		if (!(redTruck || blueTruck || greenTruck) && !StoreTruckClick.hasCancelMark)
         {
-            Cursor.SetCursor(cursorTextureR, hotSpot, cursorMode);
+            //Cursor.SetCursor(cursorTextureR, hotSpot, cursorMode);
             //depot.sprite = Resources.Load<Sprite> ("Image/cursorR") as Sprite;
             redTruck = true;
             GameObject.Find("depot").GetComponent<depotAnimation>().redAnimation();
@@ -158,6 +159,7 @@ public class gameControll : MonoBehaviour
             GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(redTruckNum);
             redTruckNum++;
 			Node.storePath = new List<int>();
+			Node.storeTruckCap=new List<int>();
 			Node.storePath.Add(1);
 			twoNode.Enqueue (1);
 			foreach (int[] arr in pathStore) {
@@ -169,7 +171,7 @@ public class gameControll : MonoBehaviour
 			}
         }
 		if (greenTruck && (twoNode.Count==1) && twoNode.Peek()==1) {
-			Cursor.SetCursor(cursorTextureR, hotSpot, cursorMode);
+			//Cursor.SetCursor(cursorTextureR, hotSpot, cursorMode);
 			greenTruckNum--;
 			string goName = "greenTruckImage" +greenTruckNum.ToString ();
 			string goText = "greenTruckText" + greenTruckNum.ToString ();
@@ -183,7 +185,7 @@ public class gameControll : MonoBehaviour
 		}
 
 		if (blueTruck && (twoNode.Count==1) && twoNode.Peek()==1) {
-			Cursor.SetCursor(cursorTextureR, hotSpot, cursorMode);
+			//Cursor.SetCursor(cursorTextureR, hotSpot, cursorMode);
 			blueTruckNum--;
 			string goName = "blueTruckImage" +blueTruckNum.ToString ();
 			string goText = "blueTruckText" + blueTruckNum.ToString ();
@@ -201,7 +203,7 @@ public class gameControll : MonoBehaviour
     {
 		if (!(redTruck || blueTruck || greenTruck) && !StoreTruckClick.hasCancelMark)
         {
-            Cursor.SetCursor(cursorTextureB, hotSpot, cursorMode);
+            //Cursor.SetCursor(cursorTextureB, hotSpot, cursorMode);
             //depot.sprite = Resources.Load<Sprite> ("Image/cursorB") as Sprite;
             blueTruck = true;
             GameObject.Find("depot").GetComponent<depotAnimation>().blueAnimation();
@@ -212,6 +214,7 @@ public class gameControll : MonoBehaviour
             blueTruckNum++;
 			Node.storePath = new List<int>();
 			Node.storePath.Add(1);
+			Node.storeTruckCap=new List<int>();
 			twoNode.Enqueue (1);
 			foreach (int[] arr in pathStore) {
 				if (arr [0] == 1) {
@@ -223,7 +226,7 @@ public class gameControll : MonoBehaviour
         }
 
 		if (greenTruck && (twoNode.Count==1) && twoNode.Peek()==1) {
-			Cursor.SetCursor(cursorTextureB, hotSpot, cursorMode);
+			//Cursor.SetCursor(cursorTextureB, hotSpot, cursorMode);
 			greenTruckNum--;
 			string goName = "greenTruckImage" +greenTruckNum.ToString ();
 			string goText = "greenTruckText" + greenTruckNum.ToString ();
@@ -237,7 +240,7 @@ public class gameControll : MonoBehaviour
 		}
 
 		if (redTruck && (twoNode.Count==1) && twoNode.Peek()==1) {
-			Cursor.SetCursor(cursorTextureB, hotSpot, cursorMode);
+			//Cursor.SetCursor(cursorTextureB, hotSpot, cursorMode);
 			redTruckNum--;
 			string goName = "redTruckImage" +redTruckNum.ToString ();
 			string goText = "redTruckText" + redTruckNum.ToString ();
@@ -255,7 +258,7 @@ public class gameControll : MonoBehaviour
     {
 		if (!(redTruck || blueTruck || greenTruck)&& !StoreTruckClick.hasCancelMark)
         {
-            Cursor.SetCursor(cursorTextureG, hotSpot, cursorMode);
+            //Cursor.SetCursor(cursorTextureG, hotSpot, cursorMode);
             //depot.sprite = Resources.Load<Sprite> ("Image/cursorG") as Sprite;
             greenTruck = true;
             GameObject.Find("depot").GetComponent<depotAnimation>().greenAnimation();
@@ -266,6 +269,7 @@ public class gameControll : MonoBehaviour
             greenTruckNum++;
 			Node.storePath = new List<int>();
 			Node.storePath.Add(1);
+			Node.storeTruckCap=new List<int>();
 			twoNode.Enqueue (1);
 			foreach (int[] arr in pathStore) {
 				if (arr [0] == 1) {
@@ -277,7 +281,7 @@ public class gameControll : MonoBehaviour
         }
 
 		if (blueTruck && (twoNode.Count==1) && twoNode.Peek()==1) {
-			Cursor.SetCursor(cursorTextureG, hotSpot, cursorMode);
+			//Cursor.SetCursor(cursorTextureG, hotSpot, cursorMode);
 			blueTruckNum--;
 			string goName = "blueTruckImage" +blueTruckNum.ToString ();
 			string goText = "blueTruckText" + blueTruckNum.ToString ();
@@ -290,7 +294,7 @@ public class gameControll : MonoBehaviour
 			GameObject.Find("depot").GetComponent<depotAnimation>().greenAnimation();
 		}
 		if (redTruck && (twoNode.Count==1) && twoNode.Peek()==1) {
-			Cursor.SetCursor(cursorTextureG, hotSpot, cursorMode);
+			//Cursor.SetCursor(cursorTextureG, hotSpot, cursorMode);
 			redTruckNum--;
 			string goName = "redTruckImage" +redTruckNum.ToString ();
 			string goText = "redTruckText" + redTruckNum.ToString ();
@@ -304,25 +308,25 @@ public class gameControll : MonoBehaviour
 		}
     }
 
-    public void resetCursor()
-    {
-        Cursor.SetCursor(cursorTextureO, Vector2.zero, cursorMode);
-    }
-
-    public void changeScrollerR()
-    {
-        Cursor.SetCursor(cursorTextureScrollerR, hotSpot, cursorMode);
-    }
-
-    public void changeScrollerG()
-    {
-        Cursor.SetCursor(cursorTextureScrollerG, hotSpot, cursorMode);
-    }
-
-    public void changeScrollerB()
-    {
-        Cursor.SetCursor(cursorTextureScrollerB, hotSpot, cursorMode);
-    }
+//    public void resetCursor()
+//    {
+//        Cursor.SetCursor(cursorTextureO, Vector2.zero, cursorMode);
+//    }
+//
+//    public void changeScrollerR()
+//    {
+//        Cursor.SetCursor(cursorTextureScrollerR, hotSpot, cursorMode);
+//    }
+//
+//    public void changeScrollerG()
+//    {
+//        Cursor.SetCursor(cursorTextureScrollerG, hotSpot, cursorMode);
+//    }
+//
+//    public void changeScrollerB()
+//    {
+//        Cursor.SetCursor(cursorTextureScrollerB, hotSpot, cursorMode);
+//    }
 
     public void resetDepot()
     {

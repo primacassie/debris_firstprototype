@@ -7,22 +7,78 @@ public class cancelMark : MonoBehaviour {
 		indicatorFunction.hasCancelMark = false;
 		StoreTruckClick.hasCancelMark = false;
 		int[] arr = StoreTruckClick.arrayForChosenPath.ToArray();
+		int[] arr1 = StoreTruckClick.arrayForTruckCap.ToArray ();
+		//Debug.Log ("test time" + StoreTruckClick.numForTime);
 		if (StoreTruckClick.red) {
-			Node.redAl.Remove (StoreTruckClick.arrayForChosenPath);
+			//Node.redAl.Remove (StoreTruckClick.arrayForChosenPath);
+			Node.redAl.RemoveAt (StoreTruckClick.theTruckNum);
+			StoreTruckClick.arrayForChosenPath.Clear ();
+			//Node.redTruckCap.Remove (StoreTruckClick.arrayForTruckCap);
+			Node.redTruckCap.RemoveAt(StoreTruckClick.theTruckNum);
+			StoreTruckClick.arrayForTruckCap.Clear ();
+			Node.redProfitAl.Remove (StoreTruckClick.numForProfit);
+			Node.redTimeAl.Remove (StoreTruckClick.numForTime);
+			gameControll.redProfitTotal -= StoreTruckClick.numForProfit;
+			Debug.Log ("redtime" + gameControll.redTimeTotal);
+			gameControll.redTimeTotal -= StoreTruckClick.numForTime;
+			Debug.Log ("redtime" + gameControll.redTimeTotal);
+			panelController.redText.text = gameControll.redProfitTotal.ToString();
+			panelController.redTime.text = gameControll.redTimeTotal.ToString();
 		} else if (StoreTruckClick.green) {
-			Node.greenAl.Remove (StoreTruckClick.arrayForChosenPath);
+			Node.greenAl.RemoveAt (StoreTruckClick.theTruckNum);
+			StoreTruckClick.arrayForChosenPath.Clear ();
+			Node.greenTruckCap.RemoveAt (StoreTruckClick.theTruckNum);
+			StoreTruckClick.arrayForTruckCap.Clear ();
+			Node.greenProfitAl.Remove (StoreTruckClick.numForProfit);
+			Node.greenTimeAl.Remove (StoreTruckClick.numForTime);
+			gameControll.greenProfitTotal -= StoreTruckClick.numForProfit;
+			Debug.Log ("greentime" + gameControll.greenTimeTotal);
+			gameControll.greenTimeTotal -= StoreTruckClick.numForTime;
+			Debug.Log ("greentime" + gameControll.greenTimeTotal);
+			panelController.greenText.text = gameControll.greenProfitTotal.ToString();
+			panelController.greenTime.text = gameControll.greenTimeTotal.ToString();
 		} else if (StoreTruckClick.blue) {
-			Node.blueAl.Remove (StoreTruckClick.arrayForChosenPath);
+			Node.blueAl.RemoveAt (StoreTruckClick.theTruckNum);
+			StoreTruckClick.arrayForChosenPath.Clear ();
+			Node.blueTruckCap.RemoveAt (StoreTruckClick.theTruckNum);
+			StoreTruckClick.arrayForTruckCap.Clear ();
+			Node.blueProfitAl.Remove (StoreTruckClick.numForProfit);
+			Node.blueTimeAl.Remove (StoreTruckClick.numForTime);
+			gameControll.blueProfitTotal -= StoreTruckClick.numForProfit;
+			Debug.Log ("bluetime" + gameControll.blueTimeTotal);
+			gameControll.blueTimeTotal -= StoreTruckClick.numForTime;
+			Debug.Log ("bluetime" + gameControll.blueTimeTotal);
+			panelController.blueText.text = gameControll.blueProfitTotal.ToString();
+			panelController.blueTime.text = gameControll.blueTimeTotal.ToString();
 		}
 		for (int j = 0; j < arr.Length-1; j++) {
 			int num1 = arr [j];
 			int num2 = arr [j + 1];
+			gameControll.capArray [num1, num2] += arr1 [j];
+			gameControll.capArray [num2, num1] += arr1 [j];
+			string capTruck1 = "capPath" + num1.ToString () + num2.ToString ();
+			string capTruck2 = "capPath" + num2.ToString () + num1.ToString ();
+			if (GameObject.Find (capTruck1) != null) {
+				GameObject.Find (capTruck1).GetComponentInChildren<Text> ().text = gameControll.capArray [num1, num2].ToString ();
+			}else if (GameObject.Find (capTruck2) != null) {
+				GameObject.Find (capTruck2).GetComponentInChildren<Text> ().text = gameControll.capArray [num1, num2].ToString ();
+			}
 			string pathString = "pathAnim" + num1.ToString () + num2.ToString ();
 			GameObject obj = GameObject.Find (pathString);
 			//					obj.GetComponent<LineRenderer> ().material = Resources.Load<Material> ("Materials/greenAnim") as Material;
 			//					obj.GetComponent<LineRenderer> ().SetWidth (0.25f, 0.25f);
 			//string materialName=StoreTruckClick.materialQueue.Dequeue();
 			obj.GetComponent<LineRenderer> ().SetWidth (0.15f, 0.15f);
+			string truckText1 = "truckCap" + num1.ToString () + num2.ToString ();
+			string truckText2 = "truckCap" + num2.ToString() + num1.ToString ();
+			GameObject truckCap = new GameObject ();
+			if (GameObject.Find (truckText1) != null) {
+				truckCap = GameObject.Find (truckText1);
+			} else if (GameObject.Find (truckText2) != null) {
+				truckCap = GameObject.Find (truckText2);
+			}
+			Text t = truckCap.GetComponent<Text> ();
+			t.enabled = false;
 			removeIndicatorAndPath (num1, num2, StoreTruckClick.red, StoreTruckClick.green, StoreTruckClick.blue);
 		}
 		if (StoreTruckClick.red) {
@@ -92,7 +148,7 @@ public class cancelMark : MonoBehaviour {
 
 		if (r) {
 			Node.redPathNum [num1, num2]--;
-			Debug.Log ("redNum"+Node.redPathNum [num1, num2]);
+			//Debug.Log ("redNum"+Node.redPathNum [num1, num2]);
 			int redNum = Node.redPathNum [num1, num2];
 			int greenNum = Node.greenPathNum [num1, num2];
 			int blueNum = Node.bluePathNum [num1, num2];
@@ -159,7 +215,7 @@ public class cancelMark : MonoBehaviour {
 
 		if (g) {
 			Node.greenPathNum [num1, num2]--;
-			Debug.Log ("greenNum"+Node.greenPathNum [num1, num2]);
+			//Debug.Log ("greenNum"+Node.greenPathNum [num1, num2]);
 			int redNum = Node.redPathNum [num1, num2];
 			int greenNum = Node.greenPathNum [num1, num2];
 			int blueNum = Node.bluePathNum [num1, num2];

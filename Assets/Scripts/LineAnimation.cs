@@ -87,6 +87,21 @@ public class LineAnimation : MonoBehaviour
 		if (GameObject.Find (existObj) != null) {
 			lr = GameObject.Find (existObj).GetComponent<LineRenderer> ();
 			lr.enabled = true;
+			if (Node.redPathArray[num1, num2] && !Node.greenPathArray[num1, num2] && !Node.bluePathArray[num1, num2])
+			{
+				lr.material = Resources.Load<Material>("Materials/redAnim") as Material;
+			}
+
+			if (!Node.redPathArray[num1, num2] && Node.greenPathArray[num1, num2] && !Node.bluePathArray[num1, num2])
+			{
+				lr.material = Resources.Load<Material>("Materials/greenAnim") as Material;
+			}
+
+			if (!Node.redPathArray[num1, num2] && !Node.greenPathArray[num1, num2] && Node.bluePathArray[num1, num2])
+			{
+				lr.material = Resources.Load<Material>("Materials/blueAnim") as Material;
+			}
+
 			if (Node.redPathArray[num1, num2] && !Node.greenPathArray[num1, num2] && Node.bluePathArray[num1, num2])
 			{
 				lr.material = Resources.Load<Material>("Materials/GradientRB") as Material;

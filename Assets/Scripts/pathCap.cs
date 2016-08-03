@@ -6,13 +6,13 @@ public class pathCap : MonoBehaviour {
 	public int[] node = new int[2];
 
 
-//	[HideInInspector]public Texture2D cursorScroller = GameObject.Find ("GameController").GetComponent<gameControll> ().cursorTextureScroller;
+	//[HideInInspector]public Texture2D cursorScroller = GameObject.Find ("GameController").GetComponent<gameControll> ().cursorTextureScroller;
 //	[HideInInspector]public Texture2D cursorR = GameObject.Find ("GameController").GetComponent<gameControll> ().cursorTextureR;
 //	[HideInInspector]public Texture2D cursorB = GameObject.Find ("GameController").GetComponent<gameControll> ().cursorTextureB;
 //	[HideInInspector]public Texture2D cursorG = GameObject.Find ("GameController").GetComponent<gameControll> ().cursorTextureG;
 //	[HideInInspector]public Texture2D cursorO = GameObject.Find ("GameController").GetComponent<gameControll> ().cursorTextureO;
-	[HideInInspector]public CursorMode cursorMode = CursorMode.Auto;
-	[HideInInspector]public Vector2 hotSpot = Vector2.zero;
+//	[HideInInspector]public CursorMode cursorMode = CursorMode.Auto;
+//	[HideInInspector]public Vector2 hotSpot = Vector2.zero;
 	[HideInInspector]private bool mouseIn = false;
 	[HideInInspector]public static GameObject rightObj;
 
@@ -63,17 +63,18 @@ public class pathCap : MonoBehaviour {
 		findObject();
 		if (Input.GetMouseButton (0) && !onlyFirst && (mouseIn||onExitHold) &&this.gameObject.Equals(rightObj)) {
 			//Debug.Log ("111");
-			if (gameControll.redTruck) {
-				GameObject.Find ("GameController").GetComponent<gameControll> ().changeScrollerR ();
-			}
 
-			if (gameControll.blueTruck) {
-				GameObject.Find ("GameController").GetComponent<gameControll> ().changeScrollerB ();
-			}
-
-			if (gameControll.greenTruck) {
-				GameObject.Find ("GameController").GetComponent<gameControll> ().changeScrollerG ();
-			}
+//			if (gameControll.redTruck) {
+//				GameObject.Find ("GameController").GetComponent<gameControll> ().changeScrollerR ();
+//			}
+//
+//			if (gameControll.blueTruck) {
+//				GameObject.Find ("GameController").GetComponent<gameControll> ().changeScrollerB ();
+//			}
+//
+//			if (gameControll.greenTruck) {
+//				GameObject.Find ("GameController").GetComponent<gameControll> ().changeScrollerG ();
+//			}
 
 			//GameObject.Find ("GameController").GetComponent<gameControll> ().changeScroller ();
 			Vector2 mouse =Input.mousePosition;
@@ -88,17 +89,18 @@ public class pathCap : MonoBehaviour {
 			
 		
 		if (Input.GetMouseButton (0) && (mouseIn||onExitHold) &&this.gameObject.Equals(rightObj)) {
-			if (gameControll.redTruck) {
-				GameObject.Find ("GameController").GetComponent<gameControll> ().changeScrollerR ();
-			}
-
-			if (gameControll.blueTruck) {
-				GameObject.Find ("GameController").GetComponent<gameControll> ().changeScrollerB ();
-			}
-
-			if (gameControll.greenTruck) {
-				GameObject.Find ("GameController").GetComponent<gameControll> ().changeScrollerG ();
-			}
+			
+//			if (gameControll.redTruck) {
+//				GameObject.Find ("GameController").GetComponent<gameControll> ().changeScrollerR ();
+//			}
+//
+//			if (gameControll.blueTruck) {
+//				GameObject.Find ("GameController").GetComponent<gameControll> ().changeScrollerB ();
+//			}
+//
+//			if (gameControll.greenTruck) {
+//				GameObject.Find ("GameController").GetComponent<gameControll> ().changeScrollerG ();
+//			}
 			int temp = int.Parse (changeCap.text);
 			Vector2 mouseNow = Input.mousePosition;
 			int mouseY = (int) mouseNow.y;
@@ -122,19 +124,21 @@ public class pathCap : MonoBehaviour {
 
 		//while mouse is not holding and already exit
 		if (!Input.GetMouseButton (0) && (!mouseIn)) {
-			if (gameControll.redTruck && !mouseIn) {
-				Texture2D cursorR = GameObject.Find ("GameController").GetComponent<gameControll> ().cursorTextureR;
-				Cursor.SetCursor (cursorR, hotSpot, cursorMode);
-			} else if (gameControll.blueTruck && !mouseIn) {
-				Texture2D cursorB = GameObject.Find ("GameController").GetComponent<gameControll> ().cursorTextureB;
-				Cursor.SetCursor (cursorB, hotSpot, cursorMode);
-			} else if (gameControll.greenTruck  && !mouseIn) {
-				Texture2D cursorG = GameObject.Find ("GameController").GetComponent<gameControll> ().cursorTextureG;
-				Cursor.SetCursor (cursorG, hotSpot, cursorMode);
-			} else {
-				Texture2D cursorO = GameObject.Find ("GameController").GetComponent<gameControll> ().cursorTextureO;
-				Cursor.SetCursor (cursorO, hotSpot, cursorMode);
-			}
+			
+//			if (gameControll.redTruck && !mouseIn) {
+//				Texture2D cursorR = GameObject.Find ("GameController").GetComponent<gameControll> ().cursorTextureR;
+//				Cursor.SetCursor (cursorR, hotSpot, cursorMode);
+//			} else if (gameControll.blueTruck && !mouseIn) {
+//				Texture2D cursorB = GameObject.Find ("GameController").GetComponent<gameControll> ().cursorTextureB;
+//				Cursor.SetCursor (cursorB, hotSpot, cursorMode);
+//			} else if (gameControll.greenTruck  && !mouseIn) {
+//				Texture2D cursorG = GameObject.Find ("GameController").GetComponent<gameControll> ().cursorTextureG;
+//				Cursor.SetCursor (cursorG, hotSpot, cursorMode);
+//			} else {
+//				Texture2D cursorO = GameObject.Find ("GameController").GetComponent<gameControll> ().cursorTextureO;
+//				Cursor.SetCursor (cursorO, hotSpot, cursorMode);
+//			}
+
 			onExitHold = false;
 		}
 	}

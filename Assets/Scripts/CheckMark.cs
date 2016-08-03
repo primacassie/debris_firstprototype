@@ -97,6 +97,19 @@ public class CheckMark : MonoBehaviour {
 
 	void OnMouseDown(){
 		pathCap.desableSlider();
+//		Node.laterCap = gameControll.capArray [Node.passNode1, Node.passNode2];
+//		int cap = Node.laterCap - Node.originCap;
+//		Node.storeTruckCap.Add (cap);
+//		if (gameControll.redTruck) {
+//			Node.redTruckCap.Add (Node.storeTruckCap);
+//			Debug.Log ("count number is"+Node.storeTruckCap.Count);
+//		}
+//		if (gameControll.blueTruck) {
+//			Node.blueTruckCap.Add (Node.storeTruckCap);
+//		}
+//		if (gameControll.greenTruck) {
+//			Node.greenTruckCap.Add (Node.storeTruckCap);
+//		}
 		this.gameObject.GetComponent<Image>().color = new Vector4(0, 0, 0, 0);
 		StartCoroutine (waitToDestroy ());
 	}
@@ -378,10 +391,10 @@ public class CheckMark : MonoBehaviour {
 			indicator.AddComponent<RectTransform>();
 			indicator.transform.SetParent(GameObject.Find("gamePanel").transform, false);
 			indicator.AddComponent<Image>();
-			indicator.AddComponent<BoxCollider2D> ();
-			indicator.GetComponent<BoxCollider2D> ().enabled = true;
-			indicator.GetComponent<BoxCollider2D> ().size = new Vector2 (100, 100);
-			indicator.AddComponent<indicatorFunction> ();
+			//indicator.AddComponent<BoxCollider2D> ();
+			//indicator.GetComponent<BoxCollider2D> ().enabled = true;
+			//indicator.GetComponent<BoxCollider2D> ().size = new Vector2 (100, 100);
+			//indicator.AddComponent<indicatorFunction> ();
 
 			if (pn == 1)
 			{
@@ -484,11 +497,11 @@ public class CheckMark : MonoBehaviour {
 			indicator.AddComponent<RectTransform>();
 			indicator.transform.SetParent(GameObject.Find("gamePanel").transform, false);
 			indicator.AddComponent<Image>();
-			indicator.AddComponent<BoxCollider2D> ();
-			indicator.GetComponent<BoxCollider2D> ().enabled = true;
-			indicator.GetComponent<BoxCollider2D> ().size = new Vector2 (100, 100);
-			indicator.AddComponent<indicatorFunction> ();
-
+//			indicator.AddComponent<BoxCollider2D> ();
+//			indicator.GetComponent<BoxCollider2D> ().enabled = true;
+//			indicator.GetComponent<BoxCollider2D> ().size = new Vector2 (100, 100);
+//			indicator.AddComponent<indicatorFunction> ();
+//
 			if (pn == 1)
 			{
 				indicator.GetComponent<Image>().sprite = Resources.Load<Sprite>("Image/indicatorG") as Sprite;
@@ -592,10 +605,10 @@ public class CheckMark : MonoBehaviour {
 			indicator.AddComponent<RectTransform>();
 			indicator.transform.SetParent(GameObject.Find("gamePanel").transform, false);
 			indicator.AddComponent<Image>();
-			indicator.AddComponent<BoxCollider2D> ();
-			indicator.GetComponent<BoxCollider2D> ().enabled = true;
-			indicator.GetComponent<BoxCollider2D> ().size = new Vector2 (100, 100);
-			indicator.AddComponent<indicatorFunction> ();
+//			indicator.AddComponent<BoxCollider2D> ();
+//			indicator.GetComponent<BoxCollider2D> ().enabled = true;
+//			indicator.GetComponent<BoxCollider2D> ().size = new Vector2 (100, 100);
+//			indicator.AddComponent<indicatorFunction> ();
 			if (pn == 1)
 			{
 				indicator.GetComponent<Image>().sprite = Resources.Load<Sprite>("Image/indicatorB") as Sprite;
