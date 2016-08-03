@@ -305,9 +305,11 @@ public class CheckMark : MonoBehaviour {
 		if (red)
 		{
 			int rn = Node.redPathNum[num1, num2];
+			if (rn > 1)
+				return;
 			int pn=1;
 			Vector3 place = new Vector3();
-			if (Node.greenPathNum[num1, num2]== 0 && Node.bluePathNum[num1, num2] == 0)
+			if (Node.greenPathNum[num1, num2]== 0 && Node.bluePathNum[num1, num2] == 0 )
 			{
 				place = origin + new Vector3((float)pn / 3.0f * (destination.x - origin.x), (float)pn / 3.0f * (destination.y - origin.y), 0f);
 			}else if (Node.greenPathNum[num1, num2] != 0 && Node.bluePathNum[num1, num2] == 0)
@@ -315,38 +317,38 @@ public class CheckMark : MonoBehaviour {
 				place = origin + new Vector3((float)pn / 6.0f * (destination.x - origin.x), (float)pn / 6.0f * (destination.y - origin.y), 0f);
 				if (pn == 1)
 				{
-					int gNum = Node.greenPathNum[num1, num2];
+					//int gNum = Node.greenPathNum[num1, num2];
 					string indicator1 = "greenIndicator1" + num1.ToString() + num2.ToString();
 					GameObject.Find(indicator1).GetComponent<RectTransform>().position = origin +
 						new Vector3(1.0f / 6.0f * 4.0f * (destination.x - origin.x), 1.0f / 6.0f * 4.0f * (destination.y - origin.y), 0f);
-					if (gNum == 2)
-					{
-						string indicator2 = "greenIndicator2" + num1.ToString() + num2.ToString();
-						GameObject.Find(indicator2).GetComponent<RectTransform>().position = origin +
-							new Vector3(1.0f / 6.0f * 5.0f * (destination.x - origin.x), 1.0f / 6.0f * 5.0f * (destination.y - origin.y), 0f);
-					}
+//					if (gNum == 2)
+//					{
+//						string indicator2 = "greenIndicator2" + num1.ToString() + num2.ToString();
+//						GameObject.Find(indicator2).GetComponent<RectTransform>().position = origin +
+//							new Vector3(1.0f / 6.0f * 5.0f * (destination.x - origin.x), 1.0f / 6.0f * 5.0f * (destination.y - origin.y), 0f);
+//					}
 				}
 			}else if(Node.greenPathNum[num1, num2] == 0 && Node.bluePathNum[num1, num2] != 0)
 			{
 				place = origin + new Vector3((float)pn / 6.0f * (destination.x - origin.x), (float)pn / 6.0f * (destination.y - origin.y), 0f);
 				if (pn == 1)
 				{
-					int bNum = Node.bluePathNum[num1, num2];
+					//int bNum = Node.bluePathNum[num1, num2];
 					string indicator1 = "blueIndicator1" + num1.ToString() + num2.ToString();
 					GameObject.Find(indicator1).GetComponent<RectTransform>().position = origin +
 						new Vector3(1.0f / 6.0f * 4.0f * (destination.x - origin.x), 1.0f / 6.0f * 4.0f * (destination.y - origin.y), 0f);
-					if (bNum == 2)
-					{
-						string indicator2 = "blueIndicator2" + num1.ToString() + num2.ToString();
-						GameObject.Find(indicator2).GetComponent<RectTransform>().position = origin +
-							new Vector3(1.0f / 6.0f * 5.0f * (destination.x - origin.x), 1.0f / 6.0f * 5.0f * (destination.y - origin.y), 0f);
-					}
+//					if (bNum == 2)
+//					{
+//						string indicator2 = "blueIndicator2" + num1.ToString() + num2.ToString();
+//						GameObject.Find(indicator2).GetComponent<RectTransform>().position = origin +
+//							new Vector3(1.0f / 6.0f * 5.0f * (destination.x - origin.x), 1.0f / 6.0f * 5.0f * (destination.y - origin.y), 0f);
+//					}
 				}
 			}
 			else if (Node.greenPathNum[num1, num2] != 0 && Node.bluePathNum[num1, num2] != 0)
 			{
-				int bNum = Node.bluePathNum[num1, num2];
-				int gNum = Node.greenPathNum[num1, num2];
+				//int bNum = Node.bluePathNum[num1, num2];
+				//int gNum = Node.greenPathNum[num1, num2];
 				place = origin + new Vector3((float)pn / 9.0f * (destination.x - origin.x), (float)pn / 9.0f * (destination.y - origin.y), 0f);
 				if (pn == 1)
 				{
@@ -356,22 +358,21 @@ public class CheckMark : MonoBehaviour {
 					indicator1 = "blueIndicator1" + num1.ToString() + num2.ToString();
 					GameObject.Find(indicator1).GetComponent<RectTransform>().position = origin +
 						new Vector3(7.0f / 9.0f  * (destination.x - origin.x), 7.0f / 9.0f * (destination.y - origin.y), 0f);
-					if (gNum == 2)
-					{
-						string indicator2 = "greenIndicator2" + num1.ToString() + num2.ToString();
-						GameObject.Find(indicator2).GetComponent<RectTransform>().position = origin +
-							new Vector3(5.0f / 9.0f * (destination.x - origin.x), 5.0f/ 9.0f * (destination.y - origin.y), 0f);
-					}
-
-					if (bNum == 2)
-					{
-						string indicator2 = "blueIndicator2" + num1.ToString() + num2.ToString();
-						GameObject.Find(indicator2).GetComponent<RectTransform>().position = origin +
-							new Vector3(8.0f / 9.0f  * (destination.x - origin.x), 8.0f / 9.0f * (destination.y - origin.y), 0f);
-					}
+//					if (gNum == 2)
+//					{
+//						string indicator2 = "greenIndicator2" + num1.ToString() + num2.ToString();
+//						GameObject.Find(indicator2).GetComponent<RectTransform>().position = origin +
+//							new Vector3(5.0f / 9.0f * (destination.x - origin.x), 5.0f/ 9.0f * (destination.y - origin.y), 0f);
+//					}
+//
+//					if (bNum == 2)
+//					{
+//						string indicator2 = "blueIndicator2" + num1.ToString() + num2.ToString();
+//						GameObject.Find(indicator2).GetComponent<RectTransform>().position = origin +
+//							new Vector3(8.0f / 9.0f  * (destination.x - origin.x), 8.0f / 9.0f * (destination.y - origin.y), 0f);
+//					}
 				}
 			}
-
 			//add indicator here
 			GameObject indicator = new GameObject();
 			indicator.AddComponent<RectTransform>();
@@ -408,6 +409,8 @@ public class CheckMark : MonoBehaviour {
 		if (green)
 		{
 			int gn = Node.greenPathNum[num1, num2];
+			if (gn > 1)
+				return;
 			int pn=1;
 			Vector3 place = new Vector3();
 			if (Node.redPathNum[num1, num2] == 0 && Node.bluePathNum[num1, num2] == 0)
@@ -419,16 +422,16 @@ public class CheckMark : MonoBehaviour {
 				place = origin + new Vector3(((float)pn + 3.0f) / 6.0f * (destination.x - origin.x), ((float)pn + 3.0f) / 6.0f * (destination.y - origin.y), 0f);
 				if (pn == 1)
 				{
-					int rNum = Node.redPathNum[num1, num2];
+					//int rNum = Node.redPathNum[num1, num2];
 					string indicator1 = "redIndicator1" + num1.ToString() + num2.ToString();
 					GameObject.Find(indicator1).GetComponent<RectTransform>().position = origin +
 						new Vector3(1.0f / 6.0f * (destination.x - origin.x), 1.0f / 6.0f  * (destination.y - origin.y), 0f);
-					if (rNum == 2)
-					{
-						string indicator2 = "redIndicator2" + num1.ToString() + num2.ToString();
-						GameObject.Find(indicator2).GetComponent<RectTransform>().position = origin +
-							new Vector3(1.0f / 6.0f * 2.0f * (destination.x - origin.x), 1.0f / 6.0f * 2.0f * (destination.y - origin.y), 0f);
-					}
+//					if (rNum == 2)
+//					{
+//						string indicator2 = "redIndicator2" + num1.ToString() + num2.ToString();
+//						GameObject.Find(indicator2).GetComponent<RectTransform>().position = origin +
+//							new Vector3(1.0f / 6.0f * 2.0f * (destination.x - origin.x), 1.0f / 6.0f * 2.0f * (destination.y - origin.y), 0f);
+//					}
 				}
 			}
 			else if (Node.redPathNum[num1, num2] == 0 && Node.bluePathNum[num1, num2] != 0)
@@ -436,22 +439,22 @@ public class CheckMark : MonoBehaviour {
 				place = origin + new Vector3((float)pn / 6.0f * (destination.x - origin.x), (float)pn / 6.0f * (destination.y - origin.y), 0f);
 				if (pn == 1)
 				{
-					int bNum = Node.bluePathNum[num1, num2];
+					//int bNum = Node.bluePathNum[num1, num2];
 					string indicator1 = "blueIndicator1" + num1.ToString() + num2.ToString();
 					GameObject.Find(indicator1).GetComponent<RectTransform>().position = origin +
 						new Vector3(1.0f / 6.0f * 4.0f * (destination.x - origin.x), 1.0f / 6.0f * 4.0f * (destination.y - origin.y), 0f);
-					if (bNum == 2)
-					{
-						string indicator2 = "blueIndicator2" + num1.ToString() + num2.ToString();
-						GameObject.Find(indicator2).GetComponent<RectTransform>().position = origin +
-							new Vector3(1.0f / 6.0f * 5.0f * (destination.x - origin.x), 1.0f / 6.0f * 5.0f * (destination.y - origin.y), 0f);
-					}
+//					if (bNum == 2)
+//					{
+//						string indicator2 = "blueIndicator2" + num1.ToString() + num2.ToString();
+//						GameObject.Find(indicator2).GetComponent<RectTransform>().position = origin +
+//							new Vector3(1.0f / 6.0f * 5.0f * (destination.x - origin.x), 1.0f / 6.0f * 5.0f * (destination.y - origin.y), 0f);
+//					}
 				}
 			}
 			else if (Node.redPathNum[num1, num2] != 0 && Node.bluePathNum[num1, num2] != 0)
 			{
-				int bNum = Node.bluePathNum[num1, num2];
-				int rNum = Node.redPathNum[num1, num2];
+				//int bNum = Node.bluePathNum[num1, num2];
+				//int rNum = Node.redPathNum[num1, num2];
 				place = origin + new Vector3(((float)pn + 3.0f) / 9.0f * (destination.x - origin.x), ((float)pn + 3.0f) / 9.0f * (destination.y - origin.y), 0f);
 				if (pn == 1)
 				{
@@ -461,19 +464,19 @@ public class CheckMark : MonoBehaviour {
 					indicator1 = "blueIndicator1" + num1.ToString() + num2.ToString();
 					GameObject.Find(indicator1).GetComponent<RectTransform>().position = origin +
 						new Vector3(7.0f / 9.0f * (destination.x - origin.x), 7.0f / 9.0f * (destination.y - origin.y), 0f);
-					if (rNum == 2)
-					{
-						string indicator2 = "redIndicator2" + num1.ToString() + num2.ToString();
-						GameObject.Find(indicator2).GetComponent<RectTransform>().position = origin +
-							new Vector3(2.0f / 9.0f * (destination.x - origin.x), 2.0f / 9.0f * (destination.y - origin.y), 0f);
-					}
+//					if (rNum == 2)
+//					{
+//						string indicator2 = "redIndicator2" + num1.ToString() + num2.ToString();
+//						GameObject.Find(indicator2).GetComponent<RectTransform>().position = origin +
+//							new Vector3(2.0f / 9.0f * (destination.x - origin.x), 2.0f / 9.0f * (destination.y - origin.y), 0f);
+//					}
 
-					if (bNum == 2)
-					{
-						string indicator2 = "blueIndicator2" + num1.ToString() + num2.ToString();
-						GameObject.Find(indicator2).GetComponent<RectTransform>().position = origin +
-							new Vector3(8.0f / 9.0f * (destination.x - origin.x), 8.0f/9.0f * (destination.y - origin.y), 0f);
-					}
+//					if (bNum == 2)
+//					{
+//						string indicator2 = "blueIndicator2" + num1.ToString() + num2.ToString();
+//						GameObject.Find(indicator2).GetComponent<RectTransform>().position = origin +
+//							new Vector3(8.0f / 9.0f * (destination.x - origin.x), 8.0f/9.0f * (destination.y - origin.y), 0f);
+//					}
 				}
 			}
 			//add indicator here
@@ -513,6 +516,8 @@ public class CheckMark : MonoBehaviour {
 		if (blue)
 		{
 			int bn = Node.bluePathNum[num1, num2];
+			if (bn > 1)
+				return;
 			int pn=1;
 			Vector3 place = new Vector3();
 			if (Node.redPathNum[num1, num2] == 0 && Node.greenPathNum[num1, num2] == 0)
@@ -524,16 +529,16 @@ public class CheckMark : MonoBehaviour {
 				place = origin + new Vector3(((float)pn + 3.0f) / 6.0f * (destination.x - origin.x), ((float)pn + 3.0f) / 6.0f * (destination.y - origin.y), 0f);
 				if (pn == 1)
 				{
-					int rNum = Node.redPathNum[num1, num2];
+					//int rNum = Node.redPathNum[num1, num2];
 					string indicator1 = "redIndicator1" + num1.ToString() + num2.ToString();
 					GameObject.Find(indicator1).GetComponent<RectTransform>().position = origin +
 						new Vector3(1.0f / 6.0f * (destination.x - origin.x), 1.0f / 6.0f * (destination.y - origin.y), 0f);
-					if (rNum == 2)
-					{
-						string indicator2 = "redIndicator2" + num1.ToString() + num2.ToString();
-						GameObject.Find(indicator2).GetComponent<RectTransform>().position = origin +
-							new Vector3(1.0f / 6.0f * 2.0f * (destination.x - origin.x), 1.0f / 6.0f * 2.0f * (destination.y - origin.y), 0f);
-					}
+//					if (rNum == 2)
+//					{
+//						string indicator2 = "redIndicator2" + num1.ToString() + num2.ToString();
+//						GameObject.Find(indicator2).GetComponent<RectTransform>().position = origin +
+//							new Vector3(1.0f / 6.0f * 2.0f * (destination.x - origin.x), 1.0f / 6.0f * 2.0f * (destination.y - origin.y), 0f);
+//					}
 				}
 			}
 			else if (Node.redPathNum[num1, num2] == 0 && Node.greenPathNum[num1, num2] != 0)
@@ -541,22 +546,22 @@ public class CheckMark : MonoBehaviour {
 				place = origin + new Vector3(((float)pn + 3.0f) / 6.0f * (destination.x - origin.x), ((float)pn + 3.0f) / 6.0f * (destination.y - origin.y), 0f);
 				if (pn == 1)
 				{
-					int gNum = Node.greenPathNum[num1, num2];
+					//int gNum = Node.greenPathNum[num1, num2];
 					string indicator1 = "greenIndicator1" + num1.ToString() + num2.ToString();
 					GameObject.Find(indicator1).GetComponent<RectTransform>().position = origin +
 						new Vector3(1.0f / 6.0f * (destination.x - origin.x), 1.0f / 6.0f * (destination.y - origin.y), 0f);
-					if (gNum == 2)
-					{
-						string indicator2 = "greenIndicator2" + num1.ToString() + num2.ToString();
-						GameObject.Find(indicator2).GetComponent<RectTransform>().position = origin +
-							new Vector3(2.0f / 6.0f * (destination.x - origin.x), 2.0f / 6.0f * (destination.y - origin.y), 0f);
-					}
+//					if (gNum == 2)
+//					{
+//						string indicator2 = "greenIndicator2" + num1.ToString() + num2.ToString();
+//						GameObject.Find(indicator2).GetComponent<RectTransform>().position = origin +
+//							new Vector3(2.0f / 6.0f * (destination.x - origin.x), 2.0f / 6.0f * (destination.y - origin.y), 0f);
+//					}
 				}
 			}
 			else if (Node.redPathNum[num1, num2] != 0 && Node.greenPathNum[num1, num2] != 0)
 			{
-				int gNum = Node.greenPathNum[num1, num2];
-				int rNum = Node.redPathNum[num1, num2];
+				//int gNum = Node.greenPathNum[num1, num2];
+				//int rNum = Node.redPathNum[num1, num2];
 				place = origin + new Vector3(((float)pn + 6.0f) / 9.0f * (destination.x - origin.x), ((float)pn + 6.0f) / 9.0f * (destination.y - origin.y), 0f);
 				if (pn == 1)
 				{
@@ -566,19 +571,19 @@ public class CheckMark : MonoBehaviour {
 					indicator1 = "greenIndicator1" + num1.ToString() + num2.ToString();
 					GameObject.Find(indicator1).GetComponent<RectTransform>().position = origin +
 						new Vector3(4.0f / 9.0f * (destination.x - origin.x), 4.0f / 9.0f * (destination.y - origin.y), 0f);
-					if (rNum == 2)
-					{
-						string indicator2 = "redIndicator2" + num1.ToString() + num2.ToString();
-						GameObject.Find(indicator2).GetComponent<RectTransform>().position = origin +
-							new Vector3(2.0f / 9.0f * (destination.x - origin.x), 2.0f / 9.0f * (destination.y - origin.y), 0f);
-					}
-
-					if (gNum == 2)
-					{
-						string indicator2 = "greenIndicator2" + num1.ToString() + num2.ToString();
-						GameObject.Find(indicator2).GetComponent<RectTransform>().position = origin +
-							new Vector3(5.0f / 9.0f * (destination.x - origin.x), 5.0f / 9.0f * (destination.y - origin.y), 0f);
-					}
+//					if (rNum == 2)
+//					{
+//						string indicator2 = "redIndicator2" + num1.ToString() + num2.ToString();
+//						GameObject.Find(indicator2).GetComponent<RectTransform>().position = origin +
+//							new Vector3(2.0f / 9.0f * (destination.x - origin.x), 2.0f / 9.0f * (destination.y - origin.y), 0f);
+//					}
+//
+//					if (gNum == 2)
+//					{
+//						string indicator2 = "greenIndicator2" + num1.ToString() + num2.ToString();
+//						GameObject.Find(indicator2).GetComponent<RectTransform>().position = origin +
+//							new Vector3(5.0f / 9.0f * (destination.x - origin.x), 5.0f / 9.0f * (destination.y - origin.y), 0f);
+//					}
 				}
 			}
 

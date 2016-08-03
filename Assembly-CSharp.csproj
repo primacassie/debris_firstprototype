@@ -52,6 +52,7 @@
      <Compile Include="Assets\Scripts\NodeAnimation.cs" />
      <Compile Include="Assets\Scripts\StoreTruckClick.cs" />
      <Compile Include="Assets\Scripts\cameraMovement.cs" />
+     <Compile Include="Assets\Scripts\cancelMark.cs" />
      <Compile Include="Assets\Scripts\depot.cs" />
      <Compile Include="Assets\Scripts\depotAnimation.cs" />
      <Compile Include="Assets\Scripts\dragCamera.cs" />

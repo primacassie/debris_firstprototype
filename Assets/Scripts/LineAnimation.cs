@@ -72,7 +72,7 @@ public class LineAnimation : MonoBehaviour
         {
             lr.material = Resources.Load<Material>("Materials/blueAnim") as Material;
         }
-        dist = Vector3.Distance(origin, destination);
+		dist = Vector2.Distance(origin, destination); 
         startUpdate = true;
 		StartCoroutine (toGradientColor (num1, num2));
     }
@@ -114,7 +114,17 @@ public class LineAnimation : MonoBehaviour
     {
         if ((counter < dist) && startUpdate)
         {
-            counter += .1f / lineDrawSpeed;
+//			if (counter > (dist / 4 * 3)) {
+////				Debug.Log ("couter> " + counter);
+////				Debug.Log ("couter> " + dist);
+//				counter += .05f / lineDrawSpeed;
+//			}else if (counter <= (dist / 4 * 3)) {
+//				Debug.Log ("couter< " + counter);
+//				Debug.Log ("couter< " + dist);
+//				counter += .2f / lineDrawSpeed;
+//			}
+			counter += .2f / lineDrawSpeed;
+			//counter += .01f / lineDrawSpeed;
             float x = Mathf.Lerp(0, dist, counter);
             Vector3 pointAlongline = x * Vector3.Normalize(destination - origin) + origin;
             lr.SetPosition(1, pointAlongline);

@@ -146,7 +146,7 @@ public class gameControll : MonoBehaviour
     //change cursor and depot color
     public void changeRed()
     {
-        if (!(redTruck || blueTruck || greenTruck))
+		if (!(redTruck || blueTruck || greenTruck) && !StoreTruckClick.hasCancelMark)
         {
             Cursor.SetCursor(cursorTextureR, hotSpot, cursorMode);
             //depot.sprite = Resources.Load<Sprite> ("Image/cursorR") as Sprite;
@@ -199,7 +199,7 @@ public class gameControll : MonoBehaviour
 
     public void changeBlue()
     {
-        if (!(redTruck || blueTruck || greenTruck))
+		if (!(redTruck || blueTruck || greenTruck) && !StoreTruckClick.hasCancelMark)
         {
             Cursor.SetCursor(cursorTextureB, hotSpot, cursorMode);
             //depot.sprite = Resources.Load<Sprite> ("Image/cursorB") as Sprite;
@@ -253,7 +253,7 @@ public class gameControll : MonoBehaviour
 
     public void changeGreen()
     {
-        if (!(redTruck || blueTruck || greenTruck))
+		if (!(redTruck || blueTruck || greenTruck)&& !StoreTruckClick.hasCancelMark)
         {
             Cursor.SetCursor(cursorTextureG, hotSpot, cursorMode);
             //depot.sprite = Resources.Load<Sprite> ("Image/cursorG") as Sprite;

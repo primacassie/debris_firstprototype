@@ -9,7 +9,7 @@ public class Node : MonoBehaviour
 
     //static int variable control intersection;
     public static int intersection;
-    //private Text sIntersection;
+    private Text sIntersection;
 
     //private DisplayManager displayManager;
 
@@ -97,7 +97,7 @@ public class Node : MonoBehaviour
 		redAl   = new List<List<int>> ();
 		blueAl  = new List<List<int>> ();
 		greenAl = new List<List<int>> ();
-        //sIntersection = GameObject.Find ("intersection").GetComponent<Text> ();
+        sIntersection = GameObject.Find ("intersection").GetComponent<Text> ();
 		v1=getVector(GameObject.Find("depot").transform.position,GameObject.Find("node2").transform.position,GameObject.Find("node3").transform.position);
 		v2=getVector(GameObject.Find("depot").transform.position,GameObject.Find("node2").transform.position,GameObject.Find("node5").transform.position);
 		v3=getVector(GameObject.Find("depot").transform.position,GameObject.Find("node3").transform.position,GameObject.Find("node4").transform.position);      
@@ -632,7 +632,7 @@ public class Node : MonoBehaviour
         string pathToNode = "Node/" + toWhich;
         this.gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>(pathToNode) as Sprite;
         string dicName = "node" + passNode2.ToString();
-        Debug.Log("this is dicName " + dicName);
+        //Debug.Log("this is dicName " + dicName);
         if (nodeDic.ContainsKey(dicName))
         {
             nodeDic.Remove(dicName);
@@ -668,12 +668,16 @@ public class Node : MonoBehaviour
         {
             if (gameControll.blueTruck)
             {
+				intersection++;
+				sIntersection.text = intersection.ToString ();
                 changeNodeColor("RB");
                 blueN = true;
                 rbN = true;
             }
             else if (gameControll.greenTruck)
             {
+				intersection++;
+				sIntersection.text = intersection.ToString ();
                 changeNodeColor("RG");
                 greenN = true;
                 rgN = true;
@@ -683,12 +687,16 @@ public class Node : MonoBehaviour
         {
             if (gameControll.redTruck)
             {
+				intersection++;
+				sIntersection.text = intersection.ToString ();
                 changeNodeColor("RB");
                 redN = true;
                 rbN = true;
             }
             else if (gameControll.greenTruck)
             {
+				intersection++;
+				sIntersection.text = intersection.ToString ();
                 changeNodeColor("GB");
                 greenN = true;
                 gbN = true;
@@ -698,12 +706,16 @@ public class Node : MonoBehaviour
         {
             if (gameControll.redTruck)
             {
+				intersection++;
+				sIntersection.text = intersection.ToString ();
                 changeNodeColor("RG");
                 redN = true;
                 rgN = true;
             }
             else if (gameControll.blueTruck)
             {
+				intersection++;
+				sIntersection.text = intersection.ToString ();
                 changeNodeColor("GB");
                 blueN = true;
                 gbN = true;
@@ -992,6 +1004,75 @@ public class Node : MonoBehaviour
 			if (gameControll.nodePath [num1, i]) {
 				yield return i;
 			}
+		}
+	}
+
+	public bool RedN{
+		get{
+			return this.redN;
+		}
+
+		set{
+			this.redN = value;
+		}
+	}
+
+	public bool GreenN{
+		get{
+			return this.greenN;
+		}
+
+		set{
+			this.greenN = value;
+		}
+	}
+
+	public bool BlueN{
+		get{
+			return this.blueN;
+		}
+
+		set{
+			this.blueN = value;
+		}
+	}
+	public bool RBN{
+		get{
+			return this.rbN;
+		}
+
+		set{
+			this.rbN = value;
+		}
+	}
+
+	public bool RGN{
+		get{
+			return this.rgN;
+		}
+
+		set{
+			this.rgN = value;
+		}
+	}
+		
+	public bool GBN{
+		get{
+			return this.gbN;
+		}
+
+		set{
+			this.gbN = value;
+		}
+	}
+
+	public bool RGBN{
+		get{
+			return this.rgbN;
+		}
+
+		set{
+			this.rgbN = value;
 		}
 	}
 		
