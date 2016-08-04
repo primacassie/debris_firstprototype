@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class submitButton : MonoBehaviour {
 
@@ -78,6 +79,7 @@ public class submitButton : MonoBehaviour {
         {
             //Debug.Log("congratulations! you finish this game!");
             //GameObject.Find("ModalControl").GetComponent<testWindow>().takeAction("Congratulations! You finish this round!");
+			GetComponent<AudioSource>().Play();
             finalAnimation();
 			submitOnlyOnce = true;
 			Button[] button=GameObject.Find ("Buttons").GetComponentsInChildren<Button> ();
@@ -85,6 +87,7 @@ public class submitButton : MonoBehaviour {
 				b.interactable = false;
 			}
 			GameObject.Find ("storeTruck").SetActive (false);
+			StartCoroutine (wait());
         }
         else
         {
@@ -94,23 +97,35 @@ public class submitButton : MonoBehaviour {
         }
     }
 
+	IEnumerator wait(){
+		yield return new WaitForSeconds (5);
+		SceneManager.LoadScene ("end");
+	}
+
+//	IEnumerator waitCreate(){
+//		yield return new WaitForSeconds (1);
+//	}
+
     public void finalAnimation()
     {
         int r = 0;
         foreach(List<int> l in Node.redAl)
         {
-            GameObject go = new GameObject();
-            go.transform.SetParent(GameObject.Find("Canvas").transform);
+			GameObject go = new GameObject();
+			go.transform.SetParent(GameObject.Find("Canvas").transform);
 			go.transform.position=GameObject.Find("depot").transform.position;
 			go.transform.localScale = new Vector2 (0.2f, 0.2f);
-            go.AddComponent<Image>();
-            go.GetComponent<Image>().sprite = Resources.Load<Sprite>("Image/truck_R32") as Sprite;
-            go.AddComponent<submitAnim>();
-            //go.AddComponent<Transform>();
-            string truckName = "red" + r.ToString();
-            go.name = truckName;
-            animDic.Add(truckName, l);
-            r++;
+			go.AddComponent<Image>();
+			go.GetComponent<Image>().sprite = Resources.Load<Sprite>("Image/truck_R32") as Sprite;
+			go.AddComponent<submitAnim>();
+			//go.AddComponent<Transform>();
+			string truckName = "red" + r.ToString();
+			go.name = truckName;
+			animDic.Add(truckName, l);
+			r++;
+//			StartCoroutine (waitCreate());
+			//yield return new WaitForSeconds(1);
+            //r++;
         }
         //Debug.Log("r number "+r);
         int b = 0;
@@ -128,6 +143,7 @@ public class submitButton : MonoBehaviour {
             go.name = truckName;
             animDic.Add(truckName, l);
             b++;
+//			StartCoroutine (waitCreate());
         }
         int g = 0;
         foreach (List<int> l in Node.greenAl)
@@ -144,6 +160,7 @@ public class submitButton : MonoBehaviour {
             go.name = truckName;
             animDic.Add(truckName, l);
             g++;
+//			StartCoroutine (waitCreate());
         }
     }
 }

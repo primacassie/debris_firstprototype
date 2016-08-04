@@ -211,6 +211,7 @@ public class Node : MonoBehaviour
             int firstOfSize1 = t.Peek();
             if (gameControll.validPath(firstOfSize1, num))
             {
+				GetComponent<AudioSource> ().Play ();
                 gameControll.twoNode.Enqueue(num);
                 //Debug.Log("this is the node" + num);
                 size2lastNode = num;
@@ -314,6 +315,7 @@ public class Node : MonoBehaviour
         }
         else if (size == 2)
         {
+			GetComponent<AudioSource> ().Play ();
             //temp = gameControll.twoNode.Dequeue ();
             //Debug.Log ("remove" + temp);
             //Debug.Log(size2lastNode);
@@ -1053,6 +1055,10 @@ public class Node : MonoBehaviour
 		cm.sprite = Resources.Load<Sprite> ("Image/checkmark") as Sprite;
 		//cm.color = new Color (1, 0, 0);
 		checkMark.AddComponent<CheckMark> ();
+		checkMark.AddComponent<AudioSource> ();
+		checkMark.GetComponent<AudioSource> ().clip = Resources.Load<AudioClip> ("Audio/success1");
+		checkMark.GetComponent<AudioSource> ().volume = 0.8f;
+		checkMark.GetComponent<AudioSource> ().playOnAwake = false;
     }
 
     public void setLineArray(int num1,int num2)

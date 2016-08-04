@@ -1,14 +1,12 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Node.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/MenuToStart.cs">
     <Files>
-      <File FileName="Assets/Scripts/Node.cs" Line="133" Column="16" />
-      <File FileName="Assets/Scripts/cancelMark.cs" Line="7" Column="8" />
-      <File FileName="Assets/Scripts/StoreTruckClick.cs" Line="274" Column="13" />
-      <File FileName="Assets/Scripts/gameControll.cs" Line="311" Column="3" />
-      <File FileName="Assets/Scripts/panelController.cs" Line="27" Column="69" />
-      <File FileName="Assets/Scripts/pathCap.cs" Line="128" Column="3" />
-      <File FileName="Assets/Scripts/indicatorFunction.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/StoreTruckClick.cs" Line="320" Column="27" />
+      <File FileName="Assets/Scripts/Node.cs" Line="1060" Column="56" />
+      <File FileName="Assets/Scripts/gameControll.cs" Line="130" Column="23" />
+      <File FileName="Assets/Scripts/quitGame.cs" Line="10" Column="24" />
+      <File FileName="Assets/Scripts/MenuToStart.cs" Line="11" Column="54" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

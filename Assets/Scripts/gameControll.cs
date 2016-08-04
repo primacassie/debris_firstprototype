@@ -93,6 +93,9 @@ public class gameControll : MonoBehaviour
 	//store all possible path of node;
 	public static bool[,] nodePath;
 
+
+	//private int[,] tempArray = new int[6, 6];
+
     void Awake()
     {
         //		GameObject inputTab=GameObject.Find("InputTab");
@@ -115,12 +118,23 @@ public class gameControll : MonoBehaviour
     {
         initializeCapArray();  //the method is to initalize both capacity arrays one is boolean and the other is int array.
                                //loadInputField();  //load input field when a path is clicked.
-                               //anim=GetComponent<Animator>();
+		//tempArray=capArray;                      //anim=GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+			//GameObject.Find("ModalControl").GetComponent<testWindow>().takeAction("Do you want to quit the game?");
+			Application.Quit();
+//			if (Time.frameCount>100 &&Time.frameCount < 300) {
+//				if (Input.GetKeyDown (KeyCode.Escape)) {
+//					Debug.Log ("quit");
+//					Application.Quit ();
+//				}
+//			}
+		}
         if (Input.GetAxis("Mouse ScrollWheel") < 0)
         {
             if (Camera.main.orthographicSize < 5)
@@ -149,6 +163,7 @@ public class gameControll : MonoBehaviour
     {
 		if (!(redTruck || blueTruck || greenTruck) && !StoreTruckClick.hasCancelMark)
         {
+			GameObject.Find("red").GetComponent<AudioSource> ().Play ();
             //Cursor.SetCursor(cursorTextureR, hotSpot, cursorMode);
             //depot.sprite = Resources.Load<Sprite> ("Image/cursorR") as Sprite;
             redTruck = true;
@@ -172,6 +187,7 @@ public class gameControll : MonoBehaviour
         }
 		if (greenTruck && (twoNode.Count==1) && twoNode.Peek()==1) {
 			//Cursor.SetCursor(cursorTextureR, hotSpot, cursorMode);
+			GameObject.Find("green").GetComponent<AudioSource> ().Play ();
 			greenTruckNum--;
 			string goName = "greenTruckImage" +greenTruckNum.ToString ();
 			string goText = "greenTruckText" + greenTruckNum.ToString ();
@@ -185,6 +201,7 @@ public class gameControll : MonoBehaviour
 		}
 
 		if (blueTruck && (twoNode.Count==1) && twoNode.Peek()==1) {
+			GameObject.Find("blue").GetComponent<AudioSource> ().Play ();
 			//Cursor.SetCursor(cursorTextureR, hotSpot, cursorMode);
 			blueTruckNum--;
 			string goName = "blueTruckImage" +blueTruckNum.ToString ();
@@ -353,7 +370,7 @@ public class gameControll : MonoBehaviour
         else if (!(greenTruck || blueTruck || redTruck))
         {
             Debug.Log("please select a truck!");
-            GameObject.Find("ModalControl").GetComponent<testWindow>().takeAction("Please select a truck!");
+            //GameObject.Find("ModalControl").GetComponent<testWindow>().takeAction("Please select a truck!");
             return false;
         }
         return false;
@@ -365,18 +382,18 @@ public class gameControll : MonoBehaviour
         if (cap < 0)
         {
             Debug.Log("you can't assign a negative value to the car!");
-            GameObject.Find("ModalControl").GetComponent<testWindow>().takeAction("you can't assign a negative value to the car!");
+            //GameObject.Find("ModalControl").GetComponent<testWindow>().takeAction("you can't assign a negative value to the car!");
         }
         else if (carCap - cap < 0)
         {
             Debug.Log("please re-enter a number because your car is overweightted");
-            GameObject.Find("ModalControl").GetComponent<testWindow>().takeAction("please re-enter a number because your car is overweightted");
+            //GameObject.Find("ModalControl").GetComponent<testWindow>().takeAction("please re-enter a number because your car is overweightted");
         }
         else if (capArray[Node.passNode1, Node.passNode2] - cap < 0)
         {
             Debug.Log("please re-enter a number because you don't have such debris!");
             //add a pop up dialog here
-            GameObject.Find("ModalControl").GetComponent<testWindow>().takeAction("please re-enter a number because you don't have such debris!");
+            //GameObject.Find("ModalControl").GetComponent<testWindow>().takeAction("please re-enter a number because you don't have such debris!");
         }
         else
         {

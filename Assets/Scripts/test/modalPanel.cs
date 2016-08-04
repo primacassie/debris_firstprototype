@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class modalPanel : MonoBehaviour {
 	public Text question;
 	//public Image iconImage;
-	public Button newCap;
-	//public Button newPath;
+	public Button quitGame;
+	public Button backtoGame;
 
 	public GameObject modalPanelObject;
 	private static modalPanel modalpanel;
@@ -22,21 +22,21 @@ public class modalPanel : MonoBehaviour {
 		return modalpanel;
 	}
 
-	public void Choice(string question, UnityAction newcapEvent){
+	public void Choice(string question, UnityAction newcapEvent,UnityAction newpathEvent){
 		modalPanelObject.SetActive (true);
 
-		newCap.onClick.RemoveAllListeners ();
-		newCap.onClick.AddListener (newcapEvent);
-		newCap.onClick.AddListener (closePanel);
+		quitGame.onClick.RemoveAllListeners ();
+		quitGame.onClick.AddListener (newcapEvent);
+		quitGame.onClick.AddListener (closePanel);
 
-//		newPath.onClick.RemoveAllListeners ();
-//		newPath.onClick.AddListener (newpathEvent);
-//		newPath.onClick.AddListener (closePanel);
+		backtoGame.onClick.RemoveAllListeners ();
+		backtoGame.onClick.AddListener (newpathEvent);
+		backtoGame.onClick.AddListener (closePanel);
 
 		this.question.text = question;
 
-		newCap.gameObject.SetActive (true);
-		//newPath.gameObject.SetActive (true);
+		quitGame.gameObject.SetActive (true);
+		backtoGame.gameObject.SetActive (true);
 	}
 
 	void closePanel(){

@@ -97,6 +97,7 @@ public class CheckMark : MonoBehaviour {
 
 	void OnMouseDown(){
 		pathCap.desableSlider();
+		GetComponent<AudioSource> ().Play ();
 //		Node.laterCap = gameControll.capArray [Node.passNode1, Node.passNode2];
 //		int cap = Node.laterCap - Node.originCap;
 //		Node.storeTruckCap.Add (cap);

@@ -76,29 +76,29 @@ public class inputControl : MonoBehaviour {
 //	}
 
 	//control the submit button
-	public void submit(){
-		int node1 = 0;
-		int node2 = 0;
-		int cap = 0;
-		int[,] arr = gameControll.capArray;
-		int sum = 0;
-		for (int i = 0; i < arr.GetLength (0); i++) {
-			for (int j = 0; j < arr.GetLength (1); j++) {
-				sum += arr [i, j];
-				if (arr [i, j] != 0) {
-					node1 = i;
-					node2 = j;
-					cap = arr [i, j];
-				}
-			}
-		}
-		if (sum == 0) {
-			Debug.Log ("congratulations! you finish this game!");
-			GameObject.Find ("ModalControl").GetComponent<testWindow> ().takeAction ("Congratulations! You finish this round!");
-		} else {
-			string temp = "there are still " + cap + " debris in the path " + node1 + node2 + ", please clean it!";
-			Debug.Log ("there are still " + cap + " debris in the path " + node1 + node2 + ", please clean it!");
-			GameObject.Find ("ModalControl").GetComponent<testWindow> ().takeAction (temp);
-		}
-	}
+//	public void submit(){
+//		int node1 = 0;
+//		int node2 = 0;
+//		//int cap = 0;
+//		int[,] arr = gameControll.capArray;
+//		int sum = 0;
+//		for (int i = 0; i < arr.GetLength (0); i++) {
+//			for (int j = 0; j < arr.GetLength (1); j++) {
+//				sum += arr [i, j];
+//				if (arr [i, j] != 0) {
+//					node1 = i;
+//					node2 = j;
+//					//cap = arr [i, j];
+//				}
+//			}
+//		}
+//		if (sum == 0) {
+//			Debug.Log ("congratulations! you finish this game!");
+//			//GameObject.Find ("ModalControl").GetComponent<testWindow> ().takeAction ("Congratulations! You finish this round!");
+//		} else {
+////			string temp = "there are still " + cap + " debris in the path " + node1 + node2 + ", please clean it!";
+////			Debug.Log ("there are still " + cap + " debris in the path " + node1 + node2 + ", please clean it!");
+//			//GameObject.Find ("ModalControl").GetComponent<testWindow> ().takeAction (temp);
+//		}
+//	}
 }
