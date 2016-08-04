@@ -64,6 +64,8 @@
      <Compile Include="Assets\Scripts\slider.cs" />
      <Compile Include="Assets\Scripts\stickMap.cs" />
      <Compile Include="Assets\Scripts\storeTruck.cs" />
+     <Compile Include="Assets\Scripts\submitAnim.cs" />
+     <Compile Include="Assets\Scripts\submitButton.cs" />
      <Compile Include="Assets\Scripts\test\DisplayManager.cs" />
      <Compile Include="Assets\Scripts\test\DragTruck.cs" />
      <Compile Include="Assets\Scripts\test\DragTruck1.cs" />

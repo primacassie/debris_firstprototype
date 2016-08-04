@@ -7,6 +7,7 @@ public class submitButton : MonoBehaviour {
 
 
     public static Dictionary<string,List<int>> animDic = new Dictionary<string,List<int>>();
+	private bool submitOnlyOnce;
 
 
  //   public float speed = 4f;
@@ -73,11 +74,17 @@ public class submitButton : MonoBehaviour {
                 }
             }
         }
-        if (sum == 0)
+		if (sum == 0 && !submitOnlyOnce)
         {
             //Debug.Log("congratulations! you finish this game!");
             //GameObject.Find("ModalControl").GetComponent<testWindow>().takeAction("Congratulations! You finish this round!");
             finalAnimation();
+			submitOnlyOnce = true;
+			Button[] button=GameObject.Find ("Buttons").GetComponentsInChildren<Button> ();
+			foreach (Button b in button) {
+				b.interactable = false;
+			}
+			GameObject.Find ("storeTruck").SetActive (false);
         }
         else
         {
@@ -94,8 +101,10 @@ public class submitButton : MonoBehaviour {
         {
             GameObject go = new GameObject();
             go.transform.SetParent(GameObject.Find("Canvas").transform);
+			go.transform.position=GameObject.Find("depot").transform.position;
+			go.transform.localScale = new Vector2 (0.2f, 0.2f);
             go.AddComponent<Image>();
-            go.GetComponent<Image>().sprite = Resources.Load<Sprite>("Image/truck_R256") as Sprite;
+            go.GetComponent<Image>().sprite = Resources.Load<Sprite>("Image/truck_R32") as Sprite;
             go.AddComponent<submitAnim>();
             //go.AddComponent<Transform>();
             string truckName = "red" + r.ToString();
@@ -103,15 +112,17 @@ public class submitButton : MonoBehaviour {
             animDic.Add(truckName, l);
             r++;
         }
-        Debug.Log("r number "+r);
+        //Debug.Log("r number "+r);
         int b = 0;
         foreach (List<int> l in Node.blueAl)
         {
             GameObject go = new GameObject();
+			go.transform.SetParent(GameObject.Find("Canvas").transform);
+			go.transform.position=GameObject.Find("depot").transform.position;
+			go.transform.localScale = new Vector2 (0.2f, 0.2f);
             //go.AddComponent<Transform>();
-            go.transform.SetParent(GameObject.Find("Canvas").transform);
             go.AddComponent<Image>();
-            go.GetComponent<Image>().sprite = Resources.Load<Sprite>("Image/truck_R256") as Sprite;
+            go.GetComponent<Image>().sprite = Resources.Load<Sprite>("Image/truck_B32") as Sprite;
             go.AddComponent<submitAnim>();
             string truckName = "blue" + b.ToString();
             go.name = truckName;
@@ -123,8 +134,10 @@ public class submitButton : MonoBehaviour {
         {
             GameObject go = new GameObject();
             go.transform.SetParent(GameObject.Find("Canvas").transform);
+			go.transform.position=GameObject.Find("depot").transform.position;
+			go.transform.localScale = new Vector2 (0.2f, 0.2f);
             go.AddComponent<Image>();
-            go.GetComponent<Image>().sprite = Resources.Load<Sprite>("Image/truck_R256") as Sprite;
+            go.GetComponent<Image>().sprite = Resources.Load<Sprite>("Image/truck_G32") as Sprite;
             go.AddComponent<submitAnim>();
             //go.AddComponent<Transform>();
             string truckName = "green" + g.ToString();
