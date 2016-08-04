@@ -165,7 +165,8 @@ public class cancelMark : MonoBehaviour {
 					GameObject node = GameObject.Find(strNode);
 					if ((node.GetComponent<Node> ().RGN || node.GetComponent<Node> ().RBN)&& !node.GetComponent<Node>().RGBN) {
 						Node.intersection--;
-					}
+                        GameObject.Find("intersection").GetComponent<Text>().text = Node.intersection.ToString();
+                    }
 
 					node.GetComponent<Node> ().RedN = false;
 					node.GetComponent<Node> ().RGN = false;
@@ -232,7 +233,8 @@ public class cancelMark : MonoBehaviour {
 					GameObject node = GameObject.Find(strNode);
 					if ((node.GetComponent<Node> ().RGN || node.GetComponent<Node> ().GBN)&& !node.GetComponent<Node>().RGBN) {
 						Node.intersection--;
-					}
+                        GameObject.Find("intersection").GetComponent<Text>().text = Node.intersection.ToString();
+                    }
 					node.GetComponent<Node> ().GreenN = false;
 					node.GetComponent<Node> ().RGN = false;
 					node.GetComponent<Node> ().GBN = false;
@@ -296,6 +298,7 @@ public class cancelMark : MonoBehaviour {
 					GameObject node = GameObject.Find(strNode);
 					if ((node.GetComponent<Node> ().RBN || node.GetComponent<Node> ().GBN)&& !node.GetComponent<Node>().RGBN) {
 						Node.intersection--;
+                        GameObject.Find("intersection").GetComponent<Text>().text = Node.intersection.ToString();
 					}
 					node.GetComponent<Node> ().BlueN = false;
 					node.GetComponent<Node> ().RBN = false;
@@ -341,5 +344,11 @@ public class cancelMark : MonoBehaviour {
 				}	
 			}
 		}
+
+        if (Node.intersection == 1)
+        {
+            Node.intersection--;
+            GameObject.Find("intersection").GetComponent<Text>().text = "0";
+        }
 	}
 }
