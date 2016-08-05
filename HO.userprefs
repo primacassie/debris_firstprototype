@@ -1,10 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/MenuToStart.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/gameControll.cs">
     <Files>
-      <File FileName="Assets/Scripts/StoreTruckClick.cs" Line="320" Column="27" />
+      <File FileName="Assets/Scripts/StoreTruckClick.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Node.cs" Line="1060" Column="56" />
-      <File FileName="Assets/Scripts/gameControll.cs" Line="130" Column="23" />
+      <File FileName="Assets/Scripts/gameControll.cs" Line="320" Column="26" />
       <File FileName="Assets/Scripts/quitGame.cs" Line="10" Column="24" />
       <File FileName="Assets/Scripts/MenuToStart.cs" Line="11" Column="54" />
     </Files>

@@ -187,7 +187,7 @@ public class gameControll : MonoBehaviour
         }
 		if (greenTruck && (twoNode.Count==1) && twoNode.Peek()==1) {
 			//Cursor.SetCursor(cursorTextureR, hotSpot, cursorMode);
-			GameObject.Find("green").GetComponent<AudioSource> ().Play ();
+			GameObject.Find("red").GetComponent<AudioSource> ().Play ();
 			greenTruckNum--;
 			string goName = "greenTruckImage" +greenTruckNum.ToString ();
 			string goText = "greenTruckText" + greenTruckNum.ToString ();
@@ -201,7 +201,7 @@ public class gameControll : MonoBehaviour
 		}
 
 		if (blueTruck && (twoNode.Count==1) && twoNode.Peek()==1) {
-			GameObject.Find("blue").GetComponent<AudioSource> ().Play ();
+			GameObject.Find("red").GetComponent<AudioSource> ().Play ();
 			//Cursor.SetCursor(cursorTextureR, hotSpot, cursorMode);
 			blueTruckNum--;
 			string goName = "blueTruckImage" +blueTruckNum.ToString ();
@@ -222,6 +222,7 @@ public class gameControll : MonoBehaviour
         {
             //Cursor.SetCursor(cursorTextureB, hotSpot, cursorMode);
             //depot.sprite = Resources.Load<Sprite> ("Image/cursorB") as Sprite;
+			GameObject.Find("blue").GetComponent<AudioSource> ().Play ();
             blueTruck = true;
             GameObject.Find("depot").GetComponent<depotAnimation>().blueAnimation();
             //saveToFile ("Choose the blue truck.");
@@ -244,6 +245,7 @@ public class gameControll : MonoBehaviour
 
 		if (greenTruck && (twoNode.Count==1) && twoNode.Peek()==1) {
 			//Cursor.SetCursor(cursorTextureB, hotSpot, cursorMode);
+			GameObject.Find("blue").GetComponent<AudioSource> ().Play ();
 			greenTruckNum--;
 			string goName = "greenTruckImage" +greenTruckNum.ToString ();
 			string goText = "greenTruckText" + greenTruckNum.ToString ();
@@ -258,6 +260,7 @@ public class gameControll : MonoBehaviour
 
 		if (redTruck && (twoNode.Count==1) && twoNode.Peek()==1) {
 			//Cursor.SetCursor(cursorTextureB, hotSpot, cursorMode);
+			GameObject.Find("blue").GetComponent<AudioSource> ().Play ();
 			redTruckNum--;
 			string goName = "redTruckImage" +redTruckNum.ToString ();
 			string goText = "redTruckText" + redTruckNum.ToString ();
@@ -277,6 +280,7 @@ public class gameControll : MonoBehaviour
         {
             //Cursor.SetCursor(cursorTextureG, hotSpot, cursorMode);
             //depot.sprite = Resources.Load<Sprite> ("Image/cursorG") as Sprite;
+			GameObject.Find("green").GetComponent<AudioSource> ().Play ();
             greenTruck = true;
             GameObject.Find("depot").GetComponent<depotAnimation>().greenAnimation();
             //saveToFile ("Choose the green truck.");
@@ -299,6 +303,7 @@ public class gameControll : MonoBehaviour
 
 		if (blueTruck && (twoNode.Count==1) && twoNode.Peek()==1) {
 			//Cursor.SetCursor(cursorTextureG, hotSpot, cursorMode);
+			GameObject.Find("green").GetComponent<AudioSource> ().Play ();
 			blueTruckNum--;
 			string goName = "blueTruckImage" +blueTruckNum.ToString ();
 			string goText = "blueTruckText" + blueTruckNum.ToString ();
@@ -312,6 +317,7 @@ public class gameControll : MonoBehaviour
 		}
 		if (redTruck && (twoNode.Count==1) && twoNode.Peek()==1) {
 			//Cursor.SetCursor(cursorTextureG, hotSpot, cursorMode);
+			GameObject.Find("green").GetComponent<AudioSource> ().Play ();
 			redTruckNum--;
 			string goName = "redTruckImage" +redTruckNum.ToString ();
 			string goText = "redTruckText" + redTruckNum.ToString ();
