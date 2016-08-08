@@ -30,18 +30,23 @@ public class stickMap : MonoBehaviour {
 		switch (camSize) {
 		case 4:
 			rm.transform.localScale = new Vector2 (0.8f, 0.8f);
+			//rm.SetActive (false);
 			break;
 		case 3:
 			rm.transform.localScale = new Vector2 (0.6f, 0.6f);
+			//rm.SetActive (false);
 			break;
 		case 2:
 			rm.transform.localScale = new Vector2 (0.4f, 0.4f);
+			//rm.SetActive (false);
 			break;
 		case 1:
 			rm.transform.localScale = new Vector2 (0.2f, 0.2f);
+			//rm.SetActive (false);
 			break;
 		default:
 			rm.transform.localScale = new Vector2 (1f, 1f);
+			//rm.SetActive (false);
 			break;
 		}
 	}

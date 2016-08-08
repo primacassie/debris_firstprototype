@@ -390,6 +390,7 @@ public class CheckMark : MonoBehaviour {
 			//add indicator here
 			GameObject indicator = new GameObject();
 			indicator.AddComponent<RectTransform>();
+			indicator.tag = "indi";
 			indicator.transform.SetParent(GameObject.Find("gamePanel").transform, false);
 			indicator.AddComponent<Image>();
 			//indicator.AddComponent<BoxCollider2D> ();
@@ -496,6 +497,7 @@ public class CheckMark : MonoBehaviour {
 			//add indicator here
 			GameObject indicator = new GameObject();
 			indicator.AddComponent<RectTransform>();
+			indicator.tag = "indi";
 			indicator.transform.SetParent(GameObject.Find("gamePanel").transform, false);
 			indicator.AddComponent<Image>();
 //			indicator.AddComponent<BoxCollider2D> ();
@@ -604,6 +606,7 @@ public class CheckMark : MonoBehaviour {
 			//add indicator here
 			GameObject indicator = new GameObject();
 			indicator.AddComponent<RectTransform>();
+			indicator.tag = "indi";
 			indicator.transform.SetParent(GameObject.Find("gamePanel").transform, false);
 			indicator.AddComponent<Image>();
 //			indicator.AddComponent<BoxCollider2D> ();

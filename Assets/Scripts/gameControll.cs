@@ -480,7 +480,7 @@ public class gameControll : MonoBehaviour
         }
 		nodePath = connArray;
     }
-
+		
     public static void saveToFile(string save)
     {
         using (StreamWriter writeText = File.AppendText("/Users/ericgo/Desktop/HOOutput.txt"))
@@ -489,4 +489,15 @@ public class gameControll : MonoBehaviour
             writeText.Close();
         }
     }
+
+	public void toggleForFilter(bool value){
+		GameObject[] objArr=GameObject.FindGameObjectsWithTag ("linerender");
+		foreach (GameObject obj in objArr) {
+			obj.GetComponent<LineRenderer> ().enabled = value;
+		}
+		GameObject[] objArr1 = GameObject.FindGameObjectsWithTag ("indi");
+		foreach (GameObject obj in objArr1) {
+			obj.GetComponent<Image> ().enabled = value;
+		}
+	}
 }

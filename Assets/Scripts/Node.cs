@@ -275,6 +275,7 @@ public class Node : MonoBehaviour
 				GameObject path = new GameObject ();
 				path.name = pathname;
 				path.AddComponent<LineRenderer> ();
+				path.tag = "linerender";
 				path.AddComponent<LineAnimation>();
 				string dupObj = "newPathAnim" + passNode1.ToString () + passNode2.ToString ();
 				if (pathname == dupObj) {
@@ -392,6 +393,7 @@ public class Node : MonoBehaviour
 				GameObject path = new GameObject ();
 				path.name = pathname;
 				path.AddComponent<LineRenderer> ();
+				path.tag = "linerender";
 				path.AddComponent<LineAnimation>();
 				string dupObj = "newPathAnim" + passNode1.ToString () + passNode2.ToString ();
 				if (pathname == dupObj) {

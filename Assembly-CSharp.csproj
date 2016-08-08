@@ -64,6 +64,7 @@
      <Compile Include="Assets\Scripts\pathCap.cs" />
      <Compile Include="Assets\Scripts\quitGame.cs" />
      <Compile Include="Assets\Scripts\slider.cs" />
+     <Compile Include="Assets\Scripts\sliderClick.cs" />
      <Compile Include="Assets\Scripts\stickMap.cs" />
      <Compile Include="Assets\Scripts\storeTruck.cs" />
      <Compile Include="Assets\Scripts\submitAnim.cs" />

@@ -30,19 +30,23 @@ public class dragCamera : MonoBehaviour {
 			switch (cameraSize) {
 			case 1:
 				whichCase = 1;
-				inter = (Input.mousePosition - startPos) / 18.75f;
+				inter = (Input.mousePosition - startPos) / 18.75f / 5;
+				//GameObject.Find ("rightMap").SetActive (false);
 				goto case 0;
 			case 2:
 				whichCase = 2;
-				inter = (Input.mousePosition - startPos) / 37.5f;
+				inter = (Input.mousePosition - startPos) / 37.5f/4;
+				//GameObject.Find ("rightMap").SetActive (false);
 				goto case 0;
 			case 3:
 				whichCase = 3;
-				inter = (Input.mousePosition - startPos) / 75;
+				inter = (Input.mousePosition - startPos) / 75/4;
+				//GameObject.Find ("rightMap").SetActive (false);
 				goto case 0;
 			case 4:
 				whichCase = 4;
-				inter = (Input.mousePosition - startPos) / 150;
+				inter = (Input.mousePosition - startPos) / 150/3;
+				//GameObject.Find ("rightMap").SetActive (false);
 				//Debug.Log (Camera.main.transform.position.x);
 				goto case 0;
 			case 0:
