@@ -3,52 +3,17 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
 
-public class DragTruck: MonoBehaviour, IPointerDownHandler, IDragHandler {
-
-	private Vector2 pointerOffset;
-	private RectTransform canvasRectTransform;
-	private RectTransform panelRectTransform;
-
-	void Awake () {
-		Canvas canvas = GetComponentInParent <Canvas>();
-		if (canvas != null) {
-			canvasRectTransform = canvas.transform as RectTransform;
-			panelRectTransform = transform.parent as RectTransform;
+public class DragTruck: MonoBehaviour {
+	void Update(){
+		float slope = 1.0f;
+		Vector3 dir= new Vector3 (0, 0,360-Mathf.Atan (slope) * Mathf.Rad2Deg);
+		Debug.Log (dir);
+		if (Mathf.Abs(transform.eulerAngles.z-dir.z)>1.0f) {
+			transform.Rotate (new Vector3 (0, 0, 0.5f));
 		}
-	}
-
-	public void OnPointerDown (PointerEventData data) {
-		panelRectTransform.SetAsLastSibling ();
-		RectTransformUtility.ScreenPointToLocalPointInRectangle (panelRectTransform, data.position, data.pressEventCamera, out pointerOffset);
-	}
-
-	public void OnDrag (PointerEventData data) {
-		if (panelRectTransform == null) {
-			Debug.Log ("null");
-			return;
+		//Debug.Log (transform.eulerAngles);
+		if (Mathf.Abs(transform.eulerAngles.z-dir.z)<1.0f) {
+			transform.Translate (-0.01f, 0, 0);
 		}
-
-		Vector2 pointerPostion = ClampToWindow (data);
-
-		Vector2 localPointerPosition;
-		if (RectTransformUtility.ScreenPointToLocalPointInRectangle (
-			canvasRectTransform, pointerPostion, data.pressEventCamera, out localPointerPosition
-		)) {
-			Debug.Log ("got");
-			panelRectTransform.localPosition = localPointerPosition - pointerOffset;
-		}
-	}
-
-	Vector2 ClampToWindow (PointerEventData data) {
-		Vector2 rawPointerPosition = data.position;
-
-		Vector3[] canvasCorners = new Vector3[4];
-		canvasRectTransform.GetWorldCorners (canvasCorners);
-
-		float clampedX = Mathf.Clamp (rawPointerPosition.x, canvasCorners[0].x, canvasCorners[2].x);
-		float clampedY = Mathf.Clamp (rawPointerPosition.y, canvasCorners[0].y, canvasCorners[2].y);
-
-		Vector2 newPointerPosition = new Vector2 (clampedX, clampedY);
-		return newPointerPosition;
 	}
 }

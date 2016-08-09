@@ -8,10 +8,10 @@ public class submitAnim : MonoBehaviour {
 	//private Vector2[] wayPointVector;
 
     private int currentWayPoint = 0;
-    Transform targetWayPoint;
+	Transform targetWayPoint;
 	//Vector2 targetVector;
 
-    public float speed = 4f;
+    public float speed = 3f;
     // Use this for initialization
     void Start () {
         string objName = this.gameObject.name;
@@ -30,7 +30,7 @@ public class submitAnim : MonoBehaviour {
                 {
                     nodeName = "depot";
                 }
-				wayPointList[i] = GameObject.Find(nodeName).transform;
+				wayPointList [i] = GameObject.Find (nodeName).transform;
 				//wayPointVector [i] = new Vector3(GameObject.Find (nodeName).transform.position.x,GameObject.Find (nodeName).transform.position.y,0);
 				//wayPointVector[i]=GameObject.Find(nodeName).transform.position;
             }
@@ -43,49 +43,89 @@ public class submitAnim : MonoBehaviour {
         {
             if (targetWayPoint == null)
                 targetWayPoint = wayPointList[currentWayPoint];
-//			if (targetVector == null)
-//				targetVector = wayPointVector [currentWayPoint];
             walk();
         }
     }
 
     void walk()
     {
-        // rotate towards the target
-		//transform.forward = Vector3.RotateTowards(transform.forward, targetWayPoint.position- transform.position, speed * Time.deltaTime, 0.0f);
-//		float slope = (transform.position.y - targetWayPoint.position.y) / (transform.position.x - targetWayPoint.position.x);
-//		Vector3 rotateV = new Vector3 ();
-//		if (transform.position.x < targetWayPoint.position.x)
-//		{
-////			int i = 0;
-////			if (i == 0) {
-////				transform.Rotate (new Vector3 (0, 0, Mathf.Atan (slope) * Mathf.Rad2Deg - 180f));
-////				i++;
+//		if (currentWayPoint < wayPointList.Length-1) {
+//			float slope = (targetWayPoint.position.y - transform.position.y) / (targetWayPoint.position.x - transform.position.x);
+//			Vector3 dir= new Vector3 (0, 0, Mathf.Atan (slope) * Mathf.Rad2Deg);
+//			if (transform.position.x < targetWayPoint.position.x)
+//			{
+//				dir = new Vector3 (0, 0, (Mathf.Atan (slope) * Mathf.Rad2Deg - 180f+90)%180);
+//			}else
+//			{
+//				dir = new Vector3 (0, 0, (Mathf.Atan (slope) * Mathf.Rad2Deg+90)%180);
+//			}
+//			//Debug.Log (dir.z);
+////			if (Mathf.Abs(Mathf.Abs(transform.eulerAngles.z)-Mathf.Abs(dir.z)) >1) {
+////				//Debug.Log ("dir.z "+dir.z);
+////				//Debug.Log ("transform.z "+transform.eulerAngles.z);
+////				transform.Rotate(new Vector3(0,0,1));
 ////			}
-//			rotateV=new Vector3(Mathf.Atan(slope) * Mathf.Rad2Deg-180f,0,0);
-//			//rotateV=new Vector3(0,Mathf.Atan(slope) * Mathf.Rad2Deg-180f,0 );
-//		}else
-//		{
-////			int i = 0;
-////			if (i == 0) {
-////				transform.Rotate (new Vector3 (0, 0, Mathf.Atan (slope) * Mathf.Rad2Deg));
-////				i++;
-////			}
-//			rotateV=new Vector3(Mathf.Atan(slope) * Mathf.Rad2Deg,0,0);
+////			if (Mathf.Abs(Mathf.Abs(transform.eulerAngles.z)-Mathf.Abs(dir.z)) <= 1) {
+////				//Debug.Log ("reach inside");
+////				Debug.Log(this.gameObject.name+" " + dir.z);
+////				transform.position = Vector3.MoveTowards (transform.position, targetWayPoint.position, speed * Time.deltaTime);
+////			} 
+//			if (Mathf.Abs((transform.eulerAngles.z-180)-dir.z) >1) {
+//				//Debug.Log ("dir.z "+dir.z);
+//				//Debug.Log ("transform.z "+transform.eulerAngles.z);
+//				//Debug.Log(this.gameObject.name+" " + transform.eulerAngles.z);
+//				transform.Rotate(new Vector3(0,0,1));
+//			}
+//			if (Mathf.Abs((transform.eulerAngles.z-180)-dir.z) <= 1) {
+//				//Debug.Log ("reach inside");
+//				transform.position = Vector3.MoveTowards (transform.position, targetWayPoint.position, speed * Time.deltaTime);
+//			} 
+//		}else {
+//			transform.position = Vector3.MoveTowards (transform.position, targetWayPoint.position, speed * Time.deltaTime);
 //		}
+		float slope = (targetWayPoint.position.y - transform.position.y) / (targetWayPoint.position.x - transform.position.x);
+		Vector3 dir= new Vector3 (0, 0, Mathf.Atan (slope) * Mathf.Rad2Deg);
+		if (transform.position.x < targetWayPoint.position.x)
+		{
+			dir = new Vector3 (0, 0, (Mathf.Atan (slope) * Mathf.Rad2Deg+90)%180);
+		}else
+		{
+			dir = new Vector3 (0, 0, (Mathf.Atan (slope) * Mathf.Rad2Deg+90+180)%180);
+		}
+		//Debug.Log (dir.z);
+		//			if (Mathf.Abs(Mathf.Abs(transform.eulerAngles.z)-Mathf.Abs(dir.z)) >1) {
+		//				//Debug.Log ("dir.z "+dir.z);
+		//				//Debug.Log ("transform.z "+transform.eulerAngles.z);
+		//				transform.Rotate(new Vector3(0,0,1));
+		//			}
+		//			if (Mathf.Abs(Mathf.Abs(transform.eulerAngles.z)-Mathf.Abs(dir.z)) <= 1) {
+		//				//Debug.Log ("reach inside");
+		//				Debug.Log(this.gameObject.name+" " + dir.z);
+		//				transform.position = Vector3.MoveTowards (transform.position, targetWayPoint.position, speed * Time.deltaTime);
+		//			} 
+		if (Mathf.Abs((transform.eulerAngles.z-180)-dir.z) >1) {
+			//Debug.Log ("dir.z "+dir.z);
+			//Debug.Log ("transform.z "+transform.eulerAngles.z);
+			//Debug.Log(this.gameObject.name+" " + transform.eulerAngles.z);
+			transform.Rotate(new Vector3(0,0,1));
+		}
+		if (Mathf.Abs((transform.eulerAngles.z-180)-dir.z) <= 1) {
+			//Debug.Log ("reach inside");
+			transform.position = Vector3.MoveTowards (transform.position, targetWayPoint.position, speed * Time.deltaTime);
+		} 
 
 		//transform.forward = Vector3.RotateTowards (transform.forward,rotateV, speed * Time.deltaTime, 0.0f);
         // move towards the target
-		transform.position = Vector3.MoveTowards(transform.position, targetWayPoint.position, speed * Time.deltaTime);
 
 
 //		transform.position = Vector2.MoveTowards(transform.position, targetVector, speed * Time.deltaTime);
-        if (transform.position == targetWayPoint.position)
+		if (transform.position == targetWayPoint.position)
         {
+			//Debug.Log ("did it");
 			if (currentWayPoint < wayPointList.Length-1) {
 				currentWayPoint++;
 				targetWayPoint = wayPointList[currentWayPoint];
-//				targetVector = wayPointVector [currentWayPoint];
+				//transform.Rotate (new Vector3 (0, 0, 1));
 			}
         }
 
