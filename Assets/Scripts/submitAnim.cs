@@ -103,13 +103,13 @@ public class submitAnim : MonoBehaviour {
 		//				Debug.Log(this.gameObject.name+" " + dir.z);
 		//				transform.position = Vector3.MoveTowards (transform.position, targetWayPoint.position, speed * Time.deltaTime);
 		//			} 
-		if (Mathf.Abs((transform.eulerAngles.z-180)-dir.z) >1) {
+		if (Mathf.Abs((transform.eulerAngles.z-180)-dir.z) >3) {
 			//Debug.Log ("dir.z "+dir.z);
 			//Debug.Log ("transform.z "+transform.eulerAngles.z);
 			//Debug.Log(this.gameObject.name+" " + transform.eulerAngles.z);
-			transform.Rotate(new Vector3(0,0,1));
+			transform.Rotate(new Vector3(0,0,3));
 		}
-		if (Mathf.Abs((transform.eulerAngles.z-180)-dir.z) <= 1) {
+		if (Mathf.Abs((transform.eulerAngles.z-180)-dir.z) <= 3) {
 			//Debug.Log ("reach inside");
 			transform.position = Vector3.MoveTowards (transform.position, targetWayPoint.position, speed * Time.deltaTime);
 		} 

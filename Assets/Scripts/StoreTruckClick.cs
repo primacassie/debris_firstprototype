@@ -404,6 +404,10 @@ public class StoreTruckClick : MonoBehaviour {
 			y = v4.y;
 			GameObject cancelMark = new GameObject ();
 			cancelMark.AddComponent<cancelMark> ();
+			cancelMark.AddComponent<AudioSource> ();
+			cancelMark.GetComponent<AudioSource> ().playOnAwake = false;
+			cancelMark.GetComponent<AudioSource> ().clip = Resources.Load<AudioClip> ("Audio/trash");
+			cancelMark.GetComponent<AudioSource> ().volume = 0.6f;
 			cancelMark.name = "cancelMark";
 			Transform parentTransform = GameObject.Find ("gamePanel").GetComponent<Transform> ();
 			cancelMark.transform.SetParent (parentTransform);

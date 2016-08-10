@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class cancelMark : MonoBehaviour {
 	void OnMouseDown(){
+		GetComponent<AudioSource> ().Play ();
 		indicatorFunction.hasCancelMark = false;
 		StoreTruckClick.hasCancelMark = false;
 		int[] arr = StoreTruckClick.arrayForChosenPath.ToArray();

@@ -119,62 +119,79 @@ public class submitButton : MonoBehaviour {
 //	IEnumerator waitCreate(){
 //		yield return new WaitForSeconds (1);
 //	}
-
-    public void finalAnimation()
-    {
-        int r = 0;
-        foreach(List<int> l in Node.redAl)
-        {
+	public void finalAnimation()
+	{
+		int r = 0;
+		foreach(List<int> l in Node.redAl)
+		{
 			GameObject go = new GameObject();
 			go.transform.SetParent(GameObject.Find("Canvas").transform);
 			go.transform.position=GameObject.Find("depot").transform.position;
-			go.transform.localScale = new Vector2 (0.5f, 0.5f);
-			go.AddComponent<Image>();
-			go.GetComponent<Image>().sprite = Resources.Load<Sprite>("Image/truck_R32") as Sprite;
+			go.transform.localScale = new Vector2 (0.3f, 0.6f);
+			//go.AddComponent<Image>();
+			//go.GetComponent<Image>().sprite = Resources.Load<Sprite>("Image/truck_R32") as Sprite;
 			go.AddComponent<submitAnim>();
+			Image addIm = go.AddComponent<Image> ();
+			string htmlValue = "#db4f69";
+			Color newCol;
+			if (ColorUtility.TryParseHtmlString (htmlValue, out newCol)) {
+				addIm.GetComponent<Image> ().color = newCol;
+			}
 			//go.AddComponent<Transform>();
 			string truckName = "red" + r.ToString();
 			go.name = truckName;
 			animDic.Add(truckName, l);
 			r++;
-//			StartCoroutine (waitCreate());
+			//			StartCoroutine (waitCreate());
 			//yield return new WaitForSeconds(1);
-            //r++;
-        }
-        //Debug.Log("r number "+r);
-        int b = 0;
-        foreach (List<int> l in Node.blueAl)
-        {
-            GameObject go = new GameObject();
+			//r++;
+		}
+		//Debug.Log("r number "+r);
+		int b = 0;
+		foreach (List<int> l in Node.blueAl)
+		{
+			GameObject go = new GameObject();
 			go.transform.SetParent(GameObject.Find("Canvas").transform);
 			go.transform.position=GameObject.Find("depot").transform.position;
-			go.transform.localScale = new Vector2 (0.5f, 0.5f);
-            //go.AddComponent<Transform>();
-            go.AddComponent<Image>();
-            go.GetComponent<Image>().sprite = Resources.Load<Sprite>("Image/truck_B32") as Sprite;
-            go.AddComponent<submitAnim>();
-            string truckName = "blue" + b.ToString();
-            go.name = truckName;
-            animDic.Add(truckName, l);
-            b++;
-//			StartCoroutine (waitCreate());
-        }
-        int g = 0;
-        foreach (List<int> l in Node.greenAl)
-        {
-            GameObject go = new GameObject();
-            go.transform.SetParent(GameObject.Find("Canvas").transform);
+			go.transform.localScale = new Vector2 (0.3f, 0.6f);
+			//go.AddComponent<Transform>();
+			//go.AddComponent<Image>();
+			//go.GetComponent<Image>().sprite = Resources.Load<Sprite>("Image/truck_B32") as Sprite;
+			go.AddComponent<submitAnim>();
+			Image addIm = go.AddComponent<Image> ();
+			string htmlValue = "#3b73e1";
+			Color newCol;
+			if (ColorUtility.TryParseHtmlString (htmlValue, out newCol)) {
+				addIm.GetComponent<Image> ().color = newCol;
+			}
+			string truckName = "blue" + b.ToString();
+			go.name = truckName;
+			animDic.Add(truckName, l);
+			b++;
+			//			StartCoroutine (waitCreate());
+		}
+		int g = 0;
+		foreach (List<int> l in Node.greenAl)
+		{
+			GameObject go = new GameObject();
+			go.transform.SetParent(GameObject.Find("Canvas").transform);
 			go.transform.position=GameObject.Find("depot").transform.position;
-			go.transform.localScale = new Vector2 (0.5f, 0.5f);
-            go.AddComponent<Image>();
-            go.GetComponent<Image>().sprite = Resources.Load<Sprite>("Image/truck_G32") as Sprite;
-            go.AddComponent<submitAnim>();
-            //go.AddComponent<Transform>();
-            string truckName = "green" + g.ToString();
-            go.name = truckName;
-            animDic.Add(truckName, l);
-            g++;
-//			StartCoroutine (waitCreate());
-        }
-    }
+			go.transform.localScale = new Vector2 (0.3f, 0.6f);
+			//go.AddComponent<Image>();
+			//go.GetComponent<Image>().sprite = Resources.Load<Sprite>("Image/truck_G32") as Sprite;
+			go.AddComponent<submitAnim>();
+			Image addIm = go.AddComponent<Image> ();
+			string htmlValue = "#33e786";
+			Color newCol;
+			if (ColorUtility.TryParseHtmlString (htmlValue, out newCol)) {
+				addIm.GetComponent<Image> ().color = newCol;
+			}
+			//go.AddComponent<Transform>();
+			string truckName = "green" + g.ToString();
+			go.name = truckName;
+			animDic.Add(truckName, l);
+			g++;
+			//			StartCoroutine (waitCreate());
+		}
+	}
 }
