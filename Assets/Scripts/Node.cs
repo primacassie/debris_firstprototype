@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Node : MonoBehaviour
 {
@@ -112,6 +113,21 @@ public class Node : MonoBehaviour
 
     void Awake()
     {
+		if (SceneManager.GetActiveScene ().name == "level2") {
+			redLineArray = new bool[21, 21];
+			blueLineArray = new bool[21, 21];
+			greenLineArray = new bool[21, 21];
+
+			rgbPathArray = new bool[21, 21];
+			redPathArray = new bool[21, 21];
+			greenPathArray = new bool[21, 21];
+			bluePathArray = new bool[21, 21];
+
+			//create int array to store how many path in it
+			redPathNum = new int[21, 21];
+			greenPathNum = new int[21, 21];
+			bluePathNum = new int[21, 21];
+		}
         capPath = GameObject.FindGameObjectsWithTag("cap");
         foreach (GameObject obj in capPath)
         {

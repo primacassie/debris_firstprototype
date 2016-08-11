@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class gameControll : MonoBehaviour
 {
@@ -76,10 +77,10 @@ public class gameControll : MonoBehaviour
     public static Queue<int> twoNode = new Queue<int>();
 
     //create an array to store the capacity of each path
-    public static int[,] capArray = new int[6, 6];
+	public static int[,] capArray;
 
     //create an array of time
-    public static readonly float[,] timeArray = new float[6, 6];
+	public static float[,] timeArray;
 
     //an interger store car capacity
     public static int carCap = 100;
@@ -103,6 +104,16 @@ public class gameControll : MonoBehaviour
         //		inputTab.SetActive (false);
 
         //Cursor.SetCursor(cursorTextureO, hotSpot, cursorMode);
+		if (SceneManager.GetActiveScene ().name == "start") {
+			
+			capArray = new int[6, 6];
+			timeArray = new float[6, 6];
+		}
+
+		if (SceneManager.GetActiveScene ().name == "level2") {
+			capArray = new int[21, 21];
+			timeArray = new float[21, 21];
+		}
         foreach (GameObject obj in GameObject.FindGameObjectsWithTag("cap"))
         {
             obj.GetComponentInChildren<Slider>().enabled = false;
@@ -463,6 +474,9 @@ public class gameControll : MonoBehaviour
         GameObject[] path = GameObject.FindGameObjectsWithTag("path");
         //boolean array to store if they are connected;
         bool[,] connArray = new bool[6, 6];
+		if (SceneManager.GetActiveScene ().name == "level2") {
+			connArray = new bool[21, 21];
+		}
 
         foreach (GameObject go in path)
         {
