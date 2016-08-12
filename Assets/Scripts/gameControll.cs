@@ -25,6 +25,9 @@ public class gameControll : MonoBehaviour
     public static int blueTruckNum;
     public static int greenTruckNum;
 
+
+
+
     //cursor texture
 //    public Texture2D cursorTextureR;
 //    public Texture2D cursorTextureG;
@@ -514,4 +517,5 @@ public class gameControll : MonoBehaviour
 			obj.GetComponent<Image> ().enabled = value;
 		}
 	}
+		
 }

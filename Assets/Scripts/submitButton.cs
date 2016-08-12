@@ -10,6 +10,7 @@ public class submitButton : MonoBehaviour {
     public static Dictionary<string,List<int>> animDic = new Dictionary<string,List<int>>();
 	private bool submitOnlyOnce;
 	private DisplayManager display;
+	private Transform tar;
 	//private bool submitOnce;
 
  //   public float speed = 4f;
@@ -21,8 +22,9 @@ public class submitButton : MonoBehaviour {
  //   private bool canUpdate;
 
  //   // Use this for initialization
- //   void Start () {
-	//}
+    void Start () {
+		tar=new Transform(GameObject.Find ("depot").transform);
+	}
 	
 	//// Update is called once per frame
 	//void Update () {
@@ -86,16 +88,16 @@ public class submitButton : MonoBehaviour {
 				b.interactable = false;
 			}
 			GameObject.Find ("storeTruck").SetActive (false);
-			foreach (GameObject obj in GameObject.FindGameObjectsWithTag ("Node")) {
-				Color c = obj.GetComponent<Image> ().color;
-				c.a = 0.6f;
-				obj.GetComponent<Image> ().color=c;
-			}
-			foreach (GameObject obj in GameObject.FindGameObjectsWithTag ("path")) {
-				Color c = obj.GetComponent<Image> ().color;
-				c.a = 0.6f;
-				obj.GetComponent<Image> ().color=c;
-			}
+//			foreach (GameObject obj in GameObject.FindGameObjectsWithTag ("Node")) {
+//				Color c = obj.GetComponent<Image> ().color;
+//				c.a = 0.6f;
+//				obj.GetComponent<Image> ().color=c;
+//			}
+//			foreach (GameObject obj in GameObject.FindGameObjectsWithTag ("path")) {
+//				Color c = obj.GetComponent<Image> ().color;
+//				c.a = 0.6f;
+//				obj.GetComponent<Image> ().color=c;
+//			}
 			StartCoroutine (wait ());
 		} else if (sum == 0 && submitOnlyOnce) {
 			display=DisplayManager.Instance();
@@ -112,8 +114,40 @@ public class submitButton : MonoBehaviour {
     }
 
 	IEnumerator wait(){
-		yield return new WaitForSeconds (100);
+		yield return new WaitForSeconds (12);
+		BlackHoleAnim ();
+		//StartCoroutine (wait1 ());
+	}
+
+	IEnumerator wait1(){
+		yield return new WaitForSeconds (10);
 		SceneManager.LoadScene ("end");
+	}
+
+	void BlackHoleAnim(){
+		Camera.main.GetComponent<stickMap> ().enabled = true;
+		foreach (GameObject obj in GameObject.FindGameObjectsWithTag("path")) {
+			Destroy (obj);
+		}
+		foreach(GameObject obj in GameObject.FindGameObjectsWithTag("cap")){
+			Destroy (obj);
+		}
+	}
+
+	private void NodeMove(){
+		foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Node")) {
+			obj.transform.position = Vector3.MoveTowards (transform.position, tar.position, 2 * Time.deltaTime);
+			if (obj.transform.position == tar.position) {
+				Destroy (obj);
+			}
+		}
+	}
+
+	void Update(){
+		if (Camera.main.GetComponent<stickMap> ().enabled == true) {
+			NodeMove ();
+		}
+		
 	}
 
 //	IEnumerator waitCreate(){

@@ -11,7 +11,7 @@ public class submitAnim : MonoBehaviour {
 	Transform targetWayPoint;
 	//Vector2 targetVector;
 
-    public float speed = 3f;
+    public float speed = 4f;
     // Use this for initialization
     void Start () {
         string objName = this.gameObject.name;

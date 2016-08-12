@@ -77,8 +77,9 @@
      <Compile Include="Assets\Scripts\test\modalPanel.cs" />
      <Compile Include="Assets\Scripts\test\testWindow.cs" />
      <Compile Include="Assets\Scripts\truck.cs" />
-     <None Include="Assets\UnlitGradient\Shaders\ThreeLinearGradient.shader" />
-     <None Include="Assets\UnlitGradient\Shaders\LinearGradient.shader" />
+     <None Include="Assets\Shaders\blackHole.shader" />
+     <None Include="Assets\Shaders\ThreeLinearGradient.shader" />
+     <None Include="Assets\Shaders\LinearGradient.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
