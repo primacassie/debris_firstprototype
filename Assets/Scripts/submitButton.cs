@@ -10,8 +10,9 @@ public class submitButton : MonoBehaviour {
     public static Dictionary<string,List<int>> animDic = new Dictionary<string,List<int>>();
 	private bool submitOnlyOnce;
 	private DisplayManager display;
-	private Transform tar;
+	//private Vector3 tar=new Vector3();
 	//private bool submitOnce;
+	private Transform tar;
 
  //   public float speed = 4f;
 
@@ -23,7 +24,8 @@ public class submitButton : MonoBehaviour {
 
  //   // Use this for initialization
     void Start () {
-		tar=new Transform(GameObject.Find ("depot").transform);
+		tar=GameObject.Find ("depot").transform;
+		//tar=new Vector3(-6,0,0);
 	}
 	
 	//// Update is called once per frame
@@ -126,19 +128,24 @@ public class submitButton : MonoBehaviour {
 
 	void BlackHoleAnim(){
 		Camera.main.GetComponent<stickMap> ().enabled = true;
-		foreach (GameObject obj in GameObject.FindGameObjectsWithTag("path")) {
+//		foreach (GameObject obj in GameObject.FindGameObjectsWithTag("path")) {
+//			Destroy (obj);
+//		}
+		foreach(GameObject obj in GameObject.FindGameObjectsWithTag("cap")){
 			Destroy (obj);
 		}
-		foreach(GameObject obj in GameObject.FindGameObjectsWithTag("cap")){
+		foreach (GameObject obj in GameObject.FindGameObjectsWithTag("finalTruck")) {
 			Destroy (obj);
 		}
 	}
 
 	private void NodeMove(){
 		foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Node")) {
-			obj.transform.position = Vector3.MoveTowards (transform.position, tar.position, 2 * Time.deltaTime);
+			obj.transform.position = Vector3.MoveTowards (obj.transform.position, tar.position, 3 * Time.deltaTime);
 			if (obj.transform.position == tar.position) {
-				Destroy (obj);
+				Color c = obj.GetComponent<Image> ().color;
+				c.a = 0;
+				obj.GetComponent<Image> ().color = c;
 			}
 		}
 	}
@@ -162,6 +169,7 @@ public class submitButton : MonoBehaviour {
 			go.transform.SetParent(GameObject.Find("Canvas").transform);
 			go.transform.position=GameObject.Find("depot").transform.position;
 			go.transform.localScale = new Vector2 (0.3f, 0.6f);
+			go.tag = "finalTruck";
 			//go.AddComponent<Image>();
 			//go.GetComponent<Image>().sprite = Resources.Load<Sprite>("Image/truck_R32") as Sprite;
 			go.AddComponent<submitAnim>();
@@ -185,6 +193,7 @@ public class submitButton : MonoBehaviour {
 		foreach (List<int> l in Node.blueAl)
 		{
 			GameObject go = new GameObject();
+			go.tag = "finalTruck";
 			go.transform.SetParent(GameObject.Find("Canvas").transform);
 			go.transform.position=GameObject.Find("depot").transform.position;
 			go.transform.localScale = new Vector2 (0.3f, 0.6f);
@@ -208,6 +217,7 @@ public class submitButton : MonoBehaviour {
 		foreach (List<int> l in Node.greenAl)
 		{
 			GameObject go = new GameObject();
+			go.tag = "finalTruck";
 			go.transform.SetParent(GameObject.Find("Canvas").transform);
 			go.transform.position=GameObject.Find("depot").transform.position;
 			go.transform.localScale = new Vector2 (0.3f, 0.6f);
