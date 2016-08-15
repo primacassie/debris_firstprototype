@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class submitButton : MonoBehaviour {
 
@@ -100,7 +101,7 @@ public class submitButton : MonoBehaviour {
 //				c.a = 0.6f;
 //				obj.GetComponent<Image> ().color=c;
 //			}
-			StartCoroutine (wait ());
+			StartCoroutine (wait1 ());
 		} else if (sum == 0 && submitOnlyOnce) {
 			display=DisplayManager.Instance();
 			display.DisplayMessage ("You've already sumbitted!");
@@ -115,31 +116,38 @@ public class submitButton : MonoBehaviour {
         }
     }
 
-	IEnumerator wait(){
-		yield return new WaitForSeconds (12);
-		BlackHoleAnim ();
-		//StartCoroutine (wait1 ());
-	}
+    IEnumerator wait1()
+    {
+        yield return new WaitForSeconds(12);
+        BlackHoleAnim();
+    }
 
-	IEnumerator wait1(){
+	IEnumerator wait(){
 		yield return new WaitForSeconds (10);
 		SceneManager.LoadScene ("end");
 	}
 
 	void BlackHoleAnim(){
 		Camera.main.GetComponent<stickMap> ().enabled = true;
-//		foreach (GameObject obj in GameObject.FindGameObjectsWithTag("path")) {
-//			Destroy (obj);
-//		}
-		foreach(GameObject obj in GameObject.FindGameObjectsWithTag("cap")){
+        //foreach(GameObject obj in GameObject.FindGameObjectsWithTag("linerender"))
+        //{
+        //    Destroy(obj);
+        //}
+        //foreach (GameObject obj in GameObject.FindGameObjectsWithTag("path"))
+        //{
+        //    Destroy(obj);
+        //}
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("cap")){
 			Destroy (obj);
 		}
 		foreach (GameObject obj in GameObject.FindGameObjectsWithTag("finalTruck")) {
 			Destroy (obj);
 		}
+        Destroy(GameObject.Find("miniMap"));
 	}
 
 	private void NodeMove(){
+        bool start = false;
 		foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Node")) {
 			obj.transform.position = Vector3.MoveTowards (obj.transform.position, tar.position, 3 * Time.deltaTime);
 			if (obj.transform.position == tar.position) {
@@ -148,9 +156,41 @@ public class submitButton : MonoBehaviour {
 				obj.GetComponent<Image> ().color = c;
 			}
 		}
-	}
+        GameObject.Find("leftPanel").transform.position = Vector3.MoveTowards(GameObject.Find("leftPanel").transform.position, tar.position, 3 * Time.deltaTime);
+        if (GameObject.Find("leftPanel").transform.position == tar.position)
+        {
+            start = true;
+            Color c = GameObject.Find("leftPanel").GetComponent<Image>().color;
+            c.a = 0;
+            GameObject.Find("leftPanel").GetComponent<Image>().color = c;
+        }
+        if (start)
+        {
+            float minP = Mathf.Min(int.Parse(GameObject.Find("redTruckProfit").GetComponent<Text>().text), int.Parse(GameObject.Find("blueTruckProfit").GetComponent<Text>().text), int.Parse(GameObject.Find("greenTruckProfit").GetComponent<Text>().text));
+            float maxT = Mathf.Max(int.Parse(GameObject.Find("redTruckTime").GetComponent<Text>().text), int.Parse(GameObject.Find("blueTruckTime").GetComponent<Text>().text), int.Parse(GameObject.Find("greenTruckTime").GetComponent<Text>().text));
+            int inters = Node.intersection;
+            GameObject prof=GameObject.Find("redProfit");
+            GameObject time = GameObject.Find("redTime");
+            
+        }
+        
+    }
 
 	void Update(){
+        //int i = 0;
+        //int j = 0;
+        //foreach(GameObject obj in GameObject.FindGameObjectsWithTag("finalTruck"))
+        //{
+        //    i++;
+        //    if (obj.transform.position == GameObject.Find("depot").transform.position)
+        //    {
+        //        j++;
+        //    }
+        //    if (i == j)
+        //    {
+        //        BlackHoleAnim();
+        //    }
+        //}
 		if (Camera.main.GetComponent<stickMap> ().enabled == true) {
 			NodeMove ();
 		}

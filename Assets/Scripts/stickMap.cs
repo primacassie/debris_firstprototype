@@ -13,7 +13,7 @@ public class stickMap : MonoBehaviour {
 
 	void OnRenderImage (RenderTexture sourceTexture, RenderTexture destTexture)
 	{
-		m_Mat.SetVector ("_Center", new Vector4 (0.5f, 0.6f, 0f, 0f));
+		m_Mat.SetVector ("_Center", new Vector3(0.5f,0.5f,0));
 		m_Mat.SetFloat ("_DarkRange", m_DarkRange);
 		m_Mat.SetFloat ("_Distortion", m_Distortion);
 		m_Mat.SetFloat ("_Form", m_Form);
