@@ -45,6 +45,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Logger\Examples\ExampleLogger.cs" />
+     <Compile Include="Assets\Logger\Scripts\Adapters\BaseAdapter.cs" />
+     <Compile Include="Assets\Logger\Scripts\Adapters\FileAdapter.cs" />
+     <Compile Include="Assets\Logger\Scripts\Adapters\NullAdapter.cs" />
+     <Compile Include="Assets\Logger\Scripts\Adapters\SimpleWWWAdapter.cs" />
+     <Compile Include="Assets\Logger\Scripts\BasicLoggerStartup.cs" />
+     <Compile Include="Assets\Logger\Scripts\IAdapter.cs" />
+     <Compile Include="Assets\Logger\Scripts\ILogger.cs" />
+     <Compile Include="Assets\Logger\Scripts\Loggers\Logger.cs" />
+     <Compile Include="Assets\Logger\Scripts\TheLogger.cs" />
      <Compile Include="Assets\Scripts\CheckMark.cs" />
      <Compile Include="Assets\Scripts\Graph.cs" />
      <Compile Include="Assets\Scripts\LineAnimation.cs" />
@@ -65,7 +75,6 @@
      <Compile Include="Assets\Scripts\pathCap.cs" />
      <Compile Include="Assets\Scripts\quitGame.cs" />
      <Compile Include="Assets\Scripts\slider.cs" />
-     <Compile Include="Assets\Scripts\sliderClick.cs" />
      <Compile Include="Assets\Scripts\stickMap.cs" />
      <Compile Include="Assets\Scripts\storeTruck.cs" />
      <Compile Include="Assets\Scripts\submitAnim.cs" />
@@ -86,6 +95,13 @@
  <Reference Include="UnityEngine.Networking">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
+ <Reference Include="ICSharpCode.SharpZipLib">
+ <HintPath>/Users/ericgo/Documents/16summer/HO/Assets/plugins/ICSharpCode.SharpZipLib.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{63112628-23A7-98B0-2F45-08FFC1C5CC63}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

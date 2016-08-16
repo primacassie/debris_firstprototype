@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using SimpleJSON;
 
 public class submitButton : MonoBehaviour {
 
@@ -105,6 +106,9 @@ public class submitButton : MonoBehaviour {
 				b.interactable = false;
 			}
 			GameObject.Find ("storeTruck").SetActive (false);
+			minP = Mathf.Min(float.Parse(GameObject.Find("redTruckProfit").GetComponent<Text>().text), float.Parse(GameObject.Find("blueTruckProfit").GetComponent<Text>().text), float.Parse(GameObject.Find("greenTruckProfit").GetComponent<Text>().text));
+			maxT = Mathf.Max(float.Parse(GameObject.Find("redTruckTime").GetComponent<Text>().text), float.Parse(GameObject.Find("blueTruckTime").GetComponent<Text>().text), float.Parse(GameObject.Find("greenTruckTime").GetComponent<Text>().text));
+			inters = Node.intersection;
 //			foreach (GameObject obj in GameObject.FindGameObjectsWithTag ("Node")) {
 //				Color c = obj.GetComponent<Image> ().color;
 //				c.a = 0.6f;
@@ -115,6 +119,10 @@ public class submitButton : MonoBehaviour {
 //				c.a = 0.6f;
 //				obj.GetComponent<Image> ().color=c;
 //			}
+			JSONClass details = new JSONClass ();
+			string s = "Min Profit: " + minP + "," + "Max Time: " + maxT + "," + "Intersection: " + inters;
+			details ["ClickSubmit"] = s;
+			TheLogger.instance.TakeAction (8, details);
 			StartCoroutine (wait1 ());
 		} else if (sum == 0 && submitOnlyOnce) {
 			display=DisplayManager.Instance();
@@ -123,6 +131,9 @@ public class submitButton : MonoBehaviour {
         else
         {
             //string temp = "there are still " + cap + " debris in the path " + node1 + node2 + ", please clean it!";
+			JSONClass details = new JSONClass ();
+			details ["Wrong"] = "Submit before cleaning all debris";
+			TheLogger.instance.TakeAction (10, details);
 			display=DisplayManager.Instance();
 			display.DisplayMessage ("Pls Clean All Debris Before Sumbit!");
             //Debug.Log("there are still " + cap + " debris in the path " + node1 + node2 + ", please clean it!");
@@ -195,9 +206,6 @@ public class submitButton : MonoBehaviour {
 			Destroy (obj);
 		}
 		Destroy (GameObject.Find ("Toggle"));
-		minP = Mathf.Min(float.Parse(GameObject.Find("redTruckProfit").GetComponent<Text>().text), float.Parse(GameObject.Find("blueTruckProfit").GetComponent<Text>().text), float.Parse(GameObject.Find("greenTruckProfit").GetComponent<Text>().text));
-		maxT = Mathf.Max(float.Parse(GameObject.Find("redTruckTime").GetComponent<Text>().text), float.Parse(GameObject.Find("blueTruckTime").GetComponent<Text>().text), float.Parse(GameObject.Find("greenTruckTime").GetComponent<Text>().text));
-		inters = Node.intersection;
 		prof.transform.SetParent (GameObject.Find ("gamePanel").transform);
 		prof.transform.position = GameObject.Find ("depot").transform.position;
 		time.transform.SetParent (GameObject.Find ("gamePanel").transform);

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using SimpleJSON;
 
 public class Node : MonoBehaviour
 {
@@ -156,6 +157,17 @@ public class Node : MonoBehaviour
 			if (gameControll.blueTruck) {
 				blueAl.Add (storePath);
 				blueTruckCap.Add (storeTruckCap);
+				string s1 = "";
+				string s2 = "";
+				foreach (int i1 in storePath) {
+					s1 += i1.ToString () + ",";
+				}
+				foreach (int i1 in storeTruckCap) {
+					s2 += i1.ToString () + ",";
+				}
+				JSONClass details = new JSONClass ();
+				details ["BlueTruckPath"] = "Node"+s1+"StoredCap"+s2;
+				TheLogger.instance.TakeAction (9, details);
 				gameControll.blueTruck = false;
 				storeProfit = gameControll.blueProfitOnce;
 				storeTime = gameControll.blueTimeOnce;
@@ -168,6 +180,17 @@ public class Node : MonoBehaviour
 			if (gameControll.redTruck) {
 				redAl.Add (storePath);
 				redTruckCap.Add (storeTruckCap);
+				string s1 = "";
+				string s2 = "";
+				foreach (int i1 in storePath) {
+					s1 += i1.ToString () + ",";
+				}
+				foreach (int i1 in storeTruckCap) {
+					s2 += i1.ToString () + ",";
+				}
+				JSONClass details = new JSONClass ();
+				details ["RedTruckPath"] = "Node"+s1+"StoredCap"+s2;
+				TheLogger.instance.TakeAction (9, details);
 				gameControll.redTruck = false;
 				storeProfit = gameControll.redProfitOnce;
 				storeTime = gameControll.redTimeOnce;
@@ -180,10 +203,21 @@ public class Node : MonoBehaviour
 			if (gameControll.greenTruck) {
 				greenAl.Add (storePath);
 				greenTruckCap.Add (storeTruckCap);
+				string s1 = "";
+				string s2 = "";
+				foreach (int i1 in storePath) {
+					s1 += i1.ToString () + ",";
+				}
+				foreach (int i1 in storeTruckCap) {
+					s2 += i1.ToString () + ",";
+				}
+				JSONClass details = new JSONClass ();
+				details ["GreenTruckPath"] = "Node"+s1+"StoredCap"+s2;
+				TheLogger.instance.TakeAction (9, details);
 				gameControll.greenTruck = false;
 				storeProfit = gameControll.greenProfitOnce;
 				storeTime = gameControll.greenTimeOnce;
-				Debug.Log ("store Time" + storeTime);
+				//Debug.Log ("store Time" + storeTime);
 				greenProfitAl.Add (storeProfit);
 				greenTimeAl.Add (storeTime);
 				gameControll.greenTimeOnce = 0;
@@ -242,6 +276,9 @@ public class Node : MonoBehaviour
 				//Debug.Log ("in first size2last2node " + size2last2Node);
                 //change the image of node here
                 clickChangeColor();
+				JSONClass details = new JSONClass ();
+				details ["ClickNode"] = num.ToString();
+				TheLogger.instance.TakeAction (2, details);
 
 				foreach (int i in validPathAnimation(passNode1)) {
 					string temp = "node" + i;
@@ -326,6 +363,9 @@ public class Node : MonoBehaviour
             {
                 string toSave = "this node is not connected with the node " + firstOfSize1 + " please select a valid one! ";
                 Debug.Log(toSave);
+				JSONClass details = new JSONClass ();
+				details ["Wrong"] = toSave;
+				TheLogger.instance.TakeAction (10, details);
 
                 //GameObject.Find ("ModalControl").GetComponent<testWindow> ().takeAction (toSave);
             }
@@ -359,6 +399,11 @@ public class Node : MonoBehaviour
                 gameControll.twoNode.Enqueue(num);
                 passNode1 = size2lastNode;
                 passNode2 = num;
+				JSONClass details = new JSONClass ();
+				details ["ClickNode"] = num.ToString();
+				string key = "store capacity between " + passNode1 + " and " + passNode2;
+				details [key] = tempCap.ToString ();
+				TheLogger.instance.TakeAction (2, details);
 
 				size2last2Node = passNode1;
 				originCap = gameControll.capArray [passNode1, passNode2];
@@ -451,6 +496,9 @@ public class Node : MonoBehaviour
             {
                 string toSave = "this node is not connected with the node " + size2lastNode + " please select a valid one! ";
                 Debug.Log(toSave);
+				JSONClass details = new JSONClass ();
+				details ["Wrong"] = toSave;
+				TheLogger.instance.TakeAction (10, details);
                 //GameObject.Find ("ModalControl").GetComponent<testWindow> ().takeAction (toSave);
             }
         }

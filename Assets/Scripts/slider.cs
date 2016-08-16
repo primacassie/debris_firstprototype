@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using SimpleJSON;
 
 public class slider : MonoBehaviour {
 	//GameObject thisObj;
@@ -8,6 +9,9 @@ public class slider : MonoBehaviour {
 	public static int carOrigin;
 	
 	public void sliderCap(float newCap){
+		JSONClass details = new JSONClass ();
+		details ["ClickSlider"] = newCap.ToString();
+		TheLogger.instance.TakeAction (3, details);
 		gameControll.capArray [Node.passNode1, Node.passNode2] = (int) newCap;
 		gameControll.capArray [Node.passNode2, Node.passNode1] = (int) newCap;
 		//Debug.Log ("carOrigin is "+carOrigin);

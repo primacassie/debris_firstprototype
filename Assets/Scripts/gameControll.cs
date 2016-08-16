@@ -4,10 +4,10 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine.SceneManagement;
+using SimpleJSON;
 
 public class gameControll : MonoBehaviour
 {
-
     // Use this for initialization
     [HideInInspector]
     public static ArrayList pathStore = new ArrayList();
@@ -155,6 +155,9 @@ public class gameControll : MonoBehaviour
             {
                 Camera.main.orthographicSize++;
             }
+			JSONClass details = new JSONClass ();
+			details ["scroll wheel"] = "out";
+			TheLogger.instance.TakeAction (5, details);
         }
         else if (Input.GetAxis("Mouse ScrollWheel") > 0)
         {
@@ -162,6 +165,9 @@ public class gameControll : MonoBehaviour
             {
                 Camera.main.orthographicSize--;
             }
+			JSONClass details = new JSONClass ();
+			details ["scroll wheel"] = "in";
+			TheLogger.instance.TakeAction (5, details);
         }
         if (Camera.main.orthographicSize == 5)
         {
@@ -175,6 +181,9 @@ public class gameControll : MonoBehaviour
     //change cursor and depot color
     public void changeRed()
     {
+		JSONClass details = new JSONClass ();
+		details ["ClickButton"] = "red";
+		TheLogger.instance.TakeAction (1, details);
 		if (!(redTruck || blueTruck || greenTruck) && !StoreTruckClick.hasCancelMark)
         {
 			GameObject.Find("red").GetComponent<AudioSource> ().Play ();
@@ -232,6 +241,9 @@ public class gameControll : MonoBehaviour
 
     public void changeBlue()
     {
+		JSONClass details = new JSONClass ();
+		details ["ClickButton"] = "blue";
+		TheLogger.instance.TakeAction (1, details);
 		if (!(redTruck || blueTruck || greenTruck) && !StoreTruckClick.hasCancelMark)
         {
             //Cursor.SetCursor(cursorTextureB, hotSpot, cursorMode);
@@ -290,6 +302,9 @@ public class gameControll : MonoBehaviour
 
     public void changeGreen()
     {
+		JSONClass details = new JSONClass ();
+		details ["ClickButton"] = "green";
+		TheLogger.instance.TakeAction (1, details);
 		if (!(redTruck || blueTruck || greenTruck)&& !StoreTruckClick.hasCancelMark)
         {
             //Cursor.SetCursor(cursorTextureG, hotSpot, cursorMode);
@@ -390,6 +405,9 @@ public class gameControll : MonoBehaviour
         else if (!(greenTruck || blueTruck || redTruck))
         {
             Debug.Log("please select a truck!");
+			JSONClass details = new JSONClass ();
+			details ["Wrong"] = "Does not select truck";
+			TheLogger.instance.TakeAction (10, details);
             //GameObject.Find("ModalControl").GetComponent<testWindow>().takeAction("Please select a truck!");
             return false;
         }

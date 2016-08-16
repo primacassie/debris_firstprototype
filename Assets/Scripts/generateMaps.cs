@@ -9,7 +9,7 @@ public class generateMaps : MonoBehaviour {
 		GameObject obj1 = GameObject.Find ("node1");
 		GameObject obj2 = GameObject.Find ("node2");
 		Vector3 p1 = (obj1.transform.position+obj2.transform.position)/2;
-		float length = Mathf.Sqrt (Mathf.Pow ((obj2.transform.position.y - obj1.transform.position.y), 2) + Mathf.Pow ((obj2.transform.position.x - obj1.transform.position.x), 2));
+		//float length = Mathf.Sqrt (Mathf.Pow ((obj2.transform.position.y - obj1.transform.position.y), 2) + Mathf.Pow ((obj2.transform.position.x - obj1.transform.position.x), 2));
 		GameObject obj = Instantiate (Resources.Load ("Prefabs/path")) as GameObject;
 		obj.transform.position = p1;
 //		int nodeNum = 20;

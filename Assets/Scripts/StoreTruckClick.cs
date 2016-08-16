@@ -3,6 +3,7 @@ using System.Collections;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using SimpleJSON;
 
 public class StoreTruckClick : MonoBehaviour {
 
@@ -35,6 +36,9 @@ public class StoreTruckClick : MonoBehaviour {
 				//objQueue.Enqueue (this.gameObject);
 				//List<int> nodePathL = new List<int> ();
 				//List<int> nodeTrcukCap = new List<int> ();
+				JSONClass details = new JSONClass ();
+				details ["ClickLeftPanelTruck"] = truckName+", trigger cancel mark";
+				TheLogger.instance.TakeAction (6, details);
 				float profit = 0f;
 				float time = 0f;
 				if (truckName [0] == 'r') {
@@ -55,9 +59,6 @@ public class StoreTruckClick : MonoBehaviour {
 					foreach (List<int> l in Node.redTruckCap) {
 						if (k == truckNum) {
 							nodeTrcukCap = l;
-							foreach(int te in l){
-								Debug.Log (te);
-							}
 							break;
 						}
 						k++;
@@ -291,6 +292,9 @@ public class StoreTruckClick : MonoBehaviour {
                 string truckName = this.gameObject.name;
                 string resultString = Regex.Match(truckName, @"\d+").Value;
                 int truckNum = int.Parse(resultString);
+				JSONClass details = new JSONClass ();
+				details ["ClickLeftPanelTruck"] = truckName+", cancel cancel mark";
+				TheLogger.instance.TakeAction (6, details);
                 if ((truckName[0]=='r' && red) || (truckName[0] == 'g' && green)|| (truckName[0] == 'b' && blue))
                 {
                     if (truckName[0] == 'r')

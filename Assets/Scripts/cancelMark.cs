@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using SimpleJSON;
 
 public class cancelMark : MonoBehaviour {
 	void OnMouseDown(){
@@ -23,7 +24,7 @@ public class cancelMark : MonoBehaviour {
 			decimal.Round ((decimal)gameControll.redProfitTotal);
 			if (gameControll.redProfitTotal < 0.01f)
 				gameControll.redProfitTotal = 0f;
-			Debug.Log ("redtime" + gameControll.redTimeTotal);
+			//Debug.Log ("redtime" + gameControll.redTimeTotal);
 			gameControll.redTimeTotal -= StoreTruckClick.numForTime;
 			Debug.Log ("redtime" + gameControll.redTimeTotal);
 			decimal.Round ((decimal)gameControll.redTimeTotal);
@@ -31,6 +32,10 @@ public class cancelMark : MonoBehaviour {
 				gameControll.redTimeTotal = 0f;
 			panelController.redText.text = gameControll.redProfitTotal.ToString();
 			panelController.redTime.text = gameControll.redTimeTotal.ToString();
+			JSONClass details = new JSONClass ();
+			string s = "remove red truck " + StoreTruckClick.theTruckNum;
+			details ["ClickCancelMark"] = s;
+			TheLogger.instance.TakeAction (7, details);
 		} else if (StoreTruckClick.green) {
 			Node.greenAl.RemoveAt (StoreTruckClick.theTruckNum);
 			StoreTruckClick.arrayForChosenPath.Clear ();
@@ -47,9 +52,13 @@ public class cancelMark : MonoBehaviour {
 			decimal.Round ((decimal)gameControll.greenTimeTotal);
 			if (gameControll.greenTimeTotal < 0.01f)
 				gameControll.greenTimeTotal = 0f;
-			Debug.Log ("greentime" + gameControll.greenTimeTotal);
+			//Debug.Log ("greentime" + gameControll.greenTimeTotal);
 			panelController.greenText.text = gameControll.greenProfitTotal.ToString();
 			panelController.greenTime.text = gameControll.greenTimeTotal.ToString();
+			JSONClass details = new JSONClass ();
+			string s = "remove green truck " + StoreTruckClick.theTruckNum;
+			details ["ClickCancelMark"] = s;
+			TheLogger.instance.TakeAction (7, details);
 		} else if (StoreTruckClick.blue) {
 			Node.blueAl.RemoveAt (StoreTruckClick.theTruckNum);
 			StoreTruckClick.arrayForChosenPath.Clear ();
@@ -66,9 +75,13 @@ public class cancelMark : MonoBehaviour {
 			decimal.Round ((decimal)gameControll.blueTimeTotal);
 			if (gameControll.blueTimeTotal < 0.01f)
 				gameControll.blueTimeTotal = 0;
-			Debug.Log ("bluetime" + gameControll.blueTimeTotal);
+			//Debug.Log ("bluetime" + gameControll.blueTimeTotal);
 			panelController.blueText.text = gameControll.blueProfitTotal.ToString();
 			panelController.blueTime.text = gameControll.blueTimeTotal.ToString();
+			JSONClass details = new JSONClass ();
+			string s = "remove blue truck " + StoreTruckClick.theTruckNum;
+			details ["ClickCancelMark"] = s;
+			TheLogger.instance.TakeAction (7, details);
 		}
 		for (int j = 0; j < arr.Length-1; j++) {
 			int num1 = arr [j];
