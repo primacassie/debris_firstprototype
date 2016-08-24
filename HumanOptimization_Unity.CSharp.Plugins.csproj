@@ -5,16 +5,16 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{4BE06905-36EB-D30B-5813-B38A9DD79FA0}</ProjectGuid>
+    <ProjectGuid>{5AFEE230-B198-B161-43B8-0C5286141E6E}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Assembly-CSharp-firstpass</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
     <CompilerResponseFile></CompilerResponseFile>
-    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityProjectType>GamePlugins:3</UnityProjectType>
     <UnityBuildTarget>StandaloneOSXIntel:4</UnityBuildTarget>
     <UnityVersion>5.4.0f3</UnityVersion>
     <RootNamespace></RootNamespace>
@@ -66,54 +66,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="HumanOptimization_Unity.CSharp.Plugins.csproj">
-      <Project>{5AFEE230-B198-B161-43B8-0C5286141E6E}</Project>
-      <Name>HumanOptimization_Unity.CSharp.Plugins</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Assets\Logger\Examples\ExampleLogger.cs" />
-    <Compile Include="Assets\Logger\Scripts\Adapters\BaseAdapter.cs" />
-    <Compile Include="Assets\Logger\Scripts\Adapters\FileAdapter.cs" />
-    <Compile Include="Assets\Logger\Scripts\Adapters\NullAdapter.cs" />
-    <Compile Include="Assets\Logger\Scripts\Adapters\SimpleWWWAdapter.cs" />
-    <Compile Include="Assets\Logger\Scripts\BasicLoggerStartup.cs" />
-    <Compile Include="Assets\Logger\Scripts\IAdapter.cs" />
-    <Compile Include="Assets\Logger\Scripts\ILogger.cs" />
-    <Compile Include="Assets\Logger\Scripts\Loggers\Logger.cs" />
-    <Compile Include="Assets\Logger\Scripts\TheLogger.cs" />
-    <Compile Include="Assets\Scripts\CheckMark.cs" />
-    <Compile Include="Assets\Scripts\FinalSumbit.cs" />
-    <Compile Include="Assets\Scripts\Graph.cs" />
-    <Compile Include="Assets\Scripts\LineAnimation.cs" />
-    <Compile Include="Assets\Scripts\MenuToStart.cs" />
-    <Compile Include="Assets\Scripts\Node.cs" />
-    <Compile Include="Assets\Scripts\NodeAnimation.cs" />
-    <Compile Include="Assets\Scripts\StoreTruckClick.cs" />
-    <Compile Include="Assets\Scripts\cameraMovement.cs" />
-    <Compile Include="Assets\Scripts\cancelMark.cs" />
-    <Compile Include="Assets\Scripts\depot.cs" />
-    <Compile Include="Assets\Scripts\depotAnimation.cs" />
-    <Compile Include="Assets\Scripts\dragCamera.cs" />
-    <Compile Include="Assets\Scripts\gameControll.cs" />
-    <Compile Include="Assets\Scripts\generateMaps.cs" />
-    <Compile Include="Assets\Scripts\indicatorFunction.cs" />
-    <Compile Include="Assets\Scripts\inputControl.cs" />
-    <Compile Include="Assets\Scripts\panelController.cs" />
-    <Compile Include="Assets\Scripts\pathCap.cs" />
-    <Compile Include="Assets\Scripts\quitGame.cs" />
-    <Compile Include="Assets\Scripts\slider.cs" />
-    <Compile Include="Assets\Scripts\stickMap.cs" />
-    <Compile Include="Assets\Scripts\storeTruck.cs" />
-    <Compile Include="Assets\Scripts\submitAnim.cs" />
-    <Compile Include="Assets\Scripts\submitButton.cs" />
-    <Compile Include="Assets\Scripts\test\DisplayManager.cs" />
-    <Compile Include="Assets\Scripts\test\DragTruck.cs" />
-    <Compile Include="Assets\Scripts\test\DragTruck1.cs" />
-    <Compile Include="Assets\Scripts\test\clickMove.cs" />
-    <Compile Include="Assets\Scripts\test\modalPanel.cs" />
-    <Compile Include="Assets\Scripts\test\testWindow.cs" />
-    <Compile Include="Assets\Scripts\truck.cs" />
+    <Compile Include="Assets\plugins\SimpleJSON.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shaders\LinearGradient.shader" />

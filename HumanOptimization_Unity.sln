@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HumanOptimization_Unity.CSharp.Plugins", "HumanOptimization_Unity.CSharp.Plugins.csproj", "{5AFEE230-B198-B161-43B8-0C5286141E6E}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HumanOptimization_Unity.CSharp", "HumanOptimization_Unity.CSharp.csproj", "{4BE06905-36EB-D30B-5813-B38A9DD79FA0}"
 EndProject
 Global
@@ -9,6 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5AFEE230-B198-B161-43B8-0C5286141E6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AFEE230-B198-B161-43B8-0C5286141E6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AFEE230-B198-B161-43B8-0C5286141E6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AFEE230-B198-B161-43B8-0C5286141E6E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4BE06905-36EB-D30B-5813-B38A9DD79FA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4BE06905-36EB-D30B-5813-B38A9DD79FA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BE06905-36EB-D30B-5813-B38A9DD79FA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
