@@ -141,6 +141,7 @@ public class Node : MonoBehaviour
 		redTruckCap=new List<List<int>> ();
 		blueTruckCap=new List<List<int>> ();
 		greenTruckCap=new List<List<int>> ();
+		Debug.Log ("redAL " + redAl.Count);
         sIntersection = GameObject.Find ("intersection").GetComponent<Text> ();
 		v1=getVector(GameObject.Find("depot").transform.position,GameObject.Find("node2").transform.position,GameObject.Find("node3").transform.position);
 		v2=getVector(GameObject.Find("depot").transform.position,GameObject.Find("node2").transform.position,GameObject.Find("node5").transform.position);
@@ -152,7 +153,7 @@ public class Node : MonoBehaviour
 			laterCap = gameControll.capArray [passNode1, passNode2];
 			int t = originCap-laterCap;
 			storeTruckCap.Add (t);
-			Debug.Log ("length of this" + storeTruckCap.Count);
+			//Debug.Log ("length of this" + storeTruckCap.Count);
 			backToDepot = false;
 			if (gameControll.blueTruck) {
 				blueAl.Add (storePath);
@@ -173,7 +174,7 @@ public class Node : MonoBehaviour
 				storeTime = gameControll.blueTimeOnce;
 				blueProfitAl.Add (storeProfit);
 				blueTimeAl.Add (storeTime);
-				Debug.Log ("store Time" + storeTime);
+				//Debug.Log ("store Time" + storeTime);
 				gameControll.blueProfitOnce = 0;
 				gameControll.blueTimeOnce = 0;
 			}
@@ -194,7 +195,7 @@ public class Node : MonoBehaviour
 				gameControll.redTruck = false;
 				storeProfit = gameControll.redProfitOnce;
 				storeTime = gameControll.redTimeOnce;
-				Debug.Log ("store Time" + storeTime);
+				//Debug.Log ("store Time" + storeTime);
 				redProfitAl.Add (storeProfit);
 				redTimeAl.Add (storeTime);
 				gameControll.redProfitOnce = 0;
@@ -343,7 +344,7 @@ public class Node : MonoBehaviour
 
                 //here is the second version of UI design
                 setInitialValue(passNode1, passNode2);
-				Debug.Log ("initial 2 " + gameControll.blueTimeOnce);
+				//Debug.Log ("initial 2 " + gameControll.blueTimeOnce);
 
                 //				Debug.Log ("passnode1 is " + passNode1);
                 //				Debug.Log ("passnode2 is " + passNode2);
@@ -407,7 +408,7 @@ public class Node : MonoBehaviour
 
 				size2last2Node = passNode1;
 				originCap = gameControll.capArray [passNode1, passNode2];
-				Debug.Log ("origin cap" + originCap);
+				//Debug.Log ("origin cap" + originCap);
                 //				GameObject inputTab=GameObject.Find("InputTab");
                 //				inputTab.SetActive (true);
 
@@ -613,7 +614,7 @@ public class Node : MonoBehaviour
             scrollBasicProfitOnce = gameControll.blueProfitOnce;
             scrollBasicTime = gameControll.blueTimeTotal;
             scrollBasicTimeOnce = gameControll.blueTimeOnce;
-			Debug.Log ("initial" + gameControll.blueTimeOnce);
+			//Debug.Log ("initial" + gameControll.blueTimeOnce);
             string findName = "blueTruckText" + (gameControll.blueTruckNum - 1).ToString();
             int truckS = 100 - gameControll.carCap;
             string truckStore = truckS + "/100";

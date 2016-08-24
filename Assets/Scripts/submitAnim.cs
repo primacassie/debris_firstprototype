@@ -25,7 +25,7 @@ public class submitAnim : MonoBehaviour {
             for(int i = 0; i < arr.Length; i++)
             {
                 string nodeName = "node" + arr[i].ToString();
-                Debug.Log(nodeName);
+                //Debug.Log(nodeName);
                 if (arr[i] == 1)
                 {
                     nodeName = "depot";

@@ -122,6 +122,8 @@ public class gameControll : MonoBehaviour
             obj.GetComponentInChildren<Slider>().enabled = false;
             obj.GetComponentInChildren<Slider>().GetComponent<RectTransform>().localScale = new Vector2(0, 0);
         }
+		//Debug.Log ("cap array init1" + gameControll.capArray [1, 2]);
+		initializeCapArray(); 
         //Change Foreground to the layer you want it to display on 
         //You could prob. make a public variable for this
         //particleSystem.renderer.sortingLayerName = "Foreground";
@@ -130,7 +132,8 @@ public class gameControll : MonoBehaviour
 
     void Start()
     {
-        initializeCapArray();  //the method is to initalize both capacity arrays one is boolean and the other is int array.
+		//initializeCapArray(); 
+         //the method is to initalize both capacity arrays one is boolean and the other is int array.
                                //loadInputField();  //load input field when a path is clicked.
 		//tempArray=capArray;                      //anim=GetComponent<Animator>();
     }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using SimpleJSON;
+using System.Text.RegularExpressions;
 
 public class submitButton : MonoBehaviour {
 
@@ -11,6 +12,15 @@ public class submitButton : MonoBehaviour {
     public static Dictionary<string,List<int>> animDic = new Dictionary<string,List<int>>();
 	private bool submitOnlyOnce;
 	private DisplayManager display;
+	public static List<List<List<int>>> ForTrailRed = new List<List<List<int>>> ();
+	public static List<List<List<int>>> ForTrailGreen = new List<List<List<int>>> ();
+	public static List<List<List<int>>> ForTrailBlue=new List<List<List<int>>>();
+	public static List<float> forProf = new List<float> ();
+	public static List<float> forTime = new List<float> ();
+	public static List<float> forInter=new List<float>();
+	public static List<List<List<int>>> ForTrailRedPath = new List<List<List<int>>> ();
+	public static List<List<List<int>>> ForTrailGreenPath = new List<List<List<int>>> ();
+	public static List<List<List<int>>> ForTrailBluePath = new List<List<List<int>>> ();
 	//private Vector3 tar=new Vector3();
 	//private bool submitOnce;
 	//private Transform tar;
@@ -23,7 +33,8 @@ public class submitButton : MonoBehaviour {
 	float minP;
 	float maxT;
 	int inters;
-
+	public static List<Dictionary<string,string>> ForPath = new List<Dictionary<string,string>> ();
+	public static Dictionary<string,string> storeLineRenderPath=new Dictionary<string, string>();
  //   public float speed = 4f;
 
  //   private int current = 0;
@@ -96,6 +107,7 @@ public class submitButton : MonoBehaviour {
             }
         }
 		if (sum == 0 && !submitOnlyOnce) {
+			Debug.Log ("redAL in sumbit" + Node.redAl.Count);
 			//Debug.Log("congratulations! you finish this game!");
 			//GameObject.Find("ModalControl").GetComponent<testWindow>().takeAction("Congratulations! You finish this round!");
 			GetComponent<AudioSource> ().Play ();
@@ -105,20 +117,73 @@ public class submitButton : MonoBehaviour {
 			foreach (Button b in button) {
 				b.interactable = false;
 			}
+			ForTrailRed.Add (new List<List<int>>(Node.redAl));
+			ForTrailGreen.Add (new List<List<int>> (Node.greenAl));
+			ForTrailBlue.Add (new List<List<int>> (Node.blueAl));
+			ForTrailRedPath.Add (new List<List<int>> (Node.redTruckCap));
+			ForTrailBluePath.Add (new List<List<int>> (Node.blueTruckCap));
+			ForTrailGreenPath.Add (new List<List<int>> (Node.greenTruckCap));
 			GameObject.Find ("storeTruck").SetActive (false);
 			minP = Mathf.Min(float.Parse(GameObject.Find("redTruckProfit").GetComponent<Text>().text), float.Parse(GameObject.Find("blueTruckProfit").GetComponent<Text>().text), float.Parse(GameObject.Find("greenTruckProfit").GetComponent<Text>().text));
 			maxT = Mathf.Max(float.Parse(GameObject.Find("redTruckTime").GetComponent<Text>().text), float.Parse(GameObject.Find("blueTruckTime").GetComponent<Text>().text), float.Parse(GameObject.Find("greenTruckTime").GetComponent<Text>().text));
 			inters = Node.intersection;
-//			foreach (GameObject obj in GameObject.FindGameObjectsWithTag ("Node")) {
-//				Color c = obj.GetComponent<Image> ().color;
-//				c.a = 0.6f;
-//				obj.GetComponent<Image> ().color=c;
-//			}
-//			foreach (GameObject obj in GameObject.FindGameObjectsWithTag ("path")) {
-//				Color c = obj.GetComponent<Image> ().color;
-//				c.a = 0.6f;
-//				obj.GetComponent<Image> ().color=c;
-//			}
+			forProf.Add (minP);
+			forTime.Add (maxT);
+			forInter.Add (inters);
+			foreach(GameObject obj in GameObject.FindGameObjectsWithTag("linerender")){
+				string name = obj.name;
+				string resultString = Regex.Match(name, @"\d+").Value;
+				int num1 = 0;
+				int num2 = 0;
+				if (resultString.Length == 2) {
+					num1 = resultString [0]-'0';
+					num2 = resultString [1]-'0';
+				} else if (resultString.Length == 3) {
+					num1 = resultString [0]-'0';
+					num2 = int.Parse (resultString.Substring (1, 2));
+				} else if (resultString.Length == 4) {
+					num1 = int.Parse (resultString.Substring (0, 2));
+					num2 = int.Parse (resultString.Substring (2, 2));
+				}
+				string path = "";
+				if (Node.redPathArray [num1, num2]) {
+					path += "r";
+				}
+				if (Node.greenPathArray [num1, num2]) {
+					path += "g";
+				}
+				if (Node.bluePathArray [num1, num2]) {
+					path += "b";
+				}
+				storeLineRenderPath.Add (resultString, path);
+			}
+			ForPath.Add (new Dictionary<string, string>(storeLineRenderPath));
+			if (ForTrailRed.Count == 1) {
+				GameObject.Find ("singleTrail").GetComponent<Image> ().enabled = true;
+				GameObject.Find ("singleTrail").GetComponent<BoxCollider2D> ().enabled = true;
+				if (Node.redAl.Count > 0 && Node.greenAl.Count > 0 && Node.blueAl.Count > 0) {
+					GameObject.Find ("singleTrail").GetComponent<Image> ().material = Resources.Load<Material> ("Materials/GradientRGB") as Material;
+				} else if (Node.redAl.Count == 0 && Node.greenAl.Count > 0 && Node.blueAl.Count > 0) {
+					GameObject.Find ("singleTrail").GetComponent<Image> ().material = Resources.Load<Material> ("Materials/GradientBG") as Material;
+				} else if (Node.redAl.Count > 0 && Node.greenAl.Count > 0 && Node.blueAl.Count == 0) {
+					GameObject.Find ("singleTrail").GetComponent<Image> ().material = Resources.Load<Material> ("Materials/GradientRG") as Material;
+				} else if (Node.redAl.Count > 0 && Node.greenAl.Count == 0 && Node.blueAl.Count > 0) {
+					GameObject.Find ("singleTrail").GetComponent<Image> ().material = Resources.Load<Material> ("Materials/GradientRB") as Material;
+				} else if (Node.redAl.Count > 0 && Node.greenAl.Count == 0 && Node.blueAl.Count == 0) {
+					GameObject.Find ("singleTrail").GetComponent<Image> ().material = Resources.Load<Material> ("Materials/redAnim") as Material;
+				} else if (Node.redAl.Count == 0 && Node.greenAl.Count > 0 && Node.blueAl.Count == 0) {
+					GameObject.Find ("singleTrail").GetComponent<Image> ().material = Resources.Load<Material> ("Materials/blueAnim") as Material;
+				}else if(Node.redAl.Count == 0 && Node.greenAl.Count == 0 && Node.blueAl.Count > 0){
+					GameObject.Find ("singleTrail").GetComponent<Image> ().material = Resources.Load<Material> ("Materials/greenAnim") as Material;
+				}
+				//Debug.Log ("this works");
+			} else if (ForTrailRed.Count > 1) {
+				GameObject.Find ("singleTrail").GetComponent<Image> ().enabled = false;
+				GameObject.Find ("singleTrail").GetComponent<BoxCollider2D> ().enabled = false;
+				GameObject.Find ("overlappingImage").GetComponent<Image> ().enabled = true;
+				GameObject.Find ("overlappingImage").GetComponent<BoxCollider2D> ().enabled = true;
+				//Debug.Log ("this works 2");
+			}
 			JSONClass details = new JSONClass ();
 			string s = "Min Profit: " + minP + "," + "Max Time: " + maxT + "," + "Intersection: " + inters;
 			details ["ClickSubmit"] = s;

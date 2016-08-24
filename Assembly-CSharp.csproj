@@ -56,11 +56,13 @@
      <Compile Include="Assets\Logger\Scripts\Loggers\Logger.cs" />
      <Compile Include="Assets\Logger\Scripts\TheLogger.cs" />
      <Compile Include="Assets\Scripts\CheckMark.cs" />
+     <Compile Include="Assets\Scripts\FinalSumbit.cs" />
      <Compile Include="Assets\Scripts\Graph.cs" />
      <Compile Include="Assets\Scripts\LineAnimation.cs" />
      <Compile Include="Assets\Scripts\MenuToStart.cs" />
      <Compile Include="Assets\Scripts\Node.cs" />
      <Compile Include="Assets\Scripts\NodeAnimation.cs" />
+     <Compile Include="Assets\Scripts\StartNewTrail.cs" />
      <Compile Include="Assets\Scripts\StoreTruckClick.cs" />
      <Compile Include="Assets\Scripts\cameraMovement.cs" />
      <Compile Include="Assets\Scripts\cancelMark.cs" />
