@@ -151,8 +151,6 @@ public class Node : MonoBehaviour
 		v1=getVector(GameObject.Find("depot").transform.position,GameObject.Find("node2").transform.position,GameObject.Find("node3").transform.position);
 		v2=getVector(GameObject.Find("depot").transform.position,GameObject.Find("node2").transform.position,GameObject.Find("node5").transform.position);
 		v3=getVector(GameObject.Find("depot").transform.position,GameObject.Find("node3").transform.position,GameObject.Find("node4").transform.position);
-        GameObject go = Instantiate(Resources.Load("Prefab/InfromationPanel")) as GameObject;
-        go.name = "InformationPanel2";
     }
 
 	void Update(){

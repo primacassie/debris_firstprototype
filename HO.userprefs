@@ -1,15 +1,13 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Node.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/submitButton.cs">
     <Files>
-      <File FileName="Assets/Scripts/FinalSumbit.cs" Line="13" Column="1" />
-      <File FileName="Assets/Scripts/stickMap.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/submitButton.cs" Line="110" Column="31" />
+      <File FileName="Assets/Scripts/gameControll.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/ClickTrails.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/storeTruck.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/StoreTruckClick.cs" Line="33" Column="5" />
-      <File FileName="Assets/Scripts/Node.cs" Line="617" Column="6" />
-      <File FileName="Assets/Scripts/StartNewTrail.cs" Line="24" Column="6" />
-      <File FileName="Assets/Scripts/gameControll.cs" Line="125" Column="5" />
+      <File FileName="Assets/Scripts/ClickForSingleTrail.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/submitButton.cs" Line="11" Column="94" />
+      <File FileName="Assets/Scripts/submitAnim.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
