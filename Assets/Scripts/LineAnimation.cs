@@ -78,7 +78,7 @@ public class LineAnimation : MonoBehaviour
     }
 
 	IEnumerator toGradientColor(int num1,int num2){
-		yield return new WaitForSeconds (2);
+		yield return new WaitForSeconds (1.5f);
 		string desObj = "newPathAnim" + num1.ToString () + num2.ToString ();
 		if (GameObject.Find (desObj) != null) {
 			Destroy (GameObject.Find (desObj));

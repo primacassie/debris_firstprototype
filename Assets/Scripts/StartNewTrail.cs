@@ -11,7 +11,25 @@ public class StartNewTrail : MonoBehaviour {
 
 	void OnMouseDown(){
 		if (!gameControll.redTruck && !gameControll.greenTruck && !gameControll.blueTruck) {
-			SceneManager.LoadScene ("start");
+            int[,] arr = gameControll.capArray;
+            int sum = 0;
+            for (int i = 0; i < arr.GetLength(0); i++)
+            {
+                for (int j = 0; j < arr.GetLength(1); j++)
+                {
+                    sum += arr[i, j];
+                    //                if (arr[i, j] != 0)
+                    //                {
+                    //                    node1 = i;
+                    //                    node2 = j;
+                    //                    cap = arr[i, j];
+                    //                }
+                }
+            }
+            if (sum == 0)
+            {
+                SceneManager.LoadScene("start");
+            }
 //			Node.redAl.Clear;
 //			Node.blueAl.Clear;
 //			Node.greenAl.Clear;
@@ -21,7 +39,7 @@ public class StartNewTrail : MonoBehaviour {
 //			Node.intersection = 0;
 //			Debug.Log ("the number of redAl "+Node.redAl.Count);
 //			Debug.Log ("intersections " + Node.intersection);
-			//Debug.Log ("cap array " + gameControll.capArray [1, 2]);
+//			Debug.Log ("cap array " + gameControll.capArray [1, 2]);
 		}
 	}
 }

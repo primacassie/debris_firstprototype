@@ -105,7 +105,6 @@ public class gameControll : MonoBehaviour
         //		GameObject inputTab=GameObject.Find("InputTab");
         //		myGameObject = inputTab;
         //		inputTab.SetActive (false);
-
         //Cursor.SetCursor(cursorTextureO, hotSpot, cursorMode);
 		if (SceneManager.GetActiveScene ().name == "start") {
 			

@@ -145,18 +145,18 @@ public class pathCap : MonoBehaviour {
 
 
 
-	void OnMouseEnter(){
-		if (gameControll.redTruck || gameControll.blueTruck || gameControll.greenTruck) {
-			mouseIn = true;
-		}
-	}
+	//void OnMouseEnter(){
+	//	if (gameControll.redTruck || gameControll.blueTruck || gameControll.greenTruck) {
+	//		mouseIn = true;
+	//	}
+	//}
 
-	void OnMouseExit(){
-		mouseIn = false;
-		if (Input.GetMouseButton (0) && (gameControll.redTruck || gameControll.blueTruck || gameControll.greenTruck)) {
-			onExitHold = true;
-		}
-	}
+	//void OnMouseExit(){
+	//	mouseIn = false;
+	//	if (Input.GetMouseButton (0) && (gameControll.redTruck || gameControll.blueTruck || gameControll.greenTruck)) {
+	//		onExitHold = true;
+	//	}
+	//}
 
 	//return the path.
 	public static GameObject findObject(){

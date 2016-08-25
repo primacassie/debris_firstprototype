@@ -35,25 +35,47 @@ public class submitButton : MonoBehaviour {
 	int inters;
 	public static List<Dictionary<string,string>> ForPath = new List<Dictionary<string,string>> ();
 	public static Dictionary<string,string> storeLineRenderPath=new Dictionary<string, string>();
- //   public float speed = 4f;
-
- //   private int current = 0;
- //   private int[] arr;
- //   Transform target;
- //   Transform[] tArr;
- //   private bool canUpdate;
-
- //   // Use this for initialization
-    void Start () {
-		//tar=GameObject.Find ("depot").transform;
-		////tar=new Vector3(-6,0,0);
-		//prof=new GameObject();
-		//time = new GameObject ();
-		//intersection = new GameObject ();
-		//profText = new GameObject ();
-		//truckTime = new GameObject ();
-		//interText = new GameObject ();
-	}
+    
+    void Awake()
+    {
+        animDic= new Dictionary<string, List<int>>();
+        if (ForTrailRed.Count == 1)
+        {
+            if(ForTrailRed[0]!=null && ForTrailBlue[0]!=null && ForTrailGreen[0] != null)
+            {
+                GameObject.Find("singleTrail").GetComponent<Image>().material = Resources.Load<Material>("Materials/GradientRGB") as Material;
+            }else if (ForTrailRed[0] == null && ForTrailBlue[0] != null && ForTrailGreen[0] == null)
+            {
+                GameObject.Find("singleTrail").GetComponent<Image>().material = Resources.Load<Material>("Materials/blueAnim") as Material;
+            }else if (ForTrailRed[0] == null && ForTrailBlue[0] != null && ForTrailGreen[0] != null)
+            {
+                GameObject.Find("singleTrail").GetComponent<Image>().material = Resources.Load<Material>("Materials/GradientBG") as Material;
+            }
+            else if (ForTrailRed[0] != null && ForTrailBlue[0] == null && ForTrailGreen[0] != null)
+            {
+                GameObject.Find("singleTrail").GetComponent<Image>().material = Resources.Load<Material>("Materials/GradientRG") as Material;
+            }
+            else if (ForTrailRed[0] != null && ForTrailBlue[0] != null && ForTrailGreen[0] == null)
+            {
+                GameObject.Find("singleTrail").GetComponent<Image>().material = Resources.Load<Material>("Materials/GradientRB") as Material;
+            }
+            else if (ForTrailRed[0] == null && ForTrailBlue[0] == null && ForTrailGreen[0] != null)
+            {
+                GameObject.Find("singleTrail").GetComponent<Image>().material = Resources.Load<Material>("Materials/greenAnim") as Material;
+            }
+            else if (ForTrailRed[0] != null && ForTrailBlue[0] == null && ForTrailGreen[0] == null)
+            {
+                GameObject.Find("singleTrail").GetComponent<Image>().material = Resources.Load<Material>("Materials/redAnim") as Material;
+            }
+            GameObject.Find("singleTrail").GetComponent<Image>().enabled = true;
+            GameObject.Find("singleTrail").GetComponent<BoxCollider2D>().enabled = true;
+        } else if (ForTrailRed.Count > 1)
+        {
+            GameObject.Find("overlappingImage").GetComponent<Image>().enabled = true;
+            GameObject.Find("overlappingImage").GetComponent<BoxCollider2D>().enabled = true;
+        }
+        //Debug.Log("for red trail number"+ForTrailRed.Count);
+    }
 	
 	//// Update is called once per frame
 	//void Update () {
@@ -107,7 +129,7 @@ public class submitButton : MonoBehaviour {
             }
         }
 		if (sum == 0 && !submitOnlyOnce) {
-			Debug.Log ("redAL in sumbit" + Node.redAl.Count);
+			//Debug.Log ("redAL in sumbit" + Node.redAl.Count);
 			//Debug.Log("congratulations! you finish this game!");
 			//GameObject.Find("ModalControl").GetComponent<testWindow>().takeAction("Congratulations! You finish this round!");
 			GetComponent<AudioSource> ().Play ();
@@ -132,6 +154,9 @@ public class submitButton : MonoBehaviour {
 			forInter.Add (inters);
 			foreach(GameObject obj in GameObject.FindGameObjectsWithTag("linerender")){
 				string name = obj.name;
+                //sometimes players may click sumbit quickly so that there will be a duplicate path, so here I try to avoid "newPathAnim"
+                if (name[0] == 'n')
+                    continue;
 				string resultString = Regex.Match(name, @"\d+").Value;
 				int num1 = 0;
 				int num2 = 0;

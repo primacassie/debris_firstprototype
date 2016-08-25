@@ -12,6 +12,7 @@ public class Node : MonoBehaviour
     //static int variable control intersection;
     public static int intersection;
     private Text sIntersection;
+    GameObject GO;
 
     //private DisplayManager displayManager;
 
@@ -114,6 +115,10 @@ public class Node : MonoBehaviour
 
     void Awake()
     {
+        intersection = 0;
+        storeTime = 0;
+        storeProfit = 0;
+        GO = GameObject.Find("GameController");
 		if (SceneManager.GetActiveScene ().name == "level2") {
 			redLineArray = new bool[21, 21];
 			blueLineArray = new bool[21, 21];
@@ -141,11 +146,13 @@ public class Node : MonoBehaviour
 		redTruckCap=new List<List<int>> ();
 		blueTruckCap=new List<List<int>> ();
 		greenTruckCap=new List<List<int>> ();
-		Debug.Log ("redAL " + redAl.Count);
+		//Debug.Log ("redAL " + redAl.Count);
         sIntersection = GameObject.Find ("intersection").GetComponent<Text> ();
 		v1=getVector(GameObject.Find("depot").transform.position,GameObject.Find("node2").transform.position,GameObject.Find("node3").transform.position);
 		v2=getVector(GameObject.Find("depot").transform.position,GameObject.Find("node2").transform.position,GameObject.Find("node5").transform.position);
-		v3=getVector(GameObject.Find("depot").transform.position,GameObject.Find("node3").transform.position,GameObject.Find("node4").transform.position);      
+		v3=getVector(GameObject.Find("depot").transform.position,GameObject.Find("node3").transform.position,GameObject.Find("node4").transform.position);
+        GameObject go = Instantiate(Resources.Load("Prefab/InfromationPanel")) as GameObject;
+        go.name = "InformationPanel2";
     }
 
 	void Update(){
@@ -237,7 +244,7 @@ public class Node : MonoBehaviour
 			//reset most of the things to the beginning here
 			gameControll.twoNode.Clear ();
 //			GameObject.Find ("GameController").GetComponent<gameControll> ().resetCursor ();
-			GameObject.Find ("GameController").GetComponent<gameControll> ().resetDepot ();
+			GO.GetComponent<gameControll> ().resetDepot ();
 			int i = 0;
 			panelController.blueTextOnce.text = i.ToString ();
 			panelController.redTextOnce.text = i.ToString ();
