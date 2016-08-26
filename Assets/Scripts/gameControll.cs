@@ -106,6 +106,9 @@ public class gameControll : MonoBehaviour
         //		myGameObject = inputTab;
         //		inputTab.SetActive (false);
         //Cursor.SetCursor(cursorTextureO, hotSpot, cursorMode);
+        redTruckNum = 0;
+        blueTruckNum = 0;
+        greenTruckNum = 0;
 		if (SceneManager.GetActiveScene ().name == "start") {
 			
 			capArray = new int[6, 6];
@@ -158,8 +161,9 @@ public class gameControll : MonoBehaviour
                 Camera.main.orthographicSize++;
             }
 			JSONClass details = new JSONClass ();
-			details ["scroll wheel"] = "out";
-			TheLogger.instance.TakeAction (5, details);
+			details ["Zoom In Zoom Out"] = "out";
+            details["Zoom In Zoom Out"] = Camera.main.orthographicSize.ToString();
+            TheLogger.instance.TakeAction (5, details);
         }
         else if (Input.GetAxis("Mouse ScrollWheel") > 0)
         {
@@ -168,8 +172,9 @@ public class gameControll : MonoBehaviour
                 Camera.main.orthographicSize--;
             }
 			JSONClass details = new JSONClass ();
-			details ["scroll wheel"] = "in";
-			TheLogger.instance.TakeAction (5, details);
+			details ["Zoom In Zoom Out"] = "in";
+            details["Zoom In Zoom Out"] = Camera.main.orthographicSize.ToString();
+            TheLogger.instance.TakeAction (5, details);
         }
         if (Camera.main.orthographicSize == 5)
         {
@@ -184,7 +189,7 @@ public class gameControll : MonoBehaviour
     public void changeRed()
     {
 		JSONClass details = new JSONClass ();
-		details ["ClickButton"] = "red";
+		details ["ClickTruck"] = "red";
 		TheLogger.instance.TakeAction (1, details);
 		if (!(redTruck || blueTruck || greenTruck) && !StoreTruckClick.hasCancelMark)
         {
@@ -244,7 +249,7 @@ public class gameControll : MonoBehaviour
     public void changeBlue()
     {
 		JSONClass details = new JSONClass ();
-		details ["ClickButton"] = "blue";
+		details ["ClickTruck"] = "blue";
 		TheLogger.instance.TakeAction (1, details);
 		if (!(redTruck || blueTruck || greenTruck) && !StoreTruckClick.hasCancelMark)
         {
@@ -305,7 +310,7 @@ public class gameControll : MonoBehaviour
     public void changeGreen()
     {
 		JSONClass details = new JSONClass ();
-		details ["ClickButton"] = "green";
+		details ["ClickTruck"] = "green";
 		TheLogger.instance.TakeAction (1, details);
 		if (!(redTruck || blueTruck || greenTruck)&& !StoreTruckClick.hasCancelMark)
         {
@@ -408,7 +413,7 @@ public class gameControll : MonoBehaviour
         {
             Debug.Log("please select a truck!");
 			JSONClass details = new JSONClass ();
-			details ["Wrong"] = "Does not select truck";
+			details ["Incorrect Operation"] = "Does not select truck";
 			TheLogger.instance.TakeAction (10, details);
             //GameObject.Find("ModalControl").GetComponent<testWindow>().takeAction("Please select a truck!");
             return false;

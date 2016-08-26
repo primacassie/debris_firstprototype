@@ -119,6 +119,23 @@ public class Node : MonoBehaviour
         storeTime = 0;
         storeProfit = 0;
         GO = GameObject.Find("GameController");
+        if (SceneManager.GetActiveScene().name == "start")
+        {
+            redLineArray = new bool[6, 6];
+            blueLineArray = new bool[6, 6];
+            greenLineArray = new bool[6, 6];
+
+            rgbPathArray = new bool[6, 6];
+            redPathArray = new bool[6, 6];
+            greenPathArray = new bool[6, 6];
+            bluePathArray = new bool[6, 6];
+
+            //create int array to store how many path in it
+            redPathNum = new int[6, 6];
+            greenPathNum = new int[6, 6];
+            bluePathNum = new int[6, 6];
+        }
+
 		if (SceneManager.GetActiveScene ().name == "level2") {
 			redLineArray = new bool[21, 21];
 			blueLineArray = new bool[21, 21];
@@ -370,7 +387,7 @@ public class Node : MonoBehaviour
                 string toSave = "this node is not connected with the node " + firstOfSize1 + " please select a valid one! ";
                 Debug.Log(toSave);
 				JSONClass details = new JSONClass ();
-				details ["Wrong"] = toSave;
+				details ["Incorrect Operation"] = toSave;
 				TheLogger.instance.TakeAction (10, details);
 
                 //GameObject.Find ("ModalControl").GetComponent<testWindow> ().takeAction (toSave);
@@ -503,7 +520,7 @@ public class Node : MonoBehaviour
                 string toSave = "this node is not connected with the node " + size2lastNode + " please select a valid one! ";
                 Debug.Log(toSave);
 				JSONClass details = new JSONClass ();
-				details ["Wrong"] = toSave;
+				details ["Incorrect Operation"] = toSave;
 				TheLogger.instance.TakeAction (10, details);
                 //GameObject.Find ("ModalControl").GetComponent<testWindow> ().takeAction (toSave);
             }

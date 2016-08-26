@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using SimpleJSON;
 
 public class StartNewTrail : MonoBehaviour {
+    private DisplayManager display;
 
-	void OnMouseDown(){
+    void OnMouseDown(){
 		if (!gameControll.redTruck && !gameControll.greenTruck && !gameControll.blueTruck) {
             int[,] arr = gameControll.capArray;
             int sum = 0;
@@ -15,10 +17,25 @@ public class StartNewTrail : MonoBehaviour {
                     sum += arr[i, j];
                 }
             }
-            if (sum == 0)
+            if (sum == 0 && submitButton.submitAndNewScene!=0)
             {
                 SceneManager.LoadScene("start");
             }
-		}
+            else
+            {
+                JSONClass details = new JSONClass();
+                details["Incorrect Operation"] = "Start New Trail before submit";
+                TheLogger.instance.TakeAction(10, details);
+                display = DisplayManager.Instance();
+                display.DisplayMessage("Pls submit before start new!");
+            }
+        }else
+        {
+            JSONClass details = new JSONClass();
+            details["Incorrect Operation"] = "Start New Trail before submit";
+            TheLogger.instance.TakeAction(10, details);
+            display = DisplayManager.Instance();
+            display.DisplayMessage("Pls submit before start new!");
+        }
 	}
 }

@@ -83,6 +83,7 @@
     <Compile Include="Assets\Logger\Scripts\Loggers\Logger.cs" />
     <Compile Include="Assets\Logger\Scripts\TheLogger.cs" />
     <Compile Include="Assets\Scripts\CheckMark.cs" />
+    <Compile Include="Assets\Scripts\ClickForSingleTrail.cs" />
     <Compile Include="Assets\Scripts\ClickTrails.cs" />
     <Compile Include="Assets\Scripts\FinalSumbit.cs" />
     <Compile Include="Assets\Scripts\Graph.cs" />

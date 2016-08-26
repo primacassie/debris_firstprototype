@@ -26,6 +26,14 @@ public class FinalSumbit : MonoBehaviour {
         interText = new GameObject();
     }
 
+    void OnMouseDown()
+    {
+        minP = ClickTrails.minP;
+        maxT = ClickTrails.maxT;
+        inters = ClickTrails.inters;
+        BlackHoleAnim();
+    }
+
     // Update is called once per frame
     void Update()
     {

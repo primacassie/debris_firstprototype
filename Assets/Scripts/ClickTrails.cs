@@ -5,6 +5,27 @@ using UnityEngine.UI;
 
 public class ClickTrails : MonoBehaviour {
 	GameObject go;
+    public static float minP;
+    public static float maxT;
+    public static int inters;
+
+    void OnMouseDown()
+    {
+        string name = this.gameObject.name;
+        string resultString = Regex.Match(name, @"\d+").Value;
+        int num = int.Parse(resultString);
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("Trails");
+        foreach(GameObject obj in objs)
+        {
+            Behaviour halo = (Behaviour)obj.GetComponent("Halo");
+            halo.enabled = false;
+        }
+        Behaviour halo1 = (Behaviour)this.gameObject.GetComponent("Halo");
+        halo1.enabled = true;
+        inters=submitButton.forInter[num - 1];
+        minP = submitButton.forProf[num - 1];
+        maxT = submitButton.forTime[num - 1];
+    }
 
     void OnMouseEnter()
     {
@@ -35,11 +56,6 @@ public class ClickTrails : MonoBehaviour {
 		go.transform.Find ("informationTimeText").GetComponent<Text> ().text = submitButton.forTime [num - 1].ToString();
 		go.transform.Find ("informationIntersectionText").GetComponent<Text> ().enabled = true;
 		go.transform.Find ("informationIntersectionText").GetComponent<Text> ().text = submitButton.forInter [num - 1].ToString();
-//		go.transform.Find ("informationProfitText").GetComponent<Text> ().text = "10";
-//		go.transform.Find ("informationTimeText").GetComponent<Text> ().enabled = true;
-//		go.transform.Find ("informationTimeText").GetComponent<Text> ().text = "10";
-//		go.transform.Find ("informationIntersectionText").GetComponent<Text> ().enabled = true;
-//		go.transform.Find ("informationIntersectionText").GetComponent<Text> ().text = "10";
     }
 
     void OnMouseExit()

@@ -7,12 +7,9 @@ using SimpleJSON;
 using System.Text.RegularExpressions;
 
 
-//something wrong with storeTruck, maybe should reset the trucknumber
-//something wrong with lineAnimation, the old one disappear but it still create duplicate one
-
 public class submitButton : MonoBehaviour {
 
-
+    public static int submitAndNewScene;  //this var is to tell StartNewTrail that this trail is submit or not.
     public static Dictionary<string,List<int>> animDic = new Dictionary<string,List<int>>();
 	private bool submitOnlyOnce;
 	private DisplayManager display;
@@ -21,7 +18,7 @@ public class submitButton : MonoBehaviour {
 	public static List<List<List<int>>> ForTrailBlue=new List<List<List<int>>>();
 	public static List<float> forProf = new List<float> ();
 	public static List<float> forTime = new List<float> ();
-	public static List<float> forInter=new List<float>();
+	public static List<int> forInter=new List<int>();
 	public static List<List<List<int>>> ForTrailRedPath = new List<List<List<int>>> ();
 	public static List<List<List<int>>> ForTrailGreenPath = new List<List<List<int>>> ();
 	public static List<List<List<int>>> ForTrailBluePath = new List<List<List<int>>> ();
@@ -42,27 +39,38 @@ public class submitButton : MonoBehaviour {
     
     void Awake()
     {
+        submitAndNewScene = 0;
         animDic= new Dictionary<string, List<int>>();
+        storeLineRenderPath=new Dictionary<string, string>();
         if (ForTrailRed.Count == 1)
         {
 			DecideWhichMaterial (1);
             GameObject.Find("singleTrail1").GetComponent<Image>().enabled = true;
             GameObject.Find("singleTrail1").GetComponent<BoxCollider2D>().enabled = true;
+            Behaviour halo = (Behaviour)GameObject.Find("singleTrail1").GetComponent("Halo");
+            halo.enabled = true;
         } else if (ForTrailRed.Count > 1)
         {
 //            GameObject.Find("overlappingImage").GetComponent<Image>().enabled = true;
 //            GameObject.Find("overlappingImage").GetComponent<BoxCollider2D>().enabled = true;
 			GameObject.Find("singleTrail1").GetComponent<Image>().enabled = true;
 			GameObject.Find("singleTrail1").GetComponent<BoxCollider2D>().enabled = true;
+            DecideWhichMaterial(1);
 			for (int i = 2; i <= ForTrailRed.Count; i++) {
 				GameObject newObj = Instantiate (Resources.Load ("Prefab/Trail")) as GameObject;
-				string newName = "singleTrail" + i;
-				newObj.name = newName;
-				newObj.tag = "Trails";
-				newObj.transform.SetParent (GameObject.Find ("singleTrail1").transform.parent.transform);
-				newObj.transform.position = GameObject.Find ("singleTrail1").transform.position;
-				DecideWhichMaterial (i);
-			}
+                string newName = "singleTrail" + i;
+                newObj.name = newName;
+                newObj.tag = "Trails";
+                float height = GameObject.Find("singleTrail1").GetComponent<RectTransform>().rect.height;
+                Vector2 pos = GameObject.Find("singleTrail1").GetComponent<RectTransform>().anchoredPosition;
+                Vector2 newPos = new Vector2(pos.x, pos.y + height + 10 * (i - 1));
+                newObj.transform.SetParent(GameObject.Find("singleTrail1").transform.parent.transform, false);
+                newObj.GetComponent<RectTransform>().anchoredPosition = newPos;
+                newObj.GetComponent<RectTransform>().localScale = new Vector2(1, 1);
+                newObj.GetComponent<Image>().enabled = true;
+                newObj.GetComponent<BoxCollider2D>().enabled = true;
+                DecideWhichMaterial(i);
+            }
         }
     }
 
@@ -94,6 +102,7 @@ public class submitButton : MonoBehaviour {
             }
         }
 		if (sum == 0 && !submitOnlyOnce) {
+            submitAndNewScene++;  
 			//Debug.Log ("redAL in sumbit" + Node.redAl.Count);
 			//Debug.Log("congratulations! you finish this game!");
 			//GameObject.Find("ModalControl").GetComponent<testWindow>().takeAction("Congratulations! You finish this round!");
@@ -162,37 +171,43 @@ public class submitButton : MonoBehaviour {
 				} else if (Node.redAl.Count > 0 && Node.greenAl.Count == 0 && Node.blueAl.Count == 0) {
 					GameObject.Find ("singleTrail1").GetComponent<Image> ().material = Resources.Load<Material> ("Materials/redAnim") as Material;
 				} else if (Node.redAl.Count == 0 && Node.greenAl.Count > 0 && Node.blueAl.Count == 0) {
-					GameObject.Find ("singleTrail1").GetComponent<Image> ().material = Resources.Load<Material> ("Materials/blueAnim") as Material;
-				}else if(Node.redAl.Count == 0 && Node.greenAl.Count == 0 && Node.blueAl.Count > 0){
 					GameObject.Find ("singleTrail1").GetComponent<Image> ().material = Resources.Load<Material> ("Materials/greenAnim") as Material;
+				}else if(Node.redAl.Count == 0 && Node.greenAl.Count == 0 && Node.blueAl.Count > 0){
+					GameObject.Find ("singleTrail1").GetComponent<Image> ().material = Resources.Load<Material> ("Materials/blueAnim") as Material;
 				}
 				//Debug.Log ("this works");
 			} else if (ForTrailRed.Count > 1) {
-				GameObject.Find ("singleTrail1").GetComponent<Image> ().enabled = true;
-				GameObject.Find ("singleTrail1").GetComponent<BoxCollider2D> ().enabled = true;
-				if (Node.redAl.Count > 0 && Node.greenAl.Count > 0 && Node.blueAl.Count > 0) {
-					GameObject.Find ("singleTrail1").GetComponent<Image> ().material = Resources.Load<Material> ("Materials/GradientRGB") as Material;
-				} else if (Node.redAl.Count == 0 && Node.greenAl.Count > 0 && Node.blueAl.Count > 0) {
-					GameObject.Find ("singleTrail1").GetComponent<Image> ().material = Resources.Load<Material> ("Materials/GradientBG") as Material;
-				} else if (Node.redAl.Count > 0 && Node.greenAl.Count > 0 && Node.blueAl.Count == 0) {
-					GameObject.Find ("singleTrail1").GetComponent<Image> ().material = Resources.Load<Material> ("Materials/GradientRG") as Material;
-				} else if (Node.redAl.Count > 0 && Node.greenAl.Count == 0 && Node.blueAl.Count > 0) {
-					GameObject.Find ("singleTrail1").GetComponent<Image> ().material = Resources.Load<Material> ("Materials/GradientRB") as Material;
-				} else if (Node.redAl.Count > 0 && Node.greenAl.Count == 0 && Node.blueAl.Count == 0) {
-					GameObject.Find ("singleTrail1").GetComponent<Image> ().material = Resources.Load<Material> ("Materials/redAnim") as Material;
-				} else if (Node.redAl.Count == 0 && Node.greenAl.Count > 0 && Node.blueAl.Count == 0) {
-					GameObject.Find ("singleTrail1").GetComponent<Image> ().material = Resources.Load<Material> ("Materials/blueAnim") as Material;
-				}else if(Node.redAl.Count == 0 && Node.greenAl.Count == 0 && Node.blueAl.Count > 0){
-					GameObject.Find ("singleTrail1").GetComponent<Image> ().material = Resources.Load<Material> ("Materials/greenAnim") as Material;
-				}
+				//GameObject.Find ("singleTrail1").GetComponent<Image> ().enabled = true;
+				//GameObject.Find ("singleTrail1").GetComponent<BoxCollider2D> ().enabled = true;
+				//if (Node.redAl.Count > 0 && Node.greenAl.Count > 0 && Node.blueAl.Count > 0) {
+				//	GameObject.Find ("singleTrail1").GetComponent<Image> ().material = Resources.Load<Material> ("Materials/GradientRGB") as Material;
+				//} else if (Node.redAl.Count == 0 && Node.greenAl.Count > 0 && Node.blueAl.Count > 0) {
+				//	GameObject.Find ("singleTrail1").GetComponent<Image> ().material = Resources.Load<Material> ("Materials/GradientBG") as Material;
+				//} else if (Node.redAl.Count > 0 && Node.greenAl.Count > 0 && Node.blueAl.Count == 0) {
+				//	GameObject.Find ("singleTrail1").GetComponent<Image> ().material = Resources.Load<Material> ("Materials/GradientRG") as Material;
+				//} else if (Node.redAl.Count > 0 && Node.greenAl.Count == 0 && Node.blueAl.Count > 0) {
+				//	GameObject.Find ("singleTrail1").GetComponent<Image> ().material = Resources.Load<Material> ("Materials/GradientRB") as Material;
+				//} else if (Node.redAl.Count > 0 && Node.greenAl.Count == 0 && Node.blueAl.Count == 0) {
+				//	GameObject.Find ("singleTrail1").GetComponent<Image> ().material = Resources.Load<Material> ("Materials/redAnim") as Material;
+				//} else if (Node.redAl.Count == 0 && Node.greenAl.Count > 0 && Node.blueAl.Count == 0) {
+				//	GameObject.Find ("singleTrail1").GetComponent<Image> ().material = Resources.Load<Material> ("Materials/blueAnim") as Material;
+				//}else if(Node.redAl.Count == 0 && Node.greenAl.Count == 0 && Node.blueAl.Count > 0){
+				//	GameObject.Find ("singleTrail1").GetComponent<Image> ().material = Resources.Load<Material> ("Materials/greenAnim") as Material;
+				//}
 				GameObject newObj = Instantiate (Resources.Load ("Prefab/Trail"))as GameObject;
 				int num = ForTrailRed.Count;
 				string newName = "singleTrail" + num;
 				newObj.name = newName;
 				newObj.tag = "Trails";
-				newObj.transform.SetParent (GameObject.Find ("singleTrail1").transform.parent.transform);
-				newObj.transform.position = GameObject.Find ("singleTrail1").transform.position;
-				DecideWhichMaterial (num);
+                float height = GameObject.Find("singleTrail1").GetComponent<RectTransform>().rect.height;
+                Vector2 pos= GameObject.Find("singleTrail1").GetComponent<RectTransform>().anchoredPosition;
+                Vector2 newPos = new Vector2(pos.x, pos.y + height + 10*(num-1));
+				newObj.transform.SetParent (GameObject.Find ("singleTrail1").transform.parent.transform,false);
+                newObj.GetComponent<RectTransform>().anchoredPosition = newPos;
+                newObj.GetComponent<RectTransform>().localScale = new Vector2(1, 1);
+                newObj.GetComponent<Image>().enabled = true;
+                newObj.GetComponent<BoxCollider2D>().enabled = true;
+                DecideWhichMaterial (num);
 //				GameObject.Find ("singleTrail").GetComponent<Image> ().enabled = false;
 //				GameObject.Find ("singleTrail").GetComponent<BoxCollider2D> ().enabled = false;
 //				GameObject.Find ("overlappingImage").GetComponent<Image> ().enabled = true;
@@ -212,7 +227,7 @@ public class submitButton : MonoBehaviour {
         {
             //string temp = "there are still " + cap + " debris in the path " + node1 + node2 + ", please clean it!";
 			JSONClass details = new JSONClass ();
-			details ["Wrong"] = "Submit before cleaning all debris";
+			details ["Incorrect Operation"] = "Submit before cleaning all debris";
 			TheLogger.instance.TakeAction (10, details);
 			display=DisplayManager.Instance();
 			display.DisplayMessage ("Pls Clean All Debris Before Sumbit!");
@@ -224,33 +239,35 @@ public class submitButton : MonoBehaviour {
 	void DecideWhichMaterial(int num){
 		string name = "singleTrail" + num;
 		GameObject obj = GameObject.Find (name);
-		if(ForTrailRed[num-1]!=null && ForTrailBlue[num-1]!=null && ForTrailGreen[num-1] != null)
-		{
-			obj.GetComponent<Image>().material = Resources.Load<Material>("Materials/GradientRGB") as Material;
-		}else if (ForTrailRed[num-1] == null && ForTrailBlue[num-1] != null && ForTrailGreen[num-1] == null)
-		{
-			obj.GetComponent<Image>().material = Resources.Load<Material>("Materials/blueAnim") as Material;
-		}else if (ForTrailRed[num-1] == null && ForTrailBlue[num-1] != null && ForTrailGreen[num-1] != null)
-		{
-			obj.GetComponent<Image>().material = Resources.Load<Material>("Materials/GradientBG") as Material;
-		}
-		else if (ForTrailRed[num-1] != null && ForTrailBlue[num-1] == null && ForTrailGreen[num-1] != null)
-		{
-			obj.GetComponent<Image>().material = Resources.Load<Material>("Materials/GradientRG") as Material;
-		}
-		else if (ForTrailRed[num-1] != null && ForTrailBlue[num-1] != null && ForTrailGreen[num-1] == null)
-		{
-			obj.GetComponent<Image>().material = Resources.Load<Material>("Materials/GradientRB") as Material;
-		}
-		else if (ForTrailRed[num-1] == null && ForTrailBlue[num-1] == null && ForTrailGreen[num-1] != null)
-		{
-			obj.GetComponent<Image>().material = Resources.Load<Material>("Materials/greenAnim") as Material;
-		}
-		else if (ForTrailRed[num-1] != null && ForTrailBlue[num-1] == null && ForTrailGreen[num-1] == null)
-		{
-			obj.GetComponent<Image>().material = Resources.Load<Material>("Materials/redAnim") as Material;
-		}
-	}
+        if (ForTrailRed[num - 1].Count != 0 && ForTrailBlue[num - 1].Count != 0 && ForTrailGreen[num - 1].Count != 0)
+        {
+            obj.GetComponent<Image>().material = Resources.Load<Material>("Materials/GradientRGB") as Material;
+        }
+        else if (ForTrailRed[num - 1].Count == 0 && ForTrailBlue[num - 1].Count != 0 && ForTrailGreen[num - 1].Count == 0)
+        {
+            obj.GetComponent<Image>().material = Resources.Load<Material>("Materials/blueAnim") as Material;
+        }
+        else if (ForTrailRed[num - 1].Count == 0 && ForTrailBlue[num - 1].Count != 0 && ForTrailGreen[num - 1].Count != 0)
+        {
+            obj.GetComponent<Image>().material = Resources.Load<Material>("Materials/GradientBG") as Material;
+        }
+        else if (ForTrailRed[num - 1].Count != 0 && ForTrailBlue[num - 1].Count == 0 && ForTrailGreen[num - 1].Count != 0)
+        {
+            obj.GetComponent<Image>().material = Resources.Load<Material>("Materials/GradientRG") as Material;
+        }
+        else if (ForTrailRed[num - 1].Count != 0 && ForTrailBlue[num - 1].Count != 0 && ForTrailGreen[num - 1].Count == 0)
+        {
+            obj.GetComponent<Image>().material = Resources.Load<Material>("Materials/GradientRB") as Material;
+        }
+        else if (ForTrailRed[num - 1].Count == 0 && ForTrailBlue[num - 1].Count == 0 && ForTrailGreen[num - 1].Count != 0)
+        {
+            obj.GetComponent<Image>().material = Resources.Load<Material>("Materials/greenAnim") as Material;
+        }
+        else if (ForTrailRed[num - 1].Count != 0 && ForTrailBlue[num - 1].Count == 0 && ForTrailGreen[num - 1].Count == 0)
+        {
+            obj.GetComponent<Image>().material = Resources.Load<Material>("Materials/redAnim") as Material;
+        }
+    }
 
     //IEnumerator wait1()
     //{
