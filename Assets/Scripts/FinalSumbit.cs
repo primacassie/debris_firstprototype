@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class FinalSumbit : MonoBehaviour {
     private Transform tar;
@@ -130,6 +131,13 @@ public class FinalSumbit : MonoBehaviour {
             }
 
         }
+        StartCoroutine(wait1());
+    }
+
+    IEnumerator wait1()
+    {
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("end");
     }
 
     private void NodeMove()
