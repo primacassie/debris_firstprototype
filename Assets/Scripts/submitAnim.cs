@@ -17,7 +17,6 @@ public class submitAnim : MonoBehaviour {
     private int counter;
     private GameObject startNew;
     private GameObject finalSub;
-	//private Vector2[] wayPointVector;
 
     private int currentWayPoint = 0;
 	Transform targetWayPoint;
@@ -174,6 +173,8 @@ public class submitAnim : MonoBehaviour {
                 //}
                 numForCap--;
                 counter++;
+                this.gameObject.GetComponentInChildren<Text>().text = counter.ToString();
+
                 //Debug.Log(numForCap);
                 if (numForCap < 0)
                     numForCap = 0;
@@ -194,6 +195,7 @@ public class submitAnim : MonoBehaviour {
                 if (numForCap < 0)
                     numForCap = 0;
                 textNumForCap.text = numForCap.ToString();
+                this.gameObject.GetComponentInChildren<Text>().text = cap.ToString();
             }
 
 			if (currentWayPoint < wayPointList.Length-1) {

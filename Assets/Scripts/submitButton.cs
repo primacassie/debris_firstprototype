@@ -523,13 +523,32 @@ public class submitButton : MonoBehaviour {
 			//go.GetComponent<Image>().sprite = Resources.Load<Sprite>("Image/truck_R32") as Sprite;
 			go.AddComponent<submitAnim>();
 			Image addIm = go.AddComponent<Image> ();
-			string htmlValue = "#db4f69";
+            GameObject textForCap = new GameObject();
+            //add text in the truck to display how many debris the truck has
+            textForCap.transform.SetParent(go.transform, false);
+            Text thisText=textForCap.AddComponent<Text>();
+            thisText.text = "0";
+            thisText.transform.localPosition = go.transform.position;
+            thisText.fontSize = 30;
+            thisText.resizeTextForBestFit = true;
+            thisText.font = Resources.Load<Font>("Font/AGENCYR") as Font;
+            thisText.fontStyle = FontStyle.Normal;
+            thisText.alignment = TextAnchor.MiddleCenter;
+            thisText.fontStyle = FontStyle.Normal;
+            string name = "redTruckText";
+            textForCap.name = name;
+            string htmlValue = "#db4f69";
 			Color newCol;
 			if (ColorUtility.TryParseHtmlString (htmlValue, out newCol)) {
 				addIm.GetComponent<Image> ().color = newCol;
 			}
-			//go.AddComponent<Transform>();
-			string truckName = "red" + r.ToString();
+            string htmlValueWhite = "#BDD3F8FF";
+            if (ColorUtility.TryParseHtmlString(htmlValueWhite, out newCol))
+            {
+                thisText.color = newCol;
+            }
+            //go.AddComponent<Transform>();
+            string truckName = "red" + r.ToString();
 			go.name = truckName;
 			animDic.Add(truckName, l);
             //if(r<Node.redTruckCap.Count)
@@ -552,13 +571,32 @@ public class submitButton : MonoBehaviour {
 			//go.AddComponent<Image>();
 			//go.GetComponent<Image>().sprite = Resources.Load<Sprite>("Image/truck_B32") as Sprite;
 			go.AddComponent<submitAnim>();
-			Image addIm = go.AddComponent<Image> ();
+            GameObject textForCap = new GameObject();
+            //add text in the truck to display how many debris the truck has
+            textForCap.transform.SetParent(go.transform, false);
+            Text thisText = textForCap.AddComponent<Text>();
+            string name = "blueTruckText";
+            textForCap.name = name;
+            thisText.text = "0";
+            thisText.transform.localPosition = go.transform.position;
+            thisText.fontSize = 30;
+            thisText.resizeTextForBestFit = true;
+            thisText.font = Resources.Load<Font>("Font/AGENCYR") as Font;
+            thisText.fontStyle = FontStyle.Normal;
+            thisText.alignment = TextAnchor.MiddleCenter;
+            thisText.fontStyle = FontStyle.Normal;
+            string htmlValueWhite = "#BDD3F8FF";
+            Image addIm = go.AddComponent<Image> ();
 			string htmlValue = "#3b73e1";
 			Color newCol;
 			if (ColorUtility.TryParseHtmlString (htmlValue, out newCol)) {
 				addIm.GetComponent<Image> ().color = newCol;
 			}
-			string truckName = "blue" + b.ToString();
+            if (ColorUtility.TryParseHtmlString(htmlValueWhite, out newCol))
+            {
+                thisText.color = newCol;
+            }
+            string truckName = "blue" + b.ToString();
 			go.name = truckName;
 			animDic.Add(truckName, l);
             //if(b<Node.blueTruckCap.Count)
@@ -580,11 +618,30 @@ public class submitButton : MonoBehaviour {
 			Image addIm = go.AddComponent<Image> ();
 			string htmlValue = "#33e786";
 			Color newCol;
-			if (ColorUtility.TryParseHtmlString (htmlValue, out newCol)) {
+            if (ColorUtility.TryParseHtmlString (htmlValue, out newCol)) {
 				addIm.GetComponent<Image> ().color = newCol;
 			}
-			//go.AddComponent<Transform>();
-			string truckName = "green" + g.ToString();
+            GameObject textForCap = new GameObject();
+            //add text in the truck to display how many debris the truck has
+            textForCap.transform.SetParent(go.transform, false);
+            Text thisText = textForCap.AddComponent<Text>();
+            thisText.text = "0";
+            thisText.transform.localPosition = go.transform.position;
+            thisText.fontSize = 30;
+            thisText.resizeTextForBestFit = true;
+            thisText.font = Resources.Load<Font>("Font/AGENCYR") as Font;
+            thisText.fontStyle = FontStyle.Normal;
+            thisText.alignment = TextAnchor.MiddleCenter;
+            thisText.fontStyle = FontStyle.Normal;
+            string htmlValueWhite = "#BDD3F8FF";
+            string name = "greenTruckText";
+            textForCap.name = name;
+            if (ColorUtility.TryParseHtmlString(htmlValueWhite, out newCol))
+            {
+                thisText.color = newCol;
+            }
+            //go.AddComponent<Transform>();
+            string truckName = "green" + g.ToString();
 			go.name = truckName;
 			animDic.Add(truckName, l);
             //if(g<Node.greenTruckCap.Count)
