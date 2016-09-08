@@ -526,6 +526,7 @@ public class submitButton : MonoBehaviour {
             GameObject textForCap = new GameObject();
             //add text in the truck to display how many debris the truck has
             textForCap.transform.SetParent(go.transform, false);
+			textForCap.transform.localScale = new Vector2 (1, 1);
             Text thisText=textForCap.AddComponent<Text>();
             thisText.text = "0";
             thisText.transform.localPosition = go.transform.position;
@@ -574,6 +575,7 @@ public class submitButton : MonoBehaviour {
             GameObject textForCap = new GameObject();
             //add text in the truck to display how many debris the truck has
             textForCap.transform.SetParent(go.transform, false);
+			textForCap.transform.localScale = new Vector2 (1, 1);
             Text thisText = textForCap.AddComponent<Text>();
             string name = "blueTruckText";
             textForCap.name = name;
@@ -625,6 +627,7 @@ public class submitButton : MonoBehaviour {
             //add text in the truck to display how many debris the truck has
             textForCap.transform.SetParent(go.transform, false);
             Text thisText = textForCap.AddComponent<Text>();
+			textForCap.transform.localScale = new Vector2 (1, 1);
             thisText.text = "0";
             thisText.transform.localPosition = go.transform.position;
             thisText.fontSize = 30;

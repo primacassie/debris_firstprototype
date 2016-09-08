@@ -160,6 +160,7 @@ public class submitAnim : MonoBehaviour {
 			transform.position = Vector3.MoveTowards (transform.position, targetWayPoint.position, speed * Time.deltaTime);
             Text textNumForCap = gameControll.gm[arr[count], arr[count + 1]].GetComponentInChildren<Text>();
             int numForCap = int.Parse(textNumForCap.text);
+			int numFOrTruckCap =int.Parse(this.gameObject.GetComponentInChildren<Text> ().text);
             //Debug.Log("numforCap in anim"+numForCap);
 
             //cannot use while in update
@@ -173,12 +174,15 @@ public class submitAnim : MonoBehaviour {
                 //}
                 numForCap--;
                 counter++;
-                this.gameObject.GetComponentInChildren<Text>().text = counter.ToString();
+				numFOrTruckCap++;
+				if (numFOrTruckCap > 100)
+					numFOrTruckCap = 100;
 
                 //Debug.Log(numForCap);
                 if (numForCap < 0)
                     numForCap = 0;
                 textNumForCap.text = numForCap.ToString();
+				this.gameObject.GetComponentInChildren<Text> ().text = numFOrTruckCap.ToString ();
             }
 
             //StartCoroutine(wait(numForCap, textNumForCap));
@@ -191,9 +195,13 @@ public class submitAnim : MonoBehaviour {
             {
                 Text textNumForCap = gameControll.gm[arr[count], arr[count + 1]].GetComponentInChildren<Text>();
                 int numForCap = int.Parse(textNumForCap.text);
+				int numForTruckCap = int.Parse (this.gameObject.GetComponentInChildren<Text> ().text);
                 numForCap -= (cap - counter);
+				numForTruckCap += (cap - counter);
                 if (numForCap < 0)
                     numForCap = 0;
+				if (numForTruckCap > 100)
+					numForTruckCap = 100;
                 textNumForCap.text = numForCap.ToString();
                 this.gameObject.GetComponentInChildren<Text>().text = cap.ToString();
             }

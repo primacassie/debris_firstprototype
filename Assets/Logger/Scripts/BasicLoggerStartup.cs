@@ -36,7 +36,7 @@ public class BasicLoggerStartup : MonoBehaviour
 					adapterInfo += " " + adapter.GetType().Name;
 				}
 			}
-			Debug.Log(adapterInfo);
+			//Debug.Log(adapterInfo);
 			
 			TheLogger.instance.BeginSession(adapters, gameId, player_id, null, version, condition, null);
 		}

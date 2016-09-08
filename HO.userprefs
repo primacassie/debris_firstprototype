@@ -1,14 +1,13 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/gameControll.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Logger/Scripts/BasicLoggerStartup.cs">
     <Files>
-      <File FileName="Assets/Scripts/gameControll.cs" Line="161" Column="48" />
       <File FileName="Assets/Scripts/ClickTrails.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/storeTruck.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/ClickForSingleTrail.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/submitButton.cs" Line="89" Column="1" />
+      <File FileName="Assets/Scripts/submitButton.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/submitAnim.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/FinalSumbit.cs" Line="50" Column="20" />
+      <File FileName="Assets/Scripts/FinalSumbit.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/givenSolution.cs" Line="1" Column="1" />
+      <File FileName="Assets/Logger/Scripts/BasicLoggerStartup.cs" Line="39" Column="29" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
