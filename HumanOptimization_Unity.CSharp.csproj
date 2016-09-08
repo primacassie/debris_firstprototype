@@ -86,6 +86,7 @@
     <Compile Include="Assets\Scripts\ClickForSingleTrail.cs" />
     <Compile Include="Assets\Scripts\ClickTrails.cs" />
     <Compile Include="Assets\Scripts\FinalSumbit.cs" />
+    <Compile Include="Assets\Scripts\GoBackButton.cs" />
     <Compile Include="Assets\Scripts\Graph.cs" />
     <Compile Include="Assets\Scripts\LineAnimation.cs" />
     <Compile Include="Assets\Scripts\MenuToStart.cs" />
@@ -100,6 +101,7 @@
     <Compile Include="Assets\Scripts\dragCamera.cs" />
     <Compile Include="Assets\Scripts\gameControll.cs" />
     <Compile Include="Assets\Scripts\generateMaps.cs" />
+    <Compile Include="Assets\Scripts\givenSolution.cs" />
     <Compile Include="Assets\Scripts\indicatorFunction.cs" />
     <Compile Include="Assets\Scripts\inputControl.cs" />
     <Compile Include="Assets\Scripts\panelController.cs" />

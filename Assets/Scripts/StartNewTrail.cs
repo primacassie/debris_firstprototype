@@ -5,6 +5,7 @@ using SimpleJSON;
 
 public class StartNewTrail : MonoBehaviour {
     private DisplayManager display;
+    public static int numOfTrail;
 
     void OnMouseDown(){
 		if (!gameControll.redTruck && !gameControll.greenTruck && !gameControll.blueTruck) {
@@ -17,8 +18,9 @@ public class StartNewTrail : MonoBehaviour {
                     sum += arr[i, j];
                 }
             }
-            if (sum == 0 && submitButton.submitAndNewScene!=0)
+            if (sum == 0 && submitButton.submitAndNewScene!=0 && numOfTrail<5)
             {
+                numOfTrail++;
                 SceneManager.LoadScene("start");
             }
             else

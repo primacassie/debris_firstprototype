@@ -1,0 +1,4 @@
+# version:1
+{"type":"session_begin", "data":{"game_id":"HO", "player_id":"574a0e7e-9c5c-4dbb-897b-ca8da92a44ca", "session_id":"d5fff66e-9ac7-4307-a924-60236b297d71", "build_id":"", "version":"1", "condition":"", "client_time":"1473347950.7939", "details":{}}}
+{"type":"run_begin", "data":{"session_id":"d5fff66e-9ac7-4307-a924-60236b297d71", "run_id":"53700deb-851c-41be-bb88-65d9908a7d29", "run_seqno":"0", "client_time":"1473347950.84157", "details":{}}}
+{"type":"run_end", "data":{"run_id":"53700deb-851c-41be-bb88-65d9908a7d29", "action_count":"0", "client_time":"1473347963.46497", "details":{}}}

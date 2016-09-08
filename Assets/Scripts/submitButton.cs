@@ -11,6 +11,7 @@ public class submitButton : MonoBehaviour {
 
     public static int submitAndNewScene;  //this var is to tell StartNewTrail that this trail is submit or not.
     public static Dictionary<string,List<int>> animDic = new Dictionary<string,List<int>>();
+    public static Dictionary<string, List<int>> animDicForCap = new Dictionary<string, List<int>>();
 	private bool submitOnlyOnce;
 	private DisplayManager display;
 	public static List<List<List<int>>> ForTrailRed = new List<List<List<int>>> ();
@@ -35,12 +36,17 @@ public class submitButton : MonoBehaviour {
 	float maxT;
 	int inters;
 	public static List<Dictionary<string,string>> ForPath = new List<Dictionary<string,string>> ();
+    public static List<Dictionary<string, string>> ForCap = new List<Dictionary<string, string>>();
 	public static Dictionary<string,string> storeLineRenderPath=new Dictionary<string, string>();
-    
+    // public static Dictionary<string, string> storeLineCapPath = new Dictionary<string, string>();
+    public static int totalTruckNum;
+
     void Awake()
     {
+        totalTruckNum = 0;
         submitAndNewScene = 0;
         animDic= new Dictionary<string, List<int>>();
+        animDicForCap = new Dictionary<string, List<int>>();
         storeLineRenderPath=new Dictionary<string, string>();
         if (ForTrailRed.Count == 1)
         {
@@ -102,11 +108,18 @@ public class submitButton : MonoBehaviour {
             }
         }
 		if (sum == 0 && !submitOnlyOnce) {
-            submitAndNewScene++;  
-			//Debug.Log ("redAL in sumbit" + Node.redAl.Count);
-			//Debug.Log("congratulations! you finish this game!");
-			//GameObject.Find("ModalControl").GetComponent<testWindow>().takeAction("Congratulations! You finish this round!");
-			GetComponent<AudioSource> ().Play ();
+            submitAndNewScene++;
+            totalTruckNum = Node.blueAl.Count + Node.redAl.Count + Node.greenAl.Count;
+
+            Debug.Log("totalTruckNum" + totalTruckNum);
+            foreach (GameObject obj in GameObject.FindGameObjectsWithTag("cap"))
+            {
+                obj.GetComponentInChildren<Text>().text = "50";
+            }
+            //Debug.Log ("redAL in sumbit" + Node.redAl.Count);
+            //Debug.Log("congratulations! you finish this game!");
+            //GameObject.Find("ModalControl").GetComponent<testWindow>().takeAction("Congratulations! You finish this round!");
+            GetComponent<AudioSource> ().Play ();
 			finalAnimation ();
 			submitOnlyOnce = true;
 			Button[] button = GameObject.Find ("Buttons").GetComponentsInChildren<Button> ();
@@ -120,8 +133,15 @@ public class submitButton : MonoBehaviour {
 			ForTrailBluePath.Add (new List<List<int>> (Node.blueTruckCap));
 			ForTrailGreenPath.Add (new List<List<int>> (Node.greenTruckCap));
 			GameObject.Find ("storeTruck").SetActive (false);
-			minP = Mathf.Min(float.Parse(GameObject.Find("redTruckProfit").GetComponent<Text>().text), float.Parse(GameObject.Find("blueTruckProfit").GetComponent<Text>().text), float.Parse(GameObject.Find("greenTruckProfit").GetComponent<Text>().text));
-			maxT = Mathf.Max(float.Parse(GameObject.Find("redTruckTime").GetComponent<Text>().text), float.Parse(GameObject.Find("blueTruckTime").GetComponent<Text>().text), float.Parse(GameObject.Find("greenTruckTime").GetComponent<Text>().text));
+            if (GameObject.Find("green") != null)
+            {
+                minP = Mathf.Min(float.Parse(GameObject.Find("redTruckProfit").GetComponent<Text>().text), float.Parse(GameObject.Find("blueTruckProfit").GetComponent<Text>().text), float.Parse(GameObject.Find("greenTruckProfit").GetComponent<Text>().text));
+                maxT = Mathf.Max(float.Parse(GameObject.Find("redTruckTime").GetComponent<Text>().text), float.Parse(GameObject.Find("blueTruckTime").GetComponent<Text>().text), float.Parse(GameObject.Find("greenTruckTime").GetComponent<Text>().text));
+            }else
+            {
+                minP = Mathf.Min(float.Parse(GameObject.Find("redTruckProfit").GetComponent<Text>().text), float.Parse(GameObject.Find("blueTruckProfit").GetComponent<Text>().text));
+                maxT = Mathf.Max(float.Parse(GameObject.Find("redTruckTime").GetComponent<Text>().text), float.Parse(GameObject.Find("blueTruckTime").GetComponent<Text>().text));
+            }
 			inters = Node.intersection;
 			forProf.Add (minP);
 			forTime.Add (maxT);
@@ -155,8 +175,10 @@ public class submitButton : MonoBehaviour {
 					path += "b";
 				}
 				storeLineRenderPath.Add (resultString, path);
+                //storeLineCapPath.Add(resultString,)
 			}
 			ForPath.Add (new Dictionary<string, string>(storeLineRenderPath));
+            //ForCap.Add(new Dictionary<string, string>(storeLineCapPath));
 			if (ForTrailRed.Count == 1) {
 				GameObject.Find ("singleTrail1").GetComponent<Image> ().enabled = true;
 				GameObject.Find ("singleTrail1").GetComponent<BoxCollider2D> ().enabled = true;
@@ -201,7 +223,7 @@ public class submitButton : MonoBehaviour {
 				newObj.tag = "Trails";
                 float height = GameObject.Find("singleTrail1").GetComponent<RectTransform>().rect.height;
                 Vector2 pos= GameObject.Find("singleTrail1").GetComponent<RectTransform>().anchoredPosition;
-                Vector2 newPos = new Vector2(pos.x, pos.y + height + 10*(num-1));
+                Vector2 newPos = new Vector2(pos.x, pos.y - height - 10*(num-1));
 				newObj.transform.SetParent (GameObject.Find ("singleTrail1").transform.parent.transform,false);
                 newObj.GetComponent<RectTransform>().anchoredPosition = newPos;
                 newObj.GetComponent<RectTransform>().localScale = new Vector2(1, 1);
@@ -510,6 +532,8 @@ public class submitButton : MonoBehaviour {
 			string truckName = "red" + r.ToString();
 			go.name = truckName;
 			animDic.Add(truckName, l);
+            //if(r<Node.redTruckCap.Count)
+            animDicForCap.Add(truckName, Node.redTruckCap[r]);
 			r++;
 			//			StartCoroutine (waitCreate());
 			//yield return new WaitForSeconds(1);
@@ -537,6 +561,8 @@ public class submitButton : MonoBehaviour {
 			string truckName = "blue" + b.ToString();
 			go.name = truckName;
 			animDic.Add(truckName, l);
+            //if(b<Node.blueTruckCap.Count)
+            animDicForCap.Add(truckName, Node.blueTruckCap[b]);
 			b++;
 			//			StartCoroutine (waitCreate());
 		}
@@ -561,7 +587,9 @@ public class submitButton : MonoBehaviour {
 			string truckName = "green" + g.ToString();
 			go.name = truckName;
 			animDic.Add(truckName, l);
-			g++;
+            //if(g<Node.greenTruckCap.Count)
+            animDicForCap.Add(truckName, Node.greenTruckCap[g]);
+            g++;
 			//			StartCoroutine (waitCreate());
 		}
 	}

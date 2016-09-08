@@ -1,0 +1,21 @@
+# version:1
+{"type":"session_begin", "data":{"game_id":"HO", "player_id":"574a0e7e-9c5c-4dbb-897b-ca8da92a44ca", "session_id":"d2181195-8c56-4236-8e21-7ea71be4f1c7", "build_id":"", "version":"1", "condition":"", "client_time":"1473306720.03829", "details":{}}}
+{"type":"run_begin", "data":{"session_id":"d2181195-8c56-4236-8e21-7ea71be4f1c7", "run_id":"57f40701-6b99-4ff6-9533-0e36c20fcde5", "run_seqno":"0", "client_time":"1473306720.08701", "details":{}}}
+{"type":"action", "data":{"run_id":"57f40701-6b99-4ff6-9533-0e36c20fcde5", "action_seqno":"0", "type":"1", "client_time":"1473306722.29468", "details":{"ClickTruck":"red"}}}
+{"type":"action", "data":{"run_id":"57f40701-6b99-4ff6-9533-0e36c20fcde5", "action_seqno":"1", "type":"2", "client_time":"1473306722.72587", "details":{"ClickNode":"4"}}}
+{"type":"action", "data":{"run_id":"57f40701-6b99-4ff6-9533-0e36c20fcde5", "action_seqno":"2", "type":"3", "client_time":"1473306722.73036", "details":{"ClickSlider":"50"}}}
+{"type":"action", "data":{"run_id":"57f40701-6b99-4ff6-9533-0e36c20fcde5", "action_seqno":"3", "type":"3", "client_time":"1473306724.66366", "details":{"ClickSlider":"44.63742"}}}
+{"type":"action", "data":{"run_id":"57f40701-6b99-4ff6-9533-0e36c20fcde5", "action_seqno":"4", "type":"3", "client_time":"1473306724.67874", "details":{"ClickSlider":"36.59361"}}}
+{"type":"action", "data":{"run_id":"57f40701-6b99-4ff6-9533-0e36c20fcde5", "action_seqno":"5", "type":"3", "client_time":"1473306724.69526", "details":{"ClickSlider":"25.86849"}}}
+{"type":"action", "data":{"run_id":"57f40701-6b99-4ff6-9533-0e36c20fcde5", "action_seqno":"6", "type":"3", "client_time":"1473306724.71178", "details":{"ClickSlider":"7.099521"}}}
+{"type":"action", "data":{"run_id":"57f40701-6b99-4ff6-9533-0e36c20fcde5", "action_seqno":"7", "type":"3", "client_time":"1473306724.72868", "details":{"ClickSlider":"0"}}}
+{"type":"action", "data":{"run_id":"57f40701-6b99-4ff6-9533-0e36c20fcde5", "action_seqno":"8", "type":"2", "client_time":"1473306725.25885", "details":{"ClickNode":"3", "store capacity between 4 and 3":"50"}}}
+{"type":"action", "data":{"run_id":"57f40701-6b99-4ff6-9533-0e36c20fcde5", "action_seqno":"9", "type":"3", "client_time":"1473306725.25935", "details":{"ClickSlider":"50"}}}
+{"type":"action", "data":{"run_id":"57f40701-6b99-4ff6-9533-0e36c20fcde5", "action_seqno":"10", "type":"3", "client_time":"1473306725.98763", "details":{"ClickSlider":"47.31876"}}}
+{"type":"action", "data":{"run_id":"57f40701-6b99-4ff6-9533-0e36c20fcde5", "action_seqno":"11", "type":"3", "client_time":"1473306726.00411", "details":{"ClickSlider":"39.27491"}}}
+{"type":"action", "data":{"run_id":"57f40701-6b99-4ff6-9533-0e36c20fcde5", "action_seqno":"12", "type":"3", "client_time":"1473306726.02075", "details":{"ClickSlider":"31.23107"}}}
+{"type":"action", "data":{"run_id":"57f40701-6b99-4ff6-9533-0e36c20fcde5", "action_seqno":"13", "type":"3", "client_time":"1473306726.03749", "details":{"ClickSlider":"23.18722"}}}
+{"type":"action", "data":{"run_id":"57f40701-6b99-4ff6-9533-0e36c20fcde5", "action_seqno":"14", "type":"3", "client_time":"1473306726.05372", "details":{"ClickSlider":"12.46214"}}}
+{"type":"action", "data":{"run_id":"57f40701-6b99-4ff6-9533-0e36c20fcde5", "action_seqno":"15", "type":"3", "client_time":"1473306726.07056", "details":{"ClickSlider":"1.736982"}}}
+{"type":"action", "data":{"run_id":"57f40701-6b99-4ff6-9533-0e36c20fcde5", "action_seqno":"16", "type":"3", "client_time":"1473306726.08711", "details":{"ClickSlider":"0"}}}
+{"type":"run_end", "data":{"run_id":"57f40701-6b99-4ff6-9533-0e36c20fcde5", "action_count":"17", "client_time":"1473306728.36698", "details":{}}}

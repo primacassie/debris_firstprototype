@@ -42,7 +42,7 @@ public class storeTruck : MonoBehaviour {
 			Text addText = addGOtext.AddComponent<Text> ();
 			string truckText = "0/100";
 			addText.GetComponent<Text> ().text = truckText;
-			addText.GetComponent<Text> ().fontSize = 22;
+			addText.GetComponent<Text> ().fontSize = 20;
 			//addText.GetComponent<Text> ().font = Resources.GetBuiltinResource (typeof(Font), "Arial.ttf") as Font;
 			addText.GetComponent<Text> ().font =Resources.Load<Font>("Font/AGENCYR") as Font;
 			addText.GetComponent<Text> ().fontStyle = FontStyle.Normal;
@@ -76,7 +76,7 @@ public class storeTruck : MonoBehaviour {
 			Text addText = addGOtext.AddComponent<Text> ();
 			string truckText = "0/100";
 			addText.GetComponent<Text> ().text = truckText;
-			addText.GetComponent<Text> ().fontSize = 22;
+			addText.GetComponent<Text> ().fontSize = 20;
 			//addText.GetComponent<Text> ().font = Resources.GetBuiltinResource (typeof(Font), "Arial.ttf") as Font;
 			addText.GetComponent<Text> ().font =Resources.Load<Font>("Font/AGENCYR") as Font;
 			addText.GetComponent<Text> ().fontStyle = FontStyle.Normal;
@@ -106,7 +106,7 @@ public class storeTruck : MonoBehaviour {
 			Text addText = addGOtext.AddComponent<Text> ();
 			string truckText = "0/100";
 			addText.GetComponent<Text> ().text = truckText;
-			addText.GetComponent<Text> ().fontSize = 22;
+			addText.GetComponent<Text> ().fontSize = 20;
 			//addText.GetComponent<Text> ().font = Resources.GetBuiltinResource (typeof(Font), "Arial.ttf") as Font;
 			addText.GetComponent<Text> ().font =Resources.Load<Font>("Font/AGENCYR") as Font;
 			addText.GetComponent<Text> ().fontStyle = FontStyle.Normal;

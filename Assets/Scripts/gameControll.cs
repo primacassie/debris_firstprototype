@@ -71,6 +71,9 @@ public class gameControll : MonoBehaviour
     [HideInInspector]
     public static float greenTimeOnce;
 
+    //create an array of gameobject for capPath
+    public static GameObject[,] gm;
+
 
 
     public Image depot;
@@ -97,6 +100,9 @@ public class gameControll : MonoBehaviour
 	//store all possible path of node;
 	public static bool[,] nodePath;
 
+    private GameObject sub;
+    private bool fist;
+
 
 	//private int[,] tempArray = new int[6, 6];
 
@@ -109,15 +115,20 @@ public class gameControll : MonoBehaviour
         redTruckNum = 0;
         blueTruckNum = 0;
         greenTruckNum = 0;
+        sub = GameObject.Find("submit");
+
+        fist = true;
 		if (SceneManager.GetActiveScene ().name == "start") {
 			
 			capArray = new int[6, 6];
 			timeArray = new float[6, 6];
+            gm = new GameObject[6,6];
 		}
 
 		if (SceneManager.GetActiveScene ().name == "level2") {
 			capArray = new int[21, 21];
 			timeArray = new float[21, 21];
+            gm = new GameObject[21, 21];
 		}
         foreach (GameObject obj in GameObject.FindGameObjectsWithTag("cap"))
         {
@@ -154,6 +165,27 @@ public class gameControll : MonoBehaviour
 //				}
 //			}
 		}
+        int[,] arr = gameControll.capArray;
+        int sum = 0;
+        for (int i = 0; i < arr.GetLength(0); i++)
+        {
+            for (int j = 0; j < arr.GetLength(1); j++)
+            {
+                sum += arr[i, j];
+                //                if (arr[i, j] != 0)
+                //                {
+                //                    node1 = i;
+                //                    node2 = j;
+                //                    cap = arr[i, j];
+                //                }
+            }
+        }
+        if (sum == 0 && fist && !(redTruck||greenTruck||blueTruck))
+        {
+            sub.GetComponent<BoxCollider2D>().enabled = true;
+            sub.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+            fist = false;
+        }
         if (Input.GetAxis("Mouse ScrollWheel") < 0)
         {
             if (Camera.main.orthographicSize < 5)

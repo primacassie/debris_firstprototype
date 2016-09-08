@@ -535,7 +535,11 @@ public class Node : MonoBehaviour
             GameObject.Find("GameController").GetComponent<gameControll>().resetDepot();
             backToDepot = true;
 			setConfirmPathButton (storePath);
-		}
+            //if (intersection != 0)
+            //{
+            //    intersection--;
+            //}
+        }
 	}
 
     //function to modify capacity of truck and path;
@@ -835,16 +839,18 @@ public class Node : MonoBehaviour
         {
             if (gameControll.blueTruck)
             {
-				intersection++;
-				sIntersection.text = intersection.ToString ();
+                if(this.gameObject.name!="depot")
+                    intersection++;
+                sIntersection.text = intersection.ToString ();
                 changeNodeColor("RB");
                 blueN = true;
                 rbN = true;
             }
             else if (gameControll.greenTruck)
             {
-				intersection++;
-				sIntersection.text = intersection.ToString ();
+                if (this.gameObject.name != "depot")
+                    intersection++;
+                sIntersection.text = intersection.ToString ();
                 changeNodeColor("RG");
                 greenN = true;
                 rgN = true;
@@ -854,16 +860,18 @@ public class Node : MonoBehaviour
         {
             if (gameControll.redTruck)
             {
-				intersection++;
-				sIntersection.text = intersection.ToString ();
+                if (this.gameObject.name != "depot")
+                    intersection++;
+                sIntersection.text = intersection.ToString ();
                 changeNodeColor("RB");
                 redN = true;
                 rbN = true;
             }
             else if (gameControll.greenTruck)
             {
-				intersection++;
-				sIntersection.text = intersection.ToString ();
+                if (this.gameObject.name != "depot")
+                    intersection++;
+                sIntersection.text = intersection.ToString ();
                 changeNodeColor("GB");
                 greenN = true;
                 gbN = true;
@@ -873,16 +881,18 @@ public class Node : MonoBehaviour
         {
             if (gameControll.redTruck)
             {
-				intersection++;
-				sIntersection.text = intersection.ToString ();
+                if (this.gameObject.name != "depot")
+                    intersection++;
+                sIntersection.text = intersection.ToString ();
                 changeNodeColor("RG");
                 redN = true;
                 rgN = true;
             }
             else if (gameControll.blueTruck)
             {
-				intersection++;
-				sIntersection.text = intersection.ToString ();
+                if (this.gameObject.name != "depot")
+                    intersection++;
+                sIntersection.text = intersection.ToString ();
                 changeNodeColor("GB");
                 blueN = true;
                 gbN = true;

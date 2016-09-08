@@ -45,9 +45,11 @@ public class pathCap : MonoBehaviour {
 	public static Slider sl;
 
 
-	void Start(){
-		caps=GameObject.FindGameObjectsWithTag("cap");
 
+	void Start(){
+        gameControll.gm[node[0], node[1]] = gameObject;
+        gameControll.gm[node[1], node[0]] = gameObject;
+        caps =GameObject.FindGameObjectsWithTag("cap");
 		//try to create path animation here
 	}
 

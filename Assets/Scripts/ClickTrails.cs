@@ -41,7 +41,7 @@ public class ClickTrails : MonoBehaviour {
 			go.transform.SetParent (this.gameObject.transform.parent.transform, false);
 			//float width = firstObj.GetComponent<RectTransform> ().rect.width;
 			float height = firstObj.GetComponent<RectTransform> ().rect.height;
-			Vector2 pos2 = new Vector2 (pos1.x, pos1.y + (height + 10) * (num - 1));
+			Vector2 pos2 = new Vector2 (pos1.x, pos1.y - (height + 10) * (num - 1));
 			go.GetComponent<RectTransform> ().anchoredPosition = pos2;
 			go.GetComponent<RectTransform> ().localScale = new Vector2 (1.1f, 1f);
 		} else if (num == 1) {

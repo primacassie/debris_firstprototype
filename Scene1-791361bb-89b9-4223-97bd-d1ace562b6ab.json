@@ -1,0 +1,26 @@
+# version:1
+{"type":"session_begin", "data":{"game_id":"HO", "player_id":"574a0e7e-9c5c-4dbb-897b-ca8da92a44ca", "session_id":"8ea4576c-133f-487f-a171-76a1f06ea9b7", "build_id":"", "version":"1", "condition":"", "client_time":"1473020571.85022", "details":{}}}
+{"type":"run_begin", "data":{"session_id":"8ea4576c-133f-487f-a171-76a1f06ea9b7", "run_id":"398c4c2f-1f9f-46ee-b13a-2a183c55355a", "run_seqno":"0", "client_time":"1473020571.90054", "details":{}}}
+{"type":"action", "data":{"run_id":"398c4c2f-1f9f-46ee-b13a-2a183c55355a", "action_seqno":"0", "type":"10", "client_time":"1473020572.48781", "details":{"Incorrect Operation":"Submit before cleaning all debris"}}}
+{"type":"action", "data":{"run_id":"398c4c2f-1f9f-46ee-b13a-2a183c55355a", "action_seqno":"1", "type":"10", "client_time":"1473020573.66378", "details":{"Incorrect Operation":"Start New Trail before submit"}}}
+{"type":"action", "data":{"run_id":"398c4c2f-1f9f-46ee-b13a-2a183c55355a", "action_seqno":"2", "type":"10", "client_time":"1473020573.82915", "details":{"Incorrect Operation":"Start New Trail before submit"}}}
+{"type":"action", "data":{"run_id":"398c4c2f-1f9f-46ee-b13a-2a183c55355a", "action_seqno":"3", "type":"10", "client_time":"1473020573.97825", "details":{"Incorrect Operation":"Start New Trail before submit"}}}
+{"type":"action", "data":{"run_id":"398c4c2f-1f9f-46ee-b13a-2a183c55355a", "action_seqno":"4", "type":"10", "client_time":"1473020574.12715", "details":{"Incorrect Operation":"Start New Trail before submit"}}}
+{"type":"action", "data":{"run_id":"398c4c2f-1f9f-46ee-b13a-2a183c55355a", "action_seqno":"5", "type":"10", "client_time":"1473020574.32658", "details":{"Incorrect Operation":"Start New Trail before submit"}}}
+{"type":"action", "data":{"run_id":"398c4c2f-1f9f-46ee-b13a-2a183c55355a", "action_seqno":"6", "type":"10", "client_time":"1473020574.52474", "details":{"Incorrect Operation":"Start New Trail before submit"}}}
+{"type":"action", "data":{"run_id":"398c4c2f-1f9f-46ee-b13a-2a183c55355a", "action_seqno":"7", "type":"10", "client_time":"1473020576.03257", "details":{"Incorrect Operation":"Start New Trail before submit"}}}
+{"type":"action", "data":{"run_id":"398c4c2f-1f9f-46ee-b13a-2a183c55355a", "action_seqno":"8", "type":"10", "client_time":"1473020577.22524", "details":{"Incorrect Operation":"Start New Trail before submit"}}}
+{"type":"action", "data":{"run_id":"398c4c2f-1f9f-46ee-b13a-2a183c55355a", "action_seqno":"9", "type":"10", "client_time":"1473020577.37418", "details":{"Incorrect Operation":"Start New Trail before submit"}}}
+{"type":"action", "data":{"run_id":"398c4c2f-1f9f-46ee-b13a-2a183c55355a", "action_seqno":"10", "type":"10", "client_time":"1473020578.26905", "details":{"Incorrect Operation":"Start New Trail before submit"}}}
+{"type":"action", "data":{"run_id":"398c4c2f-1f9f-46ee-b13a-2a183c55355a", "action_seqno":"11", "type":"10", "client_time":"1473020579.11391", "details":{"Incorrect Operation":"Submit before cleaning all debris"}}}
+{"type":"action", "data":{"run_id":"398c4c2f-1f9f-46ee-b13a-2a183c55355a", "action_seqno":"12", "type":"10", "client_time":"1473020579.80974", "details":{"Incorrect Operation":"Start New Trail before submit"}}}
+{"type":"action", "data":{"run_id":"398c4c2f-1f9f-46ee-b13a-2a183c55355a", "action_seqno":"13", "type":"10", "client_time":"1473020581.56563", "details":{"Incorrect Operation":"Start New Trail before submit"}}}
+{"type":"action", "data":{"run_id":"398c4c2f-1f9f-46ee-b13a-2a183c55355a", "action_seqno":"14", "type":"10", "client_time":"1473020582.39401", "details":{"Incorrect Operation":"Submit before cleaning all debris"}}}
+{"type":"action", "data":{"run_id":"398c4c2f-1f9f-46ee-b13a-2a183c55355a", "action_seqno":"15", "type":"10", "client_time":"1473020583.0238", "details":{"Incorrect Operation":"Start New Trail before submit"}}}
+{"type":"action", "data":{"run_id":"398c4c2f-1f9f-46ee-b13a-2a183c55355a", "action_seqno":"16", "type":"5", "client_time":"1473020585.90621", "details":{"Zoom In Zoom Out":"4"}}}
+{"type":"action", "data":{"run_id":"398c4c2f-1f9f-46ee-b13a-2a183c55355a", "action_seqno":"17", "type":"5", "client_time":"1473020586.45301", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"398c4c2f-1f9f-46ee-b13a-2a183c55355a", "action_seqno":"18", "type":"5", "client_time":"1473020586.46955", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"398c4c2f-1f9f-46ee-b13a-2a183c55355a", "action_seqno":"19", "type":"5", "client_time":"1473020586.50286", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"398c4c2f-1f9f-46ee-b13a-2a183c55355a", "action_seqno":"20", "type":"5", "client_time":"1473020586.95012", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"398c4c2f-1f9f-46ee-b13a-2a183c55355a", "action_seqno":"21", "type":"5", "client_time":"1473020586.98312", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"run_end", "data":{"run_id":"398c4c2f-1f9f-46ee-b13a-2a183c55355a", "action_count":"22", "client_time":"1473020587.97115", "details":{}}}
