@@ -84,6 +84,7 @@
     <Compile Include="Assets\Logger\Scripts\TheLogger.cs" />
     <Compile Include="Assets\Scripts\CheckMark.cs" />
     <Compile Include="Assets\Scripts\ClickForSingleTrail.cs" />
+    <Compile Include="Assets\Scripts\ClickToLoadAsync.cs" />
     <Compile Include="Assets\Scripts\ClickTrails.cs" />
     <Compile Include="Assets\Scripts\FinalSumbit.cs" />
     <Compile Include="Assets\Scripts\GoBackButton.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="Assets\Scripts\MenuToStart.cs" />
     <Compile Include="Assets\Scripts\Node.cs" />
     <Compile Include="Assets\Scripts\NodeAnimation.cs" />
+    <Compile Include="Assets\Scripts\SaveLoad.cs" />
     <Compile Include="Assets\Scripts\StartNewTrail.cs" />
     <Compile Include="Assets\Scripts\StoreTruckClick.cs" />
     <Compile Include="Assets\Scripts\cameraMovement.cs" />
