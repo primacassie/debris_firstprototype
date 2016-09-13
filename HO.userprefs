@@ -1,13 +1,12 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Logger/Scripts/BasicLoggerStartup.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/cancelMark.cs">
     <Files>
-      <File FileName="Assets/Scripts/ClickTrails.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/submitButton.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/submitAnim.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/FinalSumbit.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/givenSolution.cs" Line="1" Column="1" />
-      <File FileName="Assets/Logger/Scripts/BasicLoggerStartup.cs" Line="39" Column="29" />
+      <File FileName="Assets/plugins/whydoidoit.com/Serialization/Rooms/Room.cs" Line="1" Column="1" />
+      <File FileName="Assets/plugins/whydoidoit.com/Serialization/Rooms/RoomDataSaveGameStorage.cs" Line="1" Column="1" />
+      <File FileName="Assets/plugins/whydoidoit.com/Serialization/Rooms/DontStoreObjectInRoom.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/cancelMark.cs" Line="198" Column="40" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -196,6 +196,7 @@ public class cancelMark : MonoBehaviour {
 				if (num2 != 1) {
 					GameObject node = GameObject.Find(strNode);
 					if ((node.GetComponent<Node> ().RGN || node.GetComponent<Node> ().RBN)&& !node.GetComponent<Node>().RGBN) {
+						//there is something run here.
 						Node.intersection--;
                         if (Node.intersection < 0)
                             Node.intersection = 0;
