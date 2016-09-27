@@ -103,9 +103,6 @@
     <Reference Include="Assembly-UnityScript-firstpass">
       <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>
     </Reference>
-    <Reference Include="Assembly-UnityScript">
-      <HintPath>Library\ScriptAssemblies\Assembly-UnityScript.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="HumanOptimization_Unity.CSharp.Plugins.csproj">
@@ -128,7 +125,6 @@
     <None Include="Assets\Shaders\ThreeLinearGradient.shader" />
     <None Include="Assets\Shaders\blackHole.shader" />
     <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
-    <None Include="Assets\UnitySerializer\readme.txt" />
     <None Include="Assets\plugins\whydoidoit.com\license.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />

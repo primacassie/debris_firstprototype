@@ -385,7 +385,7 @@ public class Node : MonoBehaviour
             else
             {
                 string toSave = "this node is not connected with the node " + firstOfSize1 + " please select a valid one! ";
-                Debug.Log(toSave);
+                //Debug.Log(toSave);
 				JSONClass details = new JSONClass ();
 				details ["Incorrect Operation"] = toSave;
 				TheLogger.instance.TakeAction (10, details);
@@ -518,7 +518,7 @@ public class Node : MonoBehaviour
             else
             {
                 string toSave = "this node is not connected with the node " + size2lastNode + " please select a valid one! ";
-                Debug.Log(toSave);
+                //Debug.Log(toSave);
 				JSONClass details = new JSONClass ();
 				details ["Incorrect Operation"] = toSave;
 				TheLogger.instance.TakeAction (10, details);
@@ -1001,6 +1001,7 @@ public class Node : MonoBehaviour
 
 	private void setBoolArray(int num1,int num2,bool[,] rgb){
 		rgb [num1, num2] = true;
+        Debug.Log(num1 + " " + num2 + " "+bluePathNum[num1, num2]);
 		if (gameControll.redTruck)
 		{
 			redPathArray[num1, num2] = true;

@@ -22,11 +22,11 @@ public class cancelMark : MonoBehaviour {
 			Node.redTimeAl.Remove (StoreTruckClick.numForTime);
 			gameControll.redProfitTotal -= StoreTruckClick.numForProfit;
 			decimal.Round ((decimal)gameControll.redProfitTotal);
-			if (gameControll.redProfitTotal < 0.01f)
-				gameControll.redProfitTotal = 0f;
-			//Debug.Log ("redtime" + gameControll.redTimeTotal);
-			gameControll.redTimeTotal -= StoreTruckClick.numForTime;
-			Debug.Log ("redtime" + gameControll.redTimeTotal);
+            if (Mathf.Abs(gameControll.redProfitTotal) < 0.01f)
+                gameControll.redProfitTotal = 0f;
+            //Debug.Log ("redtime" + gameControll.redTimeTotal);
+            gameControll.redTimeTotal -= StoreTruckClick.numForTime;
+
 			decimal.Round ((decimal)gameControll.redTimeTotal);
 			if (gameControll.redTimeTotal < 0.01f)
 				gameControll.redTimeTotal = 0f;
@@ -45,10 +45,10 @@ public class cancelMark : MonoBehaviour {
 			Node.greenTimeAl.Remove (StoreTruckClick.numForTime);
 			gameControll.greenProfitTotal -= StoreTruckClick.numForProfit;
 			decimal.Round ((decimal)gameControll.greenProfitTotal);
-			if (gameControll.greenProfitTotal < 0.01f)
-				gameControll.greenProfitTotal = 0;
-			Debug.Log ("greentime" + gameControll.greenTimeTotal);
-			gameControll.greenTimeTotal -= StoreTruckClick.numForTime;
+            if (Mathf.Abs(gameControll.greenProfitTotal )< 0.01f)
+                gameControll.greenProfitTotal = 0;
+            //Debug.Log ("greentime" + gameControll.greenTimeTotal);
+            gameControll.greenTimeTotal -= StoreTruckClick.numForTime;
 			decimal.Round ((decimal)gameControll.greenTimeTotal);
 			if (gameControll.greenTimeTotal < 0.01f)
 				gameControll.greenTimeTotal = 0f;
@@ -68,10 +68,10 @@ public class cancelMark : MonoBehaviour {
 			Node.blueTimeAl.Remove (StoreTruckClick.numForTime);
 			gameControll.blueProfitTotal -= StoreTruckClick.numForProfit;
 			decimal.Round ((decimal)gameControll.blueProfitTotal);
-			if (gameControll.blueProfitTotal < 0.01f)
-				gameControll.blueProfitTotal = 0f;
-			Debug.Log ("bluetime" + gameControll.blueTimeTotal);
-			gameControll.blueTimeTotal -= StoreTruckClick.numForTime;
+            if (Mathf.Abs(gameControll.blueProfitTotal) < 0.01f)
+                gameControll.blueProfitTotal = 0f;
+            //Debug.Log ("bluetime" + gameControll.blueTimeTotal);
+            gameControll.blueTimeTotal -= StoreTruckClick.numForTime;
 			decimal.Round ((decimal)gameControll.blueTimeTotal);
 			if (gameControll.blueTimeTotal < 0.01f)
 				gameControll.blueTimeTotal = 0;
@@ -184,6 +184,7 @@ public class cancelMark : MonoBehaviour {
 			int redNum = Node.redPathNum [num1, num2];
 			int greenNum = Node.greenPathNum [num1, num2];
 			int blueNum = Node.bluePathNum [num1, num2];
+            int redNum1 = Node.redPathNum[num2, num1];
 			string pathString = "pathAnim" + num1.ToString () + num2.ToString ();
 			GameObject pathObj= GameObject.Find (pathString);
 			string indicatorName = "redIndicator1" + num1.ToString() + num2.ToString();
@@ -193,10 +194,10 @@ public class cancelMark : MonoBehaviour {
 				Node.redLineArray [num2, num1] = false;
 				Node.redPathArray [num1, num2] = false;
 				string strNode = "node" + num2;
-				if (num2 != 1) {
+				if (num2 != 1 && redNum1==0) {
 					GameObject node = GameObject.Find(strNode);
 					if ((node.GetComponent<Node> ().RGN || node.GetComponent<Node> ().RBN)&& !node.GetComponent<Node>().RGBN) {
-						//there is something run here.
+						//there is something wrong here.
 						Node.intersection--;
                         if (Node.intersection < 0)
                             Node.intersection = 0;
@@ -255,6 +256,7 @@ public class cancelMark : MonoBehaviour {
 			int redNum = Node.redPathNum [num1, num2];
 			int greenNum = Node.greenPathNum [num1, num2];
 			int blueNum = Node.bluePathNum [num1, num2];
+            int greenNum1 = Node.greenPathNum[num2, num1];
 			string pathString = "pathAnim" + num1.ToString () + num2.ToString ();
 			GameObject pathObj= GameObject.Find (pathString);
 			string indicatorName = "greenIndicator1" + num1.ToString() + num2.ToString();
@@ -264,7 +266,7 @@ public class cancelMark : MonoBehaviour {
 				Node.greenLineArray [num2, num1] = false;
 				Node.greenPathArray [num1, num2] = false;
 				string strNode = "node" + num2;
-				if (num2 != 1) {
+				if (num2 != 1 && greenNum1==0) {
 					GameObject node = GameObject.Find(strNode);
 					if ((node.GetComponent<Node> ().RGN || node.GetComponent<Node> ().GBN)&& !node.GetComponent<Node>().RGBN) {
 						Node.intersection--;
@@ -319,9 +321,11 @@ public class cancelMark : MonoBehaviour {
 
 		if (b) {
 			Node.bluePathNum [num1, num2]--;
-			int redNum = Node.redPathNum [num1, num2];
+            //Debug.Log("this blue array value" +num1+num2+" "+ Node.bluePathNum[num1, num2]);
+            int redNum = Node.redPathNum [num1, num2];
 			int greenNum = Node.greenPathNum [num1, num2];
 			int blueNum = Node.bluePathNum [num1, num2];
+            int blueNum1 = Node.bluePathNum[num2, num1];
 			string pathString = "pathAnim" + num1.ToString () + num2.ToString ();
 			GameObject pathObj= GameObject.Find (pathString);
 			string indicatorName = "blueIndicator1" + num1.ToString() + num2.ToString();
@@ -331,10 +335,10 @@ public class cancelMark : MonoBehaviour {
 				Node.blueLineArray [num2, num1] = false;
 				Node.bluePathArray [num1, num2] = false;
 				string strNode = "node" + num2;
-				if (num2 != 1) {
+				if (num2 != 1 && blueNum1==0) {
 					GameObject node = GameObject.Find(strNode);
 					if ((node.GetComponent<Node> ().RBN || node.GetComponent<Node> ().GBN)&& !node.GetComponent<Node>().RGBN) {
-						Node.intersection--;
+                        Node.intersection--;
                         if (Node.intersection < 0)
                             Node.intersection = 0;
                         GameObject.Find("intersection").GetComponent<Text>().text = Node.intersection.ToString();
@@ -344,43 +348,54 @@ public class cancelMark : MonoBehaviour {
 					node.GetComponent<Node> ().GBN = false;
 					node.GetComponent<Node> ().RGBN = false;
 				}
-				if (greenNum == 0 && redNum == 0) {
-					pathObj.GetComponent<LineRenderer>().enabled=false;
-					Destroy (indicatorObj);
-					if (num2 != 1) {
-						node2G.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Node/node") as Sprite;
-					}
-				} else if (redNum > 0 && greenNum == 0 ) {
-					if (num2 != 1) {
-							node2G.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Node/R") as Sprite;
-					}
-					pathObj.GetComponent<LineRenderer> ().material = Resources.Load<Material> ("Materials/redAnim") as Material;
-					Destroy (indicatorObj);
-					string redName = "redIndicator1" + num1.ToString () + num2.ToString ();
-					Vector3 place = origin + new Vector3 (1.0f / 3.0f * (destination.x - origin.x), 1.0f / 3.0f * (destination.y - origin.y), 0f);
-					GameObject.Find (redName).transform.position = place;
-				} else if (redNum == 0 && greenNum > 0 ) {
-					if (num2 != 1) {
-						node2G.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Node/G") as Sprite;
-					}
-					pathObj.GetComponent<LineRenderer> ().material = Resources.Load<Material> ("Materials/greenAnim") as Material;
-					Destroy (indicatorObj);
-					string greenName = "greenIndicator1" + num1.ToString () + num2.ToString ();
-					Vector3 place = origin + new Vector3 (1.0f / 3.0f * (destination.x - origin.x), 1.0f / 3.0f * (destination.y - origin.y), 0f);
-					GameObject.Find (greenName).transform.position = place;
-				} else if (redNum > 0 && greenNum > 0 ) {
-					if (num2 != 1) {
-						node2G.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Node/RG") as Sprite;
-					}
-					pathObj.GetComponent<LineRenderer> ().material = Resources.Load<Material> ("Materials/GradientRG") as Material;
-					Destroy (indicatorObj);
-					string greenName = "greenIndicator1" + num1.ToString () + num2.ToString ();
-					string redName = "redIndicator1" + num1.ToString () + num2.ToString ();
-					Vector3 place1 = origin + new Vector3 (1.0f / 6.0f * (destination.x - origin.x), 1.0f / 6.0f * (destination.y - origin.y), 0f);
-					Vector3 place2 = origin + new Vector3 (4.0f / 6.0f * (destination.x - origin.x), 4.0f / 6.0f * (destination.y - origin.y), 0f);
-					GameObject.Find (redName).transform.position = place1;
-					GameObject.Find (greenName).transform.position = place2;
-				}	
+                if (greenNum == 0 && redNum == 0)
+                {
+                    pathObj.GetComponent<LineRenderer>().enabled = false;
+                    Destroy(indicatorObj);
+                    if (num2 != 1)
+                    {
+                        node2G.GetComponent<Image>().sprite = Resources.Load<Sprite>("Node/node") as Sprite;
+                    }
+                }
+                else if (redNum > 0 && greenNum == 0)
+                {
+                    if (num2 != 1)
+                    {
+                        node2G.GetComponent<Image>().sprite = Resources.Load<Sprite>("Node/R") as Sprite;
+                    }
+                    pathObj.GetComponent<LineRenderer>().material = Resources.Load<Material>("Materials/redAnim") as Material;
+                    Destroy(indicatorObj);
+                    string redName = "redIndicator1" + num1.ToString() + num2.ToString();
+                    Vector3 place = origin + new Vector3(1.0f / 3.0f * (destination.x - origin.x), 1.0f / 3.0f * (destination.y - origin.y), 0f);
+                    GameObject.Find(redName).transform.position = place;
+                }
+                else if (redNum == 0 && greenNum > 0)
+                {
+                    if (num2 != 1)
+                    {
+                        node2G.GetComponent<Image>().sprite = Resources.Load<Sprite>("Node/G") as Sprite;
+                    }
+                    pathObj.GetComponent<LineRenderer>().material = Resources.Load<Material>("Materials/greenAnim") as Material;
+                    Destroy(indicatorObj);
+                    string greenName = "greenIndicator1" + num1.ToString() + num2.ToString();
+                    Vector3 place = origin + new Vector3(1.0f / 3.0f * (destination.x - origin.x), 1.0f / 3.0f * (destination.y - origin.y), 0f);
+                    GameObject.Find(greenName).transform.position = place;
+                }
+                else if (redNum > 0 && greenNum > 0)
+                {
+                    if (num2 != 1)
+                    {
+                        node2G.GetComponent<Image>().sprite = Resources.Load<Sprite>("Node/RG") as Sprite;
+                    }
+                    pathObj.GetComponent<LineRenderer>().material = Resources.Load<Material>("Materials/GradientRG") as Material;
+                    Destroy(indicatorObj);
+                    string greenName = "greenIndicator1" + num1.ToString() + num2.ToString();
+                    string redName = "redIndicator1" + num1.ToString() + num2.ToString();
+                    Vector3 place1 = origin + new Vector3(1.0f / 6.0f * (destination.x - origin.x), 1.0f / 6.0f * (destination.y - origin.y), 0f);
+                    Vector3 place2 = origin + new Vector3(4.0f / 6.0f * (destination.x - origin.x), 4.0f / 6.0f * (destination.y - origin.y), 0f);
+                    GameObject.Find(redName).transform.position = place1;
+                    GameObject.Find(greenName).transform.position = place2;
+                }
 			}
 		}
 

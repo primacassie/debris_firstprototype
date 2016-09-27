@@ -16,7 +16,7 @@
     <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>GamePlugins:3</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
-    <UnityVersion>5.4.0f3</UnityVersion>
+    <UnityVersion>5.4.1f1</UnityVersion>
     <RootNamespace></RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
@@ -27,7 +27,7 @@
     <IntermediateOutputPath>Temp\UnityVS_obj\Debug\</IntermediateOutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_4_0;UNITY_5_4;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_EDITOR_RETINA;ENABLE_RETINA_GUISTYLES;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_SPRITE_POLYGON;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;ENABLE_EDITOR_TESTS_RUNNER;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;ENABLE_VSTU</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_4_1;UNITY_5_4;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_EDITOR_RETINA;ENABLE_RETINA_GUISTYLES;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_SPRITE_POLYGON;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;ENABLE_EDITOR_TESTS_RUNNER;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;ENABLE_VSTU</DefineConstants>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -37,7 +37,7 @@
     <IntermediateOutputPath>Temp\UnityVS_obj\Release\</IntermediateOutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DefineConstants>TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_4_0;UNITY_5_4;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_EDITOR_RETINA;ENABLE_RETINA_GUISTYLES;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_SPRITE_POLYGON;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;ENABLE_EDITOR_TESTS_RUNNER;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;ENABLE_VSTU</DefineConstants>
+    <DefineConstants>TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_4_1;UNITY_5_4;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_EDITOR_RETINA;ENABLE_RETINA_GUISTYLES;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_SPRITE_POLYGON;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;ENABLE_EDITOR_TESTS_RUNNER;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;ENABLE_VSTU</DefineConstants>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
@@ -61,114 +61,23 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>Assets\plugins\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs" />
-    <Compile Include="Assets\Standard Assets\Scripts\General Scripts\ActivateTrigger.cs" />
-    <Compile Include="Assets\Standard Assets\Scripts\Utility Scripts\CombineChildren.cs" />
-    <Compile Include="Assets\Standard Assets\Scripts\Utility Scripts\MeshCombineUtility.cs" />
     <Compile Include="Assets\plugins\SimpleJSON.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\ClickMeAndDie.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\LitJson\IJsonWrapper.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\LitJson\JsonData.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\LitJson\JsonException.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\LitJson\JsonMapper.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\LitJson\JsonReader.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\LitJson\JsonWriter.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\LitJson\Lexer.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\LitJson\ParserToken.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Radical\RPCEnabler.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Radical\System\Broadcaster.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Radical\System\Curves.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Radical\System\Delegates\DelegateSupport.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Radical\System\Easing.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Radical\System\InheritableRPC.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Radical\System\LoadAnimations.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Radical\System\Loom.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Radical\System\MonoBehaviourEx.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Radical\System\Radical.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Radical\System\RadicalRoutine.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Radical\System\RadicalRoutineHelper.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Radical\System\Smoothing.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Radical\System\Testing\Inherited.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Radical\System\Testing\SimpleCaller.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Radical\System\TransformExtensions.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Radical\System\XmlSupport.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\ResultLogger.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Serialization\EmptyObjectIdentifier.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Serialization\Entry.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Serialization\GetSet.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Serialization\GetSetGeneric.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Serialization\GetWritableAttributes.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Serialization\IStorage.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Serialization\InRangeItem.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Serialization\JSONLevelLoader.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Serialization\JSONLevelSerializer.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Serialization\JSONSerializer.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Serialization\LevelLoader.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Serialization\LevelSerializer.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Serialization\OnlyInRangeManager.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Serialization\PrefabIdentifier.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Serialization\RemoveEditors.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Serialization\Rooms\DontStoreObjectInRoom.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Serialization\Rooms\Examples\PlayerLocator.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Serialization\Rooms\Examples\PlayerSpawnPoint.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Serialization\Rooms\PreserveObjectWhenLoading.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Serialization\Rooms\Room.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Serialization\Rooms\RoomDataSaveGameStorage.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Serialization\Rooms\RoomLoader.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Serialization\Rooms\RoomManager.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Serialization\SaveGameManager.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Serialization\SerializationUnits.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Serialization\Storage.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Serialization\StoreInformation.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Serialization\StoreMaterials.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Serialization\StoreMesh.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Serialization\StoredReferences.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Serialization\TimeSpecialist.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Serialization\UniqueIdentifier.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Serialization\UnitySerializationExtensions.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Serialization\UnitySerializer.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Serialization\prewarm.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\SevenZipHelper.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\SharpZIP\src\Checksums\Adler32.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\SharpZIP\src\Checksums\CRC32.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\SharpZIP\src\Checksums\IChecksum.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\SharpZIP\src\Checksums\StrangeCRC.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\SharpZIP\src\Compression\Deflater.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\SharpZIP\src\Compression\DeflaterConstants.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\SharpZIP\src\Compression\DeflaterEngine.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\SharpZIP\src\Compression\DeflaterHuffman.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\SharpZIP\src\Compression\DeflaterPending.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\SharpZIP\src\Compression\Inflater.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\SharpZIP\src\Compression\InflaterDynHeader.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\SharpZIP\src\Compression\InflaterHuffmanTree.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\SharpZIP\src\Compression\PendingBuffer.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\SharpZIP\src\Compression\Streams\DeflaterOutputStream.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\SharpZIP\src\Compression\Streams\InflaterInputStream.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\SharpZIP\src\Compression\Streams\OutputWindow.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\SharpZIP\src\Compression\Streams\StreamManipulator.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\SharpZIP\src\Encryption\PkzipClassic.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\SharpZIP\src\Encryption\ZipAESStream.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\SharpZIP\src\Encryption\ZipAESTransform.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\SharpZIP\src\SharpZipBaseException.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\SharpZIP\src\ZipConstants.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\SharpZIP\src\ZipEntry.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\SharpZIP\src\ZipExtraData.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\SharpZIP\src\ZipHelperStream.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\UnitySerializerVersion.cs" />
-    <Compile Include="Assets\plugins\whydoidoit.com\Utility\Types.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shaders\LinearGradient.shader" />
     <None Include="Assets\Shaders\ThreeLinearGradient.shader" />
     <None Include="Assets\Shaders\blackHole.shader" />
-    <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
-    <None Include="Assets\UnitySerializer\readme.txt" />
-    <None Include="Assets\plugins\whydoidoit.com\license.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

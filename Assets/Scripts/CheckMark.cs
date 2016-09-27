@@ -257,26 +257,26 @@ public class CheckMark : MonoBehaviour {
 		return name;
 	}
 
-	private void setBoolArray(int num1,int num2,bool[,] rgb){
-		rgb [num1, num2] = true;
-		if (gameControll.redTruck)
-		{
-			Node.redPathArray[num1, num2] = true;
-			Node.redPathNum[num1, num2]++;
-		}
+	//private void setBoolArray(int num1,int num2,bool[,] rgb){
+	//	rgb [num1, num2] = true;
+	//	if (gameControll.redTruck)
+	//	{
+	//		Node.redPathArray[num1, num2] = true;
+	//		Node.redPathNum[num1, num2]++;
+	//	}
 
-		if (gameControll.greenTruck)
-		{
-			Node.greenPathArray[num1, num2] = true;
-			Node.greenPathNum[num1, num2]++;
-		}
+	//	if (gameControll.greenTruck)
+	//	{
+	//		Node.greenPathArray[num1, num2] = true;
+	//		Node.greenPathNum[num1, num2]++;
+	//	}
 
-		if (gameControll.blueTruck)
-		{
-			Node.bluePathArray [num1, num2] = true;
-			Node.bluePathNum[num1, num2]++;
-		}
-	}
+	//	if (gameControll.blueTruck)
+	//	{
+	//		Node.bluePathArray [num1, num2] = true;
+	//		Node.bluePathNum[num1, num2]++;
+	//	}
+	//}
 
 	private void addIndicator(int num1,int num2, bool red, bool green, bool blue)
 	{
