@@ -169,7 +169,7 @@ public class Node : MonoBehaviour
 		v2=getVector(GameObject.Find("depot").transform.position,GameObject.Find("node2").transform.position,GameObject.Find("node5").transform.position);
 		v3=getVector(GameObject.Find("depot").transform.position,GameObject.Find("node3").transform.position,GameObject.Find("node4").transform.position);
 
-        gameControll.redTruck = true;
+        gameControll.blueTruck = true;
         string pathname = pathName(1, 3, rgbPathArray);
         setBoolArray(1, 3, rgbPathArray);
         GameObject path = new GameObject();
@@ -230,12 +230,232 @@ public class Node : MonoBehaviour
         storePath.Add(2);
         storePath.Add(1);
         nodeBackToDepot();
+		blueAl.Add (storePath);
 
-        //CheckMark.nextStep = true;
+		storePath.Clear ();
+		gameControll.blueTruck = true;
+		gameControll.redTruck = false;
+		pathname = pathName(1, 2, rgbPathArray);
+		setBoolArray(1, 2, rgbPathArray);
+		path = new GameObject();
+		path.name = pathname;
+		path.AddComponent<LineRenderer>();
+		path.tag = "linerender";
+		path.AddComponent<LineAnimation>();
+		dupObj = "newPathAnim12";
+		if (pathname == dupObj)
+		{
+			string existObj = "pathAnim12";
+			if (GameObject.Find(existObj) != null)
+			{
+				GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
+				//setIndicatorUnseen (num1, num2);
+			}
+		}
+		path.GetComponent<LineAnimation>().rectAnimation(1, 2);
 
-        //GameObject.Find ("GameController").GetComponent<LineAnimation> ().rectAnimation (passNode1,passNode2);
-        //second ui update here
-        //setInitialValue(1, 3);
+		setBoolArray(2, 5, rgbPathArray);
+		path = new GameObject();
+		path.name = pathname;
+		path.AddComponent<LineRenderer>();
+		path.tag = "linerender";
+		path.AddComponent<LineAnimation>();
+		dupObj = "newPathAnim25";
+		if (pathname == dupObj)
+		{
+			string existObj = "pathAnim25";
+			if (GameObject.Find(existObj) != null)
+			{
+				GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
+				//setIndicatorUnseen (num1, num2);
+			}
+		}
+		path.GetComponent<LineAnimation>().rectAnimation(2, 5);
+
+		setBoolArray(5, 2, rgbPathArray);
+		path = new GameObject();
+		path.name = pathname;
+		path.AddComponent<LineRenderer>();
+		path.tag = "linerender";
+		path.AddComponent<LineAnimation>();
+		dupObj = "newPathAnim52";
+		if (pathname == dupObj)
+		{
+			string existObj = "pathAnim52";
+			if (GameObject.Find(existObj) != null)
+			{
+				GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
+				//setIndicatorUnseen (num1, num2);
+			}
+		}
+		path.GetComponent<LineAnimation>().rectAnimation(5, 2);
+
+		setBoolArray(2, 1, rgbPathArray);
+		path = new GameObject();
+		path.name = pathname;
+		path.AddComponent<LineRenderer>();
+		path.tag = "linerender";
+		path.AddComponent<LineAnimation>();
+		dupObj = "newPathAnim21";
+		if (pathname == dupObj)
+		{
+			string existObj = "pathAnim21";
+			if (GameObject.Find(existObj) != null)
+			{
+				GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
+				//setIndicatorUnseen (num1, num2);
+			}
+		}
+		path.GetComponent<LineAnimation>().rectAnimation(2, 1);
+
+		storePath.Add(1);
+		storePath.Add(2);
+		storePath.Add(5);
+		storePath.Add(2);
+		storePath.Add (1);
+		//nodeBackToDepot ();
+		blueAl.Add (storePath);
+
+		gameControll.redTruck = true;
+		gameControll.blueTruck = false;
+		setBoolArray(1, 3, rgbPathArray);
+		path = new GameObject();
+		path.name = pathname;
+		path.AddComponent<LineRenderer>();
+		path.tag = "linerender";
+		path.AddComponent<LineAnimation>();
+		dupObj = "newPathAnim13";
+		if (pathname == dupObj)
+		{
+			string existObj = "pathAnim13";
+			if (GameObject.Find(existObj) != null)
+			{
+				GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
+				//setIndicatorUnseen (num1, num2);
+			}
+		}
+		path.GetComponent<LineAnimation>().rectAnimation(1, 3);
+
+		setBoolArray(3, 4, rgbPathArray);
+		path = new GameObject();
+		path.name = pathname;
+		path.AddComponent<LineRenderer>();
+		path.tag = "linerender";
+		path.AddComponent<LineAnimation>();
+		dupObj = "newPathAnim34";
+		if (pathname == dupObj)
+		{
+			string existObj = "pathAnim34";
+			if (GameObject.Find(existObj) != null)
+			{
+				GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
+				//setIndicatorUnseen (num1, num2);
+			}
+		}
+		path.GetComponent<LineAnimation>().rectAnimation(3, 4);
+
+		setBoolArray(4, 1, rgbPathArray);
+		path = new GameObject();
+		path.name = pathname;
+		path.AddComponent<LineRenderer>();
+		path.tag = "linerender";
+		path.AddComponent<LineAnimation>();
+		dupObj = "newPathAnim41";
+		if (pathname == dupObj)
+		{
+			string existObj = "pathAnim41";
+			if (GameObject.Find(existObj) != null)
+			{
+				GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
+				//setIndicatorUnseen (num1, num2);
+			}
+		}
+		path.GetComponent<LineAnimation>().rectAnimation(4, 1);
+
+		storePath.Add (1);
+		storePath.Add (3);
+		storePath.Add (4);
+		storePath.Add (1);
+		redAl.Add (storePath);
+
+		storePath.Clear ();
+		setBoolArray(1, 4, rgbPathArray);
+		path = new GameObject();
+		path.name = pathname;
+		path.AddComponent<LineRenderer>();
+		path.tag = "linerender";
+		path.AddComponent<LineAnimation>();
+		dupObj = "newPathAnim14";
+		if (pathname == dupObj)
+		{
+			string existObj = "pathAnim14";
+			if (GameObject.Find(existObj) != null)
+			{
+				GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
+				//setIndicatorUnseen (num1, num2);
+			}
+		}
+		path.GetComponent<LineAnimation>().rectAnimation(1, 4);
+
+		setBoolArray(4, 5, rgbPathArray);
+		path = new GameObject();
+		path.name = pathname;
+		path.AddComponent<LineRenderer>();
+		path.tag = "linerender";
+		path.AddComponent<LineAnimation>();
+		dupObj = "newPathAnim45";
+		if (pathname == dupObj)
+		{
+			string existObj = "pathAnim45";
+			if (GameObject.Find(existObj) != null)
+			{
+				GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
+				//setIndicatorUnseen (num1, num2);
+			}
+		}
+		path.GetComponent<LineAnimation>().rectAnimation(4, 5);
+
+		setBoolArray(5, 4, rgbPathArray);
+		path = new GameObject();
+		path.name = pathname;
+		path.AddComponent<LineRenderer>();
+		path.tag = "linerender";
+		path.AddComponent<LineAnimation>();
+		dupObj = "newPathAnim54";
+		if (pathname == dupObj)
+		{
+			string existObj = "pathAnim54";
+			if (GameObject.Find(existObj) != null)
+			{
+				GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
+				//setIndicatorUnseen (num1, num2);
+			}
+		}
+		path.GetComponent<LineAnimation>().rectAnimation(5, 4);
+
+		setBoolArray(4, 1, rgbPathArray);
+		path = new GameObject();
+		path.name = pathname;
+		path.AddComponent<LineRenderer>();
+		path.tag = "linerender";
+		path.AddComponent<LineAnimation>();
+		dupObj = "newPathAnim41";
+		if (pathname == dupObj)
+		{
+			string existObj = "pathAnim41";
+			if (GameObject.Find(existObj) != null)
+			{
+				GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
+				//setIndicatorUnseen (num1, num2);
+			}
+		}
+		path.GetComponent<LineAnimation>().rectAnimation(4, 1);
+
+		storePath.Add (1);
+		storePath.Add (4);
+		storePath.Add (5);
+		storePath.Add (4);
+		storePath.Add (1);
     }
 
     void Update(){
