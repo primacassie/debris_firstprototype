@@ -79,8 +79,8 @@ public class Node : MonoBehaviour
 	public static List<float> greenTimeAl=new List<float>();
 	public static List<float> blueTimeAl=new List<float>();
 
-    public static List<int> storePath;
-	public static List<int> storeTruckCap;
+    public static List<int> storePath=new List<int>();
+	public static List<int> storeTruckCap=new List<int>();
 	public static float storeProfit;
 	public static float storeTime;
 
@@ -154,8 +154,8 @@ public class Node : MonoBehaviour
         capPath = GameObject.FindGameObjectsWithTag("cap");
         foreach (GameObject obj in capPath)
         {
-            //obj.GetComponent<Text> ().text = "50";
-            obj.GetComponentInChildren<Text>().text = "50";
+            //obj.GetComponentInChildren<Text>().text = "50";
+            obj.GetComponentInChildren<Text>().text = "0";
         }
 		redAl   = new List<List<int>> ();
 		blueAl  = new List<List<int>> ();
@@ -168,9 +168,77 @@ public class Node : MonoBehaviour
 		v1=getVector(GameObject.Find("depot").transform.position,GameObject.Find("node2").transform.position,GameObject.Find("node3").transform.position);
 		v2=getVector(GameObject.Find("depot").transform.position,GameObject.Find("node2").transform.position,GameObject.Find("node5").transform.position);
 		v3=getVector(GameObject.Find("depot").transform.position,GameObject.Find("node3").transform.position,GameObject.Find("node4").transform.position);
+
+        gameControll.redTruck = true;
+        string pathname = pathName(1, 3, rgbPathArray);
+        setBoolArray(1, 3, rgbPathArray);
+        GameObject path = new GameObject();
+        path.name = pathname;
+        path.AddComponent<LineRenderer>();
+        path.tag = "linerender";
+        path.AddComponent<LineAnimation>();
+        string dupObj = "newPathAnim13";
+        if (pathname == dupObj)
+        {
+            string existObj = "pathAnim13";
+            if (GameObject.Find(existObj) != null)
+            {
+                GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
+                //setIndicatorUnseen (num1, num2);
+            }
+        }
+        path.GetComponent<LineAnimation>().rectAnimation(1, 3);
+
+        setBoolArray(3, 2, rgbPathArray);
+        path = new GameObject();
+        path.name = pathname;
+        path.AddComponent<LineRenderer>();
+        path.tag = "linerender";
+        path.AddComponent<LineAnimation>();
+        dupObj = "newPathAnim32";
+        if (pathname == dupObj)
+        {
+            string existObj = "pathAnim32";
+            if (GameObject.Find(existObj) != null)
+            {
+                GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
+                //setIndicatorUnseen (num1, num2);
+            }
+        }
+        path.GetComponent<LineAnimation>().rectAnimation(3, 2);
+
+        setBoolArray(2, 1, rgbPathArray);
+        path = new GameObject();
+        path.name = pathname;
+        path.AddComponent<LineRenderer>();
+        path.tag = "linerender";
+        path.AddComponent<LineAnimation>();
+        dupObj = "newPathAnim21";
+        if (pathname == dupObj)
+        {
+            string existObj = "pathAnim21";
+            if (GameObject.Find(existObj) != null)
+            {
+                GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
+                //setIndicatorUnseen (num1, num2);
+            }
+        }
+        path.GetComponent<LineAnimation>().rectAnimation(2, 1);
+
+        storePath.Add(1);
+        storePath.Add(3);
+        storePath.Add(2);
+        storePath.Add(1);
+        nodeBackToDepot();
+
+        //CheckMark.nextStep = true;
+
+        //GameObject.Find ("GameController").GetComponent<LineAnimation> ().rectAnimation (passNode1,passNode2);
+        //second ui update here
+        //setInitialValue(1, 3);
     }
 
-	void Update(){
+    void Update(){
 		if (CheckMark.nextStep == true) {
 			laterCap = gameControll.capArray [passNode1, passNode2];
 			int t = originCap-laterCap;
@@ -389,7 +457,6 @@ public class Node : MonoBehaviour
 				JSONClass details = new JSONClass ();
 				details ["Incorrect Operation"] = toSave;
 				TheLogger.instance.TakeAction (10, details);
-
                 //GameObject.Find ("ModalControl").GetComponent<testWindow> ().takeAction (toSave);
             }
         }
@@ -402,8 +469,6 @@ public class Node : MonoBehaviour
 
 			if (gameControll.validPath(size2lastNode, num) && !backToDepot)
             {
-
-
 				laterCap = gameControll.capArray [size2last2Node, size2lastNode];
 		//		Debug.Log ("later cap" + laterCap);
 				int tempCap = originCap-laterCap;
@@ -502,7 +567,7 @@ public class Node : MonoBehaviour
 
                 //modify node back to depot here
                 nodeBackToDepot ();
-
+                
 
                 //				GameObject findInactive = gameControll.myGameObject;
                 //				findInactive.SetActive(true);
@@ -962,6 +1027,7 @@ public class Node : MonoBehaviour
             GameObject.Find(animName2).GetComponent<NodeAnimation>().blueAnimation();
 		}
 	}
+
 //    private void createObjectForLineRender()
 //    {
 //        GameObject pathAnimation = new GameObject();

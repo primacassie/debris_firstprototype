@@ -137,7 +137,8 @@ public class gameControll : MonoBehaviour
             obj.GetComponentInChildren<Slider>().GetComponent<RectTransform>().localScale = new Vector2(0, 0);
         }
 		//Debug.Log ("cap array init1" + gameControll.capArray [1, 2]);
-		initializeCapArray(); 
+		initializeCapArray();
+        AfterInitializeCapArray();
         //Change Foreground to the layer you want it to display on 
         //You could prob. make a public variable for this
         //particleSystem.renderer.sortingLayerName = "Foreground";
@@ -549,13 +550,42 @@ public class gameControll : MonoBehaviour
             int cap = go.GetComponent<Graph>().capacity;
             capArray[arr1, arr2] = cap;
             capArray[arr2, arr1] = cap;
+
+            //try initlize it with 0 here
+            capArray[arr1, arr2] = 0;
+            capArray[arr2, arr1] = 0;
+
             float time = go.GetComponent<Graph>().time;
             timeArray[arr1, arr2] = time;
             timeArray[arr2, arr1] = time;
         }
 		nodePath = connArray;
     }
-		
+
+    private void AfterInitializeCapArray()
+    {
+        GameObject[] path = GameObject.FindGameObjectsWithTag("path");
+        //boolean array to store if they are connected;
+        bool[,] connArray = new bool[6, 6];
+        if (SceneManager.GetActiveScene().name == "level2")
+        {
+            connArray = new bool[21, 21];
+        }
+
+        foreach (GameObject go in path)
+        {
+            pathStore.Add(go.GetComponent<Graph>().node);
+            int arr1 = go.GetComponent<Graph>().node[0];
+            int arr2 = go.GetComponent<Graph>().node[1];
+            connArray[arr1, arr2] = true;
+            connArray[arr2, arr1] = true;
+            int cap = go.GetComponent<Graph>().capacity;
+            capArray[arr1, arr2] = 0;
+            capArray[arr2, arr1] = 0;
+        }
+        nodePath = connArray;
+    }
+
     public static void saveToFile(string save)
     {
         using (StreamWriter writeText = File.AppendText("/Users/ericgo/Desktop/HOOutput.txt"))
