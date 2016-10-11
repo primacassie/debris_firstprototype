@@ -169,6 +169,11 @@ public class Node : MonoBehaviour
 		v2=getVector(GameObject.Find("depot").transform.position,GameObject.Find("node2").transform.position,GameObject.Find("node5").transform.position);
 		v3=getVector(GameObject.Find("depot").transform.position,GameObject.Find("node3").transform.position,GameObject.Find("node4").transform.position);
 
+//		gameControll.redTruckNum = 0;
+//		gameControll.blueTruckNum = 0;
+
+		//make this as a function will save a lot of time
+		//I can just input routes as the variable in game to build this route.
         gameControll.blueTruck = true;
         string pathname = pathName(1, 3, rgbPathArray);
         setBoolArray(1, 3, rgbPathArray);
@@ -229,8 +234,9 @@ public class Node : MonoBehaviour
         storePath.Add(3);
         storePath.Add(2);
         storePath.Add(1);
-        nodeBackToDepot();
 		blueAl.Add (storePath);
+//		GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(0);
+//		gameControll.blueTruckNum++;
 
 		storePath.Clear ();
 		gameControll.blueTruck = true;
@@ -315,6 +321,10 @@ public class Node : MonoBehaviour
 		storePath.Add (1);
 		//nodeBackToDepot ();
 		blueAl.Add (storePath);
+		storePath.Clear ();
+//
+//		GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(1);
+//		gameControll.blueTruckNum++;
 
 		gameControll.redTruck = true;
 		gameControll.blueTruck = false;
@@ -377,6 +387,8 @@ public class Node : MonoBehaviour
 		storePath.Add (4);
 		storePath.Add (1);
 		redAl.Add (storePath);
+//		GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(0);
+//		gameControll.redTruckNum++;
 
 		storePath.Clear ();
 		setBoolArray(1, 4, rgbPathArray);
@@ -456,6 +468,10 @@ public class Node : MonoBehaviour
 		storePath.Add (5);
 		storePath.Add (4);
 		storePath.Add (1);
+		redAl.Add (storePath);
+//		GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(1);
+//		gameControll.redTruckNum++;
+		gameControll.redTruck = false;
     }
 
     void Update(){

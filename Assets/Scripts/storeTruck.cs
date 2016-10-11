@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class storeTruck : MonoBehaviour {
 	private GameObject sT;
 
-	void Start(){
+	void Awake(){
 		sT = GameObject.Find ("storeTruck");
 	}
 
