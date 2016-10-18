@@ -29,19 +29,6 @@ public class gameControll : MonoBehaviour
 
 
 
-    //cursor texture
-//    public Texture2D cursorTextureR;
-//    public Texture2D cursorTextureG;
-//    public Texture2D cursorTextureB;
-//    public Texture2D cursorTextureO;
-//    public Texture2D cursorTextureScrollerR;
-//    public Texture2D cursorTextureScrollerG;
-//    public Texture2D cursorTextureScrollerB;
-//    [HideInInspector]
-//    public CursorMode cursorMode = CursorMode.Auto;
-//    [HideInInspector]
-//    public Vector2 hotSpot = Vector2.zero;
-
     //total debris of each kind of color
     [HideInInspector]
     public static float redProfitTotal;
@@ -144,14 +131,7 @@ public class gameControll : MonoBehaviour
         //particleSystem.renderer.sortingLayerName = "Foreground";
 
     }
-
-    void Start()
-    {
-		//initializeCapArray(); 
-         //the method is to initalize both capacity arrays one is boolean and the other is int array.
-                               //loadInputField();  //load input field when a path is clicked.
-		//tempArray=capArray;                      //anim=GetComponent<Animator>();
-    }
+		
 
     // Update is called once per frame
     void Update()
@@ -579,7 +559,7 @@ public class gameControll : MonoBehaviour
             int arr2 = go.GetComponent<Graph>().node[1];
             connArray[arr1, arr2] = true;
             connArray[arr2, arr1] = true;
-            int cap = go.GetComponent<Graph>().capacity;
+            //int cap = go.GetComponent<Graph>().capacity;
             capArray[arr1, arr2] = 0;
             capArray[arr2, arr1] = 0;
         }

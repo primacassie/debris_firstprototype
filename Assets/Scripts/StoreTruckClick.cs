@@ -33,6 +33,7 @@ public class StoreTruckClick : MonoBehaviour {
 				string resultString = Regex.Match(truckName, @"\d+").Value;
 				int truckNum = int.Parse (resultString);
 				theTruckNum = truckNum;
+				//Debug.Log ("the truck num" + theTruckNum);
 				//objQueue.Enqueue (this.gameObject);
 				//List<int> nodePathL = new List<int> ();
 				//List<int> nodeTrcukCap = new List<int> ();
@@ -118,6 +119,7 @@ public class StoreTruckClick : MonoBehaviour {
 					}
 				}
 				if (truckName [0] == 'b') {
+					//Debug.Log ("reach here");
 					blue = true;
 					red = false;
 					green = false;
@@ -276,7 +278,7 @@ public class StoreTruckClick : MonoBehaviour {
 					setCancelPathButton (arrayForChosenPath.ToArray());
 					hasCancelMark = true;
 				}
-				Debug.Log ("time in storeTruckCLick" + time);
+				//Debug.Log ("time in storeTruckCLick" + time);
 
 				//			for (int i = 0; i < nodeArr1.Length-1; i++) {
 				//				int num1 = nodeArr1 [i];
