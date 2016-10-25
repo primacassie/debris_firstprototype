@@ -13,7 +13,7 @@ public class panelController : MonoBehaviour {
 	public static Text redTime, blueTime, greenTime;
 	public static Text redTextOnce, blueTextOnce, greenTextOnce;
 	public static Text redTimeOnce, blueTimeOnce, greenTimeOnce;
-	void Start () {
+	void Awake () {
 		GameObject redTruckProfit = GameObject.Find ("redTruckProfit");
 		GameObject blueTruckProfit = GameObject.Find ("blueTruckProfit");
 		GameObject greenTruckProfit = GameObject.Find ("greenTruckProfit");
@@ -50,5 +50,5 @@ public class panelController : MonoBehaviour {
 		blueTimeOnce.text = i.ToString ();
 		redTextOnce.text = i.ToString ();
 		redTimeOnce.text = i.ToString ();
-	}
+    }
 }

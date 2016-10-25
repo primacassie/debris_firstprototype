@@ -115,7 +115,7 @@ public class Node : MonoBehaviour
 
     void Awake()
     {
-		if (this.num == 1) {
+		if (this.num == 1 ) {
 			intersection = 0;
 			storeTime = 0;
 			storeProfit = 0;
@@ -240,6 +240,8 @@ public class Node : MonoBehaviour
 			float time = 100 * 10 + 7;
 			blueProfitAl.Add (profit);
 			blueTimeAl.Add (time);
+            
+            
 			//		GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(0);
 			//		gameControll.blueTruckNum++;
 
@@ -325,17 +327,21 @@ public class Node : MonoBehaviour
 			//nodeBackToDepot ();
 			blueAl.Add (new List<int>(){1,2,5,2,1});
 			blueTruckCap.Add (new List<int> (){0,50,0,0 });
-			profit = -(1 + 1.8f + 1.8f+1) / 2 * 7 + 10 * 50;
-			time = 50 * 10 + 1 + 1.8f + 1.8f+1;
+			profit += -(1 + 1.8f + 1.8f+1) / 2 * 7 + 10 * 50;
+			time += 50 * 10 + 1 + 1.8f + 1.8f+1;
 			blueProfitAl.Add (profit);
 			blueTimeAl.Add (time);
+            gameControll.blueProfitTotal = profit;
+            gameControll.blueTimeTotal = time;
+            panelController.blueText.text = gameControll.blueProfitTotal.ToString();
+            panelController.blueTime.text = gameControll.blueTimeTotal.ToString();
 
-			//storePath.Clear ();
-			//
-			//		GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(1);
-			//		gameControll.blueTruckNum++;
+            //storePath.Clear ();
+            //
+            //		GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(1);
+            //		gameControll.blueTruckNum++;
 
-			gameControll.redTruck = true;
+            gameControll.redTruck = true;
 			gameControll.blueTruck = false;
 			pathname = pathName(1, 3, rgbPathArray);
 			setBoolArray(1, 3, rgbPathArray);
@@ -400,11 +406,11 @@ public class Node : MonoBehaviour
 			time = 100 * 10 + 3 + 5 + 4;
 			redProfitAl.Add (profit);
 			redTimeAl.Add (time);
-			//		GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(0);
-			//		gameControll.redTruckNum++;
+            //		GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(0);
+            //		gameControll.redTruckNum++;
 
 
-			pathname = pathName(1,4, rgbPathArray);
+            pathname = pathName(1,4, rgbPathArray);
 			setBoolArray(1, 4, rgbPathArray);
 			path = new GameObject();
 			path.name = pathname;
@@ -482,14 +488,17 @@ public class Node : MonoBehaviour
 
 			redAl.Add (new List<int>(){1,4,5,4,1});
 			redTruckCap.Add (new List<int>{50,50,0,0 });
-			profit = -(4+5+5+4) / 2 * 7 + 10 * 100;
-			time = 100 * 10 + 18;
+			profit += -(4+5+5+4) / 2 * 7 + 10 * 100;
+			time += 100 * 10 + 18;
 			redProfitAl.Add (profit);
 			redTimeAl.Add (time);
-			//		GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(1);
-			//		gameControll.redTruckNum++;
-			gameControll.redTruck = false;
-
+            gameControll.redProfitTotal = profit;
+            gameControll.redTimeTotal = time;
+            panelController.redText.text = gameControll.redProfitTotal.ToString();
+            panelController.redTime.text = gameControll.redTimeTotal.ToString();
+            //		GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(1);
+            //		gameControll.redTruckNum++;
+            gameControll.redTruck = false;
 		}
     }
 
@@ -570,7 +579,7 @@ public class Node : MonoBehaviour
 				gameControll.greenProfitOnce = 0;
 			}
 			Destroy (GameObject.FindGameObjectWithTag ("truckText"));
-			Debug.Log (" You have finish a cycle, please start another one!");
+			//Debug.Log (" You have finish a cycle, please start another one!");
 
 			//gameControll.saveToFile ("a cycle is finished.");
 

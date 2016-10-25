@@ -19,23 +19,28 @@ public class CheckMark : MonoBehaviour {
 
 	//a stack to store all unseen indicator
 	private Stack<GameObject> indiStack=new Stack<GameObject>();
+    private static bool onlyFirstTime = false;
 
 	void Awake(){
-		addIndicatorAwake (1, 3, false, false, true,0,0,0);
-		addIndicatorAwake (3, 2, false, false, true,0,0,0);
-		addIndicatorAwake (2, 1, false, false, true,0,0,0);
-		addIndicatorAwake (1, 2, false, false, true,0,0,0);
-		addIndicatorAwake (2, 5, false, false, true,0,0,0);
-		addIndicatorAwake (5, 2, false, false, true,0,0,0);
-		addIndicatorAwake (2, 1, false, false, true,0,1,0);
-		//setIndicatorSeen (indiStack);
-		addIndicatorAwake(1,3,true,false,false,0,1,0);
-		addIndicatorAwake(3,4,true,false,false,0,0,0);
-		addIndicatorAwake(4,1,true,false,false,0,0,0);
-		addIndicatorAwake(1,4,true,false,false,0,0,0);
-		addIndicatorAwake(4,5,true,false,false,0,0,0);
-		addIndicatorAwake(5,4,true,false,false,0,0,0);
-		addIndicatorAwake(4,1,true,false,false,1,0,0);
+        if (!onlyFirstTime)
+        {
+            addIndicatorAwake(1, 3, false, false, true, 0, 0, 0);
+            addIndicatorAwake(3, 2, false, false, true, 0, 0, 0);
+            addIndicatorAwake(2, 1, false, false, true, 0, 0, 0);
+            addIndicatorAwake(1, 2, false, false, true, 0, 0, 0);
+            addIndicatorAwake(2, 5, false, false, true, 0, 0, 0);
+            addIndicatorAwake(5, 2, false, false, true, 0, 0, 0);
+            addIndicatorAwake(2, 1, false, false, true, 0, 1, 0);
+            //setIndicatorSeen (indiStack);
+            addIndicatorAwake(1, 3, true, false, false, 0, 1, 0);
+            addIndicatorAwake(3, 4, true, false, false, 0, 0, 0);
+            addIndicatorAwake(4, 1, true, false, false, 0, 0, 0);
+            addIndicatorAwake(1, 4, true, false, false, 0, 0, 0);
+            addIndicatorAwake(4, 5, true, false, false, 0, 0, 0);
+            addIndicatorAwake(5, 4, true, false, false, 0, 0, 0);
+            addIndicatorAwake(4, 1, true, false, false, 1, 0, 0);
+            onlyFirstTime = true;
+        }
 	}
 		
 

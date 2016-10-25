@@ -90,6 +90,8 @@ public class gameControll : MonoBehaviour
 
     private GameObject sub;
     private bool fist;
+    GameObject redButton;
+    GameObject blueButton;
 
 
 	//private int[,] tempArray = new int[6, 6];
@@ -103,6 +105,8 @@ public class gameControll : MonoBehaviour
         redTruckNum = 0;
         blueTruckNum = 0;
         greenTruckNum = 0;
+        redButton = GameObject.Find("red");
+        blueButton = GameObject.Find("blue");
         sub = GameObject.Find("submit");
 
         fist = true;
@@ -166,7 +170,18 @@ public class gameControll : MonoBehaviour
         {
             sub.GetComponent<BoxCollider2D>().enabled = true;
             sub.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+            redButton.GetComponent<Button>().enabled = false;
+            blueButton.GetComponent<Button>().enabled = false;
             fist = false;
+        }
+
+        if (sum != 0)
+        {
+            sub.GetComponent<BoxCollider2D>().enabled = false;
+            sub.GetComponent<Image>().color = new Color(1, 1, 1, 0.5f);
+            redButton.GetComponent<Button>().enabled = true;
+            blueButton.GetComponent<Button>().enabled = true;
+            fist = true;
         }
         if (Input.GetAxis("Mouse ScrollWheel") < 0)
         {

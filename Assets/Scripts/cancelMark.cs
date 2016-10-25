@@ -189,6 +189,7 @@ public class cancelMark : MonoBehaviour {
 			GameObject pathObj= GameObject.Find (pathString);
 			string indicatorName = "redIndicator1" + num1.ToString() + num2.ToString();
 			GameObject indicatorObj = GameObject.Find (indicatorName);
+            Destroy(indicatorObj);
 			if (redNum == 0) {
 				Node.redLineArray [num1, num2] = false;
 				Node.redLineArray [num2, num1] = false;
@@ -212,7 +213,7 @@ public class cancelMark : MonoBehaviour {
 				if (greenNum == 0 && blueNum == 0 ) {
 					//Destroy (pathObj);
 					pathObj.GetComponent<LineRenderer>().enabled=false;
-					Destroy (indicatorObj);
+					//Destroy (indicatorObj);
 					if (num2 != 1) {
 						node2G.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Node/node") as Sprite;
 					}
@@ -221,7 +222,7 @@ public class cancelMark : MonoBehaviour {
 						node2G.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Node/G") as Sprite;
 					}
 					pathObj.GetComponent<LineRenderer> ().material = Resources.Load<Material> ("Materials/greenAnim") as Material;
-					Destroy (indicatorObj);
+					//Destroy (indicatorObj);
 					string greenName = "greenIndicator1" + num1.ToString () + num2.ToString ();
 					Vector3 place = origin + new Vector3 (1.0f / 3.0f * (destination.x - origin.x), 1.0f / 3.0f * (destination.y - origin.y), 0f);
 					GameObject.Find (greenName).transform.position = place;
@@ -230,7 +231,7 @@ public class cancelMark : MonoBehaviour {
 						node2G.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Node/B") as Sprite;
 					}
 					pathObj.GetComponent<LineRenderer> ().material = Resources.Load<Material> ("Materials/blueAnim") as Material;
-					Destroy (indicatorObj);
+					//Destroy (indicatorObj);
 					string blueName = "blueIndicator1" + num1.ToString () + num2.ToString ();
 					Vector3 place = origin + new Vector3 (1.0f / 3.0f * (destination.x - origin.x), 1.0f / 3.0f * (destination.y - origin.y), 0f);
 					GameObject.Find (blueName).transform.position = place;
@@ -239,7 +240,7 @@ public class cancelMark : MonoBehaviour {
 						node2G.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Node/GB") as Sprite;
 					}
 					pathObj.GetComponent<LineRenderer> ().material = Resources.Load<Material> ("Materials/GradientBG") as Material;
-					Destroy (indicatorObj);
+					// (indicatorObj);
 					string blueName = "blueIndicator1" + num1.ToString () + num2.ToString ();
 					string greenName = "greenIndicator1" + num1.ToString () + num2.ToString ();
 					Vector3 place1 = origin + new Vector3 (1.0f / 6.0f * (destination.x - origin.x), 1.0f / 6.0f * (destination.y - origin.y), 0f);
@@ -261,6 +262,7 @@ public class cancelMark : MonoBehaviour {
 			GameObject pathObj= GameObject.Find (pathString);
 			string indicatorName = "greenIndicator1" + num1.ToString() + num2.ToString();
 			GameObject indicatorObj = GameObject.Find (indicatorName);
+            Destroy(indicatorObj);
 			if (greenNum == 0) {
 				Node.greenLineArray [num1, num2] = false;
 				Node.greenLineArray [num2, num1] = false;
@@ -281,7 +283,7 @@ public class cancelMark : MonoBehaviour {
 				}
 				if (blueNum == 0 && redNum == 0) {
 					pathObj.GetComponent<LineRenderer>().enabled=false;
-					Destroy (indicatorObj);
+					//Destroy (indicatorObj);
 					if (num2 != 1) {
 						node2G.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Node/node") as Sprite;
 					}
@@ -290,7 +292,7 @@ public class cancelMark : MonoBehaviour {
 						node2G.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Node/R") as Sprite;
 					}
 					pathObj.GetComponent<LineRenderer> ().material = Resources.Load<Material> ("Materials/redAnim") as Material;
-					Destroy (indicatorObj);
+					//Destroy (indicatorObj);
 					string redName = "redIndicator1" + num1.ToString () + num2.ToString ();
 					Vector3 place = origin + new Vector3 (1.0f / 3.0f * (destination.x - origin.x), 1.0f / 3.0f * (destination.y - origin.y), 0f);
 					GameObject.Find (redName).transform.position = place;
@@ -299,7 +301,7 @@ public class cancelMark : MonoBehaviour {
 						node2G.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Node/B") as Sprite;
 					}
 					pathObj.GetComponent<LineRenderer> ().material = Resources.Load<Material> ("Materials/blueAnim") as Material;
-					Destroy (indicatorObj);
+					//Destroy (indicatorObj);
 					string blueName = "blueIndicator1" + num1.ToString () + num2.ToString ();
 					Vector3 place = origin + new Vector3 (1.0f / 3.0f * (destination.x - origin.x), 1.0f / 3.0f * (destination.y - origin.y), 0f);
 					GameObject.Find (blueName).transform.position = place;
@@ -308,7 +310,7 @@ public class cancelMark : MonoBehaviour {
 						node2G.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Node/RB") as Sprite;
 					}
 					pathObj.GetComponent<LineRenderer> ().material = Resources.Load<Material> ("Materials/GradientRB") as Material;
-					Destroy (indicatorObj);
+					//Destroy (indicatorObj);
 					string blueName = "blueIndicator1" + num1.ToString () + num2.ToString ();
 					string redName = "redIndicator1" + num1.ToString () + num2.ToString ();
 					Vector3 place1 = origin + new Vector3 (1.0f / 6.0f * (destination.x - origin.x), 1.0f / 6.0f * (destination.y - origin.y), 0f);
@@ -330,6 +332,7 @@ public class cancelMark : MonoBehaviour {
 			GameObject pathObj= GameObject.Find (pathString);
 			string indicatorName = "blueIndicator1" + num1.ToString() + num2.ToString();
 			GameObject indicatorObj = GameObject.Find (indicatorName);
+            Destroy(indicatorObj);
 			if (blueNum == 0) {
 				Node.blueLineArray [num1, num2] = false;
 				Node.blueLineArray [num2, num1] = false;
@@ -351,7 +354,7 @@ public class cancelMark : MonoBehaviour {
                 if (greenNum == 0 && redNum == 0)
                 {
                     pathObj.GetComponent<LineRenderer>().enabled = false;
-                    Destroy(indicatorObj);
+                    //Destroy(indicatorObj);
                     if (num2 != 1)
                     {
                         node2G.GetComponent<Image>().sprite = Resources.Load<Sprite>("Node/node") as Sprite;
@@ -364,7 +367,7 @@ public class cancelMark : MonoBehaviour {
                         node2G.GetComponent<Image>().sprite = Resources.Load<Sprite>("Node/R") as Sprite;
                     }
                     pathObj.GetComponent<LineRenderer>().material = Resources.Load<Material>("Materials/redAnim") as Material;
-                    Destroy(indicatorObj);
+                    //Destroy(indicatorObj);
                     string redName = "redIndicator1" + num1.ToString() + num2.ToString();
                     Vector3 place = origin + new Vector3(1.0f / 3.0f * (destination.x - origin.x), 1.0f / 3.0f * (destination.y - origin.y), 0f);
                     GameObject.Find(redName).transform.position = place;
@@ -376,7 +379,7 @@ public class cancelMark : MonoBehaviour {
                         node2G.GetComponent<Image>().sprite = Resources.Load<Sprite>("Node/G") as Sprite;
                     }
                     pathObj.GetComponent<LineRenderer>().material = Resources.Load<Material>("Materials/greenAnim") as Material;
-                    Destroy(indicatorObj);
+                    //Destroy(indicatorObj);
                     string greenName = "greenIndicator1" + num1.ToString() + num2.ToString();
                     Vector3 place = origin + new Vector3(1.0f / 3.0f * (destination.x - origin.x), 1.0f / 3.0f * (destination.y - origin.y), 0f);
                     GameObject.Find(greenName).transform.position = place;
@@ -388,7 +391,7 @@ public class cancelMark : MonoBehaviour {
                         node2G.GetComponent<Image>().sprite = Resources.Load<Sprite>("Node/RG") as Sprite;
                     }
                     pathObj.GetComponent<LineRenderer>().material = Resources.Load<Material>("Materials/GradientRG") as Material;
-                    Destroy(indicatorObj);
+                    //Destroy(indicatorObj);
                     string greenName = "greenIndicator1" + num1.ToString() + num2.ToString();
                     string redName = "redIndicator1" + num1.ToString() + num2.ToString();
                     Vector3 place1 = origin + new Vector3(1.0f / 6.0f * (destination.x - origin.x), 1.0f / 6.0f * (destination.y - origin.y), 0f);
