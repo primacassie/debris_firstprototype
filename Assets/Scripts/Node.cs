@@ -115,11 +115,12 @@ public class Node : MonoBehaviour
 
     void Awake()
     {
+		GO = GameObject.Find("GameController");
 		if (this.num == 1 ) {
 			intersection = 0;
 			storeTime = 0;
 			storeProfit = 0;
-			GO = GameObject.Find("GameController");
+			sIntersection = GameObject.Find ("intersection").GetComponent<Text> ();
 			if (SceneManager.GetActiveScene().name == "start")
 			{
 				redLineArray = new bool[6, 6];
@@ -165,7 +166,6 @@ public class Node : MonoBehaviour
 			blueTruckCap=new List<List<int>> ();
 			greenTruckCap=new List<List<int>> ();
 			//Debug.Log ("redAL " + redAl.Count);
-			sIntersection = GameObject.Find ("intersection").GetComponent<Text> ();
 			v1=getVector(GameObject.Find("depot").transform.position,GameObject.Find("node2").transform.position,GameObject.Find("node3").transform.position);
 			v2=getVector(GameObject.Find("depot").transform.position,GameObject.Find("node2").transform.position,GameObject.Find("node5").transform.position);
 			v3=getVector(GameObject.Find("depot").transform.position,GameObject.Find("node3").transform.position,GameObject.Find("node4").transform.position);
@@ -327,10 +327,12 @@ public class Node : MonoBehaviour
 			//nodeBackToDepot ();
 			blueAl.Add (new List<int>(){1,2,5,2,1});
 			blueTruckCap.Add (new List<int> (){0,50,0,0 });
+			float profit1= -(1 + 1.8f + 1.8f+1) / 2 * 7 + 10 * 50;
+			float time1=50 * 10 + 1 + 1.8f + 1.8f+1;
 			profit += -(1 + 1.8f + 1.8f+1) / 2 * 7 + 10 * 50;
 			time += 50 * 10 + 1 + 1.8f + 1.8f+1;
-			blueProfitAl.Add (profit);
-			blueTimeAl.Add (time);
+			blueProfitAl.Add (profit1);
+			blueTimeAl.Add (time1);
             gameControll.blueProfitTotal = profit;
             gameControll.blueTimeTotal = time;
             panelController.blueText.text = gameControll.blueProfitTotal.ToString();
@@ -488,10 +490,12 @@ public class Node : MonoBehaviour
 
 			redAl.Add (new List<int>(){1,4,5,4,1});
 			redTruckCap.Add (new List<int>{50,50,0,0 });
+			profit1=-(4+5+5+4) / 2 * 7 + 10 * 100;
 			profit += -(4+5+5+4) / 2 * 7 + 10 * 100;
+			time1=100 * 10 + 18;
 			time += 100 * 10 + 18;
-			redProfitAl.Add (profit);
-			redTimeAl.Add (time);
+			redProfitAl.Add (profit1);
+			redTimeAl.Add (time1);
             gameControll.redProfitTotal = profit;
             gameControll.redTimeTotal = time;
             panelController.redText.text = gameControll.redProfitTotal.ToString();
