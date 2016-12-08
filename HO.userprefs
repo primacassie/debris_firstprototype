@@ -1,14 +1,13 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Node.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/cancelMark.cs">
     <Files>
       <File FileName="Assets/Scripts/gameControll.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/CheckMark.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Node.cs" Line="1593" Column="3" />
-      <File FileName="Assets/Scripts/storeTruck.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/depotAnimation.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Node.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/StoreTruckClick.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/cancelMark.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/panelController.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
