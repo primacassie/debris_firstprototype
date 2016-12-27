@@ -21,6 +21,8 @@ public class gameControll : MonoBehaviour
     [HideInInspector]
     public static bool greenTruck;
 
+    public static int intersection;
+
     //store how many truck have been here
     public static int redTruckNum;
     public static int blueTruckNum;
@@ -105,10 +107,10 @@ public class gameControll : MonoBehaviour
         redTruckNum = 0;
         blueTruckNum = 0;
         greenTruckNum = 0;
+        intersection = 0;
         redButton = GameObject.Find("red");
         blueButton = GameObject.Find("blue");
         sub = GameObject.Find("submit");
-
         fist = true;
 		if (SceneManager.GetActiveScene ().name == "start") {
 			

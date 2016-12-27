@@ -237,10 +237,10 @@ public class cancelMark : MonoBehaviour {
 //					if ((node.GetComponent<Node> ().RGN || node.GetComponent<Node> ().RBN)&& !node.GetComponent<Node>().RGBN) {
 //						//there is something wrong here.
 //						Debug.Log("red");
-//						Node.intersection--;
-//                        if (Node.intersection < 0)
-//                            Node.intersection = 0;
-//                        GameObject.Find("intersection").GetComponent<Text>().text = Node.intersection.ToString();
+//						gameControll.intersection--;
+//                        if (gameControll.intersection < 0)
+//                            gameControll.intersection = 0;
+//                        GameObject.Find("intersection").GetComponent<Text>().text = gameControll.intersection.ToString();
 //                    }
 //
 //					node.GetComponent<Node> ().RedN = false;
@@ -296,10 +296,10 @@ public class cancelMark : MonoBehaviour {
 //					if ((node.GetComponent<Node> ().RGN || node.GetComponent<Node> ().RBN)&& !node.GetComponent<Node>().RGBN) {
 //						//there is something wrong here.
 //						Debug.Log("red");
-//						Node.intersection--;
-//						if (Node.intersection < 0)
-//							Node.intersection = 0;
-//						GameObject.Find("intersection").GetComponent<Text>().text = Node.intersection.ToString();
+//						gameControll.intersection--;
+//						if (gameControll.intersection < 0)
+//							gameControll.intersection = 0;
+//						GameObject.Find("intersection").GetComponent<Text>().text = gameControll.intersection.ToString();
 //					}
 //
 //					node.GetComponent<Node> ().RedN = false;
@@ -373,10 +373,10 @@ public class cancelMark : MonoBehaviour {
 //				if (num2 != 1 && greenNum1==0) {
 //					GameObject node = GameObject.Find(strNode);
 //					if ((node.GetComponent<Node> ().RGN || node.GetComponent<Node> ().GBN)&& !node.GetComponent<Node>().RGBN) {
-//						Node.intersection--;
-//                        if (Node.intersection < 0)
-//                            Node.intersection = 0;
-//                        GameObject.Find("intersection").GetComponent<Text>().text = Node.intersection.ToString();
+//						gameControll.intersection--;
+//                        if (gameControll.intersection < 0)
+//                            gameControll.intersection = 0;
+//                        GameObject.Find("intersection").GetComponent<Text>().text = gameControll.intersection.ToString();
 //                    }
 //					node.GetComponent<Node> ().GreenN = false;
 //					node.GetComponent<Node> ().RGN = false;
@@ -428,10 +428,10 @@ public class cancelMark : MonoBehaviour {
 //				if (num2 != 1) {
 //					GameObject node = GameObject.Find(strNode);
 //					if ((node.GetComponent<Node> ().RGN || node.GetComponent<Node> ().GBN)&& !node.GetComponent<Node>().RGBN) {
-//						Node.intersection--;
-//						if (Node.intersection < 0)
-//							Node.intersection = 0;
-//						GameObject.Find("intersection").GetComponent<Text>().text = Node.intersection.ToString();
+//						gameControll.intersection--;
+//						if (gameControll.intersection < 0)
+//							gameControll.intersection = 0;
+//						GameObject.Find("intersection").GetComponent<Text>().text = gameControll.intersection.ToString();
 //					}
 //					node.GetComponent<Node> ().GreenN = false;
 //					node.GetComponent<Node> ().RGN = false;
@@ -520,10 +520,10 @@ public class cancelMark : MonoBehaviour {
 //					GameObject node = GameObject.Find(strNode);
 //					if ((node.GetComponent<Node> ().RBN || node.GetComponent<Node> ().GBN) && !node.GetComponent<Node>().RGBN) {
 //						Debug.Log("blue");
-//                        Node.intersection--;
-//                        if (Node.intersection < 0)
-//                            Node.intersection = 0;
-//                        GameObject.Find("intersection").GetComponent<Text>().text = Node.intersection.ToString();
+//                        gameControll.intersection--;
+//                        if (gameControll.intersection < 0)
+//                            gameControll.intersection = 0;
+//                        GameObject.Find("intersection").GetComponent<Text>().text = gameControll.intersection.ToString();
 //					}
 //					node.GetComponent<Node> ().BlueN = false;
 //					node.GetComponent<Node> ().RBN = false;
@@ -587,10 +587,10 @@ public class cancelMark : MonoBehaviour {
 //					GameObject node = GameObject.Find(strNode);
 //					if ((node.GetComponent<Node> ().RBN || node.GetComponent<Node> ().GBN) && !node.GetComponent<Node>().RGBN) {
 //						Debug.Log("blue");
-//						Node.intersection--;
-//						if (Node.intersection < 0)
-//							Node.intersection = 0;
-//						GameObject.Find("intersection").GetComponent<Text>().text = Node.intersection.ToString();
+//						gameControll.intersection--;
+//						if (gameControll.intersection < 0)
+//							gameControll.intersection = 0;
+//						GameObject.Find("intersection").GetComponent<Text>().text = gameControll.intersection.ToString();
 //					}
 //					node.GetComponent<Node> ().BlueN = false;
 //					node.GetComponent<Node> ().RBN = false;
@@ -630,13 +630,13 @@ public class cancelMark : MonoBehaviour {
 
 
 
-        if (Node.intersection == 1)
-        {
-            Node.intersection--;
-            if (Node.intersection < 0)
-                Node.intersection = 0;
-            GameObject.Find("intersection").GetComponent<Text>().text = "0";
-        }
+        //if (gameControll.intersection == 1)
+        //{
+        //    gameControll.intersection--;
+        //    if (gameControll.intersection < 0)
+        //        gameControll.intersection = 0;
+        //    GameObject.Find("intersection").GetComponent<Text>().text = "0";
+        //}
 			
 	}
 
@@ -661,10 +661,10 @@ public class cancelMark : MonoBehaviour {
 					GameObject node = GameObject.Find(strNode);
 					if (i != 1) {
 						if ((node.GetComponent<Node> ().RGN || node.GetComponent<Node> ().RBN)&& !node.GetComponent<Node>().RGBN) {
-							Node.intersection--;
-							if (Node.intersection < 0)
-								Node.intersection = 0;
-							GameObject.Find("intersection").GetComponent<Text>().text = Node.intersection.ToString();
+                            gameControll.intersection--;
+							if (gameControll.intersection < 0)
+                                gameControll.intersection = 0;
+							GameObject.Find("intersection").GetComponent<Text>().text = gameControll.intersection.ToString();
 						}
 
 						node.GetComponent<Node> ().RedN = false;
@@ -674,18 +674,58 @@ public class cancelMark : MonoBehaviour {
 					}
 					if (sumG == 0 && sumB == 0 && i != 1 ) {
 						node.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Node/node") as Sprite;
-					} else if (sumG> 0 && sumB == 0 ) {
+                        string dicName = "node" + i;
+                        if (Node.nodeDic.ContainsKey(dicName))
+                        {
+                            Node.nodeDic.Remove(dicName);
+                            Node.nodeDic.Add(dicName, "Node/node");
+                        }
+                        else
+                        {
+                            Node.nodeDic.Add(dicName, "Node/node");
+                        }
+                    } else if (sumG> 0 && sumB == 0 ) {
 						if (i != 1) {
 							node.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Node/G") as Sprite;
-						}
+                            string dicName = "node" + i;
+                            if (Node.nodeDic.ContainsKey(dicName))
+                            {
+                                Node.nodeDic.Remove(dicName);
+                                Node.nodeDic.Add(dicName, "Node/G");
+                            }
+                            else
+                            {
+                                Node.nodeDic.Add(dicName, "Node/G");
+                            }
+                        }
 					} else if (sumG == 0 && sumB > 0 ) {
 						if (i != 1) {
 							node.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Node/B") as Sprite;
-						}
+                            string dicName = "node" + i;
+                            if (Node.nodeDic.ContainsKey(dicName))
+                            {
+                                Node.nodeDic.Remove(dicName);
+                                Node.nodeDic.Add(dicName, "Node/B");
+                            }
+                            else
+                            {
+                                Node.nodeDic.Add(dicName, "Node/B");
+                            }
+                        }
 					} else if (sumG > 0 && sumB > 0 ) {
 						if (i != 1) {
 							node.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Node/GB") as Sprite;
-						}
+                            string dicName = "node" + i;
+                            if (Node.nodeDic.ContainsKey(dicName))
+                            {
+                                Node.nodeDic.Remove(dicName);
+                                Node.nodeDic.Add(dicName, "Node/GB");
+                            }
+                            else
+                            {
+                                Node.nodeDic.Add(dicName, "Node/GB");
+                            }
+                        }
 					}
 				}
 			}
@@ -695,10 +735,10 @@ public class cancelMark : MonoBehaviour {
 					GameObject node = GameObject.Find(strNode);
 					if (i != 1) {
 						if ((node.GetComponent<Node> ().GBN || node.GetComponent<Node> ().RBN)&& !node.GetComponent<Node>().RGBN) {
-							Node.intersection--;
-							if (Node.intersection < 0)
-								Node.intersection = 0;
-							GameObject.Find("intersection").GetComponent<Text>().text = Node.intersection.ToString();
+                            gameControll.intersection--;
+							if (gameControll.intersection < 0)
+                                gameControll.intersection = 0;
+							GameObject.Find("intersection").GetComponent<Text>().text = gameControll.intersection.ToString();
 						}
 
 						node.GetComponent<Node> ().BlueN = false;
@@ -708,18 +748,58 @@ public class cancelMark : MonoBehaviour {
 					}
 					if (sumG == 0 && sumR == 0 && i != 1 ) {
 						node.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Node/node") as Sprite;
-					} else if (sumG> 0 && sumR == 0 ) {
+                        string dicName = "node" + i;
+                        if (Node.nodeDic.ContainsKey(dicName))
+                        {
+                            Node.nodeDic.Remove(dicName);
+                            Node.nodeDic.Add(dicName, "Node/node");
+                        }
+                        else
+                        {
+                            Node.nodeDic.Add(dicName, "Node/node");
+                        }
+                    } else if (sumG> 0 && sumR == 0 ) {
 						if (i != 1) {
 							node.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Node/G") as Sprite;
-						}
+                            string dicName = "node" + i;
+                            if (Node.nodeDic.ContainsKey(dicName))
+                            {
+                                Node.nodeDic.Remove(dicName);
+                                Node.nodeDic.Add(dicName, "Node/G");
+                            }
+                            else
+                            {
+                                Node.nodeDic.Add(dicName, "Node/G");
+                            }
+                        }
 					} else if (sumG == 0 && sumR > 0 ) {
 						if (i != 1) {
 							node.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Node/R") as Sprite;
-						}
+                            string dicName = "node" + i;
+                            if (Node.nodeDic.ContainsKey(dicName))
+                            {
+                                Node.nodeDic.Remove(dicName);
+                                Node.nodeDic.Add(dicName, "Node/R");
+                            }
+                            else
+                            {
+                                Node.nodeDic.Add(dicName, "Node/R");
+                            }
+                        }
 					} else if (sumG > 0 && sumR > 0 ) {
 						if (i != 1) {
 							node.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Node/RG") as Sprite;
-						}
+                            string dicName = "node" + i;
+                            if (Node.nodeDic.ContainsKey(dicName))
+                            {
+                                Node.nodeDic.Remove(dicName);
+                                Node.nodeDic.Add(dicName, "Node/RG");
+                            }
+                            else
+                            {
+                                Node.nodeDic.Add(dicName, "Node/RG");
+                            }
+                        }
 					}
 				}
 			}
@@ -731,10 +811,10 @@ public class cancelMark : MonoBehaviour {
 					GameObject node = GameObject.Find(strNode);
 					if (i != 1) {
 						if ((node.GetComponent<Node> ().GBN || node.GetComponent<Node> ().RGN)&& !node.GetComponent<Node>().RGBN) {
-							Node.intersection--;
-							if (Node.intersection < 0)
-								Node.intersection = 0;
-							GameObject.Find("intersection").GetComponent<Text>().text = Node.intersection.ToString();
+							gameControll.intersection--;
+							if (gameControll.intersection < 0)
+								gameControll.intersection = 0;
+							GameObject.Find("intersection").GetComponent<Text>().text = gameControll.intersection.ToString();
 						}
 
 						node.GetComponent<Node> ().GreenN = false;
@@ -744,18 +824,58 @@ public class cancelMark : MonoBehaviour {
 					}
 					if (sumB == 0 && sumR == 0 && i != 1 ) {
 						node.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Node/node") as Sprite;
-					} else if (sumB> 0 && sumR == 0 ) {
+                        string dicName = "node" + i;
+                        if (Node.nodeDic.ContainsKey(dicName))
+                        {
+                            Node.nodeDic.Remove(dicName);
+                            Node.nodeDic.Add(dicName, "Node/node");
+                        }
+                        else
+                        {
+                            Node.nodeDic.Add(dicName, "Node/node");
+                        }
+                    } else if (sumB> 0 && sumR == 0 ) {
 						if (i != 1) {
 							node.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Node/B") as Sprite;
-						}
+                            string dicName = "node" + i;
+                            if (Node.nodeDic.ContainsKey(dicName))
+                            {
+                                Node.nodeDic.Remove(dicName);
+                                Node.nodeDic.Add(dicName, "Node/B");
+                            }
+                            else
+                            {
+                                Node.nodeDic.Add(dicName, "Node/B");
+                            }
+                        }
 					} else if (sumB == 0 && sumR > 0 ) {
 						if (i != 1) {
 							node.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Node/R") as Sprite;
-						}
+                            string dicName = "node" + i;
+                            if (Node.nodeDic.ContainsKey(dicName))
+                            {
+                                Node.nodeDic.Remove(dicName);
+                                Node.nodeDic.Add(dicName, "Node/R");
+                            }
+                            else
+                            {
+                                Node.nodeDic.Add(dicName, "Node/R");
+                            }
+                        }
 					} else if (sumB > 0 && sumR > 0 ) {
 						if (i != 1) {
 							node.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Node/RB") as Sprite;
-						}
+                            string dicName = "node" + i;
+                            if (Node.nodeDic.ContainsKey(dicName))
+                            {
+                                Node.nodeDic.Remove(dicName);
+                                Node.nodeDic.Add(dicName, "Node/RB");
+                            }
+                            else
+                            {
+                                Node.nodeDic.Add(dicName, "Node/RB");
+                            }
+                        }
 					}
 				}
 			}

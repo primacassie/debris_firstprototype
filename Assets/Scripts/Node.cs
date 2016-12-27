@@ -9,8 +9,6 @@ public class Node : MonoBehaviour
 {
     public int num;
 
-    //static int variable control intersection;
-    public static int intersection=0;
     private Text sIntersection;
     GameObject GO;
 
@@ -111,16 +109,17 @@ public class Node : MonoBehaviour
 
 
     //store the color of every node
-    private static Dictionary<string, string> nodeDic = new Dictionary<string, string>();
+    public static Dictionary<string, string> nodeDic = new Dictionary<string, string>();
 
     void Awake()
     {
 		GO = GameObject.Find("GameController");
 		sIntersection = GameObject.Find ("intersection").GetComponent<Text> ();
-		if (this.num == 1 ) {
+        if (this.num == 1 ) {
 			storeTime = 0;
 			storeProfit = 0;
-			if (SceneManager.GetActiveScene().name == "start")
+
+            if (SceneManager.GetActiveScene().name == "start")
 			{
 				redLineArray = new bool[6, 6];
 				blueLineArray = new bool[6, 6];
@@ -135,7 +134,8 @@ public class Node : MonoBehaviour
 				redPathNum = new int[6, 6];
 				greenPathNum = new int[6, 6];
 				bluePathNum = new int[6, 6];
-			}
+
+            }
 
 			if (SceneManager.GetActiveScene ().name == "level2") {
 				redLineArray = new bool[21, 21];
@@ -166,6 +166,7 @@ public class Node : MonoBehaviour
 			blueTruckCap=new List<List<int>> ();
 			greenTruckCap=new List<List<int>> ();
 
+
 			//Debug.Log ("redAL " + redAl.Count);
 			v1=getVector(GameObject.Find("depot").transform.position,GameObject.Find("node2").transform.position,GameObject.Find("node3").transform.position);
 			v2=getVector(GameObject.Find("depot").transform.position,GameObject.Find("node2").transform.position,GameObject.Find("node5").transform.position);
@@ -178,406 +179,9 @@ public class Node : MonoBehaviour
 //					Debug.Log(i+ " "+j+ " "+redPathNum[i,j]);
 //				}
 //			}
-
-
-			//make this as a function will save a lot of time
-			//I can just input routes as the variable in game to build this route.
-			//first path
-			gameControll.blueTruck = true;
-			gameControll.redTruck = false;
-			string pathname = pathName(1, 3, rgbPathArray);
-			setBoolArray(1, 3, rgbPathArray);
-			GameObject path = new GameObject();
-			path.name = pathname;
-			path.AddComponent<LineRenderer>();
-			path.tag = "linerender";
-			path.AddComponent<LineAnimation>();
-			string dupObj = "newPathAnim13";
-			if (pathname == dupObj)
-			{
-				string existObj = "pathAnim13";
-				if (GameObject.Find(existObj) != null)
-				{
-					GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
-					//setIndicatorUnseen (num1, num2);
-				}
-			}
-			path.GetComponent<LineAnimation>().rectAnimation(1, 3);
-
-			pathname = pathName( 3,2, rgbPathArray);
-			setBoolArray(3, 2, rgbPathArray);
-			path = new GameObject();
-			path.name = pathname;
-			path.AddComponent<LineRenderer>();
-			path.tag = "linerender";
-			path.AddComponent<LineAnimation>();
-			dupObj = "newPathAnim32";
-			if (pathname == dupObj)
-			{
-				string existObj = "pathAnim32";
-				if (GameObject.Find(existObj) != null)
-				{
-					GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
-					//setIndicatorUnseen (num1, num2);
-				}
-			}
-			path.GetComponent<LineAnimation>().rectAnimation(3, 2);
-
-			pathname = pathName(2,1, rgbPathArray);
-			setBoolArray(2, 1, rgbPathArray);
-			path = new GameObject();
-			path.name = pathname;
-			path.AddComponent<LineRenderer>();
-			path.tag = "linerender";
-			path.AddComponent<LineAnimation>();
-			dupObj = "newPathAnim21";
-			if (pathname == dupObj)
-			{
-				string existObj = "pathAnim21";
-				if (GameObject.Find(existObj) != null)
-				{
-					GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
-					//setIndicatorUnseen (num1, num2);
-				}
-			}
-			path.GetComponent<LineAnimation>().rectAnimation(2, 1);
-
-			blueAl.Add (new List<int>(){1,3,2,1});
-			//clickChangeColor (3);
-			//clickChangeColor (2);
-			blueTruckCap.Add (new List<int> (){0,50,50 });
-			float profit = -(3+3+1) / 2 * 7 + 10 * 100;
-			float time = 100 * 10 + 7;
-			blueProfitAl.Add (profit);
-			blueTimeAl.Add (time);
-
-
-			//		GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(0);
-			//		gameControll.blueTruckNum++;
-
-			//storePath.Clear ();
-			gameControll.blueTruck = true;
-			gameControll.redTruck = false;
-			pathname = pathName(1, 2, rgbPathArray);
-			setBoolArray(1, 2, rgbPathArray);
-			path = new GameObject();
-			path.name = pathname;
-			path.AddComponent<LineRenderer>();
-			path.tag = "linerender";
-			path.AddComponent<LineAnimation>();
-			dupObj = "newPathAnim12";
-			if (pathname == dupObj)
-			{
-				string existObj = "pathAnim12";
-				if (GameObject.Find(existObj) != null)
-				{
-					GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
-					//setIndicatorUnseen (num1, num2);
-				}
-			}
-			path.GetComponent<LineAnimation>().rectAnimation(1, 2);
-
-			pathname = pathName(2, 5, rgbPathArray);
-			setBoolArray(2, 5, rgbPathArray);
-			path = new GameObject();
-			path.name = pathname;
-			path.AddComponent<LineRenderer>();
-			path.tag = "linerender";
-			path.AddComponent<LineAnimation>();
-			dupObj = "newPathAnim25";
-			if (pathname == dupObj)
-			{
-				string existObj = "pathAnim25";
-				if (GameObject.Find(existObj) != null)
-				{
-					GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
-					//setIndicatorUnseen (num1, num2);
-				}
-			}
-			path.GetComponent<LineAnimation>().rectAnimation(2, 5);
-
-			pathname = pathName(5, 2, rgbPathArray);
-			setBoolArray(5, 2, rgbPathArray);
-			path = new GameObject();
-			path.name = pathname;
-			path.AddComponent<LineRenderer>();
-			path.tag = "linerender";
-			path.AddComponent<LineAnimation>();
-			dupObj = "newPathAnim52";
-			if (pathname == dupObj)
-			{
-				string existObj = "pathAnim52";
-				if (GameObject.Find(existObj) != null)
-				{
-					GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
-					//setIndicatorUnseen (num1, num2);
-				}
-			}
-			path.GetComponent<LineAnimation>().rectAnimation(5, 2);
-
-			pathname = pathName(2,1, rgbPathArray);
-			setBoolArray(2, 1, rgbPathArray);
-			path = new GameObject();
-			path.name = pathname;
-			path.AddComponent<LineRenderer>();
-			path.tag = "linerender";
-			path.AddComponent<LineAnimation>();
-			dupObj = "newPathAnim21";
-			if (pathname == dupObj)
-			{
-				string existObj = "pathAnim21";
-				if (GameObject.Find(existObj) != null)
-				{
-					GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
-					//setIndicatorUnseen (num1, num2);
-				}
-			}
-			path.GetComponent<LineAnimation>().rectAnimation(2, 1);
-
-			//nodeBackToDepot ();
-			blueAl.Add (new List<int>(){1,2,5,2,1});
-			blueTruckCap.Add (new List<int> (){0,50,0,0 });
-			float profit1= -(1 + 1.8f + 1.8f+1) / 2 * 7 + 10 * 50;
-			float time1=50 * 10 + 1 + 1.8f + 1.8f+1;
-			profit += -(1 + 1.8f + 1.8f+1) / 2 * 7 + 10 * 50;
-			time += 50 * 10 + 1 + 1.8f + 1.8f+1;
-			blueProfitAl.Add (profit1);
-			blueTimeAl.Add (time1);
-			//clickChangeColor (2);
-			//clickChangeColor (5);
-			//clickChangeColor (2);
-			gameControll.blueProfitTotal = profit;
-			gameControll.blueTimeTotal = time;
-			panelController.blueText.text = gameControll.blueProfitTotal.ToString();
-			panelController.blueTime.text = gameControll.blueTimeTotal.ToString();
-
-			//storePath.Clear ();
-			//
-			//		GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(1);
-			//		gameControll.blueTruckNum++;
-
-			gameControll.redTruck = true;
-			gameControll.blueTruck = false;
-			pathname = pathName(1, 3, rgbPathArray);
-			setBoolArray(1, 3, rgbPathArray);
-			path = new GameObject();
-			path.name = pathname;
-			path.AddComponent<LineRenderer>();
-			path.tag = "linerender";
-			path.AddComponent<LineAnimation>();
-			dupObj = "newPathAnim13";
-			if (pathname == dupObj)
-			{
-				string existObj = "pathAnim13";
-				if (GameObject.Find(existObj) != null)
-				{
-					GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
-					//setIndicatorUnseen (num1, num2);
-				}
-			}
-			path.GetComponent<LineAnimation>().rectAnimation(1, 3);
-
-			pathname = pathName(3,4, rgbPathArray);
-			setBoolArray(3, 4, rgbPathArray);
-			path = new GameObject();
-			path.name = pathname;
-			path.AddComponent<LineRenderer>();
-			path.tag = "linerender";
-			path.AddComponent<LineAnimation>();
-			dupObj = "newPathAnim34";
-			if (pathname == dupObj)
-			{
-				string existObj = "pathAnim34";
-				if (GameObject.Find(existObj) != null)
-				{
-					GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
-					//setIndicatorUnseen (num1, num2);
-				}
-			}
-			path.GetComponent<LineAnimation>().rectAnimation(3, 4);
-
-			pathname = pathName(4,1, rgbPathArray);
-			setBoolArray(4, 1, rgbPathArray);
-			path = new GameObject();
-			path.name = pathname;
-			path.AddComponent<LineRenderer>();
-			path.tag = "linerender";
-			path.AddComponent<LineAnimation>();
-			dupObj = "newPathAnim41";
-			if (pathname == dupObj)
-			{
-				string existObj = "pathAnim41";
-				if (GameObject.Find(existObj) != null)
-				{
-					GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
-					//setIndicatorUnseen (num1, num2);
-				}
-			}
-			path.GetComponent<LineAnimation>().rectAnimation(4, 1);
-
-			redAl.Add (new List<int>(){1,3,4,1});
-			redTruckCap.Add(new List<int>{50,50,0});
-			//clickChangeColor (3);
-			//clickChangeColor (4);
-			profit = -(3+5+4) / 2 * 7 + 10 * 100;
-			time = 100 * 10 + 3 + 5 + 4;
-			redProfitAl.Add (profit);
-			redTimeAl.Add (time);
-			//		GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(0);
-			//		gameControll.redTruckNum++;
-
-
-			pathname = pathName(1,4, rgbPathArray);
-			setBoolArray(1, 4, rgbPathArray);
-			path = new GameObject();
-			path.name = pathname;
-			path.AddComponent<LineRenderer>();
-			path.tag = "linerender";
-			path.AddComponent<LineAnimation>();
-			dupObj = "newPathAnim14";
-			if (pathname == dupObj)
-			{
-				string existObj = "pathAnim14";
-				if (GameObject.Find(existObj) != null)
-				{
-					GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
-					//setIndicatorUnseen (num1, num2);
-				}
-			}
-			path.GetComponent<LineAnimation>().rectAnimation(1, 4);
-
-			pathname = pathName(4,5, rgbPathArray);
-			setBoolArray(4, 5, rgbPathArray);
-			path = new GameObject();
-			path.name = pathname;
-			path.AddComponent<LineRenderer>();
-			path.tag = "linerender";
-			path.AddComponent<LineAnimation>();
-			dupObj = "newPathAnim45";
-			if (pathname == dupObj)
-			{
-				string existObj = "pathAnim45";
-				if (GameObject.Find(existObj) != null)
-				{
-					GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
-					//setIndicatorUnseen (num1, num2);
-				}
-			}
-			path.GetComponent<LineAnimation>().rectAnimation(4, 5);
-
-			pathname = pathName(5,4, rgbPathArray);
-			setBoolArray(5, 4, rgbPathArray);
-			path = new GameObject();
-			path.name = pathname;
-			path.AddComponent<LineRenderer>();
-			path.tag = "linerender";
-			path.AddComponent<LineAnimation>();
-			dupObj = "newPathAnim54";
-			if (pathname == dupObj)
-			{
-				string existObj = "pathAnim54";
-				if (GameObject.Find(existObj) != null)
-				{
-					GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
-					//setIndicatorUnseen (num1, num2);
-				}
-			}
-			path.GetComponent<LineAnimation>().rectAnimation(5, 4);
-
-			pathname = pathName(4,1, rgbPathArray);
-			setBoolArray(4, 1, rgbPathArray);
-			path = new GameObject();
-			path.name = pathname;
-			path.AddComponent<LineRenderer>();
-			path.tag = "linerender";
-			path.AddComponent<LineAnimation>();
-			dupObj = "newPathAnim41";
-			if (pathname == dupObj)
-			{
-				string existObj = "pathAnim41";
-				if (GameObject.Find(existObj) != null)
-				{
-					GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
-					//setIndicatorUnseen (num1, num2);
-				}
-			}
-			path.GetComponent<LineAnimation>().rectAnimation(4, 1);
-
-			redAl.Add (new List<int>(){1,4,5,4,1});
-			redTruckCap.Add (new List<int>{50,50,0,0 });
-			//clickChangeColor (4);
-			//clickChangeColor (5);
-			//clickChangeColor (4);
-			profit1=-(4+5+5+4) / 2 * 7 + 10 * 100;
-			profit += -(4+5+5+4) / 2 * 7 + 10 * 100;
-			time1=100 * 10 + 18;
-			time += 100 * 10 + 18;
-			redProfitAl.Add (profit1);
-			redTimeAl.Add (time1);
-			gameControll.redProfitTotal = profit;
-			gameControll.redTimeTotal = time;
-			panelController.redText.text = gameControll.redProfitTotal.ToString();
-			panelController.redTime.text = gameControll.redTimeTotal.ToString();
-			//		GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(1);
-			//		gameControll.redTruckNum++;
-			gameControll.redTruck = false;
-//			intersection = 2;
-//			sIntersection.text = intersection.ToString ();
-
-//			for (int i = 1; i < 6; i++) {
-//				for (int j = 1; j < 6; j++) {
-//					Debug.Log(i+ " "+j+ " "+redPathNum[i,j]);
-//				}
-//			}
 		}
 
-
-		if (this.num == 2) {
-			gameControll.blueTruck = true;
-			clickChangeColor (2);
-//			Debug.Log (redN.ToString() + this.num);
-//			Debug.Log (blueN.ToString() + this.num);
-//			Debug.Log (RBN.ToString() + this.num);
-//			Debug.Log (intersection+" " + this.num);
-			gameControll.blueTruck = false;
-		}
-
-		if (this.num == 4) {
-			gameControll.redTruck = true;
-			clickChangeColor (4);
-			gameControll.redTruck = false;
-//			Debug.Log (redN.ToString() + this.num);
-//			Debug.Log (blueN.ToString() + this.num);
-//			Debug.Log (RBN.ToString() + this.num);
-//			Debug.Log (intersection+" " + this.num);
-		}
-
-		if (this.num == 5) {
-			gameControll.redTruck = true;
-			clickChangeColor (5);
-			gameControll.redTruck = false;
-			gameControll.blueTruck = true;
-			clickChangeColor (5);
-			gameControll.blueTruck = false;
-//			Debug.Log (redN.ToString() + this.num);
-//			Debug.Log (blueN.ToString() + this.num);
-//			Debug.Log (RBN.ToString() + this.num);
-//			Debug.Log (intersection+" " + this.num);
-		}
-
-		if (this.num == 3) {
-			gameControll.redTruck = true;
-			clickChangeColor (3);
-			gameControll.redTruck = false;
-			gameControll.blueTruck = true;
-			clickChangeColor (3);
-			gameControll.blueTruck = false;
-//			Debug.Log (redN.ToString() + this.num);
-//			Debug.Log (blueN.ToString() + this.num);
-//			Debug.Log (RBN.ToString() + this.num);
-//			Debug.Log (intersection+" " + this.num);
-		}
-
+        getInitialSolution();
     }
 	
 
@@ -686,6 +290,8 @@ public class Node : MonoBehaviour
 
     void OnMouseDown()
     {
+
+        Debug.Log(this.num + this.redN.ToString() + " redN " + this.blueN.ToString() + " blueN "+ this.rbN.ToString());
         //Debug.Log (num);
         //int temp;
         Queue<int> t = gameControll.twoNode;
@@ -1250,9 +856,9 @@ public class Node : MonoBehaviour
         {
             if (gameControll.blueTruck)
             {
-                if(this.gameObject.name!="depot")
-                    intersection++;
-                sIntersection.text = intersection.ToString ();
+                if (this.gameObject.name!="depot")
+                    gameControll.intersection++;
+                sIntersection.text = gameControll.intersection.ToString ();
                 changeNodeColor("RB");
                 blueN = true;
                 rbN = true;
@@ -1260,8 +866,8 @@ public class Node : MonoBehaviour
             else if (gameControll.greenTruck)
             {
                 if (this.gameObject.name != "depot")
-                    intersection++;
-                sIntersection.text = intersection.ToString ();
+                    gameControll.intersection++;
+                sIntersection.text = gameControll.intersection.ToString ();
                 changeNodeColor("RG");
                 greenN = true;
                 rgN = true;
@@ -1272,8 +878,8 @@ public class Node : MonoBehaviour
             if (gameControll.redTruck)
             {
                 if (this.gameObject.name != "depot")
-                    intersection++;
-                sIntersection.text = intersection.ToString ();
+                    gameControll.intersection++;
+                sIntersection.text = gameControll.intersection.ToString ();
                 changeNodeColor("RB");
                 redN = true;
                 rbN = true;
@@ -1281,8 +887,8 @@ public class Node : MonoBehaviour
             else if (gameControll.greenTruck)
             {
                 if (this.gameObject.name != "depot")
-                    intersection++;
-                sIntersection.text = intersection.ToString ();
+                    gameControll.intersection++;
+                sIntersection.text = gameControll.intersection.ToString ();
                 changeNodeColor("GB");
                 greenN = true;
                 gbN = true;
@@ -1293,8 +899,8 @@ public class Node : MonoBehaviour
             if (gameControll.redTruck)
             {
                 if (this.gameObject.name != "depot")
-                    intersection++;
-                sIntersection.text = intersection.ToString ();
+                    gameControll.intersection++;
+                sIntersection.text = gameControll.intersection.ToString ();
                 changeNodeColor("RG");
                 redN = true;
                 rgN = true;
@@ -1302,8 +908,8 @@ public class Node : MonoBehaviour
             else if (gameControll.blueTruck)
             {
                 if (this.gameObject.name != "depot")
-                    intersection++;
-                sIntersection.text = intersection.ToString ();
+                    gameControll.intersection++;
+                sIntersection.text = gameControll.intersection.ToString ();
                 changeNodeColor("GB");
                 blueN = true;
                 gbN = true;
@@ -1404,16 +1010,16 @@ public class Node : MonoBehaviour
 		{
 			if (gameControll.blueTruck)
 			{
-				intersection++;
-				sIntersection.text = intersection.ToString ();
+                gameControll.intersection++;
+				sIntersection.text = gameControll.intersection.ToString ();
 				changeNodeColor("RB",num);
 				blueN = true;
 				rbN = true;
 			}
 			else if (gameControll.greenTruck)
 			{
-				intersection++;
-				sIntersection.text = intersection.ToString ();
+                gameControll.intersection++;
+				sIntersection.text = gameControll.intersection.ToString ();
 				changeNodeColor("RG",num);
 				greenN = true;
 				rgN = true;
@@ -1423,16 +1029,16 @@ public class Node : MonoBehaviour
 		{
 			if (gameControll.redTruck)
 			{
-				intersection++;
-				sIntersection.text = intersection.ToString ();
+                gameControll.intersection++;
+				sIntersection.text = gameControll.intersection.ToString ();
 				changeNodeColor("RB",num);
 				redN = true;
 				rbN = true;
 			}
 			else if (gameControll.greenTruck)
 			{
-				intersection++;
-				sIntersection.text = intersection.ToString ();
+                gameControll.intersection++;
+				sIntersection.text = gameControll.intersection.ToString ();
 				changeNodeColor("GB",num);
 				greenN = true;
 				gbN = true;
@@ -1442,16 +1048,16 @@ public class Node : MonoBehaviour
 		{
 			if (gameControll.redTruck)
 			{
-				intersection++;
-				sIntersection.text = intersection.ToString ();
+                gameControll.intersection++;
+				sIntersection.text = gameControll.intersection.ToString ();
 				changeNodeColor("RG",num);
 				redN = true;
 				rgN = true;
 			}
 			else if (gameControll.blueTruck)
 			{
-				intersection++;
-				sIntersection.text = intersection.ToString ();
+                gameControll.intersection++;
+				sIntersection.text = gameControll.intersection.ToString ();
 				changeNodeColor("GB",num);
 				blueN = true;
 				gbN = true;
@@ -1822,8 +1428,412 @@ public class Node : MonoBehaviour
 	}
 
 	private void getInitialSolution(){
-		
-	}
-			
-		
+
+        if (this.num == 1)
+        {
+            //make this as a function will save a lot of time
+            //I can just input routes as the variable in game to build this route.
+            //first path
+            gameControll.blueTruck = true;
+            gameControll.redTruck = false;
+            string pathname = pathName(1, 3, rgbPathArray);
+            setBoolArray(1, 3, rgbPathArray);
+            GameObject path = new GameObject();
+            path.name = pathname;
+            path.AddComponent<LineRenderer>();
+            path.tag = "linerender";
+            path.AddComponent<LineAnimation>();
+            string dupObj = "newPathAnim13";
+            if (pathname == dupObj)
+            {
+                string existObj = "pathAnim13";
+                if (GameObject.Find(existObj) != null)
+                {
+                    GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
+                    //setIndicatorUnseen (num1, num2);
+                }
+            }
+            path.GetComponent<LineAnimation>().rectAnimation(1, 3);
+
+            pathname = pathName(3, 2, rgbPathArray);
+            setBoolArray(3, 2, rgbPathArray);
+            path = new GameObject();
+            path.name = pathname;
+            path.AddComponent<LineRenderer>();
+            path.tag = "linerender";
+            path.AddComponent<LineAnimation>();
+            dupObj = "newPathAnim32";
+            if (pathname == dupObj)
+            {
+                string existObj = "pathAnim32";
+                if (GameObject.Find(existObj) != null)
+                {
+                    GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
+                    //setIndicatorUnseen (num1, num2);
+                }
+            }
+            path.GetComponent<LineAnimation>().rectAnimation(3, 2);
+
+            pathname = pathName(2, 1, rgbPathArray);
+            setBoolArray(2, 1, rgbPathArray);
+            path = new GameObject();
+            path.name = pathname;
+            path.AddComponent<LineRenderer>();
+            path.tag = "linerender";
+            path.AddComponent<LineAnimation>();
+            dupObj = "newPathAnim21";
+            if (pathname == dupObj)
+            {
+                string existObj = "pathAnim21";
+                if (GameObject.Find(existObj) != null)
+                {
+                    GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
+                    //setIndicatorUnseen (num1, num2);
+                }
+            }
+            path.GetComponent<LineAnimation>().rectAnimation(2, 1);
+
+            blueAl.Add(new List<int>() { 1, 3, 2, 1 });
+            //clickChangeColor (3);
+            //clickChangeColor (2);
+            blueTruckCap.Add(new List<int>() { 0, 50, 50 });
+            float profit = -(3 + 3 + 1) / 2 * 7 + 10 * 100;
+            float time = 100 * 10 + 7;
+            blueProfitAl.Add(profit);
+            blueTimeAl.Add(time);
+
+
+            //		GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(0);
+            //		gameControll.blueTruckNum++;
+
+            //storePath.Clear ();
+            gameControll.blueTruck = true;
+            gameControll.redTruck = false;
+            pathname = pathName(1, 2, rgbPathArray);
+            setBoolArray(1, 2, rgbPathArray);
+            path = new GameObject();
+            path.name = pathname;
+            path.AddComponent<LineRenderer>();
+            path.tag = "linerender";
+            path.AddComponent<LineAnimation>();
+            dupObj = "newPathAnim12";
+            if (pathname == dupObj)
+            {
+                string existObj = "pathAnim12";
+                if (GameObject.Find(existObj) != null)
+                {
+                    GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
+                    //setIndicatorUnseen (num1, num2);
+                }
+            }
+            path.GetComponent<LineAnimation>().rectAnimation(1, 2);
+
+            pathname = pathName(2, 5, rgbPathArray);
+            setBoolArray(2, 5, rgbPathArray);
+            path = new GameObject();
+            path.name = pathname;
+            path.AddComponent<LineRenderer>();
+            path.tag = "linerender";
+            path.AddComponent<LineAnimation>();
+            dupObj = "newPathAnim25";
+            if (pathname == dupObj)
+            {
+                string existObj = "pathAnim25";
+                if (GameObject.Find(existObj) != null)
+                {
+                    GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
+                    //setIndicatorUnseen (num1, num2);
+                }
+            }
+            path.GetComponent<LineAnimation>().rectAnimation(2, 5);
+
+            pathname = pathName(5, 2, rgbPathArray);
+            setBoolArray(5, 2, rgbPathArray);
+            path = new GameObject();
+            path.name = pathname;
+            path.AddComponent<LineRenderer>();
+            path.tag = "linerender";
+            path.AddComponent<LineAnimation>();
+            dupObj = "newPathAnim52";
+            if (pathname == dupObj)
+            {
+                string existObj = "pathAnim52";
+                if (GameObject.Find(existObj) != null)
+                {
+                    GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
+                    //setIndicatorUnseen (num1, num2);
+                }
+            }
+            path.GetComponent<LineAnimation>().rectAnimation(5, 2);
+
+
+            pathname = pathName(2, 1, rgbPathArray);
+            setBoolArray(2, 1, rgbPathArray);
+            path = new GameObject();
+            path.name = pathname;
+            path.AddComponent<LineRenderer>();
+            path.tag = "linerender";
+            path.AddComponent<LineAnimation>();
+            dupObj = "newPathAnim21";
+            if (pathname == dupObj)
+            {
+                string existObj = "pathAnim21";
+                if (GameObject.Find(existObj) != null)
+                {
+                    GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
+                    //setIndicatorUnseen (num1, num2);
+                }
+            }
+            path.GetComponent<LineAnimation>().rectAnimation(2, 1);
+
+            //nodeBackToDepot ();
+            blueAl.Add(new List<int>() { 1, 2, 5, 2, 1 });
+            blueTruckCap.Add(new List<int>() { 0, 50, 0, 0 });
+            float profit1 = -(1 + 1.8f + 1.8f + 1) / 2 * 7 + 10 * 50;
+            float time1 = 50 * 10 + 1 + 1.8f + 1.8f + 1;
+            profit += -(1 + 1.8f + 1.8f + 1) / 2 * 7 + 10 * 50;
+            time += 50 * 10 + 1 + 1.8f + 1.8f + 1;
+            blueProfitAl.Add(profit1);
+            blueTimeAl.Add(time1);
+            //clickChangeColor (2);
+            //clickChangeColor (5);
+            //clickChangeColor (2);
+            gameControll.blueProfitTotal = profit;
+            gameControll.blueTimeTotal = time;
+            panelController.blueText.text = gameControll.blueProfitTotal.ToString();
+            panelController.blueTime.text = gameControll.blueTimeTotal.ToString();
+
+            //storePath.Clear ();
+            //
+            //		GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(1);
+            //		gameControll.blueTruckNum++;
+
+            gameControll.redTruck = true;
+            gameControll.blueTruck = false;
+            pathname = pathName(1, 3, rgbPathArray);
+            setBoolArray(1, 3, rgbPathArray);
+            path = new GameObject();
+            path.name = pathname;
+            path.AddComponent<LineRenderer>();
+            path.tag = "linerender";
+            path.AddComponent<LineAnimation>();
+            dupObj = "newPathAnim13";
+            if (pathname == dupObj)
+            {
+                string existObj = "pathAnim13";
+                if (GameObject.Find(existObj) != null)
+                {
+                    GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
+                    //setIndicatorUnseen (num1, num2);
+                }
+            }
+            path.GetComponent<LineAnimation>().rectAnimation(1, 3);
+
+            pathname = pathName(3, 4, rgbPathArray);
+            setBoolArray(3, 4, rgbPathArray);
+            path = new GameObject();
+            path.name = pathname;
+            path.AddComponent<LineRenderer>();
+            path.tag = "linerender";
+            path.AddComponent<LineAnimation>();
+            dupObj = "newPathAnim34";
+            if (pathname == dupObj)
+            {
+                string existObj = "pathAnim34";
+                if (GameObject.Find(existObj) != null)
+                {
+                    GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
+                    //setIndicatorUnseen (num1, num2);
+                }
+            }
+            path.GetComponent<LineAnimation>().rectAnimation(3, 4);
+
+            pathname = pathName(4, 1, rgbPathArray);
+            setBoolArray(4, 1, rgbPathArray);
+            path = new GameObject();
+            path.name = pathname;
+            path.AddComponent<LineRenderer>();
+            path.tag = "linerender";
+            path.AddComponent<LineAnimation>();
+            dupObj = "newPathAnim41";
+            if (pathname == dupObj)
+            {
+                string existObj = "pathAnim41";
+                if (GameObject.Find(existObj) != null)
+                {
+                    GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
+                    //setIndicatorUnseen (num1, num2);
+                }
+            }
+            path.GetComponent<LineAnimation>().rectAnimation(4, 1);
+
+            redAl.Add(new List<int>() { 1, 3, 4, 1 });
+            redTruckCap.Add(new List<int> { 50, 50, 0 });
+            //clickChangeColor (3);
+            //clickChangeColor (4);
+            profit = -(3 + 5 + 4) / 2 * 7 + 10 * 100;
+            time = 100 * 10 + 3 + 5 + 4;
+            redProfitAl.Add(profit);
+            redTimeAl.Add(time);
+            //		GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(0);
+            //		gameControll.redTruckNum++;
+
+
+            pathname = pathName(1, 4, rgbPathArray);
+            setBoolArray(1, 4, rgbPathArray);
+            path = new GameObject();
+            path.name = pathname;
+            path.AddComponent<LineRenderer>();
+            path.tag = "linerender";
+            path.AddComponent<LineAnimation>();
+            dupObj = "newPathAnim14";
+            if (pathname == dupObj)
+            {
+                string existObj = "pathAnim14";
+                if (GameObject.Find(existObj) != null)
+                {
+                    GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
+                    //setIndicatorUnseen (num1, num2);
+                }
+            }
+            path.GetComponent<LineAnimation>().rectAnimation(1, 4);
+
+            pathname = pathName(4, 5, rgbPathArray);
+            setBoolArray(4, 5, rgbPathArray);
+            path = new GameObject();
+            path.name = pathname;
+            path.AddComponent<LineRenderer>();
+            path.tag = "linerender";
+            path.AddComponent<LineAnimation>();
+            dupObj = "newPathAnim45";
+            if (pathname == dupObj)
+            {
+                string existObj = "pathAnim45";
+                if (GameObject.Find(existObj) != null)
+                {
+                    GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
+                    //setIndicatorUnseen (num1, num2);
+                }
+            }
+            path.GetComponent<LineAnimation>().rectAnimation(4, 5);
+
+            pathname = pathName(5, 4, rgbPathArray);
+            setBoolArray(5, 4, rgbPathArray);
+            path = new GameObject();
+            path.name = pathname;
+            path.AddComponent<LineRenderer>();
+            path.tag = "linerender";
+            path.AddComponent<LineAnimation>();
+            dupObj = "newPathAnim54";
+            if (pathname == dupObj)
+            {
+                string existObj = "pathAnim54";
+                if (GameObject.Find(existObj) != null)
+                {
+                    GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
+                    //setIndicatorUnseen (num1, num2);
+                }
+            }
+            path.GetComponent<LineAnimation>().rectAnimation(5, 4);
+
+            pathname = pathName(4, 1, rgbPathArray);
+            setBoolArray(4, 1, rgbPathArray);
+            path = new GameObject();
+            path.name = pathname;
+            path.AddComponent<LineRenderer>();
+            path.tag = "linerender";
+            path.AddComponent<LineAnimation>();
+            dupObj = "newPathAnim41";
+            if (pathname == dupObj)
+            {
+                string existObj = "pathAnim41";
+                if (GameObject.Find(existObj) != null)
+                {
+                    GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
+                    //setIndicatorUnseen (num1, num2);
+                }
+            }
+            path.GetComponent<LineAnimation>().rectAnimation(4, 1);
+
+            redAl.Add(new List<int>() { 1, 4, 5, 4, 1 });
+            redTruckCap.Add(new List<int> { 50, 50, 0, 0 });
+            //clickChangeColor (4);
+            //clickChangeColor (5);
+            //clickChangeColor (4);
+            profit1 = -(4 + 5 + 5 + 4) / 2 * 7 + 10 * 100;
+            profit += -(4 + 5 + 5 + 4) / 2 * 7 + 10 * 100;
+            time1 = 100 * 10 + 18;
+            time += 100 * 10 + 18;
+            redProfitAl.Add(profit1);
+            redTimeAl.Add(time1);
+            gameControll.redProfitTotal = profit;
+            gameControll.redTimeTotal = time;
+            panelController.redText.text = gameControll.redProfitTotal.ToString();
+            panelController.redTime.text = gameControll.redTimeTotal.ToString();
+            //		GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(1);
+            //		gameControll.redTruckNum++;
+            gameControll.redTruck = false;
+            //			intersection = 2;
+            //			sIntersection.text = intersection.ToString ();
+
+            //			for (int i = 1; i < 6; i++) {
+            //				for (int j = 1; j < 6; j++) {
+            //					Debug.Log(i+ " "+j+ " "+redPathNum[i,j]);
+            //				}
+            //			}
+        }
+
+        if (this.num == 2)
+        {
+            gameControll.blueTruck = true;
+            clickChangeColor(2);
+            //			Debug.Log (redN.ToString() + this.num);
+            //			Debug.Log (blueN.ToString() + this.num);
+            //			Debug.Log (RBN.ToString() + this.num);
+            //			Debug.Log (intersection+" " + this.num);
+            gameControll.blueTruck = false;
+        }
+
+        if (this.num == 4)
+        {
+            gameControll.redTruck = true;
+            clickChangeColor(4);
+            gameControll.redTruck = false;
+            //			Debug.Log (redN.ToString() + this.num);
+            //			Debug.Log (blueN.ToString() + this.num);
+            //			Debug.Log (RBN.ToString() + this.num);
+            //			Debug.Log (intersection+" " + this.num);
+        }
+
+
+        if (this.num == 5)
+        {
+            gameControll.redTruck = true;
+            clickChangeColor(5);
+            gameControll.redTruck = false;
+            gameControll.blueTruck = true;
+            clickChangeColor(5);
+            gameControll.blueTruck = false;
+            //			Debug.Log (redN.ToString() + this.num);
+            //			Debug.Log (blueN.ToString() + this.num);
+            //			Debug.Log (RBN.ToString() + this.num);
+            //			Debug.Log (intersection+" " + this.num);
+        }
+
+        if (this.num == 3)
+        {
+            gameControll.redTruck = true;
+            clickChangeColor(3);
+            gameControll.redTruck = false;
+            gameControll.blueTruck = true;
+            clickChangeColor(3);
+            gameControll.blueTruck = false;
+            //			Debug.Log (redN.ToString() + this.num);
+            //			Debug.Log (blueN.ToString() + this.num);
+            //			Debug.Log (RBN.ToString() + this.num);
+            //			Debug.Log (intersection+" " + this.num);
+        }
+    }
+
+
 }

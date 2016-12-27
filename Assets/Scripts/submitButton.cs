@@ -142,7 +142,7 @@ public class submitButton : MonoBehaviour {
                 minP = Mathf.Min(float.Parse(GameObject.Find("redTruckProfit").GetComponent<Text>().text), float.Parse(GameObject.Find("blueTruckProfit").GetComponent<Text>().text));
                 maxT = Mathf.Max(float.Parse(GameObject.Find("redTruckTime").GetComponent<Text>().text), float.Parse(GameObject.Find("blueTruckTime").GetComponent<Text>().text));
             }
-			inters = Node.intersection;
+			inters = gameControll.intersection;
 			forProf.Add (minP);
 			forTime.Add (maxT);
 			forInter.Add (inters);

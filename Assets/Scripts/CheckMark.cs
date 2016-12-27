@@ -22,6 +22,7 @@ public class CheckMark : MonoBehaviour {
     private static bool onlyFirstTime = false;
 
 	void Awake(){
+        onlyFirstTime = false;
         if (!onlyFirstTime)
         {
             addIndicatorAwake(1, 3, false, false, true, 0, 0, 0);
