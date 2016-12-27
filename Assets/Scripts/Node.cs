@@ -10,7 +10,7 @@ public class Node : MonoBehaviour
     public int num;
 
     //static int variable control intersection;
-    public static int intersection;
+    public static int intersection=0;
     private Text sIntersection;
     GameObject GO;
 
@@ -116,11 +116,10 @@ public class Node : MonoBehaviour
     void Awake()
     {
 		GO = GameObject.Find("GameController");
+		sIntersection = GameObject.Find ("intersection").GetComponent<Text> ();
 		if (this.num == 1 ) {
-			intersection = 0;
 			storeTime = 0;
 			storeProfit = 0;
-			sIntersection = GameObject.Find ("intersection").GetComponent<Text> ();
 			if (SceneManager.GetActiveScene().name == "start")
 			{
 				redLineArray = new bool[6, 6];
@@ -154,6 +153,7 @@ public class Node : MonoBehaviour
 				bluePathNum = new int[21, 21];
 			}
 			capPath = GameObject.FindGameObjectsWithTag("cap");
+
 			foreach (GameObject obj in capPath)
 			{
 				//obj.GetComponentInChildren<Text>().text = "50";
@@ -165,6 +165,7 @@ public class Node : MonoBehaviour
 			redTruckCap=new List<List<int>> ();
 			blueTruckCap=new List<List<int>> ();
 			greenTruckCap=new List<List<int>> ();
+
 			//Debug.Log ("redAL " + redAl.Count);
 			v1=getVector(GameObject.Find("depot").transform.position,GameObject.Find("node2").transform.position,GameObject.Find("node3").transform.position);
 			v2=getVector(GameObject.Find("depot").transform.position,GameObject.Find("node2").transform.position,GameObject.Find("node5").transform.position);
@@ -172,9 +173,16 @@ public class Node : MonoBehaviour
 
 			//		gameControll.redTruckNum = 0;
 			//		gameControll.blueTruckNum = 0;
+//			for (int i = 1; i < 6; i++) {
+//				for (int j = 1; j < 6; j++) {
+//					Debug.Log(i+ " "+j+ " "+redPathNum[i,j]);
+//				}
+//			}
+
 
 			//make this as a function will save a lot of time
 			//I can just input routes as the variable in game to build this route.
+			//first path
 			gameControll.blueTruck = true;
 			gameControll.redTruck = false;
 			string pathname = pathName(1, 3, rgbPathArray);
@@ -242,8 +250,8 @@ public class Node : MonoBehaviour
 			float time = 100 * 10 + 7;
 			blueProfitAl.Add (profit);
 			blueTimeAl.Add (time);
-            
-            
+
+
 			//		GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(0);
 			//		gameControll.blueTruckNum++;
 
@@ -338,17 +346,17 @@ public class Node : MonoBehaviour
 			//clickChangeColor (2);
 			//clickChangeColor (5);
 			//clickChangeColor (2);
-            gameControll.blueProfitTotal = profit;
-            gameControll.blueTimeTotal = time;
-            panelController.blueText.text = gameControll.blueProfitTotal.ToString();
-            panelController.blueTime.text = gameControll.blueTimeTotal.ToString();
+			gameControll.blueProfitTotal = profit;
+			gameControll.blueTimeTotal = time;
+			panelController.blueText.text = gameControll.blueProfitTotal.ToString();
+			panelController.blueTime.text = gameControll.blueTimeTotal.ToString();
 
-            //storePath.Clear ();
-            //
-            //		GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(1);
-            //		gameControll.blueTruckNum++;
+			//storePath.Clear ();
+			//
+			//		GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(1);
+			//		gameControll.blueTruckNum++;
 
-            gameControll.redTruck = true;
+			gameControll.redTruck = true;
 			gameControll.blueTruck = false;
 			pathname = pathName(1, 3, rgbPathArray);
 			setBoolArray(1, 3, rgbPathArray);
@@ -415,11 +423,11 @@ public class Node : MonoBehaviour
 			time = 100 * 10 + 3 + 5 + 4;
 			redProfitAl.Add (profit);
 			redTimeAl.Add (time);
-            //		GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(0);
-            //		gameControll.redTruckNum++;
+			//		GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(0);
+			//		gameControll.redTruckNum++;
 
 
-            pathname = pathName(1,4, rgbPathArray);
+			pathname = pathName(1,4, rgbPathArray);
 			setBoolArray(1, 4, rgbPathArray);
 			path = new GameObject();
 			path.name = pathname;
@@ -506,20 +514,31 @@ public class Node : MonoBehaviour
 			time += 100 * 10 + 18;
 			redProfitAl.Add (profit1);
 			redTimeAl.Add (time1);
-            gameControll.redProfitTotal = profit;
-            gameControll.redTimeTotal = time;
-            panelController.redText.text = gameControll.redProfitTotal.ToString();
-            panelController.redTime.text = gameControll.redTimeTotal.ToString();
-            //		GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(1);
-            //		gameControll.redTruckNum++;
-            gameControll.redTruck = false;
-			intersection = 2;
-			sIntersection.text = intersection.ToString ();
+			gameControll.redProfitTotal = profit;
+			gameControll.redTimeTotal = time;
+			panelController.redText.text = gameControll.redProfitTotal.ToString();
+			panelController.redTime.text = gameControll.redTimeTotal.ToString();
+			//		GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(1);
+			//		gameControll.redTruckNum++;
+			gameControll.redTruck = false;
+//			intersection = 2;
+//			sIntersection.text = intersection.ToString ();
+
+//			for (int i = 1; i < 6; i++) {
+//				for (int j = 1; j < 6; j++) {
+//					Debug.Log(i+ " "+j+ " "+redPathNum[i,j]);
+//				}
+//			}
 		}
+
 
 		if (this.num == 2) {
 			gameControll.blueTruck = true;
 			clickChangeColor (2);
+//			Debug.Log (redN.ToString() + this.num);
+//			Debug.Log (blueN.ToString() + this.num);
+//			Debug.Log (RBN.ToString() + this.num);
+//			Debug.Log (intersection+" " + this.num);
 			gameControll.blueTruck = false;
 		}
 
@@ -527,6 +546,10 @@ public class Node : MonoBehaviour
 			gameControll.redTruck = true;
 			clickChangeColor (4);
 			gameControll.redTruck = false;
+//			Debug.Log (redN.ToString() + this.num);
+//			Debug.Log (blueN.ToString() + this.num);
+//			Debug.Log (RBN.ToString() + this.num);
+//			Debug.Log (intersection+" " + this.num);
 		}
 
 		if (this.num == 5) {
@@ -536,6 +559,10 @@ public class Node : MonoBehaviour
 			gameControll.blueTruck = true;
 			clickChangeColor (5);
 			gameControll.blueTruck = false;
+//			Debug.Log (redN.ToString() + this.num);
+//			Debug.Log (blueN.ToString() + this.num);
+//			Debug.Log (RBN.ToString() + this.num);
+//			Debug.Log (intersection+" " + this.num);
 		}
 
 		if (this.num == 3) {
@@ -545,10 +572,18 @@ public class Node : MonoBehaviour
 			gameControll.blueTruck = true;
 			clickChangeColor (3);
 			gameControll.blueTruck = false;
+//			Debug.Log (redN.ToString() + this.num);
+//			Debug.Log (blueN.ToString() + this.num);
+//			Debug.Log (RBN.ToString() + this.num);
+//			Debug.Log (intersection+" " + this.num);
 		}
+
     }
+	
+
 
     void Update(){
+		//Debug.Log (intersection);
 		if (CheckMark.nextStep == true) {
 			laterCap = gameControll.capArray [passNode1, passNode2];
 			int t = originCap-laterCap;
@@ -647,7 +682,6 @@ public class Node : MonoBehaviour
 			panelController.greenTimeOnce.text = i.ToString ();
 			CheckMark.nextStep = false;
 		}
-			
 	}
 
     void OnMouseDown()
@@ -1190,6 +1224,7 @@ public class Node : MonoBehaviour
             nodeDic.Add(dicName, pathToNode);
         }
     }
+		
 
     private void clickChangeColor()
     {
@@ -1328,6 +1363,22 @@ public class Node : MonoBehaviour
 		}
 	}
 
+	public static void changeNodeColor(string toWhich,GameObject n){
+		string pathToNode = "Node/" + toWhich;
+		n.GetComponent<Image>().sprite = Resources.Load<Sprite>(pathToNode) as Sprite;
+		string dicName = n.name;
+		//Debug.Log("this is dicName " + dicName);
+		if (nodeDic.ContainsKey(dicName))
+		{
+			nodeDic.Remove(dicName);
+			nodeDic.Add(dicName, pathToNode);
+		}
+		else
+		{
+			nodeDic.Add(dicName, pathToNode);
+		}
+	}
+
 	private void clickChangeColor(int num)
 	{
 		//string name = "node" + num.ToString ();
@@ -1353,16 +1404,16 @@ public class Node : MonoBehaviour
 		{
 			if (gameControll.blueTruck)
 			{
-				//intersection++;
-				//sIntersection.text = intersection.ToString ();
+				intersection++;
+				sIntersection.text = intersection.ToString ();
 				changeNodeColor("RB",num);
 				blueN = true;
 				rbN = true;
 			}
 			else if (gameControll.greenTruck)
 			{
-				//intersection++;
-				//sIntersection.text = intersection.ToString ();
+				intersection++;
+				sIntersection.text = intersection.ToString ();
 				changeNodeColor("RG",num);
 				greenN = true;
 				rgN = true;
@@ -1372,16 +1423,16 @@ public class Node : MonoBehaviour
 		{
 			if (gameControll.redTruck)
 			{
-				//intersection++;
-				//sIntersection.text = intersection.ToString ();
+				intersection++;
+				sIntersection.text = intersection.ToString ();
 				changeNodeColor("RB",num);
 				redN = true;
 				rbN = true;
 			}
 			else if (gameControll.greenTruck)
 			{
-				//intersection++;
-				//sIntersection.text = intersection.ToString ();
+				intersection++;
+				sIntersection.text = intersection.ToString ();
 				changeNodeColor("GB",num);
 				greenN = true;
 				gbN = true;
@@ -1391,16 +1442,16 @@ public class Node : MonoBehaviour
 		{
 			if (gameControll.redTruck)
 			{
-				//intersection++;
-				//sIntersection.text = intersection.ToString ();
+				intersection++;
+				sIntersection.text = intersection.ToString ();
 				changeNodeColor("RG",num);
 				redN = true;
 				rgN = true;
 			}
 			else if (gameControll.blueTruck)
 			{
-				//intersection++;
-				//sIntersection.text = intersection.ToString ();
+				intersection++;
+				sIntersection.text = intersection.ToString ();
 				changeNodeColor("GB",num);
 				blueN = true;
 				gbN = true;
@@ -1699,6 +1750,8 @@ public class Node : MonoBehaviour
 		}
 	}
 
+	
+
 	public bool RedN{
 		get{
 			return this.redN;
@@ -1767,5 +1820,10 @@ public class Node : MonoBehaviour
 			this.rgbN = value;
 		}
 	}
+
+	private void getInitialSolution(){
+		
+	}
+			
 		
 }

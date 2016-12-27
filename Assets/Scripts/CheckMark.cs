@@ -540,6 +540,10 @@ public class CheckMark : MonoBehaviour {
 
 		if (red)
 		{
+			string indiName = "redIndicator1" + num1.ToString () + num2.ToString ();
+			if (GameObject.Find (indiName) != null) {
+				return;
+			}
 			int rn = redNum;
 			if (rn > 1)
 				return;
@@ -645,6 +649,10 @@ public class CheckMark : MonoBehaviour {
 
 		if (green)
 		{
+			string indiName = "greenIndicator1" + num1.ToString () + num2.ToString ();
+			if (GameObject.Find (indiName) != null) {
+				return;
+			}
 			int gn = greenNum;
 			if (gn > 1)
 				return;
@@ -753,6 +761,10 @@ public class CheckMark : MonoBehaviour {
 
 		if (blue)
 		{
+			string indiName = "blueIndicator1" + num1.ToString () + num2.ToString ();
+			if (GameObject.Find (indiName) != null) {
+				return;
+			}
 			int bn = blueNum;
 			if (bn > 1)
 				return;
