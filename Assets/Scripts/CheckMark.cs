@@ -19,11 +19,10 @@ public class CheckMark : MonoBehaviour {
 
 	//a stack to store all unseen indicator
 	private Stack<GameObject> indiStack=new Stack<GameObject>();
-    private static bool onlyFirstTime = false;
+	public static bool refreshed;
 
 	void Awake(){
-        onlyFirstTime = false;
-        if (!onlyFirstTime)
+        if (!gameControll.onlyUpdateAtFirstTimeForCheckMark && !RefreshButton.refresh)
         {
             addIndicatorAwake(1, 3, false, false, true, 0, 0, 0);
             addIndicatorAwake(3, 2, false, false, true, 0, 0, 0);
@@ -40,8 +39,12 @@ public class CheckMark : MonoBehaviour {
             addIndicatorAwake(4, 5, true, false, false, 0, 0, 0);
             addIndicatorAwake(5, 4, true, false, false, 0, 0, 0);
             addIndicatorAwake(4, 1, true, false, false, 1, 0, 0);
-            onlyFirstTime = true;
-        }
+            gameControll.onlyUpdateAtFirstTimeForCheckMark = true;
+		}
+
+		if (RefreshButton.refresh) {
+			refreshed = true;
+		}
 	}
 		
 

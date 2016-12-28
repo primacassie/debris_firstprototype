@@ -12,6 +12,8 @@ public class Node : MonoBehaviour
     private Text sIntersection;
     GameObject GO;
 
+//	private static int originCarCap;
+
     //private DisplayManager displayManager;
 
     public Node(int n)
@@ -34,6 +36,7 @@ public class Node : MonoBehaviour
 	public static int originCap;
 	public static int laterCap;
 	private static int size2last2Node;
+	private int size2last3Node;
 
     //this array store the gameobject represent the capacity of each path.
     private static GameObject[] capPath;
@@ -91,6 +94,18 @@ public class Node : MonoBehaviour
 	public static Vector2 v1;
 	public static Vector2 v2;
 	public static Vector2 v3;
+
+
+	//set six variables to store the last game profit total
+	private float redProfitLastTime;
+	private float blueProfitLastTime;
+	private float greenProfitLastTime; 
+	private float redTimeLastTime;
+	private float blueTimeLastTime;
+	private float greenTimeLastTime; 
+
+
+
 
 	//static array to make animation in the CheckMark.cs
 	public static int nodeCount;
@@ -152,13 +167,7 @@ public class Node : MonoBehaviour
 				greenPathNum = new int[21, 21];
 				bluePathNum = new int[21, 21];
 			}
-			capPath = GameObject.FindGameObjectsWithTag("cap");
 
-			foreach (GameObject obj in capPath)
-			{
-				//obj.GetComponentInChildren<Text>().text = "50";
-				obj.GetComponentInChildren<Text>().text = "0";
-			}
 			redAl   = new List<List<int>> ();
 			blueAl  = new List<List<int>> ();
 			greenAl = new List<List<int>> ();
@@ -181,13 +190,22 @@ public class Node : MonoBehaviour
 //			}
 		}
 
-        getInitialSolution();
+		//getInitialSolution();
+		if (!RefreshButton.refresh) {
+			getInitialSolution();
+		}
     }
 	
 
 
     void Update(){
 		//Debug.Log (intersection);
+
+		//set refresh button back to false;
+		if (RefreshButton.refresh && CheckMark.refreshed && storeTruck.refreshed) {
+			RefreshButton.refresh = false;
+		}
+
 		if (CheckMark.nextStep == true) {
 			laterCap = gameControll.capArray [passNode1, passNode2];
 			int t = originCap-laterCap;
@@ -286,21 +304,26 @@ public class Node : MonoBehaviour
 			panelController.greenTimeOnce.text = i.ToString ();
 			CheckMark.nextStep = false;
 		}
+
+
+		if (Input.GetMouseButtonDown (1)) {
+			rightClicktoCancelPath (gameControll.redTruck, gameControll.blueTruck, gameControll.greenTruck);
+		}
 	}
 
     void OnMouseDown()
     {
 
-        Debug.Log(this.num + this.redN.ToString() + " redN " + this.blueN.ToString() + " blueN "+ this.rbN.ToString());
+//        Debug.Log(this.num + this.redN.ToString() + " redN " + this.blueN.ToString() + " blueN "+ this.rbN.ToString());
         //Debug.Log (num);
         //int temp;
-        Queue<int> t = gameControll.twoNode;
-        int size = t.Count;
+        //Queue<int> t = gameControll.twoNode;
+        int size = gameControll.twoNode.Count;
 
-
+		Debug.Log ("size " + size);
         if (size == 1)
         {
-            int firstOfSize1 = t.Peek();
+			int firstOfSize1 = gameControll.twoNode.Peek();
             if (gameControll.validPath(firstOfSize1, num))
             {
 				GetComponent<AudioSource> ().Play ();
@@ -382,7 +405,12 @@ public class Node : MonoBehaviour
 				}
 				path.GetComponent<LineAnimation>().rectAnimation (passNode1, passNode2);
 
-
+				redTimeLastTime = gameControll.redTimeTotal;
+				blueTimeLastTime = gameControll.blueTimeTotal;
+				greenTimeLastTime = gameControll.greenTimeTotal;
+				redProfitLastTime = gameControll.redProfitTotal;
+				blueProfitLastTime = gameControll.blueProfitTotal;
+				greenProfitLastTime = gameControll.greenProfitTotal;
                 //here is the second version of UI design
                 setInitialValue(passNode1, passNode2);
 				//Debug.Log ("initial 2 " + gameControll.blueTimeOnce);
@@ -444,6 +472,7 @@ public class Node : MonoBehaviour
 				details [key] = tempCap.ToString ();
 				TheLogger.instance.TakeAction (2, details);
 
+				size2last3Node = size2last2Node;
 				size2last2Node = passNode1;
 				originCap = gameControll.capArray [passNode1, passNode2];
 				//Debug.Log ("origin cap" + originCap);
@@ -505,10 +534,20 @@ public class Node : MonoBehaviour
 				}
 				path.GetComponent<LineAnimation>().rectAnimation (passNode1, passNode2);
 
+				GameObject.Find (pathname).GetComponent<LineAnimation>().rectAnimation (passNode1, passNode2);
+
                 storePath.Add(passNode2);
 
                 //GameObject.Find ("GameController").GetComponent<LineAnimation> ().rectAnimation (passNode1,passNode2);
                 //second ui update here
+				redTimeLastTime = gameControll.redTimeTotal;
+				blueTimeLastTime = gameControll.blueTimeTotal;
+				greenTimeLastTime = gameControll.greenTimeTotal;
+				redProfitLastTime = gameControll.redProfitTotal;
+				blueProfitLastTime = gameControll.blueProfitTotal;
+				greenProfitLastTime = gameControll.greenProfitTotal;
+
+
                 setInitialValue(passNode1, passNode2);
                 //pathCap.initializeSlider ();
                 //pathCap.
@@ -542,6 +581,8 @@ public class Node : MonoBehaviour
             }
         }
     }
+
+
 
     //here is the function that called when node back to depot
     public static void nodeBackToDepot()
@@ -637,6 +678,7 @@ public class Node : MonoBehaviour
             string findName = "redTruckText" + (gameControll.redTruckNum - 1).ToString();
             int truckS = 100 - gameControll.carCap;
             string truckStore = truckS + "/100";
+//			originCarCap = gameControll.carCap;
             GameObject.Find(findName).GetComponent<Text>().text = truckStore;
             //Debug.Log (gameControll.redDebrisTotal);
             //Debug.Log (panelController.redText);
@@ -657,6 +699,7 @@ public class Node : MonoBehaviour
             scrollBasicTime = gameControll.blueTimeTotal;
             scrollBasicTimeOnce = gameControll.blueTimeOnce;
 			//Debug.Log ("initial" + gameControll.blueTimeOnce);
+//			originCarCap = gameControll.carCap;
             string findName = "blueTruckText" + (gameControll.blueTruckNum - 1).ToString();
             int truckS = 100 - gameControll.carCap;
             string truckStore = truckS + "/100";
@@ -679,6 +722,7 @@ public class Node : MonoBehaviour
             scrollBasicProfitOnce = gameControll.greenProfitOnce;
             scrollBasicTime = gameControll.greenTimeTotal;
             scrollBasicTimeOnce = gameControll.greenTimeOnce;
+//			originCarCap = gameControll.carCap;
             string findName = "greenTruckText" + (gameControll.greenTruckNum - 1).ToString();
             int truckS = 100 - gameControll.carCap;
             string truckStore = truckS + "/100";
@@ -692,6 +736,77 @@ public class Node : MonoBehaviour
         }
         pathCap.initializeSlider();
     }
+
+	//remove initial value when rightclick
+//	public static void removeInitialValue(int node1, int node2){
+//		if (gameControll.redTruck)
+//		{
+//			gameControll.redProfitTotal += gameControll.timeArray[node1, node2] / 2 * 7;
+//			gameControll.redProfitOnce += gameControll.timeArray[node1, node2] / 2 * 7;
+//			gameControll.redTimeTotal -= gameControll.timeArray[node1, node2];
+//			gameControll.redTimeOnce -= gameControll.timeArray[node1, node2];
+//			scrollBasicProfit = gameControll.redProfitTotal;
+//			scrollBasicProfitOnce = gameControll.redProfitOnce;
+//			scrollBasicTime = gameControll.redTimeTotal;
+//			scrollBasicTimeOnce = gameControll.redTimeOnce;
+////			string findName = "redTruckText" + (gameControll.redTruckNum - 1).ToString();
+////			int truckS = 100 - gameControll.carCap;
+////			string truckStore = truckS + "/100";
+////			GameObject.Find(findName).GetComponent<Text>().text = truckStore;
+//			//Debug.Log (gameControll.redDebrisTotal);
+//			//Debug.Log (panelController.redText);
+////			panelController.redText.text = gameControll.redProfitTotal.ToString();
+////			panelController.redTime.text = gameControll.redTimeTotal.ToString();
+////			panelController.redTextOnce.text = gameControll.redProfitOnce.ToString();
+////			panelController.redTimeOnce.text = gameControll.redTimeOnce.ToString();
+//		}
+//
+//		if (gameControll.blueTruck)
+//		{
+//			gameControll.blueProfitTotal += gameControll.timeArray[node1, node2] / 2 * 7;
+//			gameControll.blueProfitOnce += gameControll.timeArray[node1, node2] / 2 * 7;
+//			gameControll.blueTimeTotal -= gameControll.timeArray[node1, node2];
+//			gameControll.blueTimeOnce -= gameControll.timeArray[node1, node2];
+//			scrollBasicProfit = gameControll.blueProfitTotal;
+//			scrollBasicProfitOnce = gameControll.blueProfitOnce;
+//			scrollBasicTime = gameControll.blueTimeTotal;
+//			scrollBasicTimeOnce = gameControll.blueTimeOnce;
+//			//Debug.Log ("initial" + gameControll.blueTimeOnce);
+////			string findName = "blueTruckText" + (gameControll.blueTruckNum - 1).ToString();
+////			int truckS = 100 - gameControll.carCap;
+////			string truckStore = truckS + "/100";
+////			GameObject.Find(findName).GetComponent<Text>().text = truckStore;
+////			//Debug.Log (gameControll.blueDebrisTotal);
+////			//Debug.Log (panelController.blueText);
+////			panelController.blueText.text = gameControll.blueProfitTotal.ToString();
+////			panelController.blueTime.text = gameControll.blueTimeTotal.ToString();
+////			panelController.blueTextOnce.text = gameControll.blueProfitOnce.ToString();
+////			panelController.blueTimeOnce.text = gameControll.blueTimeOnce.ToString ();
+//		}
+//
+//		if (gameControll.greenTruck)
+//		{
+//			gameControll.greenProfitTotal += gameControll.timeArray[node1, node2] / 2 * 7;
+//			gameControll.greenProfitOnce += gameControll.timeArray[node1, node2] / 2 * 7;
+//			gameControll.greenTimeTotal -= gameControll.timeArray[node1, node2];
+//			gameControll.greenTimeOnce -= gameControll.timeArray[node1, node2];
+//			scrollBasicProfit = gameControll.greenProfitTotal;
+//			scrollBasicProfitOnce = gameControll.greenProfitOnce;
+//			scrollBasicTime = gameControll.greenTimeTotal;
+//			scrollBasicTimeOnce = gameControll.greenTimeOnce;
+////			string findName = "greenTruckText" + (gameControll.greenTruckNum - 1).ToString();
+////			int truckS = 100 - gameControll.carCap;
+////			string truckStore = truckS + "/100";
+////			GameObject.Find(findName).GetComponent<Text>().text = truckStore;
+////			//Debug.Log (gameControll.greenDebrisTotal);
+////			//Debug.Log (panelController.greenText);
+////			panelController.greenText.text = gameControll.greenProfitTotal.ToString();
+////			panelController.greenTime.text = gameControll.greenTimeTotal.ToString();
+////			panelController.greenTextOnce.text = gameControll.greenProfitOnce.ToString();
+////			panelController.greenTimeOnce.text = gameControll.greenTimeOnce.ToString();
+//		}
+//		//pathCap.initializeSlider();
+//	}
 
     public static void modifyInUpdate(int num, int node1, int node2)
     {
@@ -955,7 +1070,7 @@ public class Node : MonoBehaviour
 		string pathToNode = "Node/" + toWhich;
 		this.gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>(pathToNode) as Sprite;
 		string dicName = "node" + num.ToString();
-		//Debug.Log (dicName);
+		//Debug.Log (dicName); 
 		//GameObject.Find (dicName).GetComponent<Image> ().sprite = Resources.Load<Sprite> (pathToNode) as Sprite;
 		//Debug.Log("this is dicName " + dicName);
 		if (nodeDic.ContainsKey(dicName))
@@ -1129,42 +1244,40 @@ public class Node : MonoBehaviour
 		}
 	}
 
-//    private void createObjectForLineRender()
-//    {
-//        GameObject pathAnimation = new GameObject();
-//        pathAnimation.AddComponent<RectTransform>();
-//		pathAnimation.GetComponent<RectTransform>().Translate(new Vector3(0,0,10f));
-//        pathAnimation.name = "pathAnimation" + passNode1.ToString() + passNode2.ToString();
-//        pathAnimation.AddComponent<LineRenderer>();
-//        pathAnimation.AddComponent<LineAnimation>();
-//        pathAnimation.GetComponent<LineAnimation>().rectAnimation(passNode1, passNode2);
-//        setLineArray(passNode1, passNode2);
-//    }
-//
-//
-//    private void createAndDestroyObjectForLineRender()
-//    {
-//        GameObject newPathAnimation = new GameObject();
-//        GameObject pathAnimation = new GameObject();
-//        newPathAnimation.AddComponent<RectTransform>();
-//        newPathAnimation.name = "newPathAnimation" + passNode1.ToString() + passNode2.ToString();
-//        newPathAnimation.AddComponent<LineRenderer>();
-//        newPathAnimation.AddComponent<LineAnimation>();
-//		//newPathAnimation.GetComponent<LineRenderer> ().useWorldSpace = false;
-//		newPathAnimation.GetComponent<RectTransform>().Translate(new Vector3(0,0,-5f));
-//        newPathAnimation.GetComponent<LineAnimation>().rectAnimation(passNode1, passNode2);
-//        string name1 = "pathAnimation" + passNode1.ToString() + passNode2.ToString();
-//        string name2 = "pathAnimation" + passNode2.ToString() + passNode1.ToString();
-//        if (GameObject.Find(name1) != null)
-//        {
-//            pathAnimation = GameObject.Find(name1);
-//        }else
-//        {
-//            pathAnimation = GameObject.Find(name2);
-//        }
-//		pathAnimation.GetComponent<LineRenderer> ().enabled = false;
-//        StartCoroutine(waitAnim(newPathAnimation,pathAnimation));
-//    }
+	private void clickRemoveAnimation(int num1,int num2){
+		string animName1 = "node" + num1.ToString ();
+		string animName2 = "node" + num2.ToString ();
+		if(num1==1){
+			animName1 = "depot";
+		}
+		if (num2 == 1) {
+			animName2 = "depot";
+		}
+
+		GameObject.Find(animName2).GetComponent<Animator>().enabled = false;
+		if (nodeDic.ContainsKey(animName2))
+		{
+			//Debug.Log("in contains "+animName1);
+			string toWhich = nodeDic[animName2];
+			string pathToNode = toWhich;
+			//GameObject.Find(animName1).GetComponent<Animator>().enabled = false;
+			GameObject.Find(animName2).GetComponent<Image>().sprite = Resources.Load<Sprite>(pathToNode) as Sprite;
+		}
+		if (num1==1){
+			GameObject.Find(animName1).GetComponent<Animator>().enabled = false;
+			return;
+		}
+		if (gameControll.redTruck) {
+			GameObject.Find(animName1).GetComponent<NodeAnimation>().redAnimation();
+		}
+		if (gameControll.greenTruck) {
+			GameObject.Find(animName1).GetComponent<NodeAnimation>().greenAnimation();
+		}
+		if (gameControll.blueTruck) {
+			GameObject.Find(animName1).GetComponent<NodeAnimation>().blueAnimation();
+		}
+	}
+		
 
 	private void setBoolArray(int num1,int num2,bool[,] rgb){
 		rgb [num1, num2] = true;
@@ -1434,6 +1547,15 @@ public class Node : MonoBehaviour
             //make this as a function will save a lot of time
             //I can just input routes as the variable in game to build this route.
             //first path
+
+			capPath = GameObject.FindGameObjectsWithTag("cap");
+
+			foreach (GameObject obj in capPath)
+			{
+				//obj.GetComponentInChildren<Text>().text = "50";
+				obj.GetComponentInChildren<Text>().text = "0";
+			}
+
             gameControll.blueTruck = true;
             gameControll.redTruck = false;
             string pathname = pathName(1, 3, rgbPathArray);
@@ -1834,6 +1956,390 @@ public class Node : MonoBehaviour
             //			Debug.Log (intersection+" " + this.num);
         }
     }
+
+
+	private void rightClicktoCancelPath(bool r, bool b, bool g){
+		if (passNode2 == this.num) {
+			gameControll.twoNode.Clear ();
+			if (size2last2Node == 1) {
+				gameControll.twoNode.Enqueue (1);
+			} else {
+				int num = size2last2Node;
+				gameControll.twoNode.Enqueue (size2last3Node);
+				gameControll.twoNode.Enqueue (num);
+			}
+
+			foreach (int i in validPathAnimation(passNode1)) {
+				string temp = "node" + i;
+				if (i == 1) {
+					temp = "depot";
+				}
+				Behaviour halo = (Behaviour) GameObject.Find (temp).GetComponent ("Halo");
+				halo.enabled = true;
+			}
+
+			if (passNode2 != 1) {
+				foreach (int i in validPathAnimation(passNode2)) {
+					string temp = "node" + i;
+					if (i == 1) {
+						temp = "depot";
+					}
+					Behaviour halo = (Behaviour) GameObject.Find (temp).GetComponent ("Halo");
+					halo.enabled = false;
+				}
+			}
+
+			storePath.RemoveAt (storePath.Count - 1);
+			gameControll.capArray [size2last2Node, size2lastNode] = originCap;
+			//gameControll.carCap = originCarCap;
+			Debug.Log("originCap " +originCap);
+			pathCap.desableSlider ();
+			gameControll.redProfitTotal = redProfitLastTime;
+			gameControll.blueProfitTotal = blueProfitLastTime;
+			gameControll.greenProfitTotal = greenProfitLastTime;
+			gameControll.redProfitOnce = 0;
+			gameControll.blueProfitOnce = 0;
+			gameControll.greenProfitOnce = 0;
+			gameControll.redTimeTotal = redTimeLastTime;
+			gameControll.blueTimeTotal = blueTimeLastTime;
+			gameControll.greenTimeTotal = greenTimeLastTime;
+			gameControll.redTimeOnce = 0;
+			gameControll.blueTimeOnce = 0;
+			gameControll.greenTimeOnce = 0;
+			updatePanelText ();
+			updateLineRender (r,g,b);
+			updateNodeColor (r, g, b);
+			clickRemoveAnimation (passNode1, passNode2);
+			passNode1 = size2last3Node;
+			passNode2 = size2last2Node;
+		}
+	}
+
+	private void updateLineRender(bool r,bool b,bool g){
+		if (r) {
+			redPathNum [passNode1, passNode2]--;
+			if (redPathNum [passNode1, passNode2] == 0) {
+				redPathArray [passNode1, passNode2] = false;
+				string pathname = pathName (passNode1, passNode2, rgbPathArray);
+				string dupObj = "newPathAnim" + passNode1.ToString () + passNode2.ToString ();
+				if (GameObject.Find (pathname) != null) {
+					GameObject.Find (pathname).GetComponent<LineRenderer> ().enabled = false;
+					//setIndicatorUnseen (num1, num2);
+				}
+				if (pathname == dupObj) {
+					string existObj = "pathAnim" + passNode1.ToString () + passNode2.ToString ();
+					if (GameObject.Find (existObj) != null) {
+						GameObject.Find (existObj).GetComponent<LineRenderer> ().enabled = false;
+					}
+				}
+			}
+		}
+
+		if (r) {
+			Node.redPathNum [passNode1, passNode2]--;
+			//Debug.Log ("redNum"+Node.redPathNum [num1, num2]);
+			int redNum = redPathNum [passNode1, passNode2];
+			int greenNum = greenPathNum [passNode1, passNode2];
+			int blueNum = bluePathNum [passNode1, passNode2];
+			//            int redNum1 = Node.redPathNum[num2, num1];
+			string pathString = "pathAnim" + passNode1.ToString () + passNode2.ToString ();
+			GameObject pathObj= GameObject.Find (pathString);
+
+
+			if (redNum == 0) {
+				Node.redLineArray [passNode1, passNode2] = false;
+				Node.redLineArray [passNode2, passNode1] = false;
+				Node.redPathArray [passNode1, passNode2] = false;
+				//				}
+				if (greenNum == 0 && blueNum == 0 ) {
+					//Destroy (pathObj);
+					pathObj.GetComponent<LineRenderer>().enabled=false;
+				} else if (greenNum > 0 && blueNum == 0 ) {
+					pathObj.GetComponent<LineRenderer> ().material = Resources.Load<Material> ("Materials/greenAnim") as Material;
+				} else if (greenNum == 0 && blueNum > 0 ) {
+					pathObj.GetComponent<LineRenderer> ().material = Resources.Load<Material> ("Materials/blueAnim") as Material;
+				} else if (greenNum > 0 && blueNum > 0 ) {
+					pathObj.GetComponent<LineRenderer> ().material = Resources.Load<Material> ("Materials/GradientBG") as Material;
+				}
+			}
+				
+		}
+
+		if (g) {
+			Node.greenPathNum [passNode1, passNode2]--;
+			int redNum = Node.redPathNum [passNode1, passNode2];
+			int greenNum = Node.greenPathNum [passNode1, passNode2];
+			int blueNum = Node.bluePathNum [passNode1, passNode2];
+			//            int greenNum1 = Node.greenPathNum[num2, num1];
+			string pathString = "pathAnim" + passNode1.ToString () + passNode2.ToString ();
+			GameObject pathObj= GameObject.Find (pathString);
+
+			if (greenNum == 0) {
+				Node.greenLineArray [passNode1, passNode2] = false;
+				Node.greenLineArray [passNode2, passNode1] = false;
+				Node.greenPathArray [passNode1, passNode2] = false;
+				if (blueNum == 0 && redNum == 0) {
+					pathObj.GetComponent<LineRenderer>().enabled=false;
+				} else if (redNum > 0 && blueNum == 0 ) {
+					pathObj.GetComponent<LineRenderer> ().material = Resources.Load<Material> ("Materials/redAnim") as Material;
+				} else if (redNum == 0 && blueNum > 0 ) {
+					pathObj.GetComponent<LineRenderer> ().material = Resources.Load<Material> ("Materials/blueAnim") as Material;
+				} else if (redNum > 0 && blueNum > 0) {
+					pathObj.GetComponent<LineRenderer> ().material = Resources.Load<Material> ("Materials/GradientRB") as Material;
+				}	
+			}
+		}
+
+		if (b) {
+			Node.bluePathNum [passNode1, passNode2]--;
+
+			int redNum = Node.redPathNum [passNode1, passNode2];
+			int greenNum = Node.greenPathNum [passNode1, passNode2];
+			int blueNum = Node.bluePathNum [passNode1, passNode2];
+			string pathString = "pathAnim" + passNode1.ToString () + passNode2.ToString ();
+			GameObject pathObj= GameObject.Find (pathString);
+			if (blueNum == 0) {
+				Node.blueLineArray [passNode1, passNode2] = false;
+				Node.blueLineArray [passNode2, passNode1] = false;
+				Node.bluePathArray [passNode1, passNode2] = false;
+				if (greenNum == 0 && redNum == 0)
+				{
+					pathObj.GetComponent<LineRenderer>().enabled = false;
+				}
+				else if (redNum > 0 && greenNum == 0)
+				{
+					pathObj.GetComponent<LineRenderer>().material = Resources.Load<Material>("Materials/redAnim") as Material;
+				}
+				else if (redNum == 0 && greenNum > 0)
+				{
+					pathObj.GetComponent<LineRenderer>().material = Resources.Load<Material>("Materials/greenAnim") as Material;
+				}
+				else if (redNum > 0 && greenNum > 0)
+				{
+					pathObj.GetComponent<LineRenderer>().material = Resources.Load<Material>("Materials/GradientRG") as Material;
+				}
+			}
+		}
+	}
+		
+
+	private void updateNodeColor(bool r, bool b, bool g){
+		int sumR = 0;
+		int sumG = 0;
+		int sumB = 0;
+		for (int j = 1; j < 6; j++) {
+			sumR += Node.redPathNum [passNode2, j];
+			sumR += Node.redPathNum [j, passNode2];
+			sumG += Node.greenPathNum [passNode2, j];
+			sumG += Node.greenPathNum [j, passNode2];
+			sumB += Node.bluePathNum [passNode2, j];
+			sumB += Node.bluePathNum [j, passNode2];
+		}
+		if (r) {
+			if (sumR == 0) {
+				string strNode = "node" + passNode2;
+				GameObject node = GameObject.Find (strNode);
+				if (passNode2 != 1) {
+					if ((node.GetComponent<Node> ().RGN || node.GetComponent<Node> ().RBN) && !node.GetComponent<Node> ().RGBN) {
+						gameControll.intersection--;
+						if (gameControll.intersection < 0)
+							gameControll.intersection = 0;
+						GameObject.Find ("intersection").GetComponent<Text> ().text = gameControll.intersection.ToString ();
+					}
+
+					node.GetComponent<Node> ().RedN = false;
+					node.GetComponent<Node> ().RGN = false;
+					node.GetComponent<Node> ().RBN = false;
+					node.GetComponent<Node> ().RGBN = false;
+				}
+				if (sumG == 0 && sumB == 0 && passNode2 != 1) {
+					node.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Node/node") as Sprite;
+					string dicName = "node" + passNode2;
+					if (Node.nodeDic.ContainsKey (dicName)) {
+						Node.nodeDic.Remove (dicName);
+						Node.nodeDic.Add (dicName, "Node/node");
+					} else {
+						Node.nodeDic.Add (dicName, "Node/node");
+					}
+				} else if (sumG > 0 && sumB == 0) {
+					if (passNode2 != 1) {
+						node.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Node/G") as Sprite;
+						string dicName = "node" + passNode2;
+						if (Node.nodeDic.ContainsKey (dicName)) {
+							Node.nodeDic.Remove (dicName);
+							Node.nodeDic.Add (dicName, "Node/G");
+						} else {
+							Node.nodeDic.Add (dicName, "Node/G");
+						}
+					}
+				} else if (sumG == 0 && sumB > 0) {
+					if (passNode2 != 1) {
+						node.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Node/B") as Sprite;
+						string dicName = "node" + passNode2;
+						if (Node.nodeDic.ContainsKey (dicName)) {
+							Node.nodeDic.Remove (dicName);
+							Node.nodeDic.Add (dicName, "Node/B");
+						} else {
+							Node.nodeDic.Add (dicName, "Node/B");
+						}
+					}
+				} else if (sumG > 0 && sumB > 0) {
+					if (passNode2 != 1) {
+						node.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Node/GB") as Sprite;
+						string dicName = "node" + passNode2;
+						if (Node.nodeDic.ContainsKey (dicName)) {
+							Node.nodeDic.Remove (dicName);
+							Node.nodeDic.Add (dicName, "Node/GB");
+						} else {
+							Node.nodeDic.Add (dicName, "Node/GB");
+						}
+					}
+				}
+			}
+		}
+		if (b) {
+			if (sumB == 0) {
+				string strNode = "node" + passNode2;
+				GameObject node = GameObject.Find (strNode);
+				if (passNode2 != 1) {
+					if ((node.GetComponent<Node> ().GBN || node.GetComponent<Node> ().RBN) && !node.GetComponent<Node> ().RGBN) {
+						gameControll.intersection--;
+						if (gameControll.intersection < 0)
+							gameControll.intersection = 0;
+						GameObject.Find ("intersection").GetComponent<Text> ().text = gameControll.intersection.ToString ();
+					}
+
+					node.GetComponent<Node> ().BlueN = false;
+					node.GetComponent<Node> ().RBN = false;
+					node.GetComponent<Node> ().GBN = false;
+					node.GetComponent<Node> ().RGBN = false;
+				}
+				if (sumG == 0 && sumR == 0 && passNode2 != 1) {
+					node.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Node/node") as Sprite;
+					string dicName = "node" + passNode2;
+					if (Node.nodeDic.ContainsKey (dicName)) {
+						Node.nodeDic.Remove (dicName);
+						Node.nodeDic.Add (dicName, "Node/node");
+					} else {
+						Node.nodeDic.Add (dicName, "Node/node");
+					}
+				} else if (sumG > 0 && sumR == 0) {
+					if (passNode2 != 1) {
+						node.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Node/G") as Sprite;
+						string dicName = "node" + passNode2;
+						if (Node.nodeDic.ContainsKey (dicName)) {
+							Node.nodeDic.Remove (dicName);
+							Node.nodeDic.Add (dicName, "Node/G");
+						} else {
+							Node.nodeDic.Add (dicName, "Node/G");
+						}
+					}
+				} else if (sumG == 0 && sumR > 0) {
+					if (passNode2 != 1) {
+						node.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Node/R") as Sprite;
+						string dicName = "node" + passNode2;
+						if (Node.nodeDic.ContainsKey (dicName)) {
+							Node.nodeDic.Remove (dicName);
+							Node.nodeDic.Add (dicName, "Node/R");
+						} else {
+							Node.nodeDic.Add (dicName, "Node/R");
+						}
+					}
+				} else if (sumG > 0 && sumR > 0) {
+					if (passNode2 != 1) {
+						node.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Node/RG") as Sprite;
+						string dicName = "node" + passNode2;
+						if (Node.nodeDic.ContainsKey (dicName)) {
+							Node.nodeDic.Remove (dicName);
+							Node.nodeDic.Add (dicName, "Node/RG");
+						} else {
+							Node.nodeDic.Add (dicName, "Node/RG");
+						}
+					}
+				}
+			}
+		}
+
+
+		if (g) {
+			if (sumG == 0) {
+				string strNode = "node" + passNode2;
+				GameObject node = GameObject.Find (strNode);
+				if (passNode2 != 1) {
+					if ((node.GetComponent<Node> ().GBN || node.GetComponent<Node> ().RGN) && !node.GetComponent<Node> ().RGBN) {
+						gameControll.intersection--;
+						if (gameControll.intersection < 0)
+							gameControll.intersection = 0;
+						GameObject.Find ("intersection").GetComponent<Text> ().text = gameControll.intersection.ToString ();
+					}
+
+					node.GetComponent<Node> ().GreenN = false;
+					node.GetComponent<Node> ().RGN = false;
+					node.GetComponent<Node> ().GBN = false;
+					node.GetComponent<Node> ().RGBN = false;
+				}
+				if (sumB == 0 && sumR == 0 && passNode2 != 1) {
+					node.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Node/node") as Sprite;
+					string dicName = "node" + passNode2;
+					if (Node.nodeDic.ContainsKey (dicName)) {
+						Node.nodeDic.Remove (dicName);
+						Node.nodeDic.Add (dicName, "Node/node");
+					} else {
+						Node.nodeDic.Add (dicName, "Node/node");
+					}
+				} else if (sumB > 0 && sumR == 0) {
+					if (passNode2 != 1) {
+						node.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Node/B") as Sprite;
+						string dicName = "node" + passNode2;
+						if (Node.nodeDic.ContainsKey (dicName)) {
+							Node.nodeDic.Remove (dicName);
+							Node.nodeDic.Add (dicName, "Node/B");
+						} else {
+							Node.nodeDic.Add (dicName, "Node/B");
+						}
+					}
+				} else if (sumB == 0 && sumR > 0) {
+					if (passNode2 != 1) {
+						node.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Node/R") as Sprite;
+						string dicName = "node" + passNode2;
+						if (Node.nodeDic.ContainsKey (dicName)) {
+							Node.nodeDic.Remove (dicName);
+							Node.nodeDic.Add (dicName, "Node/R");
+						} else {
+							Node.nodeDic.Add (dicName, "Node/R");
+						}
+					}
+				} else if (sumB > 0 && sumR > 0) {
+					if (passNode2 != 1) {
+						node.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Node/RB") as Sprite;
+						string dicName = "node" + passNode2;
+						if (Node.nodeDic.ContainsKey (dicName)) {
+							Node.nodeDic.Remove (dicName);
+							Node.nodeDic.Add (dicName, "Node/RB");
+						} else {
+							Node.nodeDic.Add (dicName, "Node/RB");
+						}
+					}
+				}
+			}
+		}
+
+	}
+
+	private void updatePanelText(){
+		panelController.redText.text = gameControll.redProfitTotal.ToString();
+		panelController.redTime.text = gameControll.redTimeTotal.ToString();
+		panelController.redTextOnce.text = gameControll.redProfitOnce.ToString();
+		panelController.redTimeOnce.text = gameControll.redTimeOnce.ToString();
+		panelController.blueText.text = gameControll.blueProfitTotal.ToString();
+		panelController.blueTime.text = gameControll.blueTimeTotal.ToString();
+		panelController.blueTextOnce.text = gameControll.blueProfitOnce.ToString();
+		panelController.blueTimeOnce.text = gameControll.blueTimeOnce.ToString();
+		panelController.greenText.text = gameControll.greenProfitTotal.ToString();
+		panelController.greenTime.text = gameControll.greenTimeTotal.ToString();
+		panelController.greenTextOnce.text = gameControll.greenProfitOnce.ToString();
+		panelController.greenTimeOnce.text = gameControll.greenTimeOnce.ToString();
+	}
 
 
 }

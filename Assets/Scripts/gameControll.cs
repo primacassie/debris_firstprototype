@@ -95,6 +95,8 @@ public class gameControll : MonoBehaviour
     GameObject redButton;
     GameObject blueButton;
 
+	public static bool onlyUpdateAtFirstTimeForCheckMark;
+
 
 	//private int[,] tempArray = new int[6, 6];
 
@@ -112,6 +114,8 @@ public class gameControll : MonoBehaviour
         blueButton = GameObject.Find("blue");
         sub = GameObject.Find("submit");
         fist = true;
+		twoNode = new Queue<int> ();
+		onlyUpdateAtFirstTimeForCheckMark = false;
 		if (SceneManager.GetActiveScene ().name == "start") {
 			
 			capArray = new int[6, 6];
@@ -142,7 +146,6 @@ public class gameControll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
 		if (Input.GetKeyDown (KeyCode.Escape)) {
 			//GameObject.Find("ModalControl").GetComponent<testWindow>().takeAction("Do you want to quit the game?");
 			Application.Quit();
@@ -548,13 +551,17 @@ public class gameControll : MonoBehaviour
             capArray[arr1, arr2] = cap;
             capArray[arr2, arr1] = cap;
 
-            //try initlize it with 0 here
-            capArray[arr1, arr2] = 0;
-            capArray[arr2, arr1] = 0;
+//            //try initlize it with 0 here
+			if (!RefreshButton.refresh) {
+				capArray[arr1, arr2] = 0;
+				capArray[arr2, arr1] = 0;
+			}
 
             float time = go.GetComponent<Graph>().time;
             timeArray[arr1, arr2] = time;
             timeArray[arr2, arr1] = time;
+
+//			Debug.Log(capArray [arr1, arr2]);
         }
 		nodePath = connArray;
     }
@@ -577,8 +584,10 @@ public class gameControll : MonoBehaviour
             connArray[arr1, arr2] = true;
             connArray[arr2, arr1] = true;
             //int cap = go.GetComponent<Graph>().capacity;
-            capArray[arr1, arr2] = 0;
-            capArray[arr2, arr1] = 0;
+			if (!RefreshButton.refresh) {
+				capArray[arr1, arr2] = 0;
+				capArray[arr2, arr1] = 0;
+			}
         }
         nodePath = connArray;
     }
