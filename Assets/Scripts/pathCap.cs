@@ -196,4 +196,14 @@ public class pathCap : MonoBehaviour {
 		sl.enabled = false;
 		sl.GetComponent<RectTransform> ().localScale = new Vector2 (0, 0);
 	}
+
+    public static void ReturnToRealValue(int num1,int num2)
+    {
+        sl.value = gameControll.capArray[num1, num2];
+    }
+
+    public static void ReturnToRealValue()
+    {
+        sl.value = Node.originCap;
+    }
 }
