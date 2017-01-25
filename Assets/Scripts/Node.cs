@@ -69,9 +69,9 @@ public class Node : MonoBehaviour
     public static List<List<int>> greenAl;
 
     //creat lists of array to assign truck information
-    public static List<List<int>> redTruckCap;
-    public static List<List<int>> blueTruckCap;
-    public static List<List<int>> greenTruckCap;
+    public static List<List<float>> redTruckCap;
+    public static List<List<float>> blueTruckCap;
+    public static List<List<float>> greenTruckCap;
 
     //create lists of array to assign profit information
     public static List<float> redProfitAl = new List<float>();
@@ -84,7 +84,7 @@ public class Node : MonoBehaviour
     public static List<float> blueTimeAl = new List<float>();
 
     public static List<int> storePath = new List<int>();
-    public static List<int> storeTruckCap = new List<int>();
+    public static List<float> storeTruckCap = new List<float>();
     public static float storeProfit;
     public static float storeTime;
 
@@ -174,9 +174,9 @@ public class Node : MonoBehaviour
             redAl = new List<List<int>>();
             blueAl = new List<List<int>>();
             greenAl = new List<List<int>>();
-            redTruckCap = new List<List<int>>();
-            blueTruckCap = new List<List<int>>();
-            greenTruckCap = new List<List<int>>();
+            redTruckCap = new List<List<float>>();
+            blueTruckCap = new List<List<float>>();
+            greenTruckCap = new List<List<float>>();
 
 
             //Debug.Log ("redAL " + redAl.Count);
@@ -195,7 +195,88 @@ public class Node : MonoBehaviour
 
         //getInitialSolution();
         if (!RefreshButton.refresh) {
-            getInitialSolution();
+            //getInitialSolution();
+            if (ClickToLoadAsync.solution == 0)
+            {
+                int r = Random.Range(1, 4);
+                if (r % 3 == 1)
+                {
+                    Dictionary<List<int>, List<float>> r0 = new Dictionary<List<int>, List<float>>();
+                    r0[new List<int> { 1, 3, 4, 1 }] = new List<float> { 50, 50, 0 };
+                    r0[new List<int> { 1, 2, 5, 2, 1 }] = new List<float> { 0, 50, 0, 0 };
+                    Dictionary<List<int>, List<float>> b0 = new Dictionary<List<int>, List<float>>();
+                    b0[new List<int> { 1, 3, 2, 1 }] = new List<float> { 0, 50, 50 };
+                    b0[new List<int> { 1, 2, 5, 2, 1 }] = new List<float> { 0, 50, 0, 0 };
+                    TruckPath solution0 = new TruckPath(r0, b0);
+                    getInitialSolution0(solution0);
+                }
+
+                if (r % 3 == 2)
+                {
+                    Dictionary<List<int>, List<float>> r1 = new Dictionary<List<int>, List<float>>();
+                    r1[new List<int> { 1, 2, 5, 4, 1 }] = new List<float> { 0, 50, 50, 0 };
+                    r1[new List<int> { 1, 2, 3, 1 }] = new List<float> { 0, 17.5f, 50 };
+                    r1[new List<int> { 1, 2, 1 }] = new List<float> { 0, 50 };
+                    Dictionary<List<int>, List<float>> b1 = new Dictionary<List<int>, List<float>>();
+                    b1[new List<int> { 1, 3, 2, 3, 4, 5, 4, 1 }] = new List<float> { 0, 0, 32.5f, 0, 0, 0, 0 };
+                    b1[new List<int> { 1, 4, 3, 4, 5, 4, 1 }] = new List<float> { 0, 0, 50, 0, 0, 0 };
+                    b1[new List<int> { 1, 4, 1 }] = new List<float> { 50, 0 };
+                    TruckPath solution1 = new TruckPath(r1, b1);
+                    getInitialSolution0(solution1);
+                }
+
+                if (r % 3 == 0)
+                {
+                    Dictionary<List<int>, List<float>> r2 = new Dictionary<List<int>, List<float>>();
+                    r2[new List<int> { 1, 2, 5, 4, 1 }] = new List<float> { 0, 50, 50, 0 };
+                    r2[new List<int> { 1, 3, 4, 1 }] = new List<float> { 35, 15, 50 };
+                    r2[new List<int> { 1, 3, 2, 1 }] = new List<float> { 15, 50, 0 };
+                    Dictionary<List<int>, List<float>> b2 = new Dictionary<List<int>, List<float>>();
+                    b2[new List<int> { 1, 2, 3, 4, 1 }] = new List<float> { 50, 0, 35, 0 };
+
+                    TruckPath solution2 = new TruckPath(r2, b2);
+
+                    getInitialSolution0(solution2);
+                }
+            }else if (ClickToLoadAsync.solution == 1)
+            {
+                Dictionary<List<int>, List<float>> r0 = new Dictionary<List<int>, List<float>>();
+                r0[new List<int> { 1, 3, 4, 1 }] = new List<float> { 50, 50, 0 };
+                r0[new List<int> { 1, 2, 5, 2, 1 }] = new List<float> { 0, 50, 0, 0 };
+                Dictionary<List<int>, List<float>> b0 = new Dictionary<List<int>, List<float>>();
+                b0[new List<int> { 1, 3, 2, 1 }] = new List<float> { 0, 50, 50 };
+                b0[new List<int> { 1, 2, 5, 2, 1 }] = new List<float> { 0, 50, 0, 0 };
+                TruckPath solution0 = new TruckPath(r0, b0);
+                getInitialSolution0(solution0);
+            }else if(ClickToLoadAsync.solution == 2)
+            {
+                Dictionary<List<int>, List<float>> r1 = new Dictionary<List<int>, List<float>>();
+                r1[new List<int> { 1, 2, 5, 4, 1 }] = new List<float> { 0, 50, 50, 0 };
+                r1[new List<int> { 1, 2, 3, 1 }] = new List<float> { 0, 17.5f, 50 };
+                r1[new List<int> { 1, 2, 1 }] = new List<float> { 0, 50 };
+                Dictionary<List<int>, List<float>> b1 = new Dictionary<List<int>, List<float>>();
+                b1[new List<int> { 1, 3, 2, 3, 4, 5, 4, 1 }] = new List<float> { 0, 0, 32.5f, 0, 0, 0, 0 };
+                b1[new List<int> { 1, 4, 3, 4, 5, 4, 1 }] = new List<float> { 0, 0, 50, 0, 0, 0 };
+                b1[new List<int> { 1, 4, 1 }] = new List<float> { 50, 0 };
+
+                TruckPath solution1 = new TruckPath(r1, b1);
+
+                getInitialSolution0(solution1);
+            }else if (ClickToLoadAsync.solution == 3)
+            {
+                Dictionary<List<int>, List<float>> r2 = new Dictionary<List<int>, List<float>>();
+                r2[new List<int> { 1, 2, 5, 4, 1 }] = new List<float> { 0, 50, 50, 0 };
+                r2[new List<int> { 1, 3, 4, 1 }] = new List<float> { 35, 15, 50 };
+                r2[new List<int> { 1, 3, 2, 1 }] = new List<float> { 15, 50, 0 };
+                Dictionary<List<int>, List<float>> b2 = new Dictionary<List<int>, List<float>>();
+                b2[new List<int> { 1, 2, 3, 4, 1 }] = new List<float> { 50, 0, 35, 0 };
+
+                TruckPath solution2 = new TruckPath(r2, b2);
+
+                getInitialSolution0(solution2);
+            }
+
+
         }
     }
 
@@ -1973,7 +2054,7 @@ public class Node : MonoBehaviour
             blueAl.Add(new List<int>() { 1, 3, 2, 1 });
             //clickChangeColor (3);
             //clickChangeColor (2);
-            blueTruckCap.Add(new List<int>() { 0, 50, 50 });
+            blueTruckCap.Add(new List<float>() { 0, 50, 50 });
             float profit = -(3 + 3 + 1) / 2 * 7 + 10 * 100;
             float time = 100 * 10 + 7;
             blueProfitAl.Add(profit);
@@ -2065,7 +2146,7 @@ public class Node : MonoBehaviour
 
             //nodeBackToDepot ();
             blueAl.Add(new List<int>() { 1, 2, 5, 2, 1 });
-            blueTruckCap.Add(new List<int>() { 0, 50, 0, 0 });
+            blueTruckCap.Add(new List<float>() { 0, 50, 0, 0 });
             float profit1 = -(1 + 1.8f + 1.8f + 1) / 2 * 7 + 10 * 50;
             float time1 = 50 * 10 + 1 + 1.8f + 1.8f + 1;
             profit += -(1 + 1.8f + 1.8f + 1) / 2 * 7 + 10 * 50;
@@ -2145,7 +2226,7 @@ public class Node : MonoBehaviour
             path.GetComponent<LineAnimation>().rectAnimation(4, 1);
 
             redAl.Add(new List<int>() { 1, 3, 4, 1 });
-            redTruckCap.Add(new List<int> { 50, 50, 0 });
+            redTruckCap.Add(new List<float> { 50, 50, 0 });
             //clickChangeColor (3);
             //clickChangeColor (4);
             profit = -(3 + 5 + 4) / 2 * 7 + 10 * 100;
@@ -2233,7 +2314,7 @@ public class Node : MonoBehaviour
             path.GetComponent<LineAnimation>().rectAnimation(4, 1);
 
             redAl.Add(new List<int>() { 1, 4, 5, 4, 1 });
-            redTruckCap.Add(new List<int> { 50, 50, 0, 0 });
+            redTruckCap.Add(new List<float> { 50, 50, 0, 0 });
             //clickChangeColor (4);
             //clickChangeColor (5);
             //clickChangeColor (4);
@@ -2311,4 +2392,206 @@ public class Node : MonoBehaviour
             //			Debug.Log (intersection+" " + this.num);
         }
     }
+
+    private void getInitialSolution0(TruckPath TrackSolution)
+    {
+        var redD = TrackSolution.RedDic;
+        var blueD = TrackSolution.BlueDic;
+        if (this.num == 1)
+        {
+            capPath = GameObject.FindGameObjectsWithTag("cap");
+
+            foreach (GameObject obj in capPath)
+            {
+                //obj.GetComponentInChildren<Text>().text = "50";
+                obj.GetComponentInChildren<Text>().text = "0";
+            }
+            float profit = 0f;
+            float time = 0f;
+            foreach(KeyValuePair<List<int>,List<float>> entry in blueD)
+            {
+                List<int> truckPathList = entry.Key;
+                List<float> truckCapList = entry.Value;
+                float singleProfit=0;
+                float singleTime = 0;
+                GameObject indi = new GameObject();
+                indi.AddComponent<CheckMark>();
+                indi.AddComponent<storeTruck>();
+                for (int i = 0; i < truckPathList.Count - 1; i++)
+                {
+                    addSinglePath(truckPathList[i], truckPathList[i + 1], true, false);
+                    indi.GetComponent<CheckMark>().addIndicator(truckPathList[i], truckPathList[i + 1], false, false, true);
+                    profit += -gameControll.timeArray[truckPathList[i], truckPathList[i + 1]] / 2 * 7 + truckCapList[i] * 10;
+                    time+= gameControll.timeArray[truckPathList[i], truckPathList[i + 1]]+ truckCapList[i] * 10;
+                    singleProfit += -gameControll.timeArray[truckPathList[i], truckPathList[i + 1]] / 2 * 7 + truckCapList[i] * 10;
+                    singleTime += gameControll.timeArray[truckPathList[i], truckPathList[i + 1]] + truckCapList[i] * 10;
+                }
+                blueAl.Add(truckPathList);
+                blueTruckCap.Add(truckCapList);
+                blueProfitAl.Add(singleProfit);
+                blueTimeAl.Add(singleTime);
+                indi.GetComponent<storeTruck>().initializeValue(false, true);
+            }
+            gameControll.blueProfitTotal = profit;
+            gameControll.blueTimeTotal = time;
+            panelController.blueText.text = gameControll.blueProfitTotal.ToString();
+            panelController.blueTime.text = gameControll.blueTimeTotal.ToString();
+
+            profit = 0f;
+            time = 0f;
+            foreach (KeyValuePair<List<int>, List<float>> entry in redD)
+            {
+                List<int> truckPathList = entry.Key;
+                List<float> truckCapList = entry.Value;
+                float singleProfit = 0;
+                float singleTime = 0;
+                //CheckMark indicator = new CheckMark();
+                GameObject indi = new GameObject();
+                indi.AddComponent<CheckMark>();
+                indi.AddComponent<storeTruck>();
+                for (int i = 0; i < truckPathList.Count - 1; i++)
+                {
+                    addSinglePath(truckPathList[i], truckPathList[i + 1], false, true);
+                    indi.GetComponent<CheckMark>().addIndicator(truckPathList[i], truckPathList[i + 1], true, false, false);
+                    profit += -gameControll.timeArray[truckPathList[i], truckPathList[i + 1]] / 2 * 7 + truckCapList[i] * 10;
+                    time += gameControll.timeArray[truckPathList[i], truckPathList[i + 1]] + truckCapList[i] * 10;
+                    singleProfit += -gameControll.timeArray[truckPathList[i], truckPathList[i + 1]] / 2 * 7 + truckCapList[i] * 10;
+                    singleTime += gameControll.timeArray[truckPathList[i], truckPathList[i + 1]] + truckCapList[i] * 10;
+                }
+                redAl.Add(truckPathList);
+                redTruckCap.Add(truckCapList);
+                redProfitAl.Add(singleProfit);
+                redTimeAl.Add(singleTime);
+                indi.GetComponent<storeTruck>().initializeValue(true, false);
+            }
+            gameControll.redProfitTotal = profit;
+            gameControll.redTimeTotal = time;
+            panelController.redText.text = gameControll.redProfitTotal.ToString();
+            panelController.redTime.text = gameControll.redTimeTotal.ToString();
+            gameControll.blueTruck = false;
+            gameControll.redTruck = false;
+        }
+
+        IList<HashSet<int>> colorshouldChange=colorfulNode(TrackSolution);
+        foreach(int t in colorshouldChange[0])
+        {
+            if (this.num == t && t!=1)
+            {
+                gameControll.blueTruck = true;
+                clickChangeColor(t);
+                gameControll.blueTruck = false;
+            }
+        }
+
+        foreach (int t in colorshouldChange[1])
+        {
+            if (this.num == t && t!=1)
+            {
+                gameControll.redTruck = true;
+                clickChangeColor(t);
+                gameControll.redTruck = false;
+            }
+        }
+    }
+
+
+    void addSinglePath(int f, int s, bool b, bool r)
+    {
+        gameControll.blueTruck = b;
+        gameControll.redTruck = r;
+        string pathname = pathName(f, s, rgbPathArray);
+        setBoolArray(f, s, rgbPathArray);
+        GameObject path = new GameObject();
+        path.name = pathname;
+        path.AddComponent<LineRenderer>();
+        path.tag = "linerender";
+        path.AddComponent<LineAnimation>();
+        string dupObj = "newPathAnim" + f.ToString() + s.ToString();
+        if (pathname == dupObj)
+        {
+            string existObj = "pathAnim" + f.ToString() + s.ToString();
+            if (GameObject.Find(existObj) != null)
+            {
+                GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
+            }
+        }
+        path.GetComponent<LineAnimation>().rectAnimation(f, s);
+    }
+
+    IList<HashSet<int>> colorfulNode(TruckPath TrackSolution)
+    {
+        var redD = TrackSolution.RedDic;
+        var blueD = TrackSolution.BlueDic;
+        HashSet<int> redNode = new HashSet<int>();
+        HashSet<int> blueNode = new HashSet<int>();
+        IList<HashSet<int>> res = new List<HashSet<int>>();
+        foreach(KeyValuePair<List<int>, List<float>> entry in blueD)
+        {
+            foreach(int t in entry.Key)
+            {
+                blueNode.Add(t);
+            }
+        }
+        res.Add(blueNode);
+
+        foreach (KeyValuePair<List<int>, List<float>> entry in redD)
+        {
+            foreach (int t in entry.Key)
+            {
+                redNode.Add(t);
+            }
+        }
+        res.Add(redNode);
+
+        return res;
+    }
+}
+
+public class TruckPath
+{
+    //bool redPath;
+    //bool bluePath;
+ //   List<int> truckPathList;
+ //   List<int> truckCapList;
+    Dictionary<List<int>, List<float>> blueDic;
+    Dictionary<List<int>, List<float>> redDic;
+
+    public TruckPath(Dictionary<List<int>, List<float>> rDic, Dictionary<List<int>, List<float>> bDic)
+    {
+        //redPath = red;
+        //bluePath = blue;
+        //       truckPathList = Path;
+        //       truckCapList = Cap;
+        blueDic = bDic;
+        redDic = rDic;
+    }
+
+    //public List<int> TruckPathList{
+    //    get { return truckPathList; }
+    //}
+
+    //public List<int> TruckCapList
+    //{
+    //    get { return TruckCapList; }
+    //}
+
+    public Dictionary<List<int>, List<float>> RedDic
+    {
+        get { return redDic; }
+    }
+
+    public Dictionary<List<int>, List<float>> BlueDic
+    {
+        get { return blueDic; }
+    }
+
+    //public bool Red
+    //{
+    //    get { return redPath; }
+    //}
+
+    //public bool Blue
+    //{
+    //    get { return bluePath; }
+    //}
 }

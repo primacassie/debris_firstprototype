@@ -10,7 +10,7 @@ public class cancelMark : MonoBehaviour {
 		indicatorFunction.hasCancelMark = false;
 		StoreTruckClick.hasCancelMark = false;
 		int[] arr = StoreTruckClick.arrayForChosenPath.ToArray();
-		int[] arr1 = StoreTruckClick.arrayForTruckCap.ToArray ();
+		float[] arr1 = StoreTruckClick.arrayForTruckCap.ToArray ();
 		//Debug.Log ("test time" + StoreTruckClick.numForTime);
 		if (StoreTruckClick.red) {
 			//Node.redAl.Remove (StoreTruckClick.arrayForChosenPath);
@@ -87,8 +87,8 @@ public class cancelMark : MonoBehaviour {
 		for (int j = 0; j < arr.Length-1; j++) {
 			int num1 = arr [j];
 			int num2 = arr [j + 1];
-			gameControll.capArray [num1, num2] += arr1 [j];
-			gameControll.capArray [num2, num1] += arr1 [j];
+			gameControll.capArray [num1, num2] += (int)arr1 [j];
+			gameControll.capArray [num2, num1] += (int)arr1 [j];
 			string capTruck1 = "capPath" + num1.ToString () + num2.ToString ();
 			string capTruck2 = "capPath" + num2.ToString () + num1.ToString ();
 			if (GameObject.Find (capTruck1) != null) {
@@ -101,8 +101,9 @@ public class cancelMark : MonoBehaviour {
 			//					obj.GetComponent<LineRenderer> ().material = Resources.Load<Material> ("Materials/greenAnim") as Material;
 			//					obj.GetComponent<LineRenderer> ().SetWidth (0.25f, 0.25f);
 			//string materialName=StoreTruckClick.materialQueue.Dequeue();
-			obj.GetComponent<LineRenderer> ().SetWidth (0.15f, 0.15f);
-			string truckText1 = "truckCap" + num1.ToString () + num2.ToString ();
+			obj.GetComponent<LineRenderer> ().startWidth=.15f;
+            obj.GetComponent<LineRenderer>().endWidth = .15f;
+            string truckText1 = "truckCap" + num1.ToString () + num2.ToString ();
 			string truckText2 = "truckCap" + num2.ToString() + num1.ToString ();
 			GameObject truckCap = new GameObject ();
 			if (GameObject.Find (truckText1) != null) {

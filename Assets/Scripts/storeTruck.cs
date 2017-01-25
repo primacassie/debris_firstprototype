@@ -8,7 +8,7 @@ public class storeTruck : MonoBehaviour {
 
 	void Awake(){
 		sT = GameObject.Find ("storeTruck");
-		initializeValue (RefreshButton.refresh);
+	//	initializeValue (RefreshButton.refresh);
 	}
 
 	public void addTruck(int num){
@@ -202,4 +202,19 @@ public class storeTruck : MonoBehaviour {
 			refreshed = true;
 		}
 	}
+
+
+    public void initializeValue(bool red,bool blue)
+    {
+        if (red)
+        {
+            addRedTruck(gameControll.redTruckNum);
+            gameControll.redTruckNum++;
+        }
+        if (blue)
+        {
+            addBlueTruck(gameControll.blueTruckNum);
+            gameControll.blueTruckNum++;
+        }
+    }
 }

@@ -14,7 +14,7 @@ public class StoreTruckClick : MonoBehaviour {
 	public static bool blue;
 	public static bool green;
 	public static int theTruckNum;
-	public static List<int> arrayForTruckCap;
+	public static List<float> arrayForTruckCap;
 	public static float numForProfit;
 	public static float numForTime;
 	private int numClick=0;
@@ -26,7 +26,7 @@ public class StoreTruckClick : MonoBehaviour {
 		if (!(gameControll.redTruck || gameControll.greenTruck || gameControll.blueTruck)) {
             //indicatorFunction.setCancelPathButton ();
             List<int> nodePathL = new List<int>();
-            List<int> nodeTrcukCap = new List<int>();
+            List<float> nodeTrcukCap = new List<float>();
             if (numClick % 2 == 1 && !(red || green || blue)) {
                 //onlyOneClick = true;
 				string truckName = this.gameObject.name;
@@ -57,7 +57,7 @@ public class StoreTruckClick : MonoBehaviour {
 					}
 					int k = 0;
 					//Debug.Log (truckNum + "length of this");
-					foreach (List<int> l in Node.redTruckCap) {
+					foreach (List<float> l in Node.redTruckCap) {
 						if (k == truckNum) {
 							nodeTrcukCap = l;
 							break;
@@ -82,7 +82,7 @@ public class StoreTruckClick : MonoBehaviour {
 					}
 					//Debug.Log ("node length" + nodeTrcukCap.Count);
 					int[] nodeArr1 = nodePathL.ToArray ();
-					int[] nodeTruckArr = nodeTrcukCap.ToArray ();
+					float[] nodeTruckArr = nodeTrcukCap.ToArray ();
 					for (int j = 0; j < nodeArr1.Length-1; j++) {
 						int num1 = nodeArr1 [j];
 						int num2 = nodeArr1 [j + 1];
@@ -114,8 +114,9 @@ public class StoreTruckClick : MonoBehaviour {
 						//					obj.GetComponent<LineRenderer> ().material = Resources.Load<Material> ("Materials/redAnim") as Material;
 						//					obj.GetComponent<LineRenderer> ().SetWidth (0.25f, 0.25f);
 						//materialQueue.Enqueue(obj.GetComponent<LineRenderer>().material.name);
-						obj.GetComponent<LineRenderer> ().SetWidth (0.25f, 0.25f);
-						obj.GetComponent<LineRenderer> ().material = Resources.Load<Material> ("Materials/redAnim") as Material;
+						obj.GetComponent<LineRenderer> ().startWidth=.25f;
+                        obj.GetComponent<LineRenderer>().endWidth = .25f;
+                        obj.GetComponent<LineRenderer> ().material = Resources.Load<Material> ("Materials/redAnim") as Material;
 					}
 				}
 				if (truckName [0] == 'b') {
@@ -134,7 +135,7 @@ public class StoreTruckClick : MonoBehaviour {
 
 					int k = 0;
 					//Debug.Log (truckNum + "length of this");
-					foreach (List<int> l in Node.blueTruckCap) {
+					foreach (List<float> l in Node.blueTruckCap) {
 						if (k == truckNum) {
 							nodeTrcukCap = l;
 							break;
@@ -158,7 +159,7 @@ public class StoreTruckClick : MonoBehaviour {
 						n2++;
 					}
 					int[] nodeArr1 = nodePathL.ToArray ();
-					int[] nodeTruckArr = nodeTrcukCap.ToArray ();
+					float[] nodeTruckArr = nodeTrcukCap.ToArray ();
 					for (int j = 0; j < nodeArr1.Length-1; j++) {
 						int num1 = nodeArr1 [j];
 						int num2 = nodeArr1 [j + 1];
@@ -187,11 +188,12 @@ public class StoreTruckClick : MonoBehaviour {
 							t.color = newCol;
 						}
 						GameObject obj = GameObject.Find (pathString);
-						//					obj.GetComponent<LineRenderer> ().material = Resources.Load<Material> ("Materials/blueAnim") as Material;
-						//					obj.GetComponent<LineRenderer> ().SetWidth (0.25f, 0.25f);
-						//materialQueue.Enqueue(obj.GetComponent<LineRenderer>().material.name);
-						obj.GetComponent<LineRenderer> ().SetWidth (0.25f, 0.25f);
-						obj.GetComponent<LineRenderer> ().material = Resources.Load<Material> ("Materials/blueAnim") as Material;
+                        //					obj.GetComponent<LineRenderer> ().material = Resources.Load<Material> ("Materials/blueAnim") as Material;
+                        //					obj.GetComponent<LineRenderer> ().SetWidth (0.25f, 0.25f);
+                        //materialQueue.Enqueue(obj.GetComponent<LineRenderer>().material.name);
+                        obj.GetComponent<LineRenderer>().startWidth = 0.25f;
+                        obj.GetComponent<LineRenderer>().endWidth = 0.25f;
+                        obj.GetComponent<LineRenderer> ().material = Resources.Load<Material> ("Materials/blueAnim") as Material;
 					}
 				}
 				if (truckName [0] == 'g') {
@@ -209,7 +211,7 @@ public class StoreTruckClick : MonoBehaviour {
 
 					int k = 0;
 					//Debug.Log (truckNum + "length of this");
-					foreach (List<int> l in Node.greenTruckCap) {
+					foreach (List<float> l in Node.greenTruckCap) {
 						if (k == truckNum) {
 							nodeTrcukCap = l;
 							break;
@@ -233,7 +235,7 @@ public class StoreTruckClick : MonoBehaviour {
 						n2++;
 					}
 					int[] nodeArr1 = nodePathL.ToArray ();
-					int[] nodeTruckArr = nodeTrcukCap.ToArray ();
+					float[] nodeTruckArr = nodeTrcukCap.ToArray ();
 					for (int j = 0; j < nodeArr1.Length-1; j++) {
 						int num1 = nodeArr1 [j];
 						int num2 = nodeArr1 [j + 1];
@@ -265,8 +267,9 @@ public class StoreTruckClick : MonoBehaviour {
 						if (ColorUtility.TryParseHtmlString (htmlValue, out newCol)) {
 							t.color = newCol;
 						}
-						obj.GetComponent<LineRenderer> ().SetWidth (0.25f, 0.25f);
-						obj.GetComponent<LineRenderer> ().material = Resources.Load<Material> ("Materials/greenAnim") as Material;
+						obj.GetComponent<LineRenderer> ().startWidth=.25f;
+                        obj.GetComponent<LineRenderer>().endWidth = .25f;
+                        obj.GetComponent<LineRenderer> ().material = Resources.Load<Material> ("Materials/greenAnim") as Material;
 					}
 				}
 
@@ -348,7 +351,8 @@ public class StoreTruckClick : MonoBehaviour {
                         //					obj.GetComponent<LineRenderer> ().material = Resources.Load<Material> ("Materials/greenAnim") as Material;
                         //					obj.GetComponent<LineRenderer> ().SetWidth (0.25f, 0.25f);
                         //string materialName=StoreTruckClick.materialQueue.Dequeue();
-                        obj.GetComponent<LineRenderer>().SetWidth(0.15f, 0.15f);
+                        obj.GetComponent<LineRenderer>().startWidth = .25f;
+                        obj.GetComponent<LineRenderer>().endWidth = .25f;
                         string truckText1 = "truckCap" + num1.ToString() + num2.ToString();
                         string truckText2 = "truckCap" + num2.ToString() + num1.ToString();
                         GameObject truckCap = new GameObject();

@@ -22,29 +22,29 @@ public class CheckMark : MonoBehaviour {
 	public static bool refreshed;
 
 	void Awake(){
-        if (!gameControll.onlyUpdateAtFirstTimeForCheckMark && !RefreshButton.refresh)
-        {
-            addIndicatorAwake(1, 3, false, false, true, 0, 0, 0);
-            addIndicatorAwake(3, 2, false, false, true, 0, 0, 0);
-            addIndicatorAwake(2, 1, false, false, true, 0, 0, 0);
-            addIndicatorAwake(1, 2, false, false, true, 0, 0, 0);
-            addIndicatorAwake(2, 5, false, false, true, 0, 0, 0);
-            addIndicatorAwake(5, 2, false, false, true, 0, 0, 0);
-            addIndicatorAwake(2, 1, false, false, true, 0, 1, 0);
-            //setIndicatorSeen (indiStack);
-            addIndicatorAwake(1, 3, true, false, false, 0, 1, 0);
-            addIndicatorAwake(3, 4, true, false, false, 0, 0, 0);
-            addIndicatorAwake(4, 1, true, false, false, 0, 0, 0);
-            addIndicatorAwake(1, 4, true, false, false, 0, 0, 0);
-            addIndicatorAwake(4, 5, true, false, false, 0, 0, 0);
-            addIndicatorAwake(5, 4, true, false, false, 0, 0, 0);
-            addIndicatorAwake(4, 1, true, false, false, 1, 0, 0);
-            gameControll.onlyUpdateAtFirstTimeForCheckMark = true;
-		}
+  //      if (!gameControll.onlyUpdateAtFirstTimeForCheckMark && !RefreshButton.refresh)
+  //      {
+  //          addIndicatorAwake(1, 3, false, false, true, 0, 0, 0);
+  //          addIndicatorAwake(3, 2, false, false, true, 0, 0, 0);
+  //          addIndicatorAwake(2, 1, false, false, true, 0, 0, 0);
+  //          addIndicatorAwake(1, 2, false, false, true, 0, 0, 0);
+  //          addIndicatorAwake(2, 5, false, false, true, 0, 0, 0);
+  //          addIndicatorAwake(5, 2, false, false, true, 0, 0, 0);
+  //          addIndicatorAwake(2, 1, false, false, true, 0, 1, 0);
+  //          //setIndicatorSeen (indiStack);
+  //          addIndicatorAwake(1, 3, true, false, false, 0, 1, 0);
+  //          addIndicatorAwake(3, 4, true, false, false, 0, 0, 0);
+  //          addIndicatorAwake(4, 1, true, false, false, 0, 0, 0);
+  //          addIndicatorAwake(1, 4, true, false, false, 0, 0, 0);
+  //          addIndicatorAwake(4, 5, true, false, false, 0, 0, 0);
+  //          addIndicatorAwake(5, 4, true, false, false, 0, 0, 0);
+  //          addIndicatorAwake(4, 1, true, false, false, 1, 0, 0);
+  //          gameControll.onlyUpdateAtFirstTimeForCheckMark = true;
+		//}
 
-		if (RefreshButton.refresh) {
-			refreshed = true;
-		}
+		//if (RefreshButton.refresh) {
+		//	refreshed = true;
+		//}
 	}
 		
 
@@ -88,7 +88,7 @@ public class CheckMark : MonoBehaviour {
 	}
 		
 
-	private void addIndicator(int num1,int num2, bool red, bool green, bool blue)
+	public void addIndicator(int num1,int num2, bool red, bool green, bool blue)
 	{
 		string strNode1 = "node" + num1;
 		if (num1 == 1)
@@ -500,7 +500,7 @@ public class CheckMark : MonoBehaviour {
 		}
 	}
 
-	private void addIndicatorAwake(int num1,int num2, bool red, bool green, bool blue,int redNum,int blueNum,int greenNum)
+	public void addIndicatorAwake(int num1,int num2, bool red, bool green, bool blue,int redNum,int blueNum,int greenNum)
 	{
 		string strNode1 = "node" + num1;
 		if (num1 == 1)

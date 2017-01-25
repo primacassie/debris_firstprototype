@@ -238,7 +238,7 @@ public class gameControll : MonoBehaviour
             GameObject.Find("storeTruck").GetComponent<storeTruck>().addTruck(redTruckNum);
             redTruckNum++;
 			Node.storePath = new List<int>();
-			Node.storeTruckCap=new List<int>();
+			//Node.storeTruckCap=new List<int>();
 			Node.storePath.Add(1);
 			twoNode.Enqueue (1);
 			foreach (int[] arr in pathStore) {
@@ -299,7 +299,7 @@ public class gameControll : MonoBehaviour
             blueTruckNum++;
 			Node.storePath = new List<int>();
 			Node.storePath.Add(1);
-			Node.storeTruckCap=new List<int>();
+			//Node.storeTruckCap=new List<int>();
 			twoNode.Enqueue (1);
 			foreach (int[] arr in pathStore) {
 				if (arr [0] == 1) {
@@ -360,7 +360,7 @@ public class gameControll : MonoBehaviour
             greenTruckNum++;
 			Node.storePath = new List<int>();
 			Node.storePath.Add(1);
-			Node.storeTruckCap=new List<int>();
+			//Node.storeTruckCap=new List<int>();
 			twoNode.Enqueue (1);
 			foreach (int[] arr in pathStore) {
 				if (arr [0] == 1) {

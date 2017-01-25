@@ -1,0 +1,12 @@
+# version:1
+{"type":"session_begin", "data":{"game_id":"HO", "player_id":"52b92c84-91eb-431c-b57b-3f35a9d16910", "session_id":"187ccf55-c9d6-4376-982a-b65af6ecd06b", "build_id":"", "version":"1", "condition":"", "client_time":"1484720689.08507", "details":{}}}
+{"type":"run_begin", "data":{"session_id":"187ccf55-c9d6-4376-982a-b65af6ecd06b", "run_id":"85317ed7-b3e7-46a7-8b82-0130e15553f2", "run_seqno":"0", "client_time":"1484720689.15841", "details":{}}}
+{"type":"action", "data":{"run_id":"85317ed7-b3e7-46a7-8b82-0130e15553f2", "action_seqno":"0", "type":"6", "client_time":"1484720692.05662", "details":{"ClickLeftPanelTruck":"blueTruckImage0, trigger cancel mark"}}}
+{"type":"action", "data":{"run_id":"85317ed7-b3e7-46a7-8b82-0130e15553f2", "action_seqno":"1", "type":"7", "client_time":"1484720693.0399", "details":{"ClickCancelMark":"remove blue truck 0"}}}
+{"type":"action", "data":{"run_id":"85317ed7-b3e7-46a7-8b82-0130e15553f2", "action_seqno":"2", "type":"6", "client_time":"1484720693.733", "details":{"ClickLeftPanelTruck":"redTruckImage2, trigger cancel mark"}}}
+{"type":"action", "data":{"run_id":"85317ed7-b3e7-46a7-8b82-0130e15553f2", "action_seqno":"3", "type":"7", "client_time":"1484720694.41226", "details":{"ClickCancelMark":"remove red truck 2"}}}
+{"type":"action", "data":{"run_id":"85317ed7-b3e7-46a7-8b82-0130e15553f2", "action_seqno":"4", "type":"6", "client_time":"1484720695.45581", "details":{"ClickLeftPanelTruck":"redTruckImage1, trigger cancel mark"}}}
+{"type":"action", "data":{"run_id":"85317ed7-b3e7-46a7-8b82-0130e15553f2", "action_seqno":"5", "type":"7", "client_time":"1484720696.36708", "details":{"ClickCancelMark":"remove red truck 1"}}}
+{"type":"run_end", "data":{"run_id":"85317ed7-b3e7-46a7-8b82-0130e15553f2", "action_count":"6", "client_time":"1484720697.37178", "details":{}}}
+{"type":"run_begin", "data":{"session_id":"187ccf55-c9d6-4376-982a-b65af6ecd06b", "run_id":"3ac86372-ef15-4194-8525-812cfd919e09", "run_seqno":"1", "client_time":"1484720697.43001", "details":{}}}
+{"type":"run_end", "data":{"run_id":"3ac86372-ef15-4194-8525-812cfd919e09", "action_count":"0", "client_time":"1484720713.77036", "details":{}}}

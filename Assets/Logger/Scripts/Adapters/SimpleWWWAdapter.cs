@@ -34,7 +34,10 @@ public class SimpleWWWAdapter : BaseAdapter
 		form.AddField("data", node_output);
 		data = new WWW(url, form);
 		Debug.Log("Sending data to: " + url);
-		StartCoroutine(DoWWW(data));
+        if (DoWWW(data) != null)
+        {
+            StartCoroutine(DoWWW(data));
+        }
 	}
 
 

@@ -11,7 +11,7 @@ public class submitButton : MonoBehaviour {
 
     public static int submitAndNewScene;  //this var is to tell StartNewTrail that this trail is submit or not.
     public static Dictionary<string,List<int>> animDic = new Dictionary<string,List<int>>();
-    public static Dictionary<string, List<int>> animDicForCap = new Dictionary<string, List<int>>();
+    public static Dictionary<string, List<float>> animDicForCap = new Dictionary<string, List<float>>();
 	private bool submitOnlyOnce;
 	private DisplayManager display;
 	public static List<List<List<int>>> ForTrailRed = new List<List<List<int>>> ();
@@ -20,9 +20,9 @@ public class submitButton : MonoBehaviour {
 	public static List<float> forProf = new List<float> ();
 	public static List<float> forTime = new List<float> ();
 	public static List<int> forInter=new List<int>();
-	public static List<List<List<int>>> ForTrailRedPath = new List<List<List<int>>> ();
-	public static List<List<List<int>>> ForTrailGreenPath = new List<List<List<int>>> ();
-	public static List<List<List<int>>> ForTrailBluePath = new List<List<List<int>>> ();
+	public static List<List<List<float>>> ForTrailRedPath = new List<List<List<float>>> ();
+	public static List<List<List<float>>> ForTrailGreenPath = new List<List<List<float>>> ();
+	public static List<List<List<float>>> ForTrailBluePath = new List<List<List<float>>> ();
 	//private Vector3 tar=new Vector3();
 	//private bool submitOnce;
 	//private Transform tar;
@@ -46,7 +46,7 @@ public class submitButton : MonoBehaviour {
         totalTruckNum = 0;
         submitAndNewScene = 0;
         animDic= new Dictionary<string, List<int>>();
-        animDicForCap = new Dictionary<string, List<int>>();
+        animDicForCap = new Dictionary<string, List<float>>();
         storeLineRenderPath=new Dictionary<string, string>();
         if (ForTrailRed.Count == 1)
         {
@@ -129,9 +129,9 @@ public class submitButton : MonoBehaviour {
 			ForTrailRed.Add (new List<List<int>>(Node.redAl));
 			ForTrailGreen.Add (new List<List<int>> (Node.greenAl));
 			ForTrailBlue.Add (new List<List<int>> (Node.blueAl));
-			ForTrailRedPath.Add (new List<List<int>> (Node.redTruckCap));
-			ForTrailBluePath.Add (new List<List<int>> (Node.blueTruckCap));
-			ForTrailGreenPath.Add (new List<List<int>> (Node.greenTruckCap));
+			ForTrailRedPath.Add (new List<List<float>> (Node.redTruckCap));
+			ForTrailBluePath.Add (new List<List<float>> (Node.blueTruckCap));
+			ForTrailGreenPath.Add (new List<List<float>> (Node.greenTruckCap));
 			GameObject.Find ("storeTruck").SetActive (false);
             if (GameObject.Find("green") != null)
             {

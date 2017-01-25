@@ -60,7 +60,8 @@ public class LineAnimation : MonoBehaviour
 
         lr = GetComponent<LineRenderer>();
         lr.SetPosition(0, origin);
-        lr.SetWidth(.15f, .15f);
+        lr.startWidth=.15f;
+        lr.endWidth=.15f;
         if (gameControll.redTruck)
         {
             lr.material = Resources.Load<Material>("Materials/redAnim") as Material;

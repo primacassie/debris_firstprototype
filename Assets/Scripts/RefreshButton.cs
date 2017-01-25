@@ -7,7 +7,16 @@ public class RefreshButton : MonoBehaviour{
 
     void OnMouseDown()
     {
-		refresh = true;
-        SceneManager.LoadScene("start");
+        if (this.name == "RefreshButton")
+        {
+            refresh = true;
+            SceneManager.LoadScene("start");
+        }
+
+        if (this.name == "NewSolution")
+        {
+            SceneManager.LoadScene("start");
+        }
+
     }
 }

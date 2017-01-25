@@ -11,7 +11,7 @@ public class submitAnim : MonoBehaviour {
     private bool updateOnlyOnce;
 	private Transform[] wayPointList;
     private int[] arr;
-    private int[] arrC;
+    private float[] arrC;
     private int cap;
     private int count;
     private int counter;
@@ -40,7 +40,7 @@ public class submitAnim : MonoBehaviour {
         if (submitButton.animDic.ContainsKey(objName))
         {
             List<int> l=submitButton.animDic[objName];
-            List<int> c = submitButton.animDicForCap[objName];
+            List<float> c = submitButton.animDicForCap[objName];
             arr = l.ToArray();
             arrC = c.ToArray();
             //Debug.Log(this.gameObject.name+" "+ arr.Length);
@@ -152,7 +152,7 @@ public class submitAnim : MonoBehaviour {
         {
             //originPos = wayPointList[count].position;
             //targetPos = wayPointList[count + 1].position;
-            cap = arrC[count];
+            cap =(int) arrC[count];
         }
 
         if (Mathf.Abs((transform.eulerAngles.z-180)-dir.z) <= 5) {
