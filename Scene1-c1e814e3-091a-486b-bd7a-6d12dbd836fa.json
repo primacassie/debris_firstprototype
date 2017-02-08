@@ -1,0 +1,12 @@
+# version:1
+{"type":"session_begin", "data":{"game_id":"HO", "player_id":"52b92c84-91eb-431c-b57b-3f35a9d16910", "session_id":"9cd33a41-f79e-4abd-a48d-3423e69ab585", "build_id":"", "version":"1", "condition":"", "client_time":"1486519788.22364", "details":{}}}
+{"type":"run_begin", "data":{"session_id":"9cd33a41-f79e-4abd-a48d-3423e69ab585", "run_id":"7418baca-742d-4bc4-828d-f7935c129f1d", "run_seqno":"0", "client_time":"1486519788.34438", "details":{}}}
+{"type":"action", "data":{"run_id":"7418baca-742d-4bc4-828d-f7935c129f1d", "action_seqno":"0", "type":"6", "client_time":"1486519983.69821", "details":{"ClickLeftPanelTruck":"blueTruckImage1, trigger cancel mark"}}}
+{"type":"action", "data":{"run_id":"7418baca-742d-4bc4-828d-f7935c129f1d", "action_seqno":"1", "type":"7", "client_time":"1486519985.21969", "details":{"ClickCancelMark":"remove blue truck 1"}}}
+{"type":"action", "data":{"run_id":"7418baca-742d-4bc4-828d-f7935c129f1d", "action_seqno":"2", "type":"6", "client_time":"1486519985.94298", "details":{"ClickLeftPanelTruck":"blueTruckImage0, trigger cancel mark"}}}
+{"type":"action", "data":{"run_id":"7418baca-742d-4bc4-828d-f7935c129f1d", "action_seqno":"3", "type":"7", "client_time":"1486519987.36761", "details":{"ClickCancelMark":"remove blue truck 0"}}}
+{"type":"action", "data":{"run_id":"7418baca-742d-4bc4-828d-f7935c129f1d", "action_seqno":"4", "type":"6", "client_time":"1486519988.65987", "details":{"ClickLeftPanelTruck":"redTruckImage1, trigger cancel mark"}}}
+{"type":"action", "data":{"run_id":"7418baca-742d-4bc4-828d-f7935c129f1d", "action_seqno":"5", "type":"7", "client_time":"1486519989.37244", "details":{"ClickCancelMark":"remove red truck 1"}}}
+{"type":"action", "data":{"run_id":"7418baca-742d-4bc4-828d-f7935c129f1d", "action_seqno":"6", "type":"6", "client_time":"1486519990.16719", "details":{"ClickLeftPanelTruck":"redTruckImage0, trigger cancel mark"}}}
+{"type":"action", "data":{"run_id":"7418baca-742d-4bc4-828d-f7935c129f1d", "action_seqno":"7", "type":"7", "client_time":"1486519990.83008", "details":{"ClickCancelMark":"remove red truck 0"}}}
+{"type":"run_end", "data":{"run_id":"7418baca-742d-4bc4-828d-f7935c129f1d", "action_count":"8", "client_time":"1486520005.25491", "details":{}}}

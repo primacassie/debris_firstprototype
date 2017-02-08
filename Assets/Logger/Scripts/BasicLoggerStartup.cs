@@ -16,6 +16,7 @@ public class BasicLoggerStartup : MonoBehaviour
 	
 	void Awake()
 	{
+        DontDestroyOnLoad(this);
 		if (!TheLogger.instance.IsSessionBegun()) {
 			string player_id = null;
 			if (PlayerPrefs.HasKey(PLAYER_ID_KEY)) {

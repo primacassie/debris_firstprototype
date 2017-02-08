@@ -11,8 +11,14 @@ public class FileAdapter : BaseAdapter
 	private bool m_inited = false; // has init been called?
 	private string m_error = null; // a string describing any error
 
-	// Try to initialize logging to the given file.  If logging has already been initialized, do nothing.
-	public
+    // Try to initialize logging to the given file.  If logging has already been initialized, do nothing.
+    private void Start()
+    {
+        DontDestroyOnLoad(this);
+    }
+
+
+    public
 	override
 	void
 	Init()

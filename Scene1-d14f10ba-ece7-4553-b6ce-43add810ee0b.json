@@ -1,0 +1,105 @@
+# version:1
+{"type":"session_begin", "data":{"game_id":"HO", "player_id":"52b92c84-91eb-431c-b57b-3f35a9d16910", "session_id":"0fd91d3b-7026-4541-a895-ab587a7f1336", "build_id":"", "version":"1", "condition":"", "client_time":"1486520108.82599", "details":{}}}
+{"type":"run_begin", "data":{"session_id":"0fd91d3b-7026-4541-a895-ab587a7f1336", "run_id":"17ada665-0903-4302-a8b1-4e746e666757", "run_seqno":"0", "client_time":"1486520108.88563", "details":{}}}
+{"type":"run_end", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_count":"0", "client_time":"1486520110.41113", "details":{}}}
+{"type":"run_end", "auto":"true", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_count":"0", "client_time":"1486520110.46322", "details":{}}}
+{"type":"run_end", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_count":"0", "client_time":"1486520112.5508", "details":{}}}
+{"type":"run_end", "auto":"true", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_count":"0", "client_time":"1486520112.60176", "details":{}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520117.01163", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520117.06098", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520117.11029", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520117.19345", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520117.77329", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520117.78993", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520117.80677", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520117.85598", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520117.9058", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520118.20387", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520118.22044", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520118.23754", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520118.27006", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520118.5849", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520118.60144", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520118.61891", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520118.65113", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520118.66758", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520118.71801", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520118.98275", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520118.99916", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520119.01631", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520119.03234", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520119.06574", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520119.34744", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520119.36391", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520119.38017", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520119.41342", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520119.42994", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520119.97651", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520119.99303", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520120.0096", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520120.02653", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520120.29134", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520120.32444", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520120.34111", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520120.35779", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520120.37435", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520120.39082", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520120.83814", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520120.85448", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520120.87158", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520120.90417", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520121.84098", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520121.85767", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520121.87376", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520121.89078", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"1", "client_time":"1486520124.95755", "details":{"ClickTruck":"red"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"1", "client_time":"1486520126.66711", "details":{"ClickTruck":"red"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"1", "client_time":"1486520127.25051", "details":{"ClickTruck":"red"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"1", "client_time":"1486520127.40282", "details":{"ClickTruck":"red"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"1", "client_time":"1486520127.58823", "details":{"ClickTruck":"red"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"1", "client_time":"1486520127.74048", "details":{"ClickTruck":"red"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"1", "client_time":"1486520128.15809", "details":{"ClickTruck":"red"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"1", "client_time":"1486520128.3277", "details":{"ClickTruck":"red"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"1", "client_time":"1486520128.46341", "details":{"ClickTruck":"red"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"1", "client_time":"1486520128.59973", "details":{"ClickTruck":"red"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"1", "client_time":"1486520128.7709", "details":{"ClickTruck":"red"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"1", "client_time":"1486520128.92313", "details":{"ClickTruck":"red"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"1", "client_time":"1486520129.29112", "details":{"ClickTruck":"red"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"1", "client_time":"1486520129.47681", "details":{"ClickTruck":"red"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520129.97682", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520129.99339", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520130.01007", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520130.02669", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520130.04311", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520130.07633", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520130.72278", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520130.73886", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520130.75576", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520130.7723", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520131.03741", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520131.05365", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520131.07119", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520131.08714", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520131.38527", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520131.40181", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520131.41884", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520131.43505", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"1", "client_time":"1486520132.81", "details":{"ClickTruck":"red"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"1", "client_time":"1486520132.96224", "details":{"ClickTruck":"red"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"1", "client_time":"1486520133.13717", "details":{"ClickTruck":"red"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"1", "client_time":"1486520133.28914", "details":{"ClickTruck":"red"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"1", "client_time":"1486520133.95532", "details":{"ClickTruck":"red"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"1", "client_time":"1486520134.12407", "details":{"ClickTruck":"red"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"1", "client_time":"1486520134.27694", "details":{"ClickTruck":"red"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520135.30716", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520135.32381", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520135.34032", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520135.35688", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520135.37342", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520135.42336", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520135.67179", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520135.68894", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520135.70503", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520135.72123", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_seqno":"0", "type":"5", "client_time":"1486520135.73781", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"run_end", "data":{"run_id":"17ada665-0903-4302-a8b1-4e746e666757", "action_count":"0", "client_time":"1486520140.61927", "details":{}}}

@@ -107,9 +107,6 @@ public class Node : MonoBehaviour
     private float blueTimeLastTime;
     private float greenTimeLastTime;
 
-
-
-
     //static array to make animation in the CheckMark.cs
     public static int nodeCount;
     public static int[] nodeArray;
@@ -203,7 +200,7 @@ public class Node : MonoBehaviour
                 {
                     Dictionary<List<int>, List<float>> r0 = new Dictionary<List<int>, List<float>>();
                     r0[new List<int> { 1, 3, 4, 1 }] = new List<float> { 50, 50, 0 };
-                    r0[new List<int> { 1, 2, 5, 2, 1 }] = new List<float> { 0, 50, 0, 0 };
+                    r0[new List<int> { 1, 4, 5, 4, 1 }] = new List<float> { 0, 50, 0, 0 };
                     Dictionary<List<int>, List<float>> b0 = new Dictionary<List<int>, List<float>>();
                     b0[new List<int> { 1, 3, 2, 1 }] = new List<float> { 0, 50, 50 };
                     b0[new List<int> { 1, 2, 5, 2, 1 }] = new List<float> { 0, 50, 0, 0 };
@@ -215,10 +212,10 @@ public class Node : MonoBehaviour
                 {
                     Dictionary<List<int>, List<float>> r1 = new Dictionary<List<int>, List<float>>();
                     r1[new List<int> { 1, 2, 5, 4, 1 }] = new List<float> { 0, 50, 50, 0 };
-                    r1[new List<int> { 1, 2, 3, 1 }] = new List<float> { 0, 17.5f, 50 };
+                    r1[new List<int> { 1, 2, 3, 1 }] = new List<float> { 0, 17f, 50 };
                     r1[new List<int> { 1, 2, 1 }] = new List<float> { 0, 50 };
                     Dictionary<List<int>, List<float>> b1 = new Dictionary<List<int>, List<float>>();
-                    b1[new List<int> { 1, 3, 2, 3, 4, 5, 4, 1 }] = new List<float> { 0, 0, 32.5f, 0, 0, 0, 0 };
+                    b1[new List<int> { 1, 3, 2, 3, 4, 5, 4, 1 }] = new List<float> { 0, 0, 33f, 0, 0, 0, 0 };
                     b1[new List<int> { 1, 4, 3, 4, 5, 4, 1 }] = new List<float> { 0, 0, 50, 0, 0, 0 };
                     b1[new List<int> { 1, 4, 1 }] = new List<float> { 50, 0 };
                     TruckPath solution1 = new TruckPath(r1, b1);
@@ -275,11 +272,16 @@ public class Node : MonoBehaviour
 
                 getInitialSolution0(solution2);
             }
-
-
         }
     }
 
+
+
+
+    void Start()
+    {
+        RefreshButton.refresh = false;
+    }
 
 
     void Update() {
@@ -1646,7 +1648,7 @@ public class Node : MonoBehaviour
         }
         if (num1 == 1)
         {
-            Debug.Log(num + "   1111");
+            //Debug.Log(num + "   1111");
             GameObject.Find(animName1).GetComponent<Animator>().enabled = false;
             return;
         }
@@ -2500,22 +2502,29 @@ public class Node : MonoBehaviour
         gameControll.blueTruck = b;
         gameControll.redTruck = r;
         string pathname = pathName(f, s, rgbPathArray);
-        setBoolArray(f, s, rgbPathArray);
-        GameObject path = new GameObject();
-        path.name = pathname;
-        path.AddComponent<LineRenderer>();
-        path.tag = "linerender";
-        path.AddComponent<LineAnimation>();
         string dupObj = "newPathAnim" + f.ToString() + s.ToString();
-        if (pathname == dupObj)
+        setBoolArray(f, s, rgbPathArray);
+        GameObject path=new GameObject();
+        //GameObject path = new GameObject();
+        //path.name = pathname;
+        //path.AddComponent<LineRenderer>();
+        //path.tag = "linerender";
+        //path.AddComponent<LineAnimation>();
+        if (pathname != dupObj)
         {
-            string existObj = "pathAnim" + f.ToString() + s.ToString();
-            if (GameObject.Find(existObj) != null)
-            {
-                GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
-            }
+            //string existObj = "pathAnim" + f.ToString() + s.ToString();
+            //if (GameObject.Find(existObj) != null)
+            //{
+            //    GameObject.Find(existObj).GetComponent<LineRenderer>().enabled = false;
+            //}
+            //path = new GameObject();
+            path.name = pathname;
+            path.AddComponent<LineRenderer>();
+            path.tag = "linerender";
+            path.AddComponent<LineAnimation>();
+            path.GetComponent<LineAnimation>().rectAnimation(f, s);
+
         }
-        path.GetComponent<LineAnimation>().rectAnimation(f, s);
     }
 
     IList<HashSet<int>> colorfulNode(TruckPath TrackSolution)

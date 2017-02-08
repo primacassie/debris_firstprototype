@@ -1,0 +1,35 @@
+# version:1
+{"type":"session_begin", "data":{"game_id":"HO", "player_id":"52b92c84-91eb-431c-b57b-3f35a9d16910", "session_id":"76ed1ebc-b065-4185-a557-e27dde9a1515", "build_id":"", "version":"1", "condition":"", "client_time":"1486524484.51195", "details":{}}}
+{"type":"run_begin", "data":{"session_id":"76ed1ebc-b065-4185-a557-e27dde9a1515", "run_id":"8cd04fbe-e41a-46a7-b9f8-6a75ac5584d5", "run_seqno":"0", "client_time":"1486524484.56853", "details":{}}}
+{"type":"run_end", "data":{"run_id":"8cd04fbe-e41a-46a7-b9f8-6a75ac5584d5", "action_count":"0", "client_time":"1486524486.77776", "details":{}}}
+{"type":"run_begin", "data":{"session_id":"76ed1ebc-b065-4185-a557-e27dde9a1515", "run_id":"58dc76a5-4d5b-4510-91d4-4063be4d625d", "run_seqno":"1", "client_time":"1486524486.83132", "details":{}}}
+{"type":"run_end", "data":{"run_id":"58dc76a5-4d5b-4510-91d4-4063be4d625d", "action_count":"0", "client_time":"1486524487.86037", "details":{}}}
+{"type":"run_begin", "data":{"session_id":"76ed1ebc-b065-4185-a557-e27dde9a1515", "run_id":"8fb1ed01-73ae-4b08-a0ef-47dba91a669c", "run_seqno":"2", "client_time":"1486524487.91312", "details":{}}}
+{"type":"run_end", "data":{"run_id":"8fb1ed01-73ae-4b08-a0ef-47dba91a669c", "action_count":"0", "client_time":"1486524489.58254", "details":{}}}
+{"type":"run_begin", "data":{"session_id":"76ed1ebc-b065-4185-a557-e27dde9a1515", "run_id":"388b2845-0e49-4b72-8e63-5c82886fd2c0", "run_seqno":"3", "client_time":"1486524489.63379", "details":{}}}
+{"type":"run_end", "data":{"run_id":"388b2845-0e49-4b72-8e63-5c82886fd2c0", "action_count":"0", "client_time":"1486524490.29138", "details":{}}}
+{"type":"run_begin", "data":{"session_id":"76ed1ebc-b065-4185-a557-e27dde9a1515", "run_id":"57c7febc-2f16-4b52-8987-6af58c1d52fc", "run_seqno":"4", "client_time":"1486524490.3446", "details":{}}}
+{"type":"run_end", "data":{"run_id":"57c7febc-2f16-4b52-8987-6af58c1d52fc", "action_count":"0", "client_time":"1486524495.67618", "details":{}}}
+{"type":"run_begin", "data":{"session_id":"76ed1ebc-b065-4185-a557-e27dde9a1515", "run_id":"41f2b707-b3e0-4b0d-af15-a5481afd055c", "run_seqno":"5", "client_time":"1486524495.72322", "details":{}}}
+{"type":"action", "data":{"run_id":"41f2b707-b3e0-4b0d-af15-a5481afd055c", "action_seqno":"0", "type":"1", "client_time":"1486524496.45389", "details":{"ClickTruck":"red"}}}
+{"type":"action", "data":{"run_id":"41f2b707-b3e0-4b0d-af15-a5481afd055c", "action_seqno":"1", "type":"2", "client_time":"1486524496.91733", "details":{"ClickNode":"4"}}}
+{"type":"action", "data":{"run_id":"41f2b707-b3e0-4b0d-af15-a5481afd055c", "action_seqno":"2", "type":"3", "client_time":"1486524496.92886", "details":{"ClickSlider":"50"}}}
+{"type":"action", "data":{"run_id":"41f2b707-b3e0-4b0d-af15-a5481afd055c", "action_seqno":"3", "type":"3", "client_time":"1486524497.6709", "details":{"ClickSlider":"47.37507"}}}
+{"type":"action", "data":{"run_id":"41f2b707-b3e0-4b0d-af15-a5481afd055c", "action_seqno":"4", "type":"3", "client_time":"1486524497.68694", "details":{"ClickSlider":"18.50061"}}}
+{"type":"action", "data":{"run_id":"41f2b707-b3e0-4b0d-af15-a5481afd055c", "action_seqno":"5", "type":"3", "client_time":"1486524497.70348", "details":{"ClickSlider":"2.750921"}}}
+{"type":"action", "data":{"run_id":"41f2b707-b3e0-4b0d-af15-a5481afd055c", "action_seqno":"6", "type":"3", "client_time":"1486524497.72049", "details":{"ClickSlider":"0"}}}
+{"type":"action", "data":{"run_id":"41f2b707-b3e0-4b0d-af15-a5481afd055c", "action_seqno":"7", "type":"2", "client_time":"1486524498.32118", "details":{"ClickNode":"3", "store capacity between 4 and 3":"50"}}}
+{"type":"action", "data":{"run_id":"41f2b707-b3e0-4b0d-af15-a5481afd055c", "action_seqno":"8", "type":"3", "client_time":"1486524498.3277", "details":{"ClickSlider":"50"}}}
+{"type":"action", "data":{"run_id":"41f2b707-b3e0-4b0d-af15-a5481afd055c", "action_seqno":"9", "type":"3", "client_time":"1486524499.16742", "details":{"ClickSlider":"38.61568"}}}
+{"type":"action", "data":{"run_id":"41f2b707-b3e0-4b0d-af15-a5481afd055c", "action_seqno":"10", "type":"3", "client_time":"1486524499.18397", "details":{"ClickSlider":"20.24102"}}}
+{"type":"action", "data":{"run_id":"41f2b707-b3e0-4b0d-af15-a5481afd055c", "action_seqno":"11", "type":"3", "client_time":"1486524499.20055", "details":{"ClickSlider":"7.116294"}}}
+{"type":"action", "data":{"run_id":"41f2b707-b3e0-4b0d-af15-a5481afd055c", "action_seqno":"12", "type":"3", "client_time":"1486524499.21708", "details":{"ClickSlider":"0"}}}
+{"type":"action", "data":{"run_id":"41f2b707-b3e0-4b0d-af15-a5481afd055c", "action_seqno":"13", "type":"2", "client_time":"1486524499.76962", "details":{"ClickNode":"1", "store capacity between 3 and 1":"50"}}}
+{"type":"action", "data":{"run_id":"41f2b707-b3e0-4b0d-af15-a5481afd055c", "action_seqno":"14", "type":"3", "client_time":"1486524499.77614", "details":{"ClickSlider":"50"}}}
+{"type":"action", "data":{"run_id":"41f2b707-b3e0-4b0d-af15-a5481afd055c", "action_seqno":"15", "type":"4", "client_time":"1486524500.18573", "details":{"ClickCheckMark":"finish this route"}}}
+{"type":"action", "data":{"run_id":"41f2b707-b3e0-4b0d-af15-a5481afd055c", "action_seqno":"16", "type":"9", "client_time":"1486524500.19124", "details":{"RedTruckPath":"Node1,4,3,1,StoredCap50,50,0,"}}}
+{"type":"action", "data":{"run_id":"41f2b707-b3e0-4b0d-af15-a5481afd055c", "action_seqno":"17", "type":"6", "client_time":"1486524500.93266", "details":{"ClickLeftPanelTruck":"redTruckImage0, trigger cancel mark"}}}
+{"type":"action", "data":{"run_id":"41f2b707-b3e0-4b0d-af15-a5481afd055c", "action_seqno":"18", "type":"6", "client_time":"1486524501.794", "details":{"ClickLeftPanelTruck":"redTruckImage0, cancel cancel mark"}}}
+{"type":"action", "data":{"run_id":"41f2b707-b3e0-4b0d-af15-a5481afd055c", "action_seqno":"19", "type":"1", "client_time":"1486524506.54844", "details":{"ClickTruck":"red"}}}
+{"type":"action", "data":{"run_id":"41f2b707-b3e0-4b0d-af15-a5481afd055c", "action_seqno":"20", "type":"2", "client_time":"1486524507.17794", "details":{"ClickNode":"3"}}}
+{"type":"run_end", "data":{"run_id":"41f2b707-b3e0-4b0d-af15-a5481afd055c", "action_count":"21", "client_time":"1486524515.7456", "details":{}}}

@@ -8,7 +8,12 @@ public class SimpleWWWAdapter : BaseAdapter
 	private string urlBase="http://107.21.26.163/secphp/json_to_server.php?user=nugs&pass=7dc2110243bfbd86f83bbeb4d412e1ce";
 	private WWW data;
 
-	public
+    private void Start()
+    {
+        DontDestroyOnLoad(this);
+    }
+
+    public
 	override
 	void
 	Init()

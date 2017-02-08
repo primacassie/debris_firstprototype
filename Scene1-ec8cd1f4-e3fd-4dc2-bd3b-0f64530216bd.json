@@ -1,0 +1,12 @@
+# version:1
+{"type":"session_begin", "data":{"game_id":"HO", "player_id":"52b92c84-91eb-431c-b57b-3f35a9d16910", "session_id":"322b980f-1930-4c51-86bd-2f98f2145f07", "build_id":"", "version":"1", "condition":"", "client_time":"1486523374.43385", "details":{}}}
+{"type":"run_begin", "data":{"session_id":"322b980f-1930-4c51-86bd-2f98f2145f07", "run_id":"67f1175a-51c8-4d29-8262-16db50efc986", "run_seqno":"0", "client_time":"1486523374.48901", "details":{}}}
+{"type":"run_end", "data":{"run_id":"67f1175a-51c8-4d29-8262-16db50efc986", "action_count":"0", "client_time":"1486523377.46138", "details":{}}}
+{"type":"run_begin", "data":{"session_id":"322b980f-1930-4c51-86bd-2f98f2145f07", "run_id":"f32a5933-e962-420b-a337-cedcc6cdc826", "run_seqno":"1", "client_time":"1486523377.51165", "details":{}}}
+{"type":"run_end", "data":{"run_id":"f32a5933-e962-420b-a337-cedcc6cdc826", "action_count":"0", "client_time":"1486523379.0457", "details":{}}}
+{"type":"run_begin", "data":{"session_id":"322b980f-1930-4c51-86bd-2f98f2145f07", "run_id":"3cf7d9be-d649-44b2-97a4-35e2dbd28569", "run_seqno":"2", "client_time":"1486523379.09454", "details":{}}}
+{"type":"run_end", "data":{"run_id":"3cf7d9be-d649-44b2-97a4-35e2dbd28569", "action_count":"0", "client_time":"1486523383.6921", "details":{}}}
+{"type":"run_begin", "data":{"session_id":"322b980f-1930-4c51-86bd-2f98f2145f07", "run_id":"3fa23e6d-6ee5-47e3-abb4-c3358e305a46", "run_seqno":"3", "client_time":"1486523383.74761", "details":{}}}
+{"type":"run_end", "data":{"run_id":"3fa23e6d-6ee5-47e3-abb4-c3358e305a46", "action_count":"0", "client_time":"1486523385.94268", "details":{}}}
+{"type":"run_begin", "data":{"session_id":"322b980f-1930-4c51-86bd-2f98f2145f07", "run_id":"bbb7eefb-383c-49c3-8c21-9b7cb513d66a", "run_seqno":"4", "client_time":"1486523385.99173", "details":{}}}
+{"type":"run_end", "data":{"run_id":"bbb7eefb-383c-49c3-8c21-9b7cb513d66a", "action_count":"0", "client_time":"1486523387.41796", "details":{}}}

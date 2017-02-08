@@ -1,0 +1,16 @@
+# version:1
+{"type":"session_begin", "data":{"game_id":"HO", "player_id":"52b92c84-91eb-431c-b57b-3f35a9d16910", "session_id":"2d25e812-2768-4e31-9e4d-8b232a86c2c1", "build_id":"", "version":"1", "condition":"", "client_time":"1486520074.68681", "details":{}}}
+{"type":"run_begin", "data":{"session_id":"2d25e812-2768-4e31-9e4d-8b232a86c2c1", "run_id":"aee7754f-d7db-420e-99ed-c387bf457ab3", "run_seqno":"0", "client_time":"1486520074.74464", "details":{}}}
+{"type":"action", "data":{"run_id":"aee7754f-d7db-420e-99ed-c387bf457ab3", "action_seqno":"0", "type":"6", "client_time":"1486520077.05352", "details":{"ClickLeftPanelTruck":"blueTruckImage2, trigger cancel mark"}}}
+{"type":"action", "data":{"run_id":"aee7754f-d7db-420e-99ed-c387bf457ab3", "action_seqno":"1", "type":"7", "client_time":"1486520077.92618", "details":{"ClickCancelMark":"remove blue truck 2"}}}
+{"type":"action", "data":{"run_id":"aee7754f-d7db-420e-99ed-c387bf457ab3", "action_seqno":"2", "type":"6", "client_time":"1486520078.63774", "details":{"ClickLeftPanelTruck":"blueTruckImage1, trigger cancel mark"}}}
+{"type":"action", "data":{"run_id":"aee7754f-d7db-420e-99ed-c387bf457ab3", "action_seqno":"3", "type":"7", "client_time":"1486520079.16833", "details":{"ClickCancelMark":"remove blue truck 1"}}}
+{"type":"action", "data":{"run_id":"aee7754f-d7db-420e-99ed-c387bf457ab3", "action_seqno":"4", "type":"6", "client_time":"1486520080.01287", "details":{"ClickLeftPanelTruck":"blueTruckImage0, trigger cancel mark"}}}
+{"type":"action", "data":{"run_id":"aee7754f-d7db-420e-99ed-c387bf457ab3", "action_seqno":"5", "type":"7", "client_time":"1486520080.95748", "details":{"ClickCancelMark":"remove blue truck 0"}}}
+{"type":"action", "data":{"run_id":"aee7754f-d7db-420e-99ed-c387bf457ab3", "action_seqno":"6", "type":"6", "client_time":"1486520082.29904", "details":{"ClickLeftPanelTruck":"redTruckImage2, trigger cancel mark"}}}
+{"type":"action", "data":{"run_id":"aee7754f-d7db-420e-99ed-c387bf457ab3", "action_seqno":"7", "type":"7", "client_time":"1486520083.57513", "details":{"ClickCancelMark":"remove red truck 2"}}}
+{"type":"action", "data":{"run_id":"aee7754f-d7db-420e-99ed-c387bf457ab3", "action_seqno":"8", "type":"6", "client_time":"1486520084.40325", "details":{"ClickLeftPanelTruck":"redTruckImage1, trigger cancel mark"}}}
+{"type":"action", "data":{"run_id":"aee7754f-d7db-420e-99ed-c387bf457ab3", "action_seqno":"9", "type":"7", "client_time":"1486520085.48002", "details":{"ClickCancelMark":"remove red truck 1"}}}
+{"type":"action", "data":{"run_id":"aee7754f-d7db-420e-99ed-c387bf457ab3", "action_seqno":"10", "type":"6", "client_time":"1486520086.44092", "details":{"ClickLeftPanelTruck":"redTruckImage0, trigger cancel mark"}}}
+{"type":"action", "data":{"run_id":"aee7754f-d7db-420e-99ed-c387bf457ab3", "action_seqno":"11", "type":"7", "client_time":"1486520087.88267", "details":{"ClickCancelMark":"remove red truck 0"}}}
+{"type":"run_end", "data":{"run_id":"aee7754f-d7db-420e-99ed-c387bf457ab3", "action_count":"12", "client_time":"1486520091.72055", "details":{}}}

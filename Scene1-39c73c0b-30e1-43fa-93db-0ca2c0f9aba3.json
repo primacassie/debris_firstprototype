@@ -1,0 +1,18 @@
+# version:1
+{"type":"session_begin", "data":{"game_id":"HO", "player_id":"52b92c84-91eb-431c-b57b-3f35a9d16910", "session_id":"004d5b54-5c34-4749-925a-cca9117d9d9b", "build_id":"", "version":"1", "condition":"", "client_time":"1486523453.41146", "details":{}}}
+{"type":"run_begin", "data":{"session_id":"004d5b54-5c34-4749-925a-cca9117d9d9b", "run_id":"30a704bc-2a08-408a-8f64-3fa6f7b14f9d", "run_seqno":"0", "client_time":"1486523453.46824", "details":{}}}
+{"type":"run_end", "data":{"run_id":"30a704bc-2a08-408a-8f64-3fa6f7b14f9d", "action_count":"0", "client_time":"1486523463.77992", "details":{}}}
+{"type":"run_begin", "data":{"session_id":"004d5b54-5c34-4749-925a-cca9117d9d9b", "run_id":"d55f2411-4619-4438-ba21-5cbbf2c6dfe6", "run_seqno":"1", "client_time":"1486523463.83242", "details":{}}}
+{"type":"run_end", "data":{"run_id":"d55f2411-4619-4438-ba21-5cbbf2c6dfe6", "action_count":"0", "client_time":"1486523467.91935", "details":{}}}
+{"type":"run_begin", "data":{"session_id":"004d5b54-5c34-4749-925a-cca9117d9d9b", "run_id":"23d10a13-9cc7-4c4d-a82b-ad6f3cb9fdc7", "run_seqno":"2", "client_time":"1486523467.97119", "details":{}}}
+{"type":"run_end", "data":{"run_id":"23d10a13-9cc7-4c4d-a82b-ad6f3cb9fdc7", "action_count":"0", "client_time":"1486523468.90893", "details":{}}}
+{"type":"run_begin", "data":{"session_id":"004d5b54-5c34-4749-925a-cca9117d9d9b", "run_id":"1bbcaf16-09f7-4dde-8c5d-dbda2aace6e6", "run_seqno":"3", "client_time":"1486523468.9625", "details":{}}}
+{"type":"run_end", "data":{"run_id":"1bbcaf16-09f7-4dde-8c5d-dbda2aace6e6", "action_count":"0", "client_time":"1486523471.79143", "details":{}}}
+{"type":"run_begin", "data":{"session_id":"004d5b54-5c34-4749-925a-cca9117d9d9b", "run_id":"eaa60495-01b4-4414-9c2d-d174f0da3dff", "run_seqno":"4", "client_time":"1486523471.84277", "details":{}}}
+{"type":"run_end", "data":{"run_id":"eaa60495-01b4-4414-9c2d-d174f0da3dff", "action_count":"0", "client_time":"1486523472.9475", "details":{}}}
+{"type":"run_begin", "data":{"session_id":"004d5b54-5c34-4749-925a-cca9117d9d9b", "run_id":"65179029-ad9b-4332-ac18-a8f081dde8a7", "run_seqno":"5", "client_time":"1486523472.99886", "details":{}}}
+{"type":"run_end", "data":{"run_id":"65179029-ad9b-4332-ac18-a8f081dde8a7", "action_count":"0", "client_time":"1486523474.94646", "details":{}}}
+{"type":"run_begin", "data":{"session_id":"004d5b54-5c34-4749-925a-cca9117d9d9b", "run_id":"39e7f370-96cd-4ef9-8e85-990dffcc3cc0", "run_seqno":"6", "client_time":"1486523474.99964", "details":{}}}
+{"type":"run_end", "data":{"run_id":"39e7f370-96cd-4ef9-8e85-990dffcc3cc0", "action_count":"0", "client_time":"1486523476.48517", "details":{}}}
+{"type":"run_begin", "data":{"session_id":"004d5b54-5c34-4749-925a-cca9117d9d9b", "run_id":"1f1a8fc7-97b3-429f-b444-7af4c097f97f", "run_seqno":"7", "client_time":"1486523476.53542", "details":{}}}
+{"type":"run_end", "data":{"run_id":"1f1a8fc7-97b3-429f-b444-7af4c097f97f", "action_count":"0", "client_time":"1486523478.3758", "details":{}}}
