@@ -16,7 +16,6 @@ public class Logger : ILogger
 	private uint m_action_count = 0;
 
 
-
 	// Check if session started.
 	public
 	bool
@@ -179,6 +178,7 @@ public class Logger : ILogger
 
 		foreach (IAdapter adapter in m_adapters) {
 			adapter.Handle(node);
+            //Debug.Log(1111);
 		}
 	}
 
