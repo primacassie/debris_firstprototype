@@ -71,4 +71,18 @@ public class ClickTrails : MonoBehaviour {
 			Destroy (go);
 		}
     }
+
+
+    //added to fix the final score bug where your scores are all zero
+    void Update()
+	{
+		string name = this.gameObject.name;
+		string resultString = Regex.Match(name, @"\d+").Value;
+		int num = int.Parse(resultString);
+		if (num >= 1 && submitButton.forProf.Count != 0) {
+			inters=submitButton.forInter[num - 1];
+			minP = submitButton.forProf[num - 1];
+			maxT = submitButton.forTime[num - 1];
+		}
+	}
 }
