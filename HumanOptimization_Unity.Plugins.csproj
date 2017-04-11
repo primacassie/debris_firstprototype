@@ -93,6 +93,7 @@
     <Compile Include="Assets\plugins\SimpleJSON.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\JsonDotNet\ReadMe.txt" />
     <None Include="Assets\Shaders\LinearGradient.shader" />
     <None Include="Assets\Shaders\ThreeLinearGradient.shader" />
     <None Include="Assets\Shaders\blackHole.shader" />
