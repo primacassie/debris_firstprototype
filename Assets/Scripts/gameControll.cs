@@ -96,12 +96,17 @@ public class gameControll : MonoBehaviour
     GameObject blueButton;
 
 	public static bool onlyUpdateAtFirstTimeForCheckMark;
-
+    public static GameObject webjson;
 
 	//private int[,] tempArray = new int[6, 6];
 
     void Awake()
     {
+        webjson = new GameObject();
+        webjson.AddComponent<SimpleWWWAdapter>();
+        DontDestroyOnLoad(webjson);
+
+
         //		GameObject inputTab=GameObject.Find("InputTab");
         //		myGameObject = inputTab;
         //		inputTab.SetActive (false);

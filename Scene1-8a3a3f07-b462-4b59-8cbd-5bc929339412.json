@@ -1,0 +1,14 @@
+# version:1
+{"type":"session_begin", "data":{"game_id":"HO", "player_id":"52b92c84-91eb-431c-b57b-3f35a9d16910", "session_id":"d033bcee-a764-4ef3-8310-ab9106fcd0c1", "build_id":"", "version":"1", "condition":"", "client_time":"1491919281.06165", "details":{}}}
+{"type":"run_begin", "auto":"true", "data":{"session_id":"d033bcee-a764-4ef3-8310-ab9106fcd0c1", "run_id":"e97e8d20-3d25-4964-ac75-c674b197f028", "run_seqno":"0", "client_time":"1491919282.62641", "details":{}}}
+{"type":"action", "data":{"run_id":"e97e8d20-3d25-4964-ac75-c674b197f028", "action_seqno":"0", "type":"6", "client_time":"1491919282.63143", "details":{"ClickLeftPanelTruck":"blueTruckImage0, trigger cancel mark"}}}
+{"type":"action", "data":{"run_id":"e97e8d20-3d25-4964-ac75-c674b197f028", "action_seqno":"1", "type":"7", "client_time":"1491919283.21653", "details":{"ClickCancelMark":"remove blue truck 0"}}}
+{"type":"action", "data":{"run_id":"e97e8d20-3d25-4964-ac75-c674b197f028", "action_seqno":"2", "type":"1", "client_time":"1491919284.06016", "details":{"ClickTruck":"red"}}}
+{"type":"action", "data":{"run_id":"e97e8d20-3d25-4964-ac75-c674b197f028", "action_seqno":"3", "type":"2", "client_time":"1491919284.60732", "details":{"ClickNode":"3"}}}
+{"type":"action", "data":{"run_id":"e97e8d20-3d25-4964-ac75-c674b197f028", "action_seqno":"4", "type":"3", "client_time":"1491919284.61935", "details":{"ClickSlider":"0"}}}
+{"type":"action", "data":{"run_id":"e97e8d20-3d25-4964-ac75-c674b197f028", "action_seqno":"5", "type":"2", "client_time":"1491919285.19918", "details":{"ClickNode":"2", "store capacity between 3 and 2":"0"}}}
+{"type":"action", "data":{"run_id":"e97e8d20-3d25-4964-ac75-c674b197f028", "action_seqno":"6", "type":"3", "client_time":"1491919285.20372", "details":{"ClickSlider":"0"}}}
+{"type":"action", "data":{"run_id":"e97e8d20-3d25-4964-ac75-c674b197f028", "action_seqno":"7", "type":"2", "client_time":"1491919286.54342", "details":{"ClickNode":"1", "store capacity between 2 and 1":"0"}}}
+{"type":"action", "data":{"run_id":"e97e8d20-3d25-4964-ac75-c674b197f028", "action_seqno":"8", "type":"3", "client_time":"1491919286.54896", "details":{"ClickSlider":"50"}}}
+{"type":"action", "data":{"run_id":"e97e8d20-3d25-4964-ac75-c674b197f028", "action_seqno":"9", "type":"4", "client_time":"1491919287.17743", "details":{"ClickCheckMark":"finish this route"}}}
+{"type":"action", "data":{"run_id":"e97e8d20-3d25-4964-ac75-c674b197f028", "action_seqno":"10", "type":"9", "client_time":"1491919287.18245", "details":{"RedTruckPath":"Node1,3,2,1,StoredCap0,0,0,"}}}

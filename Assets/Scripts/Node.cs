@@ -130,6 +130,7 @@ public class Node : MonoBehaviour
     {
         GO = GameObject.Find("GameController");
         sIntersection = GameObject.Find("intersection").GetComponent<Text>();
+        //TheLogger.instance.BeginRun("level", null);
         if (this.num == 1) {
             storeTime = 0;
             storeProfit = 0;
@@ -286,7 +287,6 @@ public class Node : MonoBehaviour
 
     void Update() {
         //Debug.Log (intersection);
-
         //set refresh button back to false;
         if (RefreshButton.refresh && CheckMark.refreshed && storeTruck.refreshed) {
             RefreshButton.refresh = false;
@@ -312,6 +312,7 @@ public class Node : MonoBehaviour
                 JSONClass details = new JSONClass();
                 details["BlueTruckPath"] = "Node" + s1 + "StoredCap" + s2;
                 TheLogger.instance.TakeAction(9, details);
+                //gameControll.webjson.GetComponent<SimpleWWWAdapter>().Handle(details);
                 gameControll.blueTruck = false;
                 storeProfit = gameControll.blueProfitOnce;
                 storeTime = gameControll.blueTimeOnce;
@@ -335,6 +336,7 @@ public class Node : MonoBehaviour
                 JSONClass details = new JSONClass();
                 details["RedTruckPath"] = "Node" + s1 + "StoredCap" + s2;
                 TheLogger.instance.TakeAction(9, details);
+                //gameControll.webjson.GetComponent<SimpleWWWAdapter>().Handle(details);
                 gameControll.redTruck = false;
                 storeProfit = gameControll.redProfitOnce;
                 storeTime = gameControll.redTimeOnce;
@@ -358,6 +360,7 @@ public class Node : MonoBehaviour
                 JSONClass details = new JSONClass();
                 details["GreenTruckPath"] = "Node" + s1 + "StoredCap" + s2;
                 TheLogger.instance.TakeAction(9, details);
+                //gameControll.webjson.GetComponent<SimpleWWWAdapter>().Handle(details);
                 gameControll.greenTruck = false;
                 storeProfit = gameControll.greenProfitOnce;
                 storeTime = gameControll.greenTimeOnce;
@@ -441,6 +444,7 @@ public class Node : MonoBehaviour
                 JSONClass details = new JSONClass();
                 details["ClickNode"] = num.ToString();
                 TheLogger.instance.TakeAction(2, details);
+                //gameControll.webjson.GetComponent<SimpleWWWAdapter>().Handle(details);
 
                 foreach (int i in validPathAnimation(passNode1)) {
                     string temp = "node" + i;
@@ -533,6 +537,7 @@ public class Node : MonoBehaviour
                 JSONClass details = new JSONClass();
                 details["Incorrect Operation"] = toSave;
                 TheLogger.instance.TakeAction(10, details);
+                //gameControll.webjson.GetComponent<SimpleWWWAdapter>().Handle(details);
                 //GameObject.Find ("ModalControl").GetComponent<testWindow> ().takeAction (toSave);
             }
         }
@@ -563,13 +568,14 @@ public class Node : MonoBehaviour
                 gameControll.twoNode.Enqueue(num);
                 passNode1 = size2lastNode;
                 passNode2 = num;
-                Debug.Log("passnode1 " + passNode1);
-                Debug.Log("passnode2 " + passNode2);
+                //Debug.Log("passnode1 " + passNode1);
+                //Debug.Log("passnode2 " + passNode2);
                 JSONClass details = new JSONClass();
                 details["ClickNode"] = num.ToString();
                 string key = "store capacity between " + passNode1 + " and " + passNode2;
                 details[key] = tempCap.ToString();
                 TheLogger.instance.TakeAction(2, details);
+                //gameControll.webjson.GetComponent<SimpleWWWAdapter>().Handle(details);
 
                 size2last3Node = size2last2Node;
                 size2last2Node = passNode1;
@@ -581,7 +587,7 @@ public class Node : MonoBehaviour
                 //change node color here
                 clickChangeColor();
                 clickChangeAnimation(passNode1, passNode2);
-                Debug.Log(passNode1 + " 1 " + passNode2 + " 2");
+                //Debug.Log(passNode1 + " 1 " + passNode2 + " 2");
 
 
                 //this function used to create new game object to realize the line render.
@@ -677,6 +683,7 @@ public class Node : MonoBehaviour
                 JSONClass details = new JSONClass();
                 details["Incorrect Operation"] = toSave;
                 TheLogger.instance.TakeAction(10, details);
+                //gameControll.webjson.GetComponent<SimpleWWWAdapter>().Handle(details);
                 //GameObject.Find ("ModalControl").GetComponent<testWindow> ().takeAction (toSave);
             }
         }

@@ -1,0 +1,9 @@
+# version:1
+{"type":"session_begin", "data":{"game_id":"HO", "player_id":"52b92c84-91eb-431c-b57b-3f35a9d16910", "session_id":"522e8c34-d56a-4e0b-b074-2ba51d9dbdfd", "build_id":"", "version":"1", "condition":"", "client_time":"1491917392.99077", "details":{}}}
+{"type":"run_begin", "auto":"true", "data":{"session_id":"522e8c34-d56a-4e0b-b074-2ba51d9dbdfd", "run_id":"a08d07e5-9e1a-4f84-94f3-f967d3d62486", "run_seqno":"0", "client_time":"1491917395.10934", "details":{}}}
+{"type":"action", "data":{"run_id":"a08d07e5-9e1a-4f84-94f3-f967d3d62486", "action_seqno":"0", "type":"6", "client_time":"1491917395.10984", "details":{"ClickLeftPanelTruck":"blueTruckImage0, trigger cancel mark"}}}
+{"type":"action", "data":{"run_id":"a08d07e5-9e1a-4f84-94f3-f967d3d62486", "action_seqno":"1", "type":"7", "client_time":"1491917396.0877", "details":{"ClickCancelMark":"remove blue truck 0"}}}
+{"type":"action", "data":{"run_id":"a08d07e5-9e1a-4f84-94f3-f967d3d62486", "action_seqno":"2", "type":"6", "client_time":"1491917396.79712", "details":{"ClickLeftPanelTruck":"redTruckImage2, trigger cancel mark"}}}
+{"type":"action", "data":{"run_id":"a08d07e5-9e1a-4f84-94f3-f967d3d62486", "action_seqno":"3", "type":"7", "client_time":"1491917397.47742", "details":{"ClickCancelMark":"remove red truck 2"}}}
+{"type":"action", "data":{"run_id":"a08d07e5-9e1a-4f84-94f3-f967d3d62486", "action_seqno":"4", "type":"6", "client_time":"1491917398.13929", "details":{"ClickLeftPanelTruck":"redTruckImage1, trigger cancel mark"}}}
+{"type":"action", "data":{"run_id":"a08d07e5-9e1a-4f84-94f3-f967d3d62486", "action_seqno":"5", "type":"7", "client_time":"1491917398.76898", "details":{"ClickCancelMark":"remove red truck 1"}}}

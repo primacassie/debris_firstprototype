@@ -26,30 +26,32 @@ public class SimpleWWWAdapter : BaseAdapter
 	Fini()
 	{
 	}
-	
-	public
-	override
-	void
-	Handle(JSONClass node)
-	{
 
-		string node_output = WWW.EscapeURL(node.ToString().Trim());
-		string url = urlBase + "&json=" + node_output + "&file=optimization/"+node["data"]["session_id"]+".json";
-		WWWForm form = new WWWForm();
-		form.AddField("data", node_output);
-		data = new WWW(url, form);
-		Debug.Log("Sending data to: " + url);
+    public
+    override
+    void
+    Handle(JSONClass node)
+    {
+        Debug.Log(node);
+        string node_output = WWW.EscapeURL(node.ToString().Trim());
+        //Debug.Log(node_output);
+        string url = urlBase + "&json=" + node_output + "&file=optimization/" + node["data"]["session_id"] + ".json";
+        WWWForm form = new WWWForm();
+        form.AddField("data", node_output);
+        data = new WWW(url, form);
+        Debug.Log("sending data to: " + url);
         if (DoWWW(data) != null)
         {
             StartCoroutine(DoWWW(data));
         }
-	}
+    }
 
 
-	IEnumerator DoWWW(WWW www)
+    IEnumerator DoWWW(WWW www)
 	{
 		yield return www;
-		//Debug.Log("Web returned: " + www.text);
+        //
+        //Debug.Log("Web returned: " + www.text);
 		if (www.error != null)
 		{
 			Debug.Log("Web error: " + www.error);

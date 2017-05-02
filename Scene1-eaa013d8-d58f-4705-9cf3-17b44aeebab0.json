@@ -1,0 +1,43 @@
+# version:1
+{"type":"session_begin", "data":{"game_id":"HO", "player_id":"52b92c84-91eb-431c-b57b-3f35a9d16910", "session_id":"36deed42-ffb8-474c-9bf3-1d64ece3dcfd", "build_id":"", "version":"1", "condition":"", "client_time":"1491886670.72242", "details":{}}}
+{"type":"run_begin", "data":{"session_id":"36deed42-ffb8-474c-9bf3-1d64ece3dcfd", "run_id":"34b840ba-9658-4003-b00b-d0e95a4b464e", "run_seqno":"0", "client_time":"1491886670.72943", "details":{}}}
+{"type":"run_end", "auto":"true", "data":{"run_id":"34b840ba-9658-4003-b00b-d0e95a4b464e", "action_count":"0", "client_time":"1491886670.74046", "details":{}}}
+{"type":"run_begin", "data":{"session_id":"36deed42-ffb8-474c-9bf3-1d64ece3dcfd", "run_id":"513ebf1a-5307-4bb9-8ac4-05090364667c", "run_seqno":"1", "client_time":"1491886670.74096", "details":{}}}
+{"type":"run_end", "auto":"true", "data":{"run_id":"513ebf1a-5307-4bb9-8ac4-05090364667c", "action_count":"0", "client_time":"1491886670.74397", "details":{}}}
+{"type":"run_begin", "data":{"session_id":"36deed42-ffb8-474c-9bf3-1d64ece3dcfd", "run_id":"9d609238-f139-44f2-8626-2eb3bec2f761", "run_seqno":"2", "client_time":"1491886670.74447", "details":{}}}
+{"type":"run_end", "auto":"true", "data":{"run_id":"9d609238-f139-44f2-8626-2eb3bec2f761", "action_count":"0", "client_time":"1491886670.75648", "details":{}}}
+{"type":"run_begin", "data":{"session_id":"36deed42-ffb8-474c-9bf3-1d64ece3dcfd", "run_id":"5f57ad9b-5c42-4a0d-bf5b-00b65655ae0f", "run_seqno":"3", "client_time":"1491886670.75648", "details":{}}}
+{"type":"run_end", "auto":"true", "data":{"run_id":"5f57ad9b-5c42-4a0d-bf5b-00b65655ae0f", "action_count":"0", "client_time":"1491886670.75901", "details":{}}}
+{"type":"run_begin", "data":{"session_id":"36deed42-ffb8-474c-9bf3-1d64ece3dcfd", "run_id":"950b0b88-5460-4407-af06-558e0eba2cae", "run_seqno":"4", "client_time":"1491886670.75951", "details":{}}}
+{"type":"action", "data":{"run_id":"950b0b88-5460-4407-af06-558e0eba2cae", "action_seqno":"0", "type":"5", "client_time":"1491886676.04411", "details":{"Zoom In Zoom Out":"4"}}}
+{"type":"action", "data":{"run_id":"950b0b88-5460-4407-af06-558e0eba2cae", "action_seqno":"1", "type":"5", "client_time":"1491886676.05972", "details":{"Zoom In Zoom Out":"3"}}}
+{"type":"action", "data":{"run_id":"950b0b88-5460-4407-af06-558e0eba2cae", "action_seqno":"2", "type":"5", "client_time":"1491886676.07718", "details":{"Zoom In Zoom Out":"2"}}}
+{"type":"action", "data":{"run_id":"950b0b88-5460-4407-af06-558e0eba2cae", "action_seqno":"3", "type":"5", "client_time":"1491886676.1263", "details":{"Zoom In Zoom Out":"1"}}}
+{"type":"action", "data":{"run_id":"950b0b88-5460-4407-af06-558e0eba2cae", "action_seqno":"4", "type":"5", "client_time":"1491886678.34643", "details":{"Zoom In Zoom Out":"2"}}}
+{"type":"action", "data":{"run_id":"950b0b88-5460-4407-af06-558e0eba2cae", "action_seqno":"5", "type":"5", "client_time":"1491886678.46209", "details":{"Zoom In Zoom Out":"3"}}}
+{"type":"action", "data":{"run_id":"950b0b88-5460-4407-af06-558e0eba2cae", "action_seqno":"6", "type":"5", "client_time":"1491886678.57808", "details":{"Zoom In Zoom Out":"4"}}}
+{"type":"action", "data":{"run_id":"950b0b88-5460-4407-af06-558e0eba2cae", "action_seqno":"7", "type":"5", "client_time":"1491886678.69379", "details":{"Zoom In Zoom Out":"5"}}}
+{"type":"action", "data":{"run_id":"950b0b88-5460-4407-af06-558e0eba2cae", "action_seqno":"8", "type":"6", "client_time":"1491886710.08312", "details":{"ClickLeftPanelTruck":"blueTruckImage0, trigger cancel mark"}}}
+{"type":"action", "data":{"run_id":"950b0b88-5460-4407-af06-558e0eba2cae", "action_seqno":"9", "type":"7", "client_time":"1491886710.78074", "details":{"ClickCancelMark":"remove blue truck 0"}}}
+{"type":"action", "data":{"run_id":"950b0b88-5460-4407-af06-558e0eba2cae", "action_seqno":"10", "type":"6", "client_time":"1491886712.02093", "details":{"ClickLeftPanelTruck":"redTruckImage2, trigger cancel mark"}}}
+{"type":"action", "data":{"run_id":"950b0b88-5460-4407-af06-558e0eba2cae", "action_seqno":"11", "type":"7", "client_time":"1491886712.96442", "details":{"ClickCancelMark":"remove red truck 2"}}}
+{"type":"action", "data":{"run_id":"950b0b88-5460-4407-af06-558e0eba2cae", "action_seqno":"12", "type":"6", "client_time":"1491886713.64363", "details":{"ClickLeftPanelTruck":"redTruckImage1, trigger cancel mark"}}}
+{"type":"action", "data":{"run_id":"950b0b88-5460-4407-af06-558e0eba2cae", "action_seqno":"13", "type":"7", "client_time":"1491886714.57158", "details":{"ClickCancelMark":"remove red truck 1"}}}
+{"type":"action", "data":{"run_id":"950b0b88-5460-4407-af06-558e0eba2cae", "action_seqno":"14", "type":"1", "client_time":"1491886715.35187", "details":{"ClickTruck":"red"}}}
+{"type":"action", "data":{"run_id":"950b0b88-5460-4407-af06-558e0eba2cae", "action_seqno":"15", "type":"2", "client_time":"1491886715.85965", "details":{"ClickNode":"4"}}}
+{"type":"action", "data":{"run_id":"950b0b88-5460-4407-af06-558e0eba2cae", "action_seqno":"16", "type":"3", "client_time":"1491886715.86918", "details":{"ClickSlider":"50"}}}
+{"type":"action", "data":{"run_id":"950b0b88-5460-4407-af06-558e0eba2cae", "action_seqno":"17", "type":"3", "client_time":"1491886716.85286", "details":{"ClickSlider":"42.12517"}}}
+{"type":"action", "data":{"run_id":"950b0b88-5460-4407-af06-558e0eba2cae", "action_seqno":"18", "type":"3", "client_time":"1491886716.86937", "details":{"ClickSlider":"26.37547"}}}
+{"type":"action", "data":{"run_id":"950b0b88-5460-4407-af06-558e0eba2cae", "action_seqno":"19", "type":"3", "client_time":"1491886716.88594", "details":{"ClickSlider":"18.50061"}}}
+{"type":"action", "data":{"run_id":"950b0b88-5460-4407-af06-558e0eba2cae", "action_seqno":"20", "type":"3", "client_time":"1491886716.90243", "details":{"ClickSlider":"0.1259923"}}}
+{"type":"action", "data":{"run_id":"950b0b88-5460-4407-af06-558e0eba2cae", "action_seqno":"21", "type":"3", "client_time":"1491886716.91948", "details":{"ClickSlider":"0"}}}
+{"type":"action", "data":{"run_id":"950b0b88-5460-4407-af06-558e0eba2cae", "action_seqno":"22", "type":"2", "client_time":"1491886717.53266", "details":{"ClickNode":"3", "store capacity between 4 and 3":"50"}}}
+{"type":"action", "data":{"run_id":"950b0b88-5460-4407-af06-558e0eba2cae", "action_seqno":"23", "type":"3", "client_time":"1491886717.53364", "details":{"ClickSlider":"50"}}}
+{"type":"action", "data":{"run_id":"950b0b88-5460-4407-af06-558e0eba2cae", "action_seqno":"24", "type":"3", "client_time":"1491886718.19452", "details":{"ClickSlider":"44.75014"}}}
+{"type":"action", "data":{"run_id":"950b0b88-5460-4407-af06-558e0eba2cae", "action_seqno":"25", "type":"3", "client_time":"1491886718.2112", "details":{"ClickSlider":"34.25034"}}}
+{"type":"action", "data":{"run_id":"950b0b88-5460-4407-af06-558e0eba2cae", "action_seqno":"26", "type":"3", "client_time":"1491886718.22782", "details":{"ClickSlider":"18.50061"}}}
+{"type":"action", "data":{"run_id":"950b0b88-5460-4407-af06-558e0eba2cae", "action_seqno":"27", "type":"3", "client_time":"1491886718.24445", "details":{"ClickSlider":"0"}}}
+{"type":"action", "data":{"run_id":"950b0b88-5460-4407-af06-558e0eba2cae", "action_seqno":"28", "type":"2", "client_time":"1491886720.11631", "details":{"ClickNode":"4", "store capacity between 3 and 4":"50"}}}
+{"type":"action", "data":{"run_id":"950b0b88-5460-4407-af06-558e0eba2cae", "action_seqno":"29", "type":"2", "client_time":"1491886721.06109", "details":{"ClickNode":"1", "store capacity between 4 and 1":"0"}}}
+{"type":"action", "data":{"run_id":"950b0b88-5460-4407-af06-558e0eba2cae", "action_seqno":"30", "type":"4", "client_time":"1491886721.83906", "details":{"ClickCheckMark":"finish this route"}}}
+{"type":"action", "data":{"run_id":"950b0b88-5460-4407-af06-558e0eba2cae", "action_seqno":"31", "type":"9", "client_time":"1491886721.8411", "details":{"RedTruckPath":"Node1,4,3,4,1,StoredCap50,50,0,0,"}}}

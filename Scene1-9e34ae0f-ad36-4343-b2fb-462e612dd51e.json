@@ -1,0 +1,26 @@
+# version:1
+{"type":"session_begin", "data":{"game_id":"HO", "player_id":"52b92c84-91eb-431c-b57b-3f35a9d16910", "session_id":"5e45584c-cde7-426a-a778-96ca1dea6de3", "build_id":"", "version":"1", "condition":"", "client_time":"1491930260.55459", "details":{}}}
+{"type":"run_begin", "auto":"true", "data":{"session_id":"5e45584c-cde7-426a-a778-96ca1dea6de3", "run_id":"c08fdc43-e9d0-49a6-84e3-481789911b06", "run_seqno":"0", "client_time":"1491930263.22631", "details":{}}}
+{"type":"action", "data":{"run_id":"c08fdc43-e9d0-49a6-84e3-481789911b06", "action_seqno":"0", "type":"6", "client_time":"1491930263.23082", "details":{"ClickLeftPanelTruck":"blueTruckImage2, trigger cancel mark"}}}
+{"type":"action", "data":{"run_id":"c08fdc43-e9d0-49a6-84e3-481789911b06", "action_seqno":"1", "type":"7", "client_time":"1491930263.93133", "details":{"ClickCancelMark":"remove blue truck 2"}}}
+{"type":"action", "data":{"run_id":"c08fdc43-e9d0-49a6-84e3-481789911b06", "action_seqno":"2", "type":"6", "client_time":"1491930264.49152", "details":{"ClickLeftPanelTruck":"blueTruckImage1, trigger cancel mark"}}}
+{"type":"action", "data":{"run_id":"c08fdc43-e9d0-49a6-84e3-481789911b06", "action_seqno":"3", "type":"7", "client_time":"1491930265.15454", "details":{"ClickCancelMark":"remove blue truck 1"}}}
+{"type":"action", "data":{"run_id":"c08fdc43-e9d0-49a6-84e3-481789911b06", "action_seqno":"4", "type":"6", "client_time":"1491930265.7669", "details":{"ClickLeftPanelTruck":"blueTruckImage0, trigger cancel mark"}}}
+{"type":"action", "data":{"run_id":"c08fdc43-e9d0-49a6-84e3-481789911b06", "action_seqno":"5", "type":"7", "client_time":"1491930266.77761", "details":{"ClickCancelMark":"remove blue truck 0"}}}
+{"type":"action", "data":{"run_id":"c08fdc43-e9d0-49a6-84e3-481789911b06", "action_seqno":"6", "type":"1", "client_time":"1491930268.10468", "details":{"ClickTruck":"red"}}}
+{"type":"action", "data":{"run_id":"c08fdc43-e9d0-49a6-84e3-481789911b06", "action_seqno":"7", "type":"2", "client_time":"1491930268.40261", "details":{"ClickNode":"4"}}}
+{"type":"action", "data":{"run_id":"c08fdc43-e9d0-49a6-84e3-481789911b06", "action_seqno":"8", "type":"3", "client_time":"1491930268.41364", "details":{"ClickSlider":"50"}}}
+{"type":"action", "data":{"run_id":"c08fdc43-e9d0-49a6-84e3-481789911b06", "action_seqno":"9", "type":"3", "client_time":"1491930269.22325", "details":{"ClickSlider":"42.12513"}}}
+{"type":"action", "data":{"run_id":"c08fdc43-e9d0-49a6-84e3-481789911b06", "action_seqno":"10", "type":"3", "client_time":"1491930269.24128", "details":{"ClickSlider":"5.37585"}}}
+{"type":"action", "data":{"run_id":"c08fdc43-e9d0-49a6-84e3-481789911b06", "action_seqno":"11", "type":"3", "client_time":"1491930269.25784", "details":{"ClickSlider":"0"}}}
+{"type":"action", "data":{"run_id":"c08fdc43-e9d0-49a6-84e3-481789911b06", "action_seqno":"12", "type":"2", "client_time":"1491930269.80507", "details":{"ClickNode":"3", "store capacity between 4 and 3":"50"}}}
+{"type":"action", "data":{"run_id":"c08fdc43-e9d0-49a6-84e3-481789911b06", "action_seqno":"13", "type":"3", "client_time":"1491930269.80959", "details":{"ClickSlider":"50"}}}
+{"type":"action", "data":{"run_id":"c08fdc43-e9d0-49a6-84e3-481789911b06", "action_seqno":"14", "type":"3", "client_time":"1491930270.3017", "details":{"ClickSlider":"44.75006"}}}
+{"type":"action", "data":{"run_id":"c08fdc43-e9d0-49a6-84e3-481789911b06", "action_seqno":"15", "type":"3", "client_time":"1491930270.31822", "details":{"ClickSlider":"34.25027"}}}
+{"type":"action", "data":{"run_id":"c08fdc43-e9d0-49a6-84e3-481789911b06", "action_seqno":"16", "type":"3", "client_time":"1491930270.33476", "details":{"ClickSlider":"21.12554"}}}
+{"type":"action", "data":{"run_id":"c08fdc43-e9d0-49a6-84e3-481789911b06", "action_seqno":"17", "type":"3", "client_time":"1491930270.35133", "details":{"ClickSlider":"0.125947"}}}
+{"type":"action", "data":{"run_id":"c08fdc43-e9d0-49a6-84e3-481789911b06", "action_seqno":"18", "type":"3", "client_time":"1491930270.3679", "details":{"ClickSlider":"0"}}}
+{"type":"action", "data":{"run_id":"c08fdc43-e9d0-49a6-84e3-481789911b06", "action_seqno":"19", "type":"2", "client_time":"1491930270.86463", "details":{"ClickNode":"1", "store capacity between 3 and 1":"50"}}}
+{"type":"action", "data":{"run_id":"c08fdc43-e9d0-49a6-84e3-481789911b06", "action_seqno":"20", "type":"3", "client_time":"1491930270.86967", "details":{"ClickSlider":"0"}}}
+{"type":"action", "data":{"run_id":"c08fdc43-e9d0-49a6-84e3-481789911b06", "action_seqno":"21", "type":"4", "client_time":"1491930271.62786", "details":{"ClickCheckMark":"finish this route"}}}
+{"type":"action", "data":{"run_id":"c08fdc43-e9d0-49a6-84e3-481789911b06", "action_seqno":"22", "type":"9", "client_time":"1491930271.63291", "details":{"RedTruckPath":"Node1,4,3,1,StoredCap50,50,0,"}}}
