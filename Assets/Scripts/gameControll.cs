@@ -105,7 +105,8 @@ public class gameControll : MonoBehaviour
         //		GameObject inputTab=GameObject.Find("InputTab");
         //		myGameObject = inputTab;
         //		inputTab.SetActive (false);
-        //Cursor.SetCursor(cursorTextureO, hotSpot, cursorMode);
+        GameObject o = GameObject.Find("BasicLoggerManager");
+        DontDestroyOnLoad(o);
         redTruckNum = 0;
         blueTruckNum = 0;
         greenTruckNum = 0;

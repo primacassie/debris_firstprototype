@@ -84,6 +84,7 @@ public class cancelMark : MonoBehaviour {
 			details ["ClickCancelMark"] = s;
 			TheLogger.instance.TakeAction (7, details);
 		}
+
 		for (int j = 0; j < arr.Length-1; j++) {
 			int num1 = arr [j];
 			int num2 = arr [j + 1];

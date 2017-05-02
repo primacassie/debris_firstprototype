@@ -53,7 +53,8 @@ public class CheckMark : MonoBehaviour {
 		details ["ClickCheckMark"] = "finish this route";
 		TheLogger.instance.TakeAction (4, details);
 		pathCap.desableSlider();
-		GetComponent<AudioSource> ().Play ();
+
+
 		this.gameObject.GetComponent<Image>().color = new Vector4(0, 0, 0, 0);
 		StartCoroutine (waitToDestroy ());
 	}

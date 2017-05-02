@@ -48,6 +48,7 @@ public class Logger : ILogger
 
 		m_player_id = player_id;
 		m_session_id = System.Guid.NewGuid().ToString();
+        Manager.Instance.sessionID = m_session_id;
 		m_run_id = null;
 		m_run_count = 0;
 		m_action_count = 0;
@@ -129,6 +130,7 @@ public class Logger : ILogger
 
 		m_player_id = null;
 		m_session_id = null;
+
 		m_run_id = null;
 		m_run_count = 0;
 		m_action_count = 0;
@@ -178,7 +180,6 @@ public class Logger : ILogger
 
 		foreach (IAdapter adapter in m_adapters) {
 			adapter.Handle(node);
-            //Debug.Log(1111);
 		}
 	}
 

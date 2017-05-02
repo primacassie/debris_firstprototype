@@ -99,11 +99,17 @@
     <Compile Include="Assets\Scripts\MenuToStart.cs" />
     <Compile Include="Assets\Scripts\Node.cs" />
     <Compile Include="Assets\Scripts\NodeAnimation.cs" />
+<<<<<<< HEAD
     <Compile Include="Assets\Scripts\RefreshButton.cs" />
     <Compile Include="Assets\Scripts\SaveLoad.cs" />
     <Compile Include="Assets\Scripts\StartNewTrail.cs" />
     <Compile Include="Assets\Scripts\StoreTruckClick.cs" />
     <Compile Include="Assets\Scripts\UndoButton.cs" />
+=======
+    <Compile Include="Assets\Scripts\SaveLoad.cs" />
+    <Compile Include="Assets\Scripts\StartNewTrail.cs" />
+    <Compile Include="Assets\Scripts\StoreTruckClick.cs" />
+>>>>>>> logSystem/master
     <Compile Include="Assets\Scripts\cameraMovement.cs" />
     <Compile Include="Assets\Scripts\cancelMark.cs" />
     <Compile Include="Assets\Scripts\depot.cs" />

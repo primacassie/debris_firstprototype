@@ -1,8 +1,0 @@
-# version:1
-{"type":"session_begin", "data":{"game_id":"HO", "player_id":"52b92c84-91eb-431c-b57b-3f35a9d16910", "session_id":"bfb3547e-0055-4500-af2d-f73bce30f26c", "build_id":"", "version":"1", "condition":"", "client_time":"1486525258.76874", "details":{}}}
-{"type":"run_begin", "data":{"session_id":"bfb3547e-0055-4500-af2d-f73bce30f26c", "run_id":"09776b2b-9537-4f57-8c4b-5f35ad1122d5", "run_seqno":"0", "client_time":"1486525258.83813", "details":{}}}
-{"type":"run_end", "data":{"run_id":"09776b2b-9537-4f57-8c4b-5f35ad1122d5", "action_count":"0", "client_time":"1486525264.73487", "details":{}}}
-{"type":"run_begin", "data":{"session_id":"bfb3547e-0055-4500-af2d-f73bce30f26c", "run_id":"e4b6b088-b28d-4dfb-b455-f497d45333ba", "run_seqno":"1", "client_time":"1486525264.78404", "details":{}}}
-{"type":"run_end", "data":{"run_id":"e4b6b088-b28d-4dfb-b455-f497d45333ba", "action_count":"0", "client_time":"1486525266.44221", "details":{}}}
-{"type":"run_begin", "data":{"session_id":"bfb3547e-0055-4500-af2d-f73bce30f26c", "run_id":"4d869682-6c73-4dcc-862d-90c1c95c9609", "run_seqno":"2", "client_time":"1486525266.49453", "details":{}}}
-{"type":"run_end", "data":{"run_id":"4d869682-6c73-4dcc-862d-90c1c95c9609", "action_count":"0", "client_time":"1486525268.43717", "details":{}}}

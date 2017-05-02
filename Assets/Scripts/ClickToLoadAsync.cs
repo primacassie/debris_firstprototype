@@ -26,6 +26,11 @@ public class ClickToLoadAsync : MonoBehaviour {
         StartCoroutine(LoadLevelWithBar());
     }
 
+    public void clickLoadTutorial()
+    {
+        SceneManager.LoadScene("Tutorial");
+    }
+
     IEnumerator LoadLevelWithBar()
     {
         if (sceneName.name == "menu")
